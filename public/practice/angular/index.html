@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="BlogApp">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- <script src="../../js/angular.min.js"></script> -->
+    <!-- <link href="../../css/bootstrap.min.css" rel="stylesheet"/> -->
+    <script src="app.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<div class="container-fluid">
+    <h1>Blog</h1>
+
+    <div ng-controller="BlogPostListController">
+        <br/>
+        Title:
+        <input ng-model="post.title" class="form-control"/>
+        Body:
+        <textarea ng-model="post.body" class="form-control"></textarea>
+        <button ng-click="addPost(post)" class="btn btn-block btn-primary">Post Blog</button>
+        <button ng-click="updatePost(post)" class="btn btn-block btn-success">Update Blog</button>
+        <ul ng-repeat="post in posts" class="list-group"> <!-- ng-repeat -> Repeat this template. post in posts means creates local variable for li named post for all the objects created and rendered by posts from app.js -->
+            <li class="list-group-item">
+                <span ng-click="selectPost($index)" class="pull-right">&checkmark;</span>
+                <span ng-click="deletePost($index)" class="pull-right">&times;</span>
+                <h3>{{post.title}}</h3>
+                <p>
+                    {{post.body}}
+                    <label>
+                        {{post.date | date}} <!-- | means filter -->
+                    </label>
+                </p>
+            </li>
+        </ul>
+    </div>
+    </div>
+</body>
+</html>
