@@ -1,7 +1,86 @@
-input.form-control {
+input.form-control,
+textarea.form-control,
+select.form-control,
+file.form-control {
     margin-bottom: 5px;
 }
 
-body {
-    padding-top: 36px;
+textarea.form-control {
+    margin-bottom: 7px;
+    resize: none;
 }
+
+body {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+
+.navbar-default .glyphicon.glyphicon-chevron-left {
+    right:-10px;
+}
+
+.navbar-default .glyphicon.glyphicon-ok, .glyphicon.glyphicon-plus{
+    left: 20px;
+}
+
+nav.navbar.navbar-default.navbar-fixed-top {
+    padding-right: 15px;
+}
+
+.navbar-default {
+    background-color: rgb(36, 64, 80);
+    border-color: rgb(36, 64, 80);
+}
+
+.navbar-default .navbar-brand { /* Space between them means second one is child/grandchild of first one. And if '>' is place
+                                    in between then it means second one is the immediate child of first one*/
+    color: #ffffff;
+}
+
+
+
+.navbar-header {
+    width: 100%;
+}
+
+.navbar-default .navbar-link {
+    color: #fff;
+}
+
+.navbar-default .navbar-link glyphicon-ok{
+    color: #fff;
+    padding-right: 0px;
+}
+
+.navbar.navbar-default a {
+    color: #fff;
+}
+
+.navbar.navbar-default.navbar-fixed-bottom .container-fluid {
+    padding-left: 0px;
+}
+
+.row.navbar-text {
+    margin-left: 0px;
+}
+
+.wd-widget > img {
+    width:100%;
+}
+
+.wd-widget {
+    margin-bottom: 10px;
+}
+
+.wd-widget > .wd-widget-toolbar {
+    position: absolute;
+    right: 15px;
+    background: white;
+    opacity: 0.9;
+    padding: 5px;
+    border-bottom-left-radius: 10px;
+}
+
+
