@@ -2,7 +2,7 @@ input.form-control,
 textarea.form-control,
 select.form-control,
 file.form-control {
-    margin-bottom: 5px;
+    margin-bottom: 7px;
 }
 
 textarea.form-control {
@@ -107,3 +107,4 @@ nav.navbar.navbar-default.navbar-fixed-top {
     }
 }
 
+a:hover { text-decoration: none; }
