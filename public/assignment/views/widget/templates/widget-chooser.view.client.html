@@ -1,0 +1,56 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <span class="navbar-text pull-left">
+                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </span>
+                <a class="navbar-brand" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
+                    Choose Widget
+                </a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+<ul class="list-group">
+    <li class="list-group-item">
+        <div ng-click="model.setHeaderWidgetType(model.pageId)" class="pointer">
+            <a>
+                Header
+            </a>
+        </div>
+
+    </li>
+
+    <li class="list-group-item">
+        <div ng-click="model.setHtmlWidgetType(model.pageId)" class="pointer">
+            <a>
+                Html
+            </a>
+        </div>
+    </li>
+
+    <li class="list-group-item">
+        <div ng-click="model.setImageWidgetType(model.pageId)" class="pointer">
+            <a>
+                Image
+            </a>
+        </div>
+
+    </li>
+
+    <li class="list-group-item">
+        <div ng-click="model.setYouTubeWidgetType(model.pageId)" class="pointer">
+            <a>
+                YouTube
+            </a>
+        </div>
+    </li>
+
+</ul>
+</div>
+
+<div ng-include="'views/common/footer.view.client.html'"></div>
+

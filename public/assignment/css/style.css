@@ -14,7 +14,7 @@ body {
     padding-top: 60px;
     padding-bottom: 60px;
     overflow-x: hidden;
-    white-space: nowrap;
+    /**white-space: nowrap; **/
 }
 
 .navbar-default .glyphicon.glyphicon-chevron-left {
@@ -107,4 +107,14 @@ nav.navbar.navbar-default.navbar-fixed-top {
     }
 }
 
-a:hover { text-decoration: none; }
+visitedColor {
+    color: white;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.pointer {
+    cursor: pointer;
+}

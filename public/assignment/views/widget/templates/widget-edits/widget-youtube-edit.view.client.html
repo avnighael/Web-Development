@@ -1,0 +1,76 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <span class="navbar-text pull-left">
+                <a href=".#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </span>
+            <a class="navbar-brand" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widgetId}}">
+                Youtube Widget  Editor
+            </a>
+            <p class="navbar-text pull-right">
+                <a ng-click="model.updateWidget(model.widget)" class="navbar-link">
+          <span class="glyphicon glyphicon-ok">
+          </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div ng-show="model.error" class="alert alert-danger">
+        {{model.error}}
+    </div>
+
+    <label for="name">Name</label>
+    <input ng-model="model.widget.name"
+           class="form-control"
+           placeholder="facebook"
+           value="top heading"
+           id="name"/>
+
+    <label for="text">Text</label>
+    <input ng-model="model.widget.text"
+           class="form-control"
+           placeholder="facebook"
+           value="US Senate Reaches Compromise"
+           id="text"/>
+
+    <label for="url">URL</label>
+    <input ng-model="model.widget.url"
+           class="form-control"
+           placeholder="url"
+           value="https://i.kinja-img.com/gawker-media/image/upload/s--J2ZtPvX5--/c_scale,fl_progressive,q_80,w_800/xrt92v1etv8yxgatfdq6.gif"
+           id="url"/>
+
+    <label for="width">Width</label>
+    <input ng-model="model.widget.width"
+           class="form-control"
+           placeholder="100%"
+           value="100%"
+           id="width"/>
+
+    <a ng-click="model.updateWidget(model.widget)"
+       class="btn btn-block btn-success">
+        Submit
+    </a>
+    <a ng-click="model.deleteWidget()"
+       class="btn btn-block btn-danger">
+        Delete
+    </a>
+</div>
+
+
+<nav class="=navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a class="navbar-link" href="#!/user/{{model.userId}}">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+
+        </div>
+    </div>
+
+</nav>
