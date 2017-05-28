@@ -38,13 +38,8 @@
         }
 
         function deleteWebsite(websiteId) {
-            var deleteCheck = websiteService.deleteWebsite(websiteId);
-            if(deleteCheck) {
-                $location.url('/user/'+model.userId+'/website');
-            } else {
-                model.error = "Invalid Website. Unable to delete website";
-            }
-
+            websiteService.deleteWebsite(websiteId);
+            $location.url('/user/'+model.userId+'/website');
         }
 
     }

@@ -118,3 +118,7 @@ a:hover {
 .pointer {
     cursor: pointer;
 }
+
+row {
+    white-space: nowrap;
+}

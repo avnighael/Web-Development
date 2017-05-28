@@ -37,7 +37,7 @@
            id="text"/>
 
     <label for="size">Heading Size (1 - 6)</label>
-    <input ng-model="model.widget.size" type="text" class="form-control" id="size" placeholder="size">
+    <input ng-model="model.widget.size" type="text" class="form-control" id="size" placeholder="size" value="3">
 
     <a ng-click="model.updateWidget(model.widget)"
        class="btn btn-block btn-success">
@@ -61,14 +61,5 @@
 
 </div>
 
-<nav class="=navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <div class="navbar-text pull-right">
-            <a class="navbar-link" href="../../../user/templates/profile.view.client.html">
-                <span class="glyphicon glyphicon-user"></span>
-            </a>
+<div ng-include="'views/common/footer.view.client.html'"></div>
 
-        </div>
-    </div>
-
-</nav>

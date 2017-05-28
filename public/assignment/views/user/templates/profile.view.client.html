@@ -6,7 +6,7 @@
                 Profile
             </a>
             <p class="navbar-text pull-right">
-                <a href="#!/user/{{model.userId}}"
+                <a ng-click="model.updateUser(model.user)"
                    class="navbar-link">
                         <span class="glyphicon glyphicon-ok">
                         </span>
@@ -17,6 +17,14 @@
 </nav>
 
     <div class="container-fluid">
+        <div ng-show="model.error" class="alert alert-danger" role="alert">
+            {{model.error}}
+        </div>
+
+        <div ng-show="model.message" class="alert alert-success" role="alert">
+            {{model.message}}
+        </div>
+
         <form>
             <div class="form-group">
                 <label for="username">Username</label>
@@ -52,19 +60,20 @@
             </div>
         </form>
 
+        <a class="btn btn-success btn-block"
+           ng-click="model.updateUser(model.user)">Update
+        </a>
+        <a ng-click="model.deleteUser(model.userId)"
+           class="btn btn-danger btn-block">
+            Deactivate Account
+        </a>
         <a class="btn btn-primary btn-block"
-           href="#!/user/{{model.userId}}/website">Websites</a>
-        <a class="btn btn-danger  btn-block"
-           href="#!login">Logout</a>
+           href="#!/user/{{model.userId}}/website">Websites
+        </a>
+        <a class="btn btn-warning  btn-block"
+           href="#!login">Logout
+        </a>
     </div>
 
-<nav class="=navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <div class="navbar-text pull-right">
-            <a class="navbar-link" href="profile.view.client.html">
-                <span class="glyphicon glyphicon-user"></span>
-            </a>
+<div ng-include="'views/common/footer.view.client.html'"></div>
 
-        </div>
-    </div>
-</nav>

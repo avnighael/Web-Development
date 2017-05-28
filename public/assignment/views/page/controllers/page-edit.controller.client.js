@@ -46,13 +46,8 @@
         }
 
         function deletePage(pageId) {
-            var deleteCheck = pageService.deletePage(pageId);
-            if(deleteCheck) {
+            pageService.deletePage(pageId);
                 $location.url("/user/"+userId+"/website/"+websiteId+"/page");
-            } else {
-                model.error = "Invalid Page. Unable to delete the page";
-            }
-
         }
 
     }

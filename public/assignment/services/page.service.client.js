@@ -18,7 +18,6 @@
             { "_id": "567", "name": "Blog", "websiteId": "123", "description": "Lorem ipsum" }
         ];
 
-
         function updatePage(pageId, page) {
             for(var p in pages) {
                 if(pages[p]._id === pageId) {
@@ -30,20 +29,17 @@
             return null;
         }
 
-
         function deletePage(pageId) {
-            for(var p in pages) {
-                if(pages[p]._id === pageId) {
-                    var page = findPageById(pageId);
-                    var index = pages.indexOf(page);
-                    pages.splice(index,1);
-                    return angular.copy(page);
-                }
-                //return null;
-            }
-            return null;
+            var page = findPageByIdForDel(pageId);
+            var index = pages.indexOf(page);
+            pages.splice(index, 1);
         }
 
+        function findPageByIdForDel(pageId) {
+            return pages.find(function (page) {
+                return page._id === pageId;
+            });
+        }
 
         function findPageById(pageId) {
             for (var p in pages) {

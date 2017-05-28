@@ -15,9 +15,28 @@
             createUser: createUser,
             findUserById: findUserById,
             findUserByUsername: findUserByUsername,
-            findUserByCredentials: findUserByCredentials
+            findUserByCredentials: findUserByCredentials,
+            deleteUser: deleteUser,
+            updateUser: updateUser
         };
         return api;
+
+        function updateUser(userId, newUser) {
+            for (var u in users) {
+                if (users[u]._id == userId) {
+                    users[u].firstName = newUser.firstName;
+                    users[u].lastName = newUser.lastName;
+                    return users[u];
+                }
+            }
+            return null;
+        }
+
+        function deleteUser(userId) {
+            var user = findUserById(userId);
+            var index = users.indexOf(user);
+            users.splice(index, 1);
+        }
 
         function createUser(user) {
             user._id = (new Date()).getTime() + "";
