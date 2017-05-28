@@ -30,7 +30,7 @@
         init();
 
         function widgetEditUrl(widget) {
-            var url = 'views/widget/templates/widget-edits/widget-'+widget.widgetType.toLowerCase()+'-edit.view.client.html';
+            var url = 'views/widget/templates/editor/widget-'+widget.widgetType.toLowerCase()+'-edit.view.client.html';
             $location.url("/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget" + widget.widgetType.toLowerCase());
         }
 

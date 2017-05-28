@@ -18,7 +18,7 @@
         model.deleteWebsite = deleteWebsite;
 
         function init() {
-            var websites = websiteService.findAllWebsitesForUser(userId);
+            var websites = websiteService.findWebsitesByUser(userId);
             model.websites = websites;
 
             var website = websiteService.findWebsiteById(model.websiteId);

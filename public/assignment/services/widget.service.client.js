@@ -82,7 +82,6 @@
             return newImage;
         }
 
-
         function setYouTubeWidgetType() {
             var newYouTubeWidget = { "_id": "", "widgetType": "YOUTUBE", "pageId": "", "width": "",
                 "url": "" };
@@ -106,7 +105,6 @@
                     results.push(widgets[w]);
                 }
             }
-
             return results;
         }
 

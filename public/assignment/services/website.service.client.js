@@ -5,7 +5,7 @@
 
     function websiteService() {
 
-        this.findAllWebsitesForUser = findAllWebsitesForUser;
+        this.findWebsitesByUser = findWebsitesByUser;
         this.findWebsiteById = findWebsiteById;
         this.deleteWebsite = deleteWebsite;
         this.createWebsite = createWebsite;
@@ -58,7 +58,7 @@
             return null;
         }
 
-        function findAllWebsitesForUser(userId) {
+        function findWebsitesByUser(userId) {
             var results = [];
 
             for(var w in websites) {
