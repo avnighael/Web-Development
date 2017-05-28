@@ -12,13 +12,9 @@
         function login (username, password) {
             var found = userService.findUserByCredentials(username, password);
 
-
             if(found !== null)  {
                 $location.url('/user/' + found._id)
-                //model.message = "Welcome " + username;
-                //console.log(message);
             } else {
-                //console.log("not  found");
                 model.message = "Sorry " + username + " not found, please try again";
             }
         }

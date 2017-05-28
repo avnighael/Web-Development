@@ -11,7 +11,6 @@
 
         function register(username, password, password2, firstName, lastName, email) {
 
-
             if((username === null && password === null) ||
                 (username === '' && password === '') ||
                 (typeof username === 'undefined' && typeof password === 'undefined')) {

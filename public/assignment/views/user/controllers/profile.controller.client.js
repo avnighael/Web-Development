@@ -11,7 +11,11 @@
 
         model.userId = $routeParams['userId'];
 
-        model.user = userService.findUserById(model.userId);
+        function init() {
+            model.user = userService.findUserById(model.userId);
+        }
+
+        init();
 
         function deleteUser(userId) {
             userService.deleteUser(userId);
