@@ -10,13 +10,19 @@
         model.login = login;
 
         function login (username, password) {
-            var found = userService.findUserByCredentials(username, password);
+            //var found = userService.findUserByCredentials(username, password);
+            userService
+                .findUserByCredentials(username, password)
+                .then(renderLogin);
 
-            if(found !== null)  {
-                $location.url('/user/' + found._id)
-            } else {
-                model.message = "Sorry " + username + " not found, please try again";
+            function renderLogin(found) {
+                if(found !== null)  {
+                    $location.url('/user/' + found._id)
+                } else {
+                    model.message = "Sorry " + username + " not found, please try again";
+                }
             }
+
         }
     }
 }) ();
