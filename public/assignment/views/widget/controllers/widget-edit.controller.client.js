@@ -23,30 +23,39 @@
         model.deleteWidget=deleteWidget;
 
         function init() {
-            var widgets = widgetService.findWidgetsByPageId(pageId);
-            model.widgets = widgets;
+            widgetService
+                .findAllWidgetsForPage(pageId)
+                .then(function (widgets) {
+                    model.widgets = widgets;
+                });
 
-            var widget = widgetService.findWidgetById(model.widgetId);
-            model.widget = widget;
+            widgetService
+                .findWidgetById(widgetId)
+                .then(function (widget) {
+                    model.widget = widget;
+                });
+
         }
         init();
 
         function deleteWidget() {
-            var deleteCheck = widgetService.deleteWidget(widgetId);
-            if(deleteCheck) {
-                $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget");
-            } else {
-                model.error = "Invalid Widget. Unable to delete widget";
-            }
+            widgetService
+                .deleteWidget(widgetId)
+                .then(function () {
+                    $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget");
+                }, function () {
+                    model.error = "Failed to delete the widget"
+                });
         }
 
         function updateWidget(widget){
-            var updateCheck = widgetService.updateWidget(widgetId, widget);
-            if(updateCheck) {
-                $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget");
-            } else {
-                model.error = "Invalid Widget. Unable to update widget";
-            }
+            widgetService
+                .updateWidget(widgetId, widget)
+                .then(function () {
+                    $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget");
+                }, function () {
+                    model.error = "Invalid Widget. Failed to update widget"
+                });
         }
 
 

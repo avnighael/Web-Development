@@ -23,8 +23,11 @@
         model.widgetEditUrl = widgetEditUrl;
 
         function init() {
-            var widgets = widgetService.findWidgetsByPageId(pageId);
-            model.widgets = widgets;
+            widgetService
+                .findAllWidgetsForPage(pageId)
+                .then(function (widgets) {
+                    model.widgets = widgets;
+                });
         }
 
         init();

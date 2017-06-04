@@ -5,6 +5,10 @@ file.form-control {
     margin-bottom: 7px;
 }
 
+.ag-bottomspace {
+    margin-bottom: 7px;
+}
+
 textarea.form-control {
     margin-bottom: 7px;
     resize: none;

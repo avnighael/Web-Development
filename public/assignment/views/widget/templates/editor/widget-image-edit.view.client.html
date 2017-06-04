@@ -49,14 +49,21 @@
            id="width"/>
 
     <label for="file">Upload</label>
-    <input id="file"
-           multiple
-           type="file"
-           class="form-control"/>
+    <form action="/api/assignment/upload"   method="post" enctype="multipart/form-data">
+        <input  name="myFile"    type="file" class="form-control" id="file"/>
+        <input  name="width"     value="{{model.widget.width}}" style="display: none"/>
+        <input  name="userId"    value="{{model.userId}}"       style="display: none"/>
+        <input  name="websiteId" value="{{model.websiteId}}"    style="display: none"/>
+        <input  name="pageId"    value="{{model.pageId}}"       style="display: none"/>
+        <input  name="widgetId"  value="{{model.widget._id}}"   style="display: none"/>
+        <span>
+            <button type="submit" class="btn-primary ag-bottomspace" >Upload Image</button>
+        </span>
+    </form>
 
     <a ng-click="model.updateWidget(model.widget)"
        class="btn btn-block btn-success">
-        Upload Image
+        Update
     </a>
 
     <a ng-click="model.deleteWidget()"

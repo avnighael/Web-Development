@@ -15,53 +15,31 @@
         var pageId = $routeParams.pageId;
         model.pageId = pageId;
 
-        model.setHeaderWidgetType = setHeaderWidgetType;
-        model.setHtmlWidgetType = setHtmlWidgetType;
-        model.setImageWidgetType = setImageWidgetType;
-        model.setYouTubeWidgetType = setYouTubeWidgetType;
+        model.createWidget = createWidget;
 
         function init() {
-            var widgets = widgetService.findWidgetsByPageId(pageId);
-            model.widgets = widgets;
+            widgetService
+                .findAllWidgetsForPage(pageId)
+                .then(function (widgets) {
+                    model.widgets = widgets;
+                });
         }
 
         init();
+        
+        function createWidget(widgetType) {
+            var newWidget = {};
+            newWidget._id = (new Date()).getTime() + "";
+            newWidget.widgetType = widgetType;
 
-        function setHeaderWidgetType() {
-            model.widget = widgetService.setHeaderWidgetType();
-            model.widgetId = model.widget._id;
-
-            widgetService.createWidget(pageId, model.widget);
-
-            $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/" + model.widgetId);
+            widgetService
+                .createWidget(pageId, newWidget)
+                .then(function(widget){
+                    model.widget = widget;
+                    $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widget._id);
+                });
         }
 
-        function setHtmlWidgetType() {
-            model.widget = widgetService.setHtmlWidgetType();
-            model.widgetId = model.widget._id;
-
-            widgetService.createWidget(pageId, model.widget);
-
-            $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/" + model.widgetId);
-        }
-
-        function setImageWidgetType() {
-            model.widget = widgetService.setImageWidgetType();
-            model.widgetId = model.widget._id;
-
-            widgetService.createWidget(pageId, model.widget);
-
-            $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/" + model.widgetId);
-        }
-
-        function setYouTubeWidgetType() {
-            model.widget = widgetService.setYouTubeWidgetType();
-            model.widgetId = model.widget._id;
-
-            widgetService.createWidget(pageId, model.widget);
-
-            $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/" + model.widgetId);
-        }
 
 
     }

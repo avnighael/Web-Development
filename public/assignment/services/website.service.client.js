@@ -3,7 +3,7 @@
         .module('WAM')
         .service('websiteService', websiteService);
 
-    function websiteService() {
+    function websiteService($http) {
 
         this.findWebsitesByUser = findWebsitesByUser;
         this.findWebsiteById = findWebsiteById;
@@ -22,24 +22,27 @@
         ];
 
         function updateWebsite(websiteId, website) {
-            for(var w in websites) {
-                if(websites[w]._id === websiteId) {
-                    websites[w] = angular.copy(website);
-                    return websites[w];
-                }
-            }
-            return null;
+            var url = "/api/assignment/website/"+websiteId;
+            return $http.put(url, website)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
-        function createWebsite(website) {
-            website._id = (new Date()).getTime() + "";
-            websites.push(website);
+        function createWebsite(userId, website) {
+            var url = "/api/assignment/user/"+userId+"/website";
+            return $http.post(url, website)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function deleteWebsite(websiteId) {
-            var website = findWebsiteByIdForDel(websiteId);
-            var index = websites.indexOf(website);
-            websites.splice(index, 1);
+            var url = "/api/assignment/website/"+websiteId;
+            return $http.delete(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function findWebsiteByIdForDel(websiteId) {
@@ -49,27 +52,19 @@
         }
 
         function findWebsiteById(websiteId) {
-            for (var w in websites) {
-                var website=websites[w]
-                if (website._id === websiteId) {
-                    return angular.copy(website);
-                }
-            }
-            return null;
+            var url = "/api/assignment/website/"+websiteId;
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function findWebsitesByUser(userId) {
-            var results = [];
-
-            for(var w in websites) {
-                if(websites[w].developerId === userId) {
-                    websites[w].created = new Date();
-                    websites[w].lastAccessed = new Date();
-                    results.push(websites[w]);
-                }
-            }
-
-            return results;
+            var url = "/api/assignment/user/"+userId+"/website";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
     }

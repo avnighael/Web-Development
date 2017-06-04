@@ -44,10 +44,6 @@
                 .then(function (response) {
                     return response.data;
                 });
-
-            // var user = findUserById(userId);
-            // var index = users.indexOf(user);
-            // users.splice(index, 1);
         }
 
         function createUser(user) {
@@ -64,15 +60,6 @@
                 .then(function (response) {
                     return response.data;
                 });
-
-
-            // var user = users.find(function (user) {
-            //     return user.username === username;
-            // });
-            // if(typeof user === 'undefined') {
-            //     return null;
-            // }
-            // return user;
         }
 
         function findUserById(userId) {
