@@ -16,7 +16,11 @@
         model.createPage = createPage;
 
         function init() {
-            model.pages = pageService.findPagesByWebsiteId(websiteId);
+            pageService
+                .findPagesByWebsiteId(websiteId)
+                .then(function (pages) {
+                    model.pages = pages;
+                });
         }
         init();
 
@@ -25,8 +29,12 @@
                 model.error = 'Page name is required';
                 return;
             } else {
-                pageService.createPage(websiteId, page);
-                $location.url('/user/'+model.userId+'/website/'+websiteId+'/page');
+                pageService
+                    .createPage(websiteId, page)
+                    .then(function (page) {
+                        model.pages = page;
+                        $location.url('/user/'+model.userId+'/website/'+websiteId+'/page');
+                    });
             }
 
         }

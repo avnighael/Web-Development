@@ -23,6 +23,14 @@ app.get("/api/assignment/widget/:widgetId",findWidgetById);
 app.post("/api/assignment/page/:pageId/widget",createWidget);
 app.delete("/api/assignment/widget/:widgetId",deleteWidget);
 app.put("/api/assignment/widget/:widgetId",updateWidget);
+// app.put('/page/:pageId/widget', reorderWidget);
+
+function reorderWidget(req, res) {
+    var pageId = req.params.pageId;
+    var initial = parseInt(req.query.initial);
+    var final = parseInt(req.query.final);
+
+}
 
 function updateWidget(req, res) {
     var widgetId = req.params.widgetId;
@@ -67,7 +75,7 @@ function createWidget(req, res) {
 function findWidgetById(req, res) {
     var widgetId = req.params.widgetId;
     for (var w in widgets) {
-        if (widgets[w]._id == widgetId) {
+        if (widgets[w]._id === widgetId) {
             res.json(widgets[w]);
             return;
         }

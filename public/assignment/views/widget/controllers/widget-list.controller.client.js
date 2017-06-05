@@ -21,6 +21,7 @@
         model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
         model.widgetUrl = widgetUrl;
         model.widgetEditUrl = widgetEditUrl;
+        model.reorderWidget = reorderWidget;
 
         function init() {
             widgetService
@@ -31,6 +32,14 @@
         }
 
         init();
+
+        function reorderWidget(index1, index2) {
+            widgetService
+                .reorderWidget(index1, index2, pageId)
+                .then(function(widgets){
+                    return widgets;
+                });
+        }
 
         function widgetEditUrl(widget) {
             var url = 'views/widget/templates/editor/widget-'+widget.widgetType.toLowerCase()+'-edit.view.client.html';

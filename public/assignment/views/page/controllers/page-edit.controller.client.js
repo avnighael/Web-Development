@@ -21,33 +21,42 @@
         model.deletePage = deletePage;
 
         function init() {
-            var pages = pageService.findPagesByWebsiteId(websiteId);
-            model.pages = pages;
+           pageService
+               .findPagesByWebsiteId(websiteId)
+               .then(function (pages) {
+                   model.pages = pages;
+               });
 
-            var page = pageService.findPageById(pageId);
-            model.page = page;
+            pageService
+                .findPageById(pageId)
+                .then(function (page) {
+                    model.page = page;
+                });
         }
 
         init();
 
         function updatePage(page) {
-            /**if(page === null || page === '' || typeof page === 'undefined') {
-                model.error = 'Page name is required';
-                return;
-            } else { **/
-                var updateCheck = pageService.updatePage(pageId, page);
-                if (updateCheck) {
-                    $location.url("/user/" + userId + "/website/" + websiteId + "/page");
-                } else {
-                    model.error = "Invalid Page. Unable to update the page";
-                }
-            //}
-
+            pageService
+                .updatePage(pageId, page)
+                .then(function (page) {
+                    if (page != null) {
+                        model.message = "Page updated successfully"
+                        model.error="";
+                        $location.url("/user/" + userId + "/website/" + websiteId + "/page");
+                    }
+                    else {
+                        model.error = "Unable to update the page";
+                    }
+                });
         }
 
         function deletePage(pageId) {
-            pageService.deletePage(pageId);
-                $location.url("/user/"+userId+"/website/"+websiteId+"/page");
+            pageService
+                .deletePage(pageId)
+                .then(function () {
+                    $location.url("/user/"+userId+"/website/"+websiteId+"/page");
+                });
         }
 
     }

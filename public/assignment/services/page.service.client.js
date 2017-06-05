@@ -3,7 +3,7 @@
         .module('WAM')
         .service('pageService', pageService);
 
-    function pageService() {
+    function pageService($http) {
 
         this.findPagesByWebsiteId = findPagesByWebsiteId;
         this.createPage = createPage;
@@ -11,28 +11,20 @@
         this.deletePage = deletePage;
         this.updatePage = updatePage;
 
-        var pages = [
-            { "_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem" },
-            { "_id": "432", "name": "Post 2", "websiteId": "456", "description": "Lorem" },
-            { "_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem" },
-            { "_id": "567", "name": "Blog", "websiteId": "123", "description": "Lorem ipsum" }
-        ];
-
-        function updatePage(pageId, page) {
-            for(var p in pages) {
-                if(pages[p]._id === pageId) {
-                    pages[p].name = page.name;
-                    pages[p].description = page.description;
-                    return angular.copy(pages[p]);
-                }
-            }
-            return null;
+        function updatePage(pageId, newPage) {
+            var url = "/api/assignment/page/"+pageId;
+            return $http.put(url, newPage)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function deletePage(pageId) {
-            var page = findPageByIdForDel(pageId);
-            var index = pages.indexOf(page);
-            pages.splice(index, 1);
+            var url = "/api/assignment/page/"+pageId;
+            return $http.delete(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function findPageByIdForDel(pageId) {
@@ -42,32 +34,27 @@
         }
 
         function findPageById(pageId) {
-            for (var p in pages) {
-                var page = pages[p]
-                if (page._id === pageId) {
-                    return angular.copy(page);
-                }
-            }
-            return null;
+            var url = "/api/assignment/page/"+pageId;
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
        function createPage(websiteId, page) {
-           page._id = (new Date()).getTime() + "";
-           page.websiteId = websiteId;
-           pages.push(page);
-           return;
+           var url = "/api/assignment/website/"+websiteId+"/page";
+           return $http.post(url, page)
+               .then(function (response) {
+                   return response.data;
+               });
        }
 
         function findPagesByWebsiteId(websiteId) {
-            var results = [];
-
-            for(var p in pages) {
-                if(pages[p].websiteId === websiteId) {
-                    results.push(pages[p]);
-                }
-            }
-
-            return results;
+            var url = "/api/assignment/website/"+websiteId+"/page";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
     }

@@ -126,3 +126,7 @@ a:hover {
 row {
     white-space: nowrap;
 }
+
+.ag-addBottomPadding {
+    padding-bottom: 60px;
+}

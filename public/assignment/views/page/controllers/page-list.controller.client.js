@@ -12,7 +12,11 @@
         model.websiteId = websiteId;
 
         function init() {
-            model.pages = pageService.findPagesByWebsiteId(websiteId);
+            pageService
+                .findPagesByWebsiteId(websiteId)
+                .then(function (pages) {
+                    model.pages = pages;
+                })
         }
 
         init();
