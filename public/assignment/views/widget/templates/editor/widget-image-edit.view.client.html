@@ -37,6 +37,12 @@
            id="text"/>
 
     <label for="url">URL</label>
+    <span>
+        <a class="btn btn-info ag-bottomspace ag-urlButton" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widgetId}}/search">
+            Search
+        </a>
+    </span>
+
     <input ng-model="model.widget.url"
            class="form-control"
            placeholder="url"
@@ -47,14 +53,11 @@
            class="form-control"
            placeholder="100%"
            id="width"/>
-    <div>
-        <a class="btn btn-info" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widgetId}}/search">
-            Search
-        </a>
-    </div>
+
 
 
     <label for="file">Upload</label>
+    <span>
     <form action="/api/assignment/upload"   method="post" enctype="multipart/form-data">
         <input  name="myFile"    type="file" class="form-control" id="file"/>
         <input  name="width"     value="{{model.widget.width}}" style="display: none"/>
@@ -63,9 +66,10 @@
         <input  name="pageId"    value="{{model.pageId}}"       style="display: none"/>
         <input  name="widgetId"  value="{{model.widget._id}}"   style="display: none"/>
         <span>
-            <button type="submit" class="btn-primary ag-bottomspace" >Upload Image</button>
+            <button type="submit" class="btn btn-primary ag-bottomspace" >Upload Image</button>
         </span>
     </form>
+    </span>
 
     <a ng-click="model.updateWidget(model.widget)"
        class="btn btn-block btn-success">
