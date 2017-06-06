@@ -2,7 +2,7 @@ var app = require('../../express');
 var multer = require('multer');
 var upload = multer({dest: __dirname + '/../../public/assignment/uploads'});
 
-// app.post("/api/assignment/upload", upload.single('myFile'), uploadImage);
+app.post("/api/assignment/upload", upload.single('myFile'), uploadImage);
 app.get("/api/assignment/page/:pageId/widget",findAllWidgetsForPage);
 app.get("/api/assignment/widget/:widgetId",findWidgetById);
 app.post("/api/assignment/page/:pageId/widget",createWidget);
