@@ -49,6 +49,33 @@
         }
 
         function updateWidget(widget){
+            if(widget.widgetType === "YOUTUBE") {
+                if ((widget.hasOwnProperty('url') === false) ||
+                    widget.url === null ||
+                    widget.url === '' ||
+                    typeof widget.url === 'undefined') {
+                    model.error = "YouTube Url is required";
+                    return;
+                }
+            }
+
+            if(widget.widgetType === "IMAGE") {
+                if ((widget.hasOwnProperty('url') === false) ||
+                    widget.url === null ||
+                    widget.url === '' ||
+                    typeof widget.url === 'undefined') {
+                    model.error = "Image url is required";
+                    return;
+                }
+                if ((widget.hasOwnProperty('width') === false) ||
+                    widget.width === null ||
+                    widget.width === '' ||
+                    typeof widget.width === 'undefined') {
+                    model.error = "Image width is required";
+                    return;
+                }
+            }
+
             widgetService
                 .updateWidget(widgetId, widget)
                 .then(function () {

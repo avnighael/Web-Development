@@ -57,7 +57,7 @@
     <label for="file">Upload</label>
     <span>
     <form action="/api/assignment/upload"   method="post" enctype="multipart/form-data">
-        <input  name="myFile"    type="file" class="form-control" id="file"/>
+        <input  name="myFile"    type="file" class="form-control" id="file" required/>
         <input  name="width"     value="{{model.widget.width}}" style="display: none"/>
         <input  name="userId"    value="{{model.userId}}"       style="display: none"/>
         <input  name="websiteId" value="{{model.websiteId}}"    style="display: none"/>
@@ -78,17 +78,11 @@
        class="btn btn-block btn-danger">
         Delete
     </a>
+
+    <div class = "ag-addBottomPadding"></div>
+
 </div>
 
 
-<nav class="=navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <div class="navbar-text pull-right">
-            <a class="navbar-link" href="#!/user/{{model.userId}}">
-                <span class="glyphicon glyphicon-user"></span>
-            </a>
+<div ng-include="'views/common/footer.view.client.html'"></div>
 
-        </div>
-    </div>
-
-</nav>

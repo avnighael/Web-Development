@@ -34,7 +34,7 @@
             widgetService
                 .updateWidget(widgetId, newWidget)
                 .then(function(widget){
-                    $location.url("/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget");
+                    $location.url("/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/" +widgetId);
                 });
         }
         
