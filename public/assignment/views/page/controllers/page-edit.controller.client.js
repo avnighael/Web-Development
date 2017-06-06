@@ -37,26 +37,34 @@
         init();
 
         function updatePage(page) {
-            pageService
-                .updatePage(pageId, page)
-                .then(function (page) {
-                    if (page != null) {
-                        model.message = "Page updated successfully"
-                        model.error="";
-                        $location.url("/user/" + userId + "/website/" + websiteId + "/page");
-                    }
-                    else {
-                        model.error = "Unable to update the page";
-                    }
-                });
+            if (page.name === null || page.name === '' || typeof page.name === 'undefined') {
+                model.error = 'Page name is required';
+                return;
+            }
+            else {
+                pageService
+                    .updatePage(pageId, page)
+                    .then(function (page) {
+                        if (page != null) {
+                            model.message = "Page updated successfully";
+                            model.error = "";
+                            $location.url("/user/" + userId + "/website/" + websiteId + "/page");
+                        }
+                        else {
+                            model.error = "Unable to update the page";
+                        }
+                    });
+            }
         }
 
         function deletePage(pageId) {
-            pageService
-                .deletePage(pageId)
-                .then(function () {
-                    $location.url("/user/"+userId+"/website/"+websiteId+"/page");
-                });
+
+                pageService
+                    .deletePage(pageId)
+                    .then(function () {
+                        $location.url("/user/" + userId + "/website/" + websiteId + "/page");
+                    });
+
         }
 
     }

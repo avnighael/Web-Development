@@ -39,11 +39,11 @@
         }
         
         function searchPhotos(searchText) {
-            console.log(searchText);
+            //console.log(searchText);
             flickrService
                 .searchPhotos(searchText)
                 .then(function(response) {
-                    console.log(response.data);
+                    //console.log(response.data);
                     data = response.data.replace("jsonFlickrApi(","");
                     data = data.substring(0,data.length - 1);
                     data = JSON.parse(data);

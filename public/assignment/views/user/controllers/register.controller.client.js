@@ -55,22 +55,6 @@
                 .then(function (user) {
                     $location.url('/user/' + user._id);
                 });
-
-            // var found = userService.findUserByUsername(username);
-            //
-            // if(found !== null) {
-            //     model.error = "Sorry, this username is already taken";
-            // } else {
-            //     var newUser = {
-            //         username: username,
-            //         password: password,
-            //         firstName: firstName,
-            //         lastName: lastName,
-            //         email: email
-            //     };
-            //     newUser = userService.createUser(newUser);
-            //     $location.url('/user/' + newUser._id);
-            // }
         }
     }
 })();

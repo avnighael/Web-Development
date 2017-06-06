@@ -163,6 +163,6 @@ row {
 @media (min-width: 360px) and  (max-width: 770px) {
     .ag-imageSize {
         width: 120px;
-        height: 120px;
+        /*height: 120px;*/
     }
 }

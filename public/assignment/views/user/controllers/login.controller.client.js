@@ -17,12 +17,6 @@
 
             function renderLogin(found) {
                 $location.url('/user/' + found._id)
-
-                // if(found !== null)  {
-                //     $location.url('/user/' + found._id)
-                // } else {
-                //     model.message = "Sorry " + username + " not found, please try again";
-                // }
             }
 
             function loginError() {
