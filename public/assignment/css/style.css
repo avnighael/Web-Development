@@ -138,7 +138,31 @@ row {
     padding-top: 4px;
 }
 
-.ag-imageSize {
-    width: 120px;
-    height: 120px;
+
+@media (min-width: 1200px) {
+    .ag-imageSize {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (min-width: 990px) and  (max-width: 1199px) {
+    .ag-imageSize {
+        width: 145px;
+        height: 145px;
+    }
+}
+
+@media (min-width: 770px) and  (max-width: 990px) {
+    .ag-imageSize {
+        width: 130px;
+        height: 130px;
+    }
+}
+
+@media (min-width: 360px) and  (max-width: 770px) {
+    .ag-imageSize {
+        width: 120px;
+        height: 120px;
+    }
 }
