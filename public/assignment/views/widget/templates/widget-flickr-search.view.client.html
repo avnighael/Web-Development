@@ -20,7 +20,7 @@
 </nav>
 
 <div class="container-fluid">
-<div class="input-group">
+<div class="input-group ag-bottomspace">
     <input ng-model="searchText"
            type="text"
            class="form-control">
@@ -34,12 +34,12 @@
 </div>
 
     <div class="row">
-        <div class="col-xs-4" ng-repeat="photo in model.photos.photo">
-            <img ng-click="model.selectPhoto(photo)"
+        <div class="col-xs-4 ag-bottomspace" ng-repeat="photo in model.photos.photo">
+            <img ng-click="model.selectPhoto(photo)" class="img-thumbnail ag-imageSize"
                  ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>
         </div>
     </div>
-
+    <div class = "ag-addBottomPadding"></div>
 </div>
 
 <div ng-include="'views/common/footer.view.client.html'"></div>

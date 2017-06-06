@@ -21,24 +21,23 @@
         model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
         model.widgetUrl = widgetUrl;
         model.widgetEditUrl = widgetEditUrl;
-        model.reorderWidget = reorderWidget;
 
         function init() {
             widgetService
                 .findAllWidgetsForPage(pageId)
                 .then(function (widgets) {
-                    model.widgets = widgets;
+                    model.widgets = widgets.sort(compareWidgets);
                 });
         }
 
         init();
-
-        function reorderWidget(index1, index2) {
-            widgetService
-                .reorderWidget(index1, index2, pageId)
-                .then(function(widgets){
-                    return widgets;
-                });
+        
+        function compareWidgets(w1, w2) {
+            if (w1.order < w2.order)
+                return -1;
+            if (w1.order > w2.order)
+                return 1;
+            return 0;
         }
 
         function widgetEditUrl(widget) {

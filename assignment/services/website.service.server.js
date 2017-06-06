@@ -1,5 +1,11 @@
 var app = require('../../express');
 
+app.get('/api/assignment/user/:userId/website',findWebsitesByUser);
+app.post("/api/assignment/user/:userId/website",createWebsite);
+app.get("/api/assignment/website/:websiteId",findWebsiteById);
+app.put("/api/assignment/website/:websiteId",updateWebsite);
+app.delete("/api/assignment/website/:websiteId",deleteWebsite);
+
 var websites = [
     { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem", "created": "May 20, 2016", "lastAccessed": "August 10, 2016" },
     { "_id": "234", "name": "Tweeter",     "developerId": "456", "description": "Lorem", "created": "February 15, 2016", "lastAccessed": "July 11, 2016"  },
@@ -9,12 +15,6 @@ var websites = [
     { "_id": "678", "name": "Checkers",    "developerId": "123", "description": "Lorem", "created": "March 13, 2017", "lastAccessed": "June 01, 2017"  },
     { "_id": "789", "name": "Chess",       "developerId": "234", "description": "Lorem", "created": "April 20, 2017", "lastAccessed": "May 10, 2017"  }
 ];
-
-app.get('/api/assignment/user/:userId/website',findWebsitesByUser);
-app.post("/api/assignment/user/:userId/website",createWebsite);
-app.get("/api/assignment/website/:websiteId",findWebsiteById);
-app.put("/api/assignment/website/:websiteId",updateWebsite);
-app.delete("/api/assignment/website/:websiteId",deleteWebsite);
 
 function deleteWebsite(req, res) {
     var websiteId = req.params.websiteId;

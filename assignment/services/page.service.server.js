@@ -1,17 +1,17 @@
 var app = require('../../express');
 
+app.get("/api/assignment/website/:websiteId/page",findPageByWebsiteId);
+app.get("/api/assignment/page/:pageId",findPageById);
+app.post("/api/assignment/website/:websiteId/page",createPage);
+app.put("/api/assignment/page/:pageId", updatePage);
+app.delete("/api/assignment/page/:pageId", deletePage);
+
 var pages = [
     { "_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem" },
     { "_id": "432", "name": "Post 2", "websiteId": "456", "description": "Lorem" },
     { "_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem" },
     { "_id": "567", "name": "Blog", "websiteId": "123", "description": "Lorem ipsum" }
 ];
-
-app.get("/api/assignment/website/:websiteId/page",findPageByWebsiteId);
-app.get("/api/assignment/page/:pageId",findPageById);
-app.post("/api/assignment/website/:websiteId/page",createPage);
-app.put("/api/assignment/page/:pageId", updatePage);
-app.delete("/api/assignment/page/:pageId", deletePage);
 
 function deletePage(req, res) {
     var pageId = req.params.pageId;

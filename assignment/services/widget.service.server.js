@@ -1,4 +1,14 @@
 var app = require('../../express');
+var multer = require('multer');
+var upload = multer({dest: __dirname + '/../../public/assignment/uploads'});
+
+// app.post("/api/assignment/upload", upload.single('myFile'), uploadImage);
+app.get("/api/assignment/page/:pageId/widget",findAllWidgetsForPage);
+app.get("/api/assignment/widget/:widgetId",findWidgetById);
+app.post("/api/assignment/page/:pageId/widget",createWidget);
+app.delete("/api/assignment/widget/:widgetId",deleteWidget);
+app.put("/api/assignment/widget/:widgetId",updateWidget);
+app.put('/page/:pageId/widget', reorderWidget);
 
 var widgets = [
     { "_id": "123", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO", "name": "GIZMODO"},
@@ -14,22 +24,55 @@ var widgets = [
         "text": '<p>Philip Pullman is back with his first addition to the <em>His Dark Materials</em> saga in almost two decades. We now know what the first novel in <em>The Book of Dust</em> trilogy will be called and, roughly, what it’s about. There’s even an excerpt out for fans eager to dive back into Lyra’s world.<br></p>'}
 ];
 
-var multer = require('multer');
-var upload = multer({dest: __dirname + '/../../public/assignment/uploads'});
+//app.post("/api/assignment/upload", upload.single('myFile'), uploadImage);
 
-app.post("/api/assignment/upload", upload.single('myFile'), uploadImage);
-app.get("/api/assignment/page/:pageId/widget",findAllWidgetsForPage);
-app.get("/api/assignment/widget/:widgetId",findWidgetById);
-app.post("/api/assignment/page/:pageId/widget",createWidget);
-app.delete("/api/assignment/widget/:widgetId",deleteWidget);
-app.put("/api/assignment/widget/:widgetId",updateWidget);
-// app.put('/page/:pageId/widget', reorderWidget);
 
 function reorderWidget(req, res) {
     var pageId = req.params.pageId;
     var initial = parseInt(req.query.initial);
     var final = parseInt(req.query.final);
+    var widgetsOfThisPage = [];
+    var i=0;
 
+    for(var w in widgets) {
+        if(widgets[w].pageId === pageId){
+            //console.log(widgets[w].hasOwnProperty('order'));
+            if(widgets[w].hasOwnProperty('order') === false) {
+                widgets[w].order = i;
+                i++;
+            }
+            widgetsOfThisPage.push((widgets[w]));
+
+        }
+    }
+    //console.log("Before Sorting");
+    //console.log(widgetsOfThisPage);
+
+    if(widgetsOfThisPage === []) {
+        res.sendStatus(404);
+    } else {
+        for(var w in widgetsOfThisPage) {
+            if(initial < final) {
+                if (widgetsOfThisPage[w].order === initial) {
+                    widgetsOfThisPage[w].order = final;
+                }
+                else if (widgetsOfThisPage[w].order > initial && widgetsOfThisPage[w].order <= final) {
+                    widgetsOfThisPage[w].order--;
+                }
+            }
+            else {
+                if (widgetsOfThisPage[w].order === initial) {
+                    widgetsOfThisPage[w].order = final;
+                }
+                else if (widgetsOfThisPage[w].order < initial && widgetsOfThisPage[w].order >= final) {
+                    widgetsOfThisPage[w].order++;
+                }
+            }
+        }
+        //console.log("After Sorting");
+        //console.log(widgetsOfThisPage);
+        res.json(widgetsOfThisPage);
+    }
 }
 
 function updateWidget(req, res) {
