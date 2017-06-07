@@ -34,8 +34,8 @@
         init();
 
         function updateWebsite(websites) {
-            if (page.name === null || page.name === '' || typeof page.name === 'undefined') {
-                model.error = 'Page name is required';
+            if (websites.name === null || websites.name === '' || typeof websites.name === 'undefined') {
+                model.error = 'Website name is required';
                 return;
             }
             else {
