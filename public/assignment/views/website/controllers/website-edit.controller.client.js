@@ -34,16 +34,22 @@
         init();
 
         function updateWebsite(websites) {
-            websiteService
-                .updateWebsite(websiteId, websites)
-                .then(function (website) {
-                    if (website != null) {
-                        $location.url("/user/"+userId+"/website/");
-                    }
-                    else {
-                        model.error = "Invalid Website. Unable to update website";
-                    }
-                });
+            if (page.name === null || page.name === '' || typeof page.name === 'undefined') {
+                model.error = 'Page name is required';
+                return;
+            }
+            else {
+                websiteService
+                    .updateWebsite(websiteId, websites)
+                    .then(function (website) {
+                        if (website != null) {
+                            $location.url("/user/" + userId + "/website/");
+                        }
+                        else {
+                            model.error = "Invalid Website. Unable to update website";
+                        }
+                    });
+            }
         }
 
         function deleteWebsite(websiteId) {
