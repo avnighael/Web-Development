@@ -17,7 +17,7 @@
             var urlBase = "https://api.globalgiving.org/api/public/projectservice/themes?api_key=APIKEY";
             var url = urlBase
                 .replace("APIKEY", key);
-            
+
             return $http.get(url)
                 .then(function (response) {
                     return response;

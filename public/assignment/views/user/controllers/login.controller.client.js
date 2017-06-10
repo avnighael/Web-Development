@@ -13,15 +13,22 @@
             //var found = userService.findUserByCredentials(username, password);
             userService
                 .findUserByCredentials(username, password)
-                .then(renderLogin, loginError);
+                .then(function (found) {
+                    if(found != null) {
+                        $location.url('/user/' + found._id)
+                    } else {
+                        model.message = "Sorry " + username + " not found, please try again";
+                    }
+                });
+                //.then(renderLogin, loginError);
 
-            function renderLogin(found) {
-                $location.url('/user/' + found._id)
-            }
-
-            function loginError() {
-                model.message = "Sorry " + username + " not found, please try again";
-            }
+            // function renderLogin(found) {
+            //     $location.url('/user/' + found._id)
+            // }
+            //
+            // function loginError() {
+            //     model.message = "Sorry " + username + " not found, please try again";
+            // }
 
         }
     }
