@@ -28,9 +28,11 @@
             url += "/" + photo.id + "_" + photo.secret + "_b.jpg";
             var newWidget={};
 
+            newWidget._id = widgetId;
+
             newWidget.url = url;
             newWidget.type = "IMAGE";
-            newWidget.pageId = model.pageId;
+            newWidget._page = model.pageId;
             widgetService
                 .updateWidget(widgetId, newWidget)
                 .then(function(widget){

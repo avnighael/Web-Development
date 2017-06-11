@@ -25,13 +25,26 @@
     </div>
 
     <div class="form-group">
-        <label for="text">Html Text</label>
-        <input ng-model="model.widget.text"
+        <label for="name">Name</label>
+        <input ng-model="model.widget.name"
                type="text"
                class="form-control"
-               id="text"
-               placeholder="html text"/>
+               id="name"
+               placeholder="html name"/>
     </div>
+
+    <div class="form-group">
+        <label for="name">HTML</label>
+        <div ng-model="model.widget.text"
+             text-angular
+             ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+        ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+        ['indent','outdent'],['html']]">
+        </div>
+    </div>
+
+
+
 
     <a ng-click="model.updateWidget(model.widget)"
        class="btn btn-block btn-success">

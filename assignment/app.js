@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/WAM');
+mongoose.connect('mongodb://localhost/WebsiteAppMaker');
 mongoose.Promise = require('q').Promise;
 
 require('./services/user.service.server');

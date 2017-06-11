@@ -34,6 +34,7 @@ function updateWidget(req, res) {
     widgetModel
         .updateWidget(widgetId, newWidget)
         .then(function (widget) {
+            console.log(widget);
             res.json(widget);
         }, function (err) {
             res.sendStatus(400).send(err);
@@ -80,7 +81,6 @@ function findWidgetById(req, res) {
 }
 
 function findAllWidgetsForPage(req, res) {
-    //var result=[];
     var pageId=req.params.pageId;
 
     widgetModel

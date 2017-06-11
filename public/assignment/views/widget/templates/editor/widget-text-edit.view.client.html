@@ -1,0 +1,86 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <span class="navbar-text pull-left">
+                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </span>
+            <a class="navbar-brand" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widgetId}}">
+                Text Editor
+            </a>
+            <p class="navbar-text pull-right">
+                <a ng-click="model.updateWidget(model.widget)"
+                   class="navbar-link">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <!--<div class="col-xs-12 col-sm-8 wbdv-right-pane border-l">-->
+    <div ng-show="model.error" class="alert alert-danger">
+        {{model.error}}
+    </div>
+
+    <label for="text">Text</label>
+    <input ng-model="model.widget.text"
+           class="form-control"
+           id="text"/>
+
+    <label for="rows">Rows</label>
+    <input ng-model="model.widget.rows"
+           class="form-control"
+           type="number"
+           id="rows"/>
+
+    <label for="placeholder">Placeholder</label>
+    <input ng-model="model.widget.placeholder"
+           class="form-control"
+           id="placeholder"/>
+
+    <div class="checkbox">
+        <span class="cols-sm-8">
+           <input class="form-control"
+                  id="formatted"
+                  value="Formatted"
+                  readonly/>
+        </span>
+
+        <span class="col-sm-4">
+            <input ng-model="model.widget.formatted" type="checkbox"/>
+        </span>
+
+    </div>
+
+
+
+
+
+
+    <!--</span>-->
+
+
+
+    <!--<input ng-model="model.widget.formatted"-->
+               <!--class="form-control"-->
+               <!--type="checkbox"-->
+               <!--id="formatted"/>-->
+
+    <a ng-click="model.updateWidget(model.widget)"
+       class="btn btn-block btn-success">
+        Submit
+    </a>
+    <a ng-click="model.deleteWidget()"
+       class="btn btn-block btn-danger">
+        Delete
+    </a>
+
+    <div class = "ag-addBottomPadding"></div>
+    <!--</div>-->
+</div>
+
+
+<div ng-include="'views/common/footer.view.client.html'"></div>

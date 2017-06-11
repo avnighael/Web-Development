@@ -48,6 +48,7 @@ function deleteWidget(widgetId) {
 
 function updateWidget(widgetId, newWidget) {
     if(newWidget.type ==="HEADING") {
+        //console.log(newWidget);
         return widgetModel
             .update({_id: newWidget._id},
                 {
@@ -55,8 +56,7 @@ function updateWidget(widgetId, newWidget) {
                     text: newWidget.text,
                     type: newWidget.type,
                     size: newWidget.size
-                }
-            )
+                })
     }
     else if(newWidget.type === "HTML") {
         return widgetModel
@@ -66,16 +66,16 @@ function updateWidget(widgetId, newWidget) {
                     text: newWidget.text
                 })
     }
-
     else if(newWidget.type === "IMAGE") {
+        //console.log(newWidget);
         return widgetModel
             .update({_id: newWidget._id},
                 {
+                    url : newWidget.url,
                     type: newWidget.type,
                     text : newWidget.text,
-                    width : newWidget.width,
-                    url : newWidget.url
-
+                    name: newWidget.name,
+                    width : newWidget.width
                 })
     }
 
