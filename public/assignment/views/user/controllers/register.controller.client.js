@@ -8,67 +8,48 @@
         var model = this;
 
         model.register = register;
+        model.createUser = createUser;
 
-        function register(username, password, password2, firstName, lastName, email) {
+        function createUser(user) {
+                userService
+                    .createUser(user)
+                    .then(function (newUser) {
+                        $location.url("/user/" + newUser._id);
+                    });
+        }
 
-            if((username === null && password === null) ||
-                (username === '' && password === '') ||
-                (typeof username === 'undefined' && typeof password === 'undefined')) {
+        function register(user) {
+
+            if((user.username === null && user.password === null) ||
+                (user.username === '' && user.password === '') ||
+                (typeof user.username === 'undefined' && typeof user.password === 'undefined')) {
                 model.error = 'username and password is required';
                 return;
             }
 
-            if(username === null || username === '' || typeof username === 'undefined') {
+            if(user.username === null || user.username === '' || typeof user.username === 'undefined') {
                 model.error = 'username is required';
                 return;
             }
 
-            if(password === null || password === '' || typeof password === 'undefined') {
+            if(user.password === null || user.password === '' || typeof user.password === 'undefined') {
                 model.error = 'password is required';
                 return;
             }
 
-            if(password !== password2 || password === null || typeof password === 'undefined') {
-                model.error = "passwords must match";
+            if(user.password !== user.cpassword || user.password === null || typeof user.password === 'undefined') {
+                model.error = "Passwords doesn't match, Try Again";
                 return;
             }
 
-            var newUser = {
-                username: username,
-                password: password,
-                firstName: firstName,
-                lastName: lastName,
-                email: email
-            };
-
             userService
-                .createUser(newUser)
-                .then(function (newUser) {
-                    $location.url("/user/" + newUser._id);
+                .findUserByUsername(user.username)
+                .then(function (status) {
+                    if(!status)
+                        model.createUser(user);
+                    else
+                        model.error = "Sorry, this username is taken";
                 });
-
-
-            // userService
-            //     .findUserByUsername(username)
-            //     .then(
-            //         function () {
-            //             model.error = "sorry, that username is taken";
-            //         },
-            //         function () {
-            //             var newUser = {
-            //                 username: username,
-            //                 password: password,
-            //                 firstName: firstName,
-            //                 lastName: lastName,
-            //                 email: email
-            //             };
-            //             return userService
-            //                 .createUser(newUser);
-            //         }
-            //     )
-            //     .then(function (user) {
-            //         $location.url('/user/' + user._id);
-            //     });
         }
     }
 })();

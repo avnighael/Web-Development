@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 var websiteSchema = require('./website.schema.server.js');
 var websiteModel = mongoose.model('websiteModel', websiteSchema);
+var userModel = require('../user/user.model.server');
+var model = null;
 
 websiteModel.createWebsiteForUser = createWebsiteForUser;
 websiteModel.findWebsitesByUser = findWebsitesByUser;
@@ -40,6 +42,21 @@ function findWebsitesByUser(userId) {
 function createWebsiteForUser(userId, website) {
     website._user = userId;
     return websiteModel.create(website);
+        // .then(function (website) {
+        //     return model.userModel
+        //         .findUserById(userId)
+        //         .then(function (user) {
+        //             website.user = user._id;
+        //             user.websites.push(website._id);
+        //             website.save();
+        //             user.save();
+        //             return website;
+        //         }, function () {
+        //             return err;
+        //         });
+        // }, function () {
+        //     return err;
+        // });
 }
 
 function addPage(websiteId, pageId) {

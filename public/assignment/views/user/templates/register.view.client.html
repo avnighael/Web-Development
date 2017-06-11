@@ -4,48 +4,55 @@
                         {{model.error}}
                 </div>
         <label for="username">Username</label>
-        <input ng-model="username"
+        <input ng-model="user.username"
                type="text"
                id="username"
                class="form-control"
                placeholder="username"/>
 
         <label for="password">Password</label>
-        <input ng-model="password"
+        <input ng-model="user.password"
                type="password"
                id="password"
                class="form-control"
                placeholder="password"/>
 
         <label for="cpassword">Confirm Password</label>
-        <input ng-model="password2"
+        <input ng-model="user.cpassword"
                type="password"
                id="cpassword"
                class="form-control"
                placeholder="verify password"/>
 
          <label for="firstName">First Name</label>
-         <input ng-model="firstName"
+         <input ng-model="user.firstName"
                 type="text"
                 id="firstName"
                 class="form-control"
                 placeholder="First Name"/>
 
          <label for="lastName">Last Name</label>
-         <input ng-model="lastName"
+         <input ng-model="user.lastName"
                 type="text"
                 id="lastName"
                 class="form-control"
                 placeholder="Last Name"/>
 
          <label for="email">Email</label>
-         <input ng-model="email"
+         <input ng-model="user.email"
                 type="email"
                 id="email"
                 class="form-control"
                 placeholder="Email"/>
 
-        <a ng-click="model.register(username, password, password2, firstName, lastName, email)"
+     <label for="phone">Phone</label>
+     <input ng-model="user.phone"
+            type="number"
+            id="phone"
+            class="form-control"
+            placeholder="Phone Number"/>
+
+        <a ng-click="model.register(user)"
            class="btn btn-primary btn-block">
                 Register
         </a>
