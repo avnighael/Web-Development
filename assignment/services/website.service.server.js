@@ -26,12 +26,13 @@ function updateWebsite(req, res) {
     var websiteId = req.params.websiteId;
     var newWebsite = req.body;
 
-    websiteModel.
-        updateWebsite(websiteId, newWebsite)
-        .then(function (newWebsite) {
-            res.json(websites);
-        },function (err) {
-            res.sendStatus(404);
+    websiteModel.updateWebsite(websiteId, newWebsite)
+        .then(function (website, err) {
+            if (website) {
+                res.json(website);
+            } else {
+                res.sendStatus(404).send(err);
+            }
         });
 }
 

@@ -39,9 +39,11 @@
                 return;
             }
             else {
+                //console.log(websites);
                 websiteService
                     .updateWebsite(websiteId, websites)
                     .then(function (website) {
+                        console.log(website);
                         if (website != null) {
                             $location.url("/user/" + userId + "/website/");
                         }
