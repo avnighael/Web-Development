@@ -41,12 +41,12 @@
         }
 
         function widgetEditUrl(widget) {
-            var url = 'views/widget/templates/editor/widget-'+widget.widgetType.toLowerCase()+'-edit.view.client.html';
-            $location.url("/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget" + widget.widgetType.toLowerCase());
+            var url = 'views/widget/templates/editor/widget-'+widget.type.toLowerCase()+'-edit.view.client.html';
+            $location.url("/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget" + widget.type.toLowerCase());
         }
 
         function widgetUrl(widget) {
-            var url = 'views/widget/templates/widget-'+widget.widgetType.toLowerCase()+'.view.client.html';
+            var url = 'views/widget/templates/widget-'+widget.type.toLowerCase()+'.view.client.html';
             return url;
         }
 

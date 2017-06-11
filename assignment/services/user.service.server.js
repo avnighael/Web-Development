@@ -7,12 +7,6 @@ app.post('/api/assignment/user',createUser);
 app.put('/api/assignment/user/:userId',updateUser);
 app.delete('/api/assignment/user/:userId',deleteUser);
 
-var users = [
-    {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder", email: "alice@gmail.com"  },
-    {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley", email: "bob.m@yahoo.com" },
-    {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia", email: "charly.garcia@gmail.com"  },
-    {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi", email: "jose.jannunzi@yahoo.com" }
-];
 
 function findUser(req, res) {
     var username = req.query.username;
@@ -107,34 +101,34 @@ function createUser(req,res) {
     // res.json(newUser);
 }
 
-function findAllUsers(req, res) {
-    var username = req.query['username'];
-    var password = req.query.password;
-    if(username && password) {
-        for(var u in users) {
-            var user = users[u];
-            if( user.username === username &&
-                user.password === password) {
-                res.json(user);
-                return;
-            }
-        }
-        res.sendStatus(404);
-        return;
-    } else if(username) {
-        for(var u in users) {
-            var user = users[u];
-            if( user.username === username) {
-                res.json(user);
-                return;
-            }
-        }
-        res.sendStatus(404);
-        return;
-    } else {
-        res.json(users);
-    }
-}
+// function findAllUsers(req, res) {
+//     var username = req.query['username'];
+//     var password = req.query.password;
+//     if(username && password) {
+//         for(var u in users) {
+//             var user = users[u];
+//             if( user.username === username &&
+//                 user.password === password) {
+//                 res.json(user);
+//                 return;
+//             }
+//         }
+//         res.sendStatus(404);
+//         return;
+//     } else if(username) {
+//         for(var u in users) {
+//             var user = users[u];
+//             if( user.username === username) {
+//                 res.json(user);
+//                 return;
+//             }
+//         }
+//         res.sendStatus(404);
+//         return;
+//     } else {
+//         res.json(users);
+//     }
+// }
 
 function findUserById(req, res) {
     var userId = req.params['userId'];

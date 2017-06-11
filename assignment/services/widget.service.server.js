@@ -1,108 +1,55 @@
 var app = require('../../express');
 var multer = require('multer');
 var upload = multer({dest: __dirname + '/../../public/assignment/uploads'});
+var widgetModel = require('../models/widget/widget.model.server');
+var pageModel = require('../models/page/page.model.server');
 
 app.post("/api/assignment/upload", upload.single('myFile'), uploadImage);
+app.post("/api/assignment/page/:pageId/widget",createWidget);
 app.get("/api/assignment/page/:pageId/widget",findAllWidgetsForPage);
 app.get("/api/assignment/widget/:widgetId",findWidgetById);
-app.post("/api/assignment/page/:pageId/widget",createWidget);
 app.delete("/api/assignment/widget/:widgetId",deleteWidget);
 app.put("/api/assignment/widget/:widgetId",updateWidget);
 app.put('/page/:pageId/widget', reorderWidget);
-
-var widgets = [
-    { "_id": "123", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO", "name": "GIZMODO"},
-    { "_id": "234", "widgetType": "HEADING", "pageId": "321", "size": 4, "text": "Lorem ipsum", "name": "Lorem ipsum"},
-    { "_id": "345", "widgetType": "IMAGE", "pageId": "321", "width": "100%", "name": "Lorem pixel", "text": "Lorem pixel",
-        "url": "http://lorempixel.com/400/200/"},
-    { "_id": "456", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"},
-    { "_id": "567", "widgetType": "HEADING", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
-    { "_id": "678", "widgetType": "YOUTUBE", "pageId": "321", "width": "100%", "name": "Lorem pixel", "text": "Lorem pixel",
-        "url": "https://youtu.be/AM2Ivdi9c4E" },
-    { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"},
-    { "_id": "987", "widgetType": "HTML", "pageId": "123",
-        "text": '<p>Philip Pullman is back with his first addition to the <em>His Dark Materials</em> saga in almost two decades. We now know what the first novel in <em>The Book of Dust</em> trilogy will be called and, roughly, what it’s about. There’s even an excerpt out for fans eager to dive back into Lyra’s world.<br></p>'}
-];
-
-//app.post("/api/assignment/upload", upload.single('myFile'), uploadImage);
 
 
 function reorderWidget(req, res) {
     var pageId = req.params.pageId;
     var initial = parseInt(req.query.initial);
     var final = parseInt(req.query.final);
-    var widgetsOfThisPage = [];
-    var i=0;
 
-    for(var w in widgets) {
-        if(widgets[w].pageId === pageId){
-            //console.log(widgets[w].hasOwnProperty('order'));
-            if(widgets[w].hasOwnProperty('order') === false) {
-                widgets[w].order = i;
-                i++;
-            }
-            widgetsOfThisPage.push((widgets[w]));
-
-        }
-    }
-    //console.log("Before Sorting");
-    //console.log(widgetsOfThisPage);
-
-    if(widgetsOfThisPage === []) {
-        res.sendStatus(404);
-    } else {
-        for(var w in widgetsOfThisPage) {
-            if(initial < final) {
-                if (widgetsOfThisPage[w].order === initial) {
-                    widgetsOfThisPage[w].order = final;
-                }
-                else if (widgetsOfThisPage[w].order > initial && widgetsOfThisPage[w].order <= final) {
-                    widgetsOfThisPage[w].order--;
-                }
-            }
-            else {
-                if (widgetsOfThisPage[w].order === initial) {
-                    widgetsOfThisPage[w].order = final;
-                }
-                else if (widgetsOfThisPage[w].order < initial && widgetsOfThisPage[w].order >= final) {
-                    widgetsOfThisPage[w].order++;
-                }
-            }
-        }
-        //console.log("After Sorting");
-        //console.log(widgetsOfThisPage);
-        res.json(widgetsOfThisPage);
-    }
+    widgetModel
+        .reorderWidget(pageId, initial,final)
+        .then(function (widgets) {
+            res.json(widgets);
+        }, function (err) {
+            res.sendStatus(404).send(err);
+        });
 }
 
 function updateWidget(req, res) {
     var widgetId = req.params.widgetId;
     var newWidget = req.body;
 
-    for (var w in widgets) {
-        if (widgets[w]._id === widgetId) {
-            widgets[w].name = newWidget.name;
-            widgets[w].text = newWidget.text;
-            widgets[w].size = newWidget.size;
-            widgets[w].url = newWidget.url;
-            widgets[w].width = newWidget.width;
-            res.sendStatus(200);
-            return;
-        }
-    }
-        res.sendStatus(404);
+    widgetModel
+        .updateWidget(widgetId, newWidget)
+        .then(function (widget) {
+            res.json(widget);
+        }, function (err) {
+            res.sendStatus(400).send(err);
+        });
 }
 
 function deleteWidget(req, res) {
     var widgetId = req.params.widgetId;
-    for(var w in widgets) {
-        if (widgets[w]._id === widgetId) {
-            widgets.splice(w, 1);
-            res.sendStatus(200);
-            return;
-        }
-    }
-    res.sendStatus(404);
+
+    widgetModel
+        .deleteWidget(widgetId)
+        .then(function(widget){
+            res.json(widget);
+        },function(err){
+            res.sendStatus(400).send(err);
+        });
 }
 
 
@@ -110,33 +57,40 @@ function createWidget(req, res) {
     var newWidget = req.body;
     var pageId = req.params.pageId;
 
-    newWidget.pageId = pageId;
-    widgets.push(newWidget);
-    res.json(newWidget);
+    widgetModel
+        .createWidget(pageId, newWidget)
+        .then(function (widget) {
+            //console.log(widget);
+            res.json(widget);
+        }, function (err) {
+            res.sendStatus(404).send(err);
+        });
 }
 
 function findWidgetById(req, res) {
     var widgetId = req.params.widgetId;
-    for (var w in widgets) {
-        if (widgets[w]._id === widgetId) {
-            res.json(widgets[w]);
-            return;
-        }
-    }
-    res.sendStatus(404);
+
+    widgetModel
+        .findWidgetById(widgetId)
+        .then(function(widget){
+            res.json(widget);
+        },function(err){
+            res.sendStatus(400).send(err);
+        });
 }
 
 function findAllWidgetsForPage(req, res) {
-    var result=[];
+    //var result=[];
     var pageId=req.params.pageId;
-    for(var u in widgets)
-    {
-        if(widgets[u].pageId == pageId)
-        {
-            result.push(widgets[u]);
-        }
-    }
-    res.json(result) ;
+
+    widgetModel
+        .findAllWidgetsForPage(pageId)
+        .then(function(widgets){
+                res.json(widgets);
+            },
+            function (error) {
+                res.sendStatus(400).send(error);
+        });
 }
 
     function uploadImage(req, res) {
@@ -157,17 +111,19 @@ function findAllWidgetsForPage(req, res) {
 
         console.log(myFile);
 
-        for(var w in widgets) {
-            if (widgets[w]._id == widgetId) {
-                widgets[w].url = '/assignment/uploads/' + filename;
-                widgets[w].width = width;
-            }
-        }
+        var newWidget = {
+            _id: widgetId,
+            url: '/assignment/uploads/' + filename,
+            type: "IMAGE",
+            width: width
+        };
 
-        //widget = getWidgetById(widgetId);
-        //widget.url = '/assignment/uploads/' + filename;
-
-        var callbackUrl = "/assignment/index.html#!/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId;
-
-        res.redirect(callbackUrl);
+        widgetModel
+            .updateWidget(widgetId,newWidget)
+            .then(function (status){
+                var callbackUrl = "/assignment/index.html#!/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId;
+                res.redirect(callbackUrl);
+            }, function(err){
+                res.sendStatus(404).send(err);
+            });
     }

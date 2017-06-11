@@ -49,7 +49,7 @@
         }
 
         function updateWidget(widget){
-            if(widget.widgetType === "YOUTUBE") {
+            if(widget.type === "YOUTUBE") {
                 if ((widget.hasOwnProperty('url') === false) ||
                     widget.url === null ||
                     widget.url === '' ||
@@ -57,7 +57,7 @@
                     model.error = "YouTube Url is required";
                     return;
                 }
-            } else if(widget.widgetType === "IMAGE") {
+            } else if(widget.type === "IMAGE") {
                 if ((widget.hasOwnProperty('url') === false) ||
                     widget.url === null ||
                     widget.url === '' ||
@@ -72,12 +72,12 @@
                     model.error = "Image width is required";
                     return;
                 }
-            } else if(widget.widgetType === "HEADING" || widget.widgetType === "HTML" ) {
+            } else if(widget.type === "HEADING" || widget.type === "HTML" ) {
                 if ((widget.hasOwnProperty('text') === false) ||
                     widget.text === null ||
                     widget.text === '' ||
                     typeof widget.text === 'undefined') {
-                    model.error = widget.widgetType.toLowerCase() +" text is required";
+                    model.error = widget.type.toLowerCase() +" text is required";
                     return;
                 }
             }

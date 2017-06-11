@@ -69,10 +69,16 @@
            id="name"/>
 
     <label for="title">Title</label>
-    <input ng-model="page.description"
+    <input ng-model="page.title"
            class="form-control"
            placeholder="Page Title"
            id="title"/>
+
+    <label for="description">Description</label>
+    <input ng-model="page.description"
+           class="form-control"
+           placeholder="Page Description"
+           id="description"/>
 
     <a ng-click="model.createPage(model.websiteId, page)" class="btn btn-block btn-success">
         Create

@@ -32,9 +32,6 @@
                         <div class="col-lg-6 col-md-6 hidden-sm hidden-xs">
                             Description
                         </div>
-                        <!-- <div class="col-md-3 hidden-sm hidden-xs">
-                             Last Updated
-                         </div> -->
                         <div class="col-xs-3 col-md-2 col-lg-1">
                         </div>
                     </div>
@@ -51,9 +48,6 @@
                         <div class="col-lg-6 col-md-6 hidden-sm hidden-xs">
                             {{page.description}}
                         </div>
-                        <!-- <div class="col-md-3 hidden-sm hidden-xs">
-                             5/3/2017
-                         </div> -->
                         <div class="col-xs-3 col-md-2 col-lg-1">
                             <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}} ">
                                 <span class="glyphicon glyphicon-cog pull-right"></span>
@@ -76,10 +70,16 @@
                    id="name"/>
 
             <label for="title">Title</label>
-            <input ng-model="model.page.description"
+            <input ng-model="model.page.title"
                    class="form-control"
                    placeholder="Page Title"
                    id="title"/>
+
+            <label for="description">Description</label>
+            <input ng-model="model.page.description"
+                   class="form-control"
+                   placeholder="Page Description"
+                   id="description"/>
 
             <a ng-click="model.updatePage(model.page)" class="btn btn-block btn-success">
                 Update

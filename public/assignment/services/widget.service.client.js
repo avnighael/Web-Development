@@ -48,6 +48,7 @@
             var url = "/api/assignment/page/"+pageId+"/widget";
             return $http.post(url, newWidget)
                 .then(function (response) {
+                   // console.log(response.data);
                     return response.data;
                 });
         }
