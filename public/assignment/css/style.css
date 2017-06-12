@@ -138,6 +138,10 @@ row {
     padding-top: 4px;
 }
 
+ul {
+    white-space: nowrap;
+}
+
 
 @media (min-width: 1200px) {
     .ag-imageSize {
