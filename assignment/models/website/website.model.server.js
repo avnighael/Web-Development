@@ -10,11 +10,35 @@ websiteModel.updateWebsite = updateWebsite;
 websiteModel.findWebsiteById = findWebsiteById;
 websiteModel.deleteWebsite = deleteWebsite;
 websiteModel.addPage = addPage;
+websiteModel.deleteUserOfThisWebsite = deleteUserOfThisWebsite;
 
 module.exports = websiteModel;
 
+function deleteUserOfThisWebsite(userId, websiteId) {
+    return userModel
+        .findById(userId)
+        .then(function (user) {
+            user.websites.splice(user.websites.indexOf(websiteId),1);
+            user.save();
+            //console.log("websites");
+            //console.log(website);
+            return user;
+            //return pageModel.deletePageFromWidget(page, pageId);
+        });
+}
+
 function deleteWebsite(websiteId) {
-    return websiteModel.remove({_id: websiteId});
+    //return websiteModel.remove({_id: websiteId});
+    return websiteModel
+        .findById(websiteId)
+        .then(function (website) {
+            var userId = website._user[0];
+            return websiteModel
+                .deleteUserOfThisWebsite(userId, websiteId)
+                .then(function () {
+                    return websiteModel.remove({_id: websiteId});
+                })
+        });
 }
 
 function findWebsiteById(websiteId) {
@@ -41,22 +65,22 @@ function findWebsitesByUser(userId) {
 
 function createWebsiteForUser(userId, website) {
     website._user = userId;
-    return websiteModel.create(website);
-        // .then(function (website) {
-        //     return model.userModel
-        //         .findUserById(userId)
-        //         .then(function (user) {
-        //             website.user = user._id;
-        //             user.websites.push(website._id);
-        //             website.save();
-        //             user.save();
-        //             return website;
-        //         }, function () {
-        //             return err;
-        //         });
-        // }, function () {
-        //     return err;
-        // });
+    return websiteModel.create(website)
+        .then(function (website) {
+            return userModel
+                .findUserById(userId)
+                .then(function (user) {
+                    website.user = user._id;
+                    user.websites.push(website._id);
+                    website.save();
+                    user.save();
+                    return website;
+                }, function () {
+                    return err;
+                });
+        }, function () {
+            return err;
+        });
 }
 
 function addPage(websiteId, pageId) {

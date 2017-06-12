@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var widgetSchema = require('./widget.schema.server.js');
 var widgetModel = mongoose.model('widgetModel', widgetSchema);
+var pageModel = require('../page/page.model.server');
 
 widgetModel.createWidget = createWidget;
 widgetModel.findWidgetById = findWidgetById;
@@ -8,8 +9,14 @@ widgetModel.findAllWidgetsForPage = findAllWidgetsForPage;
 widgetModel.updateWidget = updateWidget;
 widgetModel.deleteWidget = deleteWidget;
 widgetModel.reorderWidget = reorderWidget;
+widgetModel.deleteWidgetsOfPage = deleteWidgetsOfPage;
 
 module.exports = widgetModel;
+
+function deleteWidgetsOfPage(widgetId) {
+    console.log("widgetId");
+    return widgetModel.remove({_id: widgetId});
+}
 
 function reorderWidget(pageId, start, end) {
     return widgetModel
@@ -43,7 +50,24 @@ function reorderWidget(pageId, start, end) {
 }
 
 function deleteWidget(widgetId) {
-    return widgetModel.remove({_id: widgetId});
+    return widgetModel
+        .findById(widgetId)
+        .then(function (widget) {
+            var pageId = widget._page[0];
+            pageModel
+                .findById(pageId)
+                .then(function (page) {
+                    page.widgets.splice(page.widgets.indexOf(widgetId),1);
+                    page.save();
+                    return widgetModel.remove({_id: widgetId});
+                }, function (err) {
+                    return err;
+                }, function (err) {
+                    return err;
+                })
+        }, function (err) {
+            return err;
+        })
 }
 
 function updateWidget(widgetId, newWidget) {
@@ -121,49 +145,25 @@ function createWidget(pageId, newWidget) {
             var order = widgets.length;
             newWidget.order  = order;
 
-            return widgetModel.create(newWidget);
-        },
-            function (error) {
+            return widgetModel.create(newWidget)
+                .then(function (widget) {
+                    return pageModel
+                        .findPageById(pageId)
+                        .then(function (page) {
+                            //page._website = websiteId;
+                            //console.log(page._id)
+                            page.widgets.push(widget._id);
+                            widget.save();
+                            page.save();
+                            //console.log(page.widgets);
+                            return widget;
+                        }, function () {
+                            return err;
+                        });
+        }, function (err) {
                 return null;
         });
+})
 }
 
-// function deletepage(pageId) {
-//     return pageModel.remove({_id: pageId});
-// }
-//
-// function findpageById(pageId) {
-//     return pageModel.findById(pageId);
-// }
-//
-// function updatepage(pageId, newpage) {
-//     return pageModel.update({_id: pageId},
-//         {$set: {
-//             name : newpage.name,
-//             description : newpage.description,
-//             lastAccessed: new Date()
-//         }
-//         });
-//
-// }
-//
-// function findpagesByUser(userId) {
-//     return pageModel
-//         .find({_user: userId})
-//         .populate('_user')
-//         .exec();
-// }
-//
-// function createpageForUser(userId, page) {
-//     page._user = userId;
-//     return pageModel.create(page);
-// }
-//
-// function addPage(pageId, pageId) {
-//     return pageModel
-//         .findById({_id:pageId},
-//             function (err, page) {
-//                 page.pages.push(pageId);
-//                 page.save();
-//             });
-// };
+

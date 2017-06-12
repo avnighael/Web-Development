@@ -1,18 +1,66 @@
 var mongoose = require('mongoose');
 var pageSchema = require('./page.schema.server.js');
 var pageModel = mongoose.model('pageModel', pageSchema);
+var websiteModel = require('../website/website.model.server');
+var widgetModel = require('../widget/widget.model.server');
 
 pageModel.createPage = createPage;
 pageModel.findAllPagesForWebsite = findAllPagesForWebsite;
 pageModel.findPageById = findPageById;
 pageModel.updatePage = updatePage;
 pageModel.deletePage = deletePage;
-pageModel.addWidget = addWidget;
+pageModel.deleteWebsiteOfThisPage = deleteWebsiteOfThisPage;
+pageModel.deleteWidgetOfThisPage = deleteWidgetOfThisPage;
 
 module.exports = pageModel;
 
+function deleteWidgetOfThisPage(page, pageId) {
+    if(page.widgets.length == 0) {
+        return pageModel.remove({_id: pageId});
+    } else {
+        var widgetId = page.widgets[0];
+        page.widgets.splice(page.widgets.indexOf(widgetId),1);
+        page.save();
+        widgetModel
+            .findById(widgetId)
+            .then(function (widget) {
+                widget._page.splice(widget._page.indexOf(pageId));
+                widget.save();
+                return deleteWidgetOfThisPage(page,pageId);
+            });
+
+        // return widgetModel
+        //     .deleteWidgetsOfPage()
+    }
+
+}
+
+function deleteWebsiteOfThisPage(page, pageId, websiteId) {
+
+    return websiteModel
+            .findById(websiteId)
+            .then(function (website) {
+                //console.log(website);
+                website.pages.splice(website.pages.indexOf(pageId),1);
+                website.save();
+                //console.log("websites");
+                //console.log(website);
+                return website;
+                //return pageModel.deletePageFromWidget(page, pageId);
+        });
+}
+
 function deletePage(pageId) {
-    return pageModel.remove({_id: pageId});
+    return pageModel
+        .findById(pageId)
+        .then(function (page) {
+            var websiteId = page._website[0];
+            return pageModel
+                .deleteWebsiteOfThisPage(page, pageId, websiteId)
+                .then(function () {
+                    return pageModel.remove({_id: pageId});
+                })
+        });
 }
 
 function updatePage(pageId, newPage) {
@@ -36,44 +84,23 @@ function findAllPagesForWebsite(websiteId) {
 function createPage(websiteId, page) {
     page._website=websiteId;
 
-    return pageModel.create(page);
-}
-
-function addWidget(pageId, widgetId) {
-    return pageModel.findById({_id:pageId},
-        function (err,page) {
-            page.widgets.push(widgetId);
-            page.save();
+    return pageModel.create(page)
+        .then(function (page) {
+            return websiteModel
+                .findWebsiteById(websiteId)
+                .then(function (website) {
+                    //page._website = websiteId;
+                    console.log(page._id)
+                    website.pages.push(page._id);
+                    page.save();
+                    website.save();
+                    return page;
+                }, function () {
+                    return err;
+                });
+        }, function () {
+            return err;
         });
 }
 
-// function deleteWebsite(websiteId) {
-//     return websiteModel.remove({_id: websiteId});
-// }
-//
-// function findWebsiteById(websiteId) {
-//     return websiteModel.findById(websiteId);
-// }
-//
-// function updateWebsite(websiteId, newWebsite) {
-//     return websiteModel.update({_id: websiteId},
-//         {$set: {
-//             name : newWebsite.name,
-//             description : newWebsite.description,
-//             lastAccessed: new Date()
-//         }
-//         });
-//
-// }
-//
-// function findWebsitesByUser(userId) {
-//     return websiteModel
-//         .find({_user: userId})
-//         .populate('_user')
-//         .exec();
-// }
-//
-// function createWebsiteForUser(userId, website) {
-//     website._user = userId;
-//     return websiteModel.create(website);
-// }
+

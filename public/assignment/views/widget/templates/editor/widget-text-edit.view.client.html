@@ -20,7 +20,7 @@
 </nav>
 
 <div class="container-fluid">
-    <!--<div class="col-xs-12 col-sm-8 wbdv-right-pane border-l">-->
+    <form>
     <div ng-show="model.error" class="alert alert-danger">
         {{model.error}}
     </div>
@@ -41,33 +41,13 @@
            class="form-control"
            id="placeholder"/>
 
-    <div class="checkbox">
-        <span class="cols-sm-8">
-           <input class="form-control"
-                  id="formatted"
-                  value="Formatted"
-                  readonly/>
-        </span>
-
-        <span class="col-sm-4">
-            <input ng-model="model.widget.formatted" type="checkbox"/>
-        </span>
-
+    <div class="form-group">
+        <label for="formatted">Formatted</label>
+        <input ng-model="model.widget.formatted"
+               type="checkbox"
+               id="formatted"
+               placeholder="Formatted">
     </div>
-
-
-
-
-
-
-    <!--</span>-->
-
-
-
-    <!--<input ng-model="model.widget.formatted"-->
-               <!--class="form-control"-->
-               <!--type="checkbox"-->
-               <!--id="formatted"/>-->
 
     <a ng-click="model.updateWidget(model.widget)"
        class="btn btn-block btn-success">
@@ -80,6 +60,7 @@
 
     <div class = "ag-addBottomPadding"></div>
     <!--</div>-->
+    </form>
 </div>
 
 
