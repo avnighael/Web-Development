@@ -1,0 +1,61 @@
+<div class="container-fluid">
+    <div class="input-group">
+        <input ng-model="keywordsQuery"
+               type="text"
+               class="form-control"
+               placeholder="Enter Keywords">
+        <span class="input-group-btn">
+        <a ng-click="model.getProjectsByKeyWords(keywordsQuery)"
+           class="btn btn-default"
+           type="button">
+            <span class="glyphicon glyphicon-search"></span>
+        </a>
+    </span>
+        <span>
+            <input ng-model="countryQuery"
+                   type="text"
+                   class="form-control"
+                   placeholder="All Countries">
+        </span>
+        <span class="input-group-btn">
+        <a ng-click="model.getProjectsByCountry(countryQuery)"
+           class="btn btn-default"
+           type="button">
+            <span class="glyphicon glyphicon-search"></span>
+        </a>
+    </span>
+
+        <span>
+            <input ng-model="causeQuery"
+                   type="text"
+                   class="form-control"
+                   placeholder="All Causes">
+        </span>
+        <span class="input-group-btn">
+        <a ng-click="model.getProjectsByCauses(causeQuery)"
+           class="btn btn-default"
+           type="button">
+            <span class="glyphicon glyphicon-search"></span>
+        </a>
+    </span>
+    </div>
+
+
+    <div class="row container-fluid" ng-show="model.projs">
+        <h4>Search Project Result</h4>
+        <div ng-repeat="proj in model.projs">
+            <div>
+                <a href="#!/browseProjects/{{proj.id}}">
+                    <img class="img-responsive-home thumbnail"
+                         ng-src="{{proj.imageLink}}"
+                         alt="{{proj.title}}"/>
+                    <span><h4>{{proj.title}}</h4></span>
+                </a>
+
+                <p>by {{proj.organization.name}}</p>
+
+            </div>
+        </div>
+    </div>
+    <div class = "ag-addBottomPadding"></div>
+</div>

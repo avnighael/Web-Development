@@ -1,63 +1,21 @@
 <div class="container-fluid">
-    <div class="input-group">
-        <input ng-model="keywordsQuery"
-               type="text"
-               class="form-control"
-               placeholder="Enter Keywords">
-        <span class="input-group-btn">
-        <a ng-click="model.getOrgs(keywordsQuery)"
-           class="btn btn-default"
-           type="button">
-            <span class="glyphicon glyphicon-search"></span>
-        </a>
-    </span>
-        <span>
-            <input ng-model="countryQuery"
-                   type="text"
-                   class="form-control"
-                   placeholder="All Countries">
-        </span>
-        <span class="input-group-btn">
-        <a ng-click="model.getProjectsByCountry(countryQuery)"
-           class="btn btn-default"
-           type="button">
-            <span class="glyphicon glyphicon-search"></span>
-        </a>
-    </span>
-
-        <span>
-            <input ng-model="causeQuery"
-                   type="text"
-                   class="form-control"
-                   placeholder="All Causes">
-        </span>
-        <span class="input-group-btn">
-        <a ng-click="model.getProjectsByCauses(causeQuery)"
-           class="btn btn-default"
-           type="button">
-            <span class="glyphicon glyphicon-search"></span>
-        </a>
-    </span>
-    </div>
-
-
-    <div class="row container-fluid" ng-show="model.projs">
-        <h4>Search Project Result</h4>
-        <div ng-repeat="proj in model.projs">
+    <div class="row container-fluid" ng-show="model.orgs">
+        <h4>Non-profit Organizations</h4>
+        <!--{{model.orgs}}-->
+        <div ng-repeat="org in model.orgs">
             <div>
-                <a href="#!/browseProjects/{{proj.id}}">
+                <a href="#!/user/{{model.userId}}/browseOrganizations/{{org.id}}">
                     <img class="img-responsive-home thumbnail"
-                         ng-src="{{proj.imageLink}}"
-                         alt="{{proj.title}}"/>
-                    <span><h4>{{proj.title}}</h4></span>
+                         ng-src="{{org.logoUrl}}"
+                         alt="{{org.name}}"/>
+                    <span><h4>{{org.name}}</h4></span>
                 </a>
 
-                <p>by {{proj.organization.name}}</p>
+                <p>Total Projects: {{org.totalProjects}}</p>
+                <p>Active Projects: {{org.activeProjects}}</p>
 
             </div>
         </div>
-    </div>
-
     </div>
     <div class = "ag-addBottomPadding"></div>
 </div>

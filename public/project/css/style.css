@@ -190,6 +190,8 @@ img { max-width: 100%; }
 
 input[type="text"],
 input[type="password"],
+input[type="email"],
+input[type="number"],
 textarea,
 textarea.form-control {
     height: 50px;
@@ -217,6 +219,8 @@ textarea.form-control {
 
 input[type="text"]:focus,
 input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
 textarea:focus,
 textarea.form-control:focus {
     outline: 0;
@@ -226,12 +230,15 @@ textarea.form-control:focus {
 }
 
 input[type="text"]:-moz-placeholder, input[type="password"]:-moz-placeholder,
+input[type="email"]:-moz-placeholder, input[type="number"]:-moz-placeholder
 textarea:-moz-placeholder, textarea.form-control:-moz-placeholder { color: #888; }
 
 input[type="text"]:-ms-input-placeholder, input[type="password"]:-ms-input-placeholder,
+input[type="email"]:-ms-input-placeholder, input[type="number"]:-ms-input-placeholder
 textarea:-ms-input-placeholder, textarea.form-control:-ms-input-placeholder { color: #888; }
 
 input[type="text"]::-webkit-input-placeholder, input[type="password"]::-webkit-input-placeholder,
+input[type="email"]::-webkit-input-placeholder, input[type="number"]::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeholder { color: #888; }
 
 
@@ -289,4 +296,37 @@ button.btn:active:focus, button.btn.active:focus { outline: 0; opacity: 0.6; bac
 
 .ag-margin-left {
     padding-left: 30px;
+}
+
+.ag-menu-navbar {
+    background-color: #e04d1b;
+    /*min-height: 30px;*/
+    opacity: 0.9;
+}
+
+.navbar-default .navbar-brand,
+.navbar-default .navbar-brand:hover{
+    color:white;
+}
+
+.navbar-default .navbar-nav>li>a {
+     color: #efebeb;
+ }
+
+.navbar-default .navbar-nav>li>form>input {
+    height: 36px;
+    margin-top: 5px;
+    width: 166px;
+    padding-left: 5px;
+}
+
+.navbar-default .navbar-nav>li>form>a {
+    color: #efebeb;
+    top: 4px;
+}
+
+.ag-search {
+    width: 146px;
+    height: 30px;
+    padding-left: 5px;
 }

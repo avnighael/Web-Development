@@ -3,16 +3,17 @@
         .module("Handouts")
         .controller("browseOrganizationController", browseOrganizationController);
 
-    function browseOrganizationController(orgService, $location) {
+    function browseOrganizationController(orgService, $location, $routeParams) {
 
         var model = this;
 
-        model.getOrgs = getOrgs;
-        model.getProjectsByCountry = getProjectsByCountry;
-        model.getProjectsByCauses = getProjectsByCauses;
-        model.getProjectsByCauseId = getProjectsByCauseId;
+        var userId = $routeParams.userId;
+        model.userId = userId;
+
+        model.getOrganization = getOrganization;
 
         function init() {
+            getOrganization();
             // orgService
             //     .authenticateAPI()
             //     .then(function (response) {
@@ -22,50 +23,13 @@
 
         init();
 
-        function getProjectsByCauses(causeQuery) {
+
+        function getOrganization() {
             orgService
-                .getCauseID()
-                .then(function (causes) {
+                .getOrganization()
+                .then(function (orgs) {
                     //model.orgs = orgs.charities.charity;
-                    model.causes = causes.data.themes.theme;
-                    for (var c in model.causes) {
-                        if (causeQuery.toLowerCase() === model.causes[c].name.toLowerCase()) {
-                            var causeId = model.causes[c].id;
-                            model.causeId = causeId;
-                            break;
-                        }
-                    }
-                    getProjectsByCauseId(causeId);
-                });
-        }
-        function getProjectsByCauseId(causeId) {
-            orgService
-                .getProjectsByCauseId(causeId)
-                .then(function (projs) {
-                    //model.orgs = orgs.charities.charity;
-                    model.projs = projs.data.projects.project;
-                });
-        }
-
-
-
-
-        function getProjectsByCountry(countryQuery) {
-            orgService
-                .getProjectsByCountry(countryQuery)
-                .then(function (projs) {
-                    //model.orgs = orgs.charities.charity;
-                    model.projs = projs.data.projects.project;
-                });
-        }
-
-
-        function getOrgs(browseText) {
-            orgService
-                .getOrgs(browseText)
-                .then(function (projs) {
-                    //model.orgs = orgs.charities.charity;
-                    model.projs = projs.data.search.response.projects.project;
+                    model.orgs = orgs.data.organizations.organization;
                 });
         }
 

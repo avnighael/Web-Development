@@ -1,62 +1,241 @@
- <div class="container-fluid">
-        <h1>Register</h1>
-                <div ng-show="model.error" class="alert alert-danger">
-                        {{model.error}}
+<div class="jumbotron bgimg-header">
+</div>
+
+<div class="top-content">
+    <div class="inner-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 text">
+                    <h1><strong>Registration Form</strong> </h1>
                 </div>
-        <label for="username">Username</label>
-        <input ng-model="user.username"
-               type="text"
-               id="username"
-               class="form-control"
-               placeholder="username"/>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 form-box ag-margin-left">
+                    <div class="form-top">
+                        <div class="form-top-left">
+                            <h3>Register to Handouts</h3>
+                            <!--<p>Enter your username and password to log on:</p>-->
+                        </div>
+                        <div class="form-top-right">
+                            <i class="fa fa-pencil"></i>
+                        </div>
+                    </div>
+                    <div class="form-bottom">
+                        <div ng-show="model.error" class="alert alert-danger">
+                            {{model.error}}
+                        </div>
+                        <form role="form" action="" method="post" class="login-form">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input ng-model="user.username"
+                                   type="text"
+                                   id="username"
+                                   class="form-control"
+                                   placeholder="username"/>
+                            </div>
 
-        <label for="password">Password</label>
-        <input ng-model="user.password"
-               type="password"
-               id="password"
-               class="form-control"
-               placeholder="password"/>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input ng-model="user.password"
+                                   type="password"
+                                   id="password"
+                                   class="form-control"
+                                   placeholder="password"/>
+                            </div>
 
-        <label for="cpassword">Confirm Password</label>
-        <input ng-model="user.cpassword"
-               type="password"
-               id="cpassword"
-               class="form-control"
-               placeholder="verify password"/>
+                            <div class="form-group">
+                                <label for="cpassword">Confirm Password</label>
+                                <input ng-model="user.cpassword"
+                                   type="password"
+                                   id="cpassword"
+                                   class="form-control"
+                                   placeholder="verify password"/>
+                            </div>
 
-         <label for="firstName">First Name</label>
-         <input ng-model="user.firstName"
-                type="text"
-                id="firstName"
-                class="form-control"
-                placeholder="First Name"/>
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input ng-model="user.firstName"
+                                       type="text"
+                                       id="firstName"
+                                       class="form-control"
+                                       placeholder="First Name"/>
+                            </div>
 
-         <label for="lastName">Last Name</label>
-         <input ng-model="user.lastName"
-                type="text"
-                id="lastName"
-                class="form-control"
-                placeholder="Last Name"/>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input ng-model="user.lastName"
+                                       type="text"
+                                       id="lastName"
+                                       class="form-control"
+                                       placeholder="Last Name"/>
+                            </div>
 
-         <label for="email">Email</label>
-         <input ng-model="user.email"
-                type="email"
-                id="email"
-                class="form-control"
-                placeholder="Email"/>
+                            <div class="form-group">
+                                <label for="option1">
+                                    Choose the type of user
+                                </label>
+                                <div class="radio form-group">
+                                    <label>
+                                        <input type="radio"
+                                               name="role"
+                                               id="option1"
+                                               value="DONOR"
+                                               ng-model="model.user.role"
+                                               ng-checked="true"
+                                               checked>
+                                        Donor
+                                    </label>
+                                </div>
+                                <div class="radio form-group">
+                                    <label>
+                                        <input type="radio"
+                                               name="role"
+                                               id="option2"
+                                               ng-model="model.user.role"
+                                               value="ORGANIZATION">
+                                        Non-profit Organization
+                                    </label>
+                                </div>
 
-     <label for="phone">Phone</label>
-     <input ng-model="user.phone"
-            type="number"
-            id="phone"
-            class="form-control"
-            placeholder="Phone Number"/>
+                                <div ng-if="model.user.role == 'ORGANIZATION'">
+                                    <label for="userRole">Name of your non-profit organization</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="userRole"
+                                           required
+                                           name="organization"
+                                           ng-model="model.user.organization"
+                                           placeholder="Enter your organization"/>
 
-        <a ng-click="model.register(user)"
-           class="btn btn-primary btn-block">
-                Register
-        </a>
-        <a class="btn btn-danger  btn-block"
-           href="#!login">Cancel</a>
-     <div class = "ag-addBottomPadding"></div>
- </div>
+                                    <label for="regNum">Registration Number</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="regNum"
+                                           required
+                                           name="regNum"
+                                           ng-model="model.user.registrationNumber"
+                                           placeholder="Enter your valid registration number"/>
+                                    <div ng-show="form.$submitted || form.organization.$touched"
+                                         class="tnn-validation-error-div">
+                                        <div ng-show="model.error" class="text-danger">
+                                            Please enter a registration number
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input ng-model="user.email"
+                                   type="email"
+                                   id="email"
+                                   class="form-control"
+                                   placeholder="Email"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input ng-model="user.phone"
+                                   type="number"
+                                   id="phone"
+                                   class="form-control"
+                                   placeholder="Phone Number"/>
+                            </div>
+
+                        <a ng-click="model.register(user)"
+                           class="btn btn-primary btn-block">
+                            Register
+                        </a>
+                        <a class="btn btn-danger  btn-block"
+                           href="#!login">Cancel</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 social-login">
+                    <h3>...or register with:</h3>
+                    <div class="social-login-buttons">
+                        <a class="btn btn-link-1 btn-link-1-facebook" href="#">
+                            <i class="fa fa-facebook"></i> Facebook
+                        </a>
+                        <a class="btn btn-link-1 btn-link-1-twitter" href="#">
+                            <i class="fa fa-twitter"></i> Twitter
+                        </a>
+                        <a class="btn btn-link-1 btn-link-1-google-plus" href="#">
+                            <i class="fa fa-google-plus"></i> Google Plus
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+ <!--<div class="container-fluid">-->
+        <!--<h1>Register</h1>-->
+                <!--<div ng-show="model.error" class="alert alert-danger">-->
+                        <!--{{model.error}}-->
+                <!--</div>-->
+        <!--<label for="username">Username</label>-->
+        <!--<input ng-model="user.username"-->
+               <!--type="text"-->
+               <!--id="username"-->
+               <!--class="form-control"-->
+               <!--placeholder="username"/>-->
+
+        <!--<label for="password">Password</label>-->
+        <!--<input ng-model="user.password"-->
+               <!--type="password"-->
+               <!--id="password"-->
+               <!--class="form-control"-->
+               <!--placeholder="password"/>-->
+
+        <!--<label for="cpassword">Confirm Password</label>-->
+        <!--<input ng-model="user.cpassword"-->
+               <!--type="password"-->
+               <!--id="cpassword"-->
+               <!--class="form-control"-->
+               <!--placeholder="verify password"/>-->
+
+         <!--<label for="firstName">First Name</label>-->
+         <!--<input ng-model="user.firstName"-->
+                <!--type="text"-->
+                <!--id="firstName"-->
+                <!--class="form-control"-->
+                <!--placeholder="First Name"/>-->
+
+         <!--<label for="lastName">Last Name</label>-->
+         <!--<input ng-model="user.lastName"-->
+                <!--type="text"-->
+                <!--id="lastName"-->
+                <!--class="form-control"-->
+                <!--placeholder="Last Name"/>-->
+
+         <!--<label for="email">Email</label>-->
+         <!--<input ng-model="user.email"-->
+                <!--type="email"-->
+                <!--id="email"-->
+                <!--class="form-control"-->
+                <!--placeholder="Email"/>-->
+
+     <!--<label for="phone">Phone</label>-->
+     <!--<input ng-model="user.phone"-->
+            <!--type="number"-->
+            <!--id="phone"-->
+            <!--class="form-control"-->
+            <!--placeholder="Phone Number"/>-->
+
+        <!--<a ng-click="model.register(user)"-->
+           <!--class="btn btn-primary btn-block">-->
+                <!--Register-->
+        <!--</a>-->
+        <!--<a class="btn btn-danger  btn-block"-->
+           <!--href="#!login">Cancel</a>-->
+     <!--<div class = "ag-addBottomPadding"></div>-->
+ <!--</div>-->

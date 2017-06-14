@@ -1,93 +1,170 @@
 
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
+<nav class="navbar navbar-default navbar-fixed-top ag-menu-navbar">
+    <div class="container-fluid ">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#!/user/{{model.userId}}">
-                Profile
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/">
+                <i class="" aria-hidden="true"></i>
+                <strong>HandOuts</strong>
             </a>
-            <p class="navbar-text pull-right">
-                <a ng-click="model.updateUser(model.user)"
-                   class="navbar-link">
-                        <span class="glyphicon glyphicon-ok">
-                        </span>
-                </a>
-            </p>
+
         </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="">
+
+                    <form class="" action="">
+                        <input class="input_text grid-9 grid-xl-10 ag-search"
+                               type="text"
+                               placeholder="I care about..."
+                               name="q"
+                               title="Search for nonprofits">
+                        <a href="#!search"class="glyphicon glyphicon-search"></a>
+                    </form>
+                </li>
+
+                <li class="">
+                    <a class=""
+                        href="#!/user/{{model.user._id}}/give">
+                        GIVE
+                    </a>
+                </li>
+                <li class="">
+                    <a class=""
+                       href="#!/search">
+                        JOIN
+                    </a>
+                </li>
+
+                <li class="">
+                    <a class="" href="#!/user/{{model.user._id}}">
+                        <i class="fa fa-user tnn-logo-navbar" aria-hidden="true"></i>
+                        <strong>{{model.user.firstName}}</strong>
+                    </a>
+                </li>
+                <li class="">
+                    <a class=""
+                       href="#!login">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i> LOGOUT
+                    </a>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
     </div>
 </nav>
 
-    <div class="container-fluid">
-        <div ng-show="model.error"  class="alert alert-danger" role="alert">
-            {{model.error}}
+<div class="jumbotron bgimg-header">
+</div>
+
+<div class="top-content">
+    <div class="inner-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 text ">
+                    <h1><strong>My Profile</strong> </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 form-box ag-margin-left">
+                    <div class="form-top">
+                        <div class="form-top-left">
+                            <!--<h3>Register to Handouts</h3>-->
+                            <!--<p>Enter your username and password to log on:</p>-->
+                        </div>
+                        <!--<div class="form-top-right">-->
+                            <!--<i class="fa fa-key"></i>-->
+                        <!--</div>-->
+                    </div>
+                    <div class="form-bottom">
+                        <div ng-show="model.error"  class="alert alert-danger" role="alert">
+                            {{model.error}}
+                        </div>
+
+                        <div ng-show="model.message" class="alert alert-success" role="alert">
+                            {{model.message}}
+                        </div>
+                        <form role="form" action="" method="post" class="login-form">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input ng-model="model.user.username"
+                                       type="text"
+                                       class="form-control"
+                                       id="username"
+                                       placeholder="alice123">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input ng-model="model.user.firstName"
+                                       type="text"
+                                       class="form-control"
+                                       id="firstName"
+                                       placeholder="Alice">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input ng-model="model.user.lastName"
+                                       type="text"
+                                       class="form-control"
+                                       id="lastName"
+                                       placeholder="Wonderland">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input ng-model="model.user.email"
+                                       type="email"
+                                       class="form-control"
+                                       id="email"
+                                       placeholder="alice@wonderland.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input ng-model="model.user.phone"
+                                       type="string"
+                                       class="form-control"
+                                       id="phone"
+                                       placeholder="6178764567">
+                            </div>
+
+                            <a class="btn btn-success btn-block"
+                               ng-click="model.updateUser(model.user)">Update
+                            </a>
+                            <a ng-click="model.deleteUser(model.userId)"
+                               class="btn btn-danger btn-block">
+                                Deactivate Account
+                            </a>
+                            <a class="btn btn-warning  btn-block"
+                               href="#!login">Logout
+                            </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div ng-show="model.message" class="alert alert-success" role="alert">
-            {{model.message}}
-        </div>
-
-        <form name="myForm">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input ng-model="model.user.username"
-                       type="text"
-                       class="form-control"
-                       id="username"
-                       placeholder="alice123">
-            </div>
-
-            <div class="form-group">
-                <label for="firstName">First Name</label>
-                <input ng-model="model.user.firstName"
-                       type="text"
-                       class="form-control"
-                       id="firstName"
-                       placeholder="Alice">
-            </div>
-
-            <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <input ng-model="model.user.lastName"
-                       type="text"
-                       class="form-control"
-                       id="lastName"
-                       placeholder="Wonderland">
-            </div>
-
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input ng-model="model.user.email"
-                       type="email"
-                       class="form-control"
-                       id="email"
-                       placeholder="alice@wonderland.com">
-            </div>
-
-            <div class="form-group">
-                <label for="phone">Phone</label>
-                <input ng-model="model.user.phone"
-                       type="string"
-                       class="form-control"
-                       id="phone"
-                       placeholder="6178764567">
-            </div>
-        </form>
-
-        <a class="btn btn-success btn-block"
-           ng-click="model.updateUser(model.user)">Update
-        </a>
-        <a ng-click="model.deleteUser(model.userId)"
-           class="btn btn-danger btn-block">
-            Deactivate Account
-        </a>
-        <a class="btn btn-primary btn-block"
-           href="#!/user/{{model.userId}}/website">Websites
-        </a>
-        <a class="btn btn-warning  btn-block"
-           href="#!login">Logout
-        </a>
-
-        <div class = "ag-addBottomPadding"></div>
     </div>
+</div>
+
 
 <div ng-include="'views/common/footer.view.client.html'"></div>
+
+<script type="text/javascript">
+//Toggle Menu
+    $(".navbar-toggle").click(function() {
+        if ($('#myCollapsible').collapse) {
+            return $("body").toggleClass("no-scroll");
+        }
+    });
+
+</script>
+
 
