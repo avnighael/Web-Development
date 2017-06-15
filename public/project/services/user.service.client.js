@@ -11,7 +11,10 @@
             findUserByUsername: findUserByUsername,
             findUserByCredentials: findUserByCredentials,
             deleteUser: deleteUser,
-            updateUser: updateUser
+            updateUser: updateUser,
+            addToWishList: addToWishList,
+            removeFromWishList: removeFromWishList,
+            findUserWishListProjectById: findUserWishListProjectById
         };
         return api;
 
@@ -70,7 +73,33 @@
                 .then(function (response) {
                     return response.data;
                 });
+        }
 
+        function findUserWishListProjectById(userId, projectId) {
+            var url = "/api/project/user/"+userId+"/project/"+projectId;
+            return $http.get(url)
+                .then(function (response) {
+                    // console.log(response);
+                    return response.data;
+                });
+        }
+
+        function removeFromWishList(userId, projectId) {
+            var url = "/api/project/user/"+userId+"/project/"+projectId;
+            return $http.delete(url)
+                .then(function (response) {
+                    console.log(response);
+                    return response.data;
+                });
+        }
+        
+        function addToWishList(userId, projectId, project) {
+            var url = "/api/project/user/"+userId+"/project/"+projectId;
+            return $http.put(url, project)
+                .then(function (response) {
+                    console.log(response);
+                    return response.data;
+                });
         }
     }
 })();

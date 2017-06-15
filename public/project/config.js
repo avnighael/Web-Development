@@ -51,9 +51,16 @@
             //     controllerAs: 'model'
             // })
 
-            .when('/browseProjects/:projectId', {
+            .when('/user/:userId/browseProjects/:projectId', {
                 templateUrl: 'views/user/templates/project.view.client.html',
                 controller: 'ProjectController',
+                controllerAs: 'model'
+            })
+
+
+            .when('/user/:userId/wishlist', {
+                templateUrl: 'views/user/templates/wishlist.view.client.html',
+                controller: 'wishlistController',
                 controllerAs: 'model'
             })
 

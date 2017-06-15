@@ -11,6 +11,9 @@
         model.userId = userId;
         var organizationId = $routeParams.organizationId;
         model.organizationId = organizationId;
+        model.follow = false;
+
+        this.followOrganization = followOrganization;
 
         //model.projectDetail = projectDetail;
 
@@ -21,6 +24,10 @@
         }
 
         init();
+        
+        function followOrganization(orgIdToBeFollowed) {
+            
+        }
 
         function renderOrganization(org) {
             model.org = org.data.organization;

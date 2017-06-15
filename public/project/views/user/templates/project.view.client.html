@@ -1,8 +1,59 @@
 <div class="container-fluid">
-        <!--<div ng-repeat="project in model.projects">-->
             <div>
+                <div>
                 <h3>{{model.proj.title}}</h3>
                 <p>by {{model.proj.organization.name}} , {{model.proj.country}}</p>
+
+                <div>
+                        <!--ng-show="model.user.role == 'DONOR'">-->
+                    <a ng-show="!model.saved"
+                       ng-click="model.addToWishList(model.proj.id, model.proj)"
+                       class="btn btn-success btn-block">
+                        Add to WishList
+                    </a>
+                    <a ng-show="model.saved"
+                       ng-click="model.removeFromWishList(model.proj.id)"
+                       class="btn btn-danger btn-block">
+                         Remove from Wishlist
+                    </a>
+                </div>
+
+
+                <span class="col-xs-12 text-right" ng-show="model.showDonate == true">
+                    <!--<a href="#!/user/{{model.userId}}/project/{{model.projectId}}/donate" class="btn btn-primary">-->
+                    <a ng-click="model.donating = true; model.showDonate = false" class="btn btn-primary">
+                        Donate Now
+                    </a>
+                </span>
+
+                    <span ng-if="model.donating == true">
+                        <span>
+                        <label for="amount">How much do you want to contribute?</label>
+                        <input type="number"
+                               class="form-control ag-form"
+                               id="amount"
+                               required
+                               name="amount"
+                               ng-model="amount"
+                               placeholder="Enter amount"/>
+                        </span>
+                        <span>
+                            <label>USD</label>
+                        </span>
+                        &nbsp &nbsp
+                        <span class="text-right">
+                            <a ng-click="model.sendDonation(amount)"
+                               class="btn btn-success"
+                               type="button"> Donate
+                            </a>
+                        </span>
+                        <div ng-show="model.error" class="text-danger">
+                            Please enter amount
+                        </div>
+                        </span>
+                    </div>
+                </div>
+
                 <img class="img-responsive-home ag-fullWidth"
                      ng-src="{{model.proj.imageLink}}"
                      alt="{{model.proj.title}}"/>

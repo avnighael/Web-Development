@@ -12,8 +12,18 @@
         this.getProjectsByCountry = getProjectsByCountry;
         this.getProjectsByCauseId = getProjectsByCauseId;
         this.getCauseID = getCauseID;
+        this.sendDonation = sendDonation;
 
         var key = "7905ffa8-4842-42f9-98c2-6fbd35d08cb9";
+
+        function sendDonation(proj, amount) {
+            var url = "/api/project/donate";
+            return $http.post(url, proj)
+                .then(function (response) {
+                    console.log(response);
+                    return response.data;
+                });
+        }
 
         function getOrganizationDetailsById(orgId) {
             var urlBase = "https://api.globalgiving.org/api/public/orgservice/organization/ORGID?api_key=APIKEY";

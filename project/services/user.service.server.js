@@ -6,6 +6,55 @@ app.get('/api/project/user',findUser);
 app.post('/api/project/user',createUser);
 app.put('/api/project/user/:userId',updateUser);
 app.delete('/api/project/user/:userId',deleteUser);
+app.put('/api/project/user/:userId/project/:projectId', addToWishList);
+app.delete('/api/project/user/:userId/project/:projectId', removeFromWishList);
+app.get('/api/project/user/:userId/project/:projectId', findUserWishListProjectById);
+
+function findUserWishListProjectById(req, res) {
+    var userId = req.params.userId;
+    var projectId = req.params.projectId;
+
+    userModel
+        .findUserWishListProjectById(userId, projectId)
+        .then(function (response) {
+            // console.log(response);
+            if(response == undefined) {
+                res.sendStatus(404);
+            } else {
+                res.sendStatus(200);
+            }
+
+        },function (err) {
+            res.sendStatus(404);
+        });
+}
+
+function removeFromWishList(req, res) {
+    var userId = req.params.userId;
+    var projectId = req.params.projectId;
+
+    userModel
+        .removeFromWishList(userId, projectId)
+        .then(function (response) {
+            res.json(response);
+        },function (err) {
+            res.sendStatus(404);
+        });
+}
+
+function addToWishList(req, res) {
+    var userId      = req.params.userId;
+    var projectId   = req.params.projectId;
+    var project = req.body;
+
+    userModel
+        .addToWishList(userId, projectId, project)
+        .then(function (response) {
+            res.json(response);
+        },function (err) {
+            res.send(err);
+        });
+}
 
 
 function findUser(req, res) {

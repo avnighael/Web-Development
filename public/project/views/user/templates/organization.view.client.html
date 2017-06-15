@@ -4,14 +4,15 @@
         <h3>{{model.org.name}}</h3>
         <p> {{model.org.country}} , {{model.org.state}}, {{moedel.org.city}}</p>
 
-        <div class="col-xs-12 text-right">
-            <a ng-click="model.unfollowOrganization(model.user._id)" class="btn btn-danger ng-hide">
-                Unfollow
-            </a>
-            <a ng-click="model.followOrganization(model.user._id)" class="btn btn-success">
-                Follow
-            </a>
-        </div>
+
+        <!--<div class="col-xs-12 text-right">-->
+            <!--<a ng-click="model.unfollowOrganization(model.orgs.id)" class="btn btn-danger ng-hide">-->
+                <!--Unfollow-->
+            <!--</a>-->
+            <!--<a ng-click="model.followOrganization(model.orgs.id)" class="btn btn-success">-->
+                <!--Follow-->
+            <!--</a>-->
+        <!--</div>-->
 
         <img class="img-responsive-home ag-fullWidth"
              ng-src="{{model.org.logoUrl}}"

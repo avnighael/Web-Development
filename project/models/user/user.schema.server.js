@@ -10,9 +10,16 @@ var userSchema  = mongoose.Schema({
     country: String,
     organization: String,
     followers: [{type: mongoose.Schema.Types.ObjectId, ref:'userModel'}],  //For non-profit organization
-    following: [{type: mongoose.Schema.Types.ObjectId, ref:'UserModel'}], //For donors
+    following: [{type: mongoose.Schema.Types.ObjectId, ref:'userModel'}], //For donors
     registrationNumber: String,  //For non-profit Organization
-    projects: [{type: mongoose.Schema.Types.ObjectId, ref:'projectsModel'}],
+    // projects: [{type: mongoose.Schema.Types.ObjectId, ref:'projectModel'}],
+    projects: [{
+        projectId: String,
+        title: String,
+        organization: String,
+        country: String,
+        causeName: String,
+        imageLink: String}],
     totalProjects: Number,  //For non-profit organization
     cause: String,  //For non-profit organization
     profilePic:{

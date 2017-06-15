@@ -15,4 +15,4 @@ var connectionString = 'mongodb://127.0.0.1:27017/Handouts'; // for local
 mongoose.connect(connectionString);
 
 require('./services/user.service.server');
-require('./services/organization.service.server');
+require('./services/project.service.server');

@@ -3,9 +3,14 @@
         .module("Handouts")
         .controller("giveController", giveController);
 
-    function giveController(orgService, $location) {
+    function giveController(orgService, $location, $routeParams) {
 
         var model = this;
+
+        var userId = $routeParams.userId;
+        model.userId = userId;
+        var organizationId = $routeParams.organizationId;
+        model.organizationId = organizationId;
 
         model.getProjectsByKeyWords = getProjectsByKeyWords;
         model.getProjectsByCountry = getProjectsByCountry;

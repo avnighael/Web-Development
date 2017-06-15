@@ -1,0 +1,20 @@
+<div class="container-fluid">
+
+    <div class="row container-fluid">
+        <h4>Giving Cart</h4>
+        <div ng-repeat="proj in model.wishlist">
+            <div>
+                <a href="#!/user/{{model.userId}}/browseProjects/{{proj.id}}">
+                    <img class="img-responsive-home thumbnail"
+                         ng-src="{{proj.imageLink}}"
+                         alt="{{proj.title}}"/>
+                    <span><h4>{{proj.title}}</h4></span>
+                </a>
+
+                <p>by {{proj.organization}}  |  {{proj.country}}</p>
+
+            </div>
+        </div>
+    </div>
+    <div class = "ag-addBottomPadding"></div>
+</div>
