@@ -1,0 +1,44 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+       <!-- <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Project name</a>
+        </div>-->
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#!/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item" ng-if="model.currentUser.roles.indexOf('ADMIN')>-1">
+                    <a class="nav-link" href="#!/admin">Admin</a>
+                </li>
+                <li class="nav-item" ng-show="!model.currentUser._id">
+                    <a class="nav-link" href="#!/login">Login</a>
+                </li>
+                <li class="nav-item" ng-show="!model.currentUser._id">
+                    <a class="nav-link" href="#!/register">Register</a>
+                </li>
+                <li class="nav-item" ng-show="model.currentUser._id">
+                    <a class="nav-link" href="#!/profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" ng-show="model.currentUser._id" href="#!/">Logout</a>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1>Website Application Maker</h1>
+        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+    </div>
+
+</div><!-- /.container -->

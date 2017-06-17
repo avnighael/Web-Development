@@ -3,35 +3,67 @@
         .module("Handouts")
         .controller("wishlistController", wishlistController);
 
-    function wishlistController(orgService, $location, $routeParams) {
+    function wishlistController(userService, $routeParams) {
 
         var model = this;
 
         var userId = $routeParams.userId;
         model.userId = userId;
 
-        model.getOrganization = getOrganization;
+        model.getWishList = getWishList;
 
         function init() {
-            getOrganization();
-            // orgService
-            //     .authenticateAPI()
-            //     .then(function (response) {
-            //         model.auth = response;
-            //     })
+            getWishList();
+
+            userService
+                .findUserById(model.userId)
+                .then(renderUser, userError);
         }
 
         init();
 
+        function renderUser(user) {
+            model.user = user;
+        }
 
-        function getOrganization() {
-            orgService
-                .getOrganization()
-                .then(function (orgs) {
+        function userError(error) {
+            model.error = "User Not Found";
+        }
+
+
+        function getWishList() {
+            userService
+                .getWishlist(userId)
+                .then(function (projs) {
+                   // console.log(projs);
                     //model.orgs = orgs.charities.charity;
-                    model.orgs = orgs.data.organizations.organization;
+                    model.wishlist = projs;
                 });
         }
 
+    }
+
+    function  profileController($routeParams, userService) {
+
+        var model = this;
+
+        model.userId = $routeParams['userId'];
+
+        function init() {
+            //model.user = userService.findUserById(model.userId);
+            userService
+                .findUserById(model.userId)
+                .then(renderUser, userError);
+
+            function renderUser(user) {
+                model.user = user;
+            }
+
+            function userError(error) {
+                model.error = "User Not Found";
+            }
+        }
+
+        init();
     }
 })();

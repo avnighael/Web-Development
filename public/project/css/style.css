@@ -195,7 +195,7 @@ input[type="email"],
 input[type="number"],
 textarea,
 textarea.form-control {
-    height: 50px;
+    height: 45px;
     margin: 0;
     padding: 0 20px;
     vertical-align: middle;
@@ -336,4 +336,17 @@ button.btn:active:focus, button.btn.active:focus { outline: 0; opacity: 0.6; bac
     width: auto;
     display: inline-block;
     margin-bottom: 10px;
+}
+
+.ag-pushBody {
+    padding-top: 70px;
+}
+
+.input-group {
+    padding-top: 70px;
+}
+
+.ag-donationTab {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }

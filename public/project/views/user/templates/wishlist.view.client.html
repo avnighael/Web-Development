@@ -1,10 +1,75 @@
-<div class="container-fluid">
+<nav class="navbar navbar-default navbar-fixed-top ag-menu-navbar">
+    <div class="container-fluid ">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/">
+                <i class="" aria-hidden="true"></i>
+                <strong>HandOuts</strong>
+            </a>
 
-    <div class="row container-fluid">
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="">
+
+                    <form class="" action="">
+                        <input ng-model="keywordsQuery"
+                               class="input_text grid-9 grid-xl-10 ag-search"
+                               type="text"
+                               placeholder="I care about..."
+                               name="keywordsQuery"
+                               title="Search for nonprofits">
+                        <a class="glyphicon glyphicon-search"></a>
+                                <!--ng-click="model.getProjectsByKeyWords(keywordsQuery)"-->
+                    </form>
+                </li>
+                &nbsp &nbsp
+                <li class="">
+                    <a class=""
+                       href="#!/user/{{model.user._id}}/give">
+                        GIVE
+                    </a>
+                </li>
+
+                <li class="">
+                    <a class=""
+                        ng-click = "model.getWishList()">
+                    <i class="fa fa-shopping-cart tnn-logo-navbar" aria-hidden="true"></i>
+                        WishList
+                    </a>
+                </li>
+
+                <li class="">
+                    <a class="" href="#!/user/{{model.user._id}}">
+                        <i class="fa fa-user tnn-logo-navbar" aria-hidden="true"></i>
+                        <strong>{{model.user.firstName}}</strong>
+                    </a>
+                </li>
+                <li class="">
+                    <a class=""
+                       href="#!login">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i> LOGOUT
+                    </a>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+
+<div class="container-fluid">
+    <div class="ag-pushBody">
         <h4>Giving Cart</h4>
         <div ng-repeat="proj in model.wishlist">
             <div>
-                <a href="#!/user/{{model.userId}}/browseProjects/{{proj.id}}">
+                <a href="#!/user/{{model.userId}}/browseProjects/{{proj.projectId}}">
                     <img class="img-responsive-home thumbnail"
                          ng-src="{{proj.imageLink}}"
                          alt="{{proj.title}}"/>
@@ -16,5 +81,7 @@
             </div>
         </div>
     </div>
+
+
     <div class = "ag-addBottomPadding"></div>
 </div>

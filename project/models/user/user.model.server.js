@@ -12,6 +12,7 @@ userModel.deleteUser = deleteUser;
 userModel.addToWishList = addToWishList;
 userModel.removeFromWishList = removeFromWishList;
 userModel.findUserWishListProjectById = findUserWishListProjectById;
+userModel.getWishList = getWishList;
 
 module.exports = userModel;
 
@@ -49,6 +50,17 @@ function updateUser(userId, newUser) {
 
 function deleteUser(userId) {
     return userModel.remove({_id: userId});
+}
+
+function getWishList(userId) {
+    return userModel
+        .findById(userId)
+        .then(function (user) {
+            console.log(user.projects);
+            return user.projects;
+        }, function (err) {
+            return err;
+        });
 }
 
 function findUserWishListProjectById(userId, projId) {

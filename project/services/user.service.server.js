@@ -9,6 +9,37 @@ app.delete('/api/project/user/:userId',deleteUser);
 app.put('/api/project/user/:userId/project/:projectId', addToWishList);
 app.delete('/api/project/user/:userId/project/:projectId', removeFromWishList);
 app.get('/api/project/user/:userId/project/:projectId', findUserWishListProjectById);
+app.get('/api/project/user/:userId/wishlist', getWishList);
+// app.post('/api/project/user/:userId/project/:projectId/donate', sendDonation);
+
+function sendDonation(req, res) {
+    var userId = req.params.userId;
+    var projectId = req.params.projectId;
+    var amount = req.body;
+    console.log(amount);
+
+//console.log(userId);
+    userModel
+        .sendDonation(userId)
+        .then(function (response) {
+            console.log(response);
+            res.json(response);
+        },function (err) {
+            res.sendStatus(404);
+        });
+}
+
+function getWishList(req, res) {
+    var userId = req.params.userId;
+//console.log(userId);
+    userModel
+        .getWishList(userId)
+        .then(function (response) {
+            res.json(response);
+        },function (err) {
+            res.sendStatus(404);
+        });
+}
 
 function findUserWishListProjectById(req, res) {
     var userId = req.params.userId;

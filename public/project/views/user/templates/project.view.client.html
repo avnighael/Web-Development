@@ -19,22 +19,21 @@
                 </div>
 
 
-                <span class="col-xs-12 text-right" ng-show="model.showDonate == true">
+                <span class="col-xs-12 text-right ag-donationTab" ng-show="model.showDonate == true">
                     <!--<a href="#!/user/{{model.userId}}/project/{{model.projectId}}/donate" class="btn btn-primary">-->
                     <a ng-click="model.donating = true; model.showDonate = false" class="btn btn-primary">
                         Donate Now
                     </a>
                 </span>
 
-                    <span ng-if="model.donating == true">
+                    <div ng-if="model.donating == true" class="ag-donationTab">
                         <span>
                         <label for="amount">How much do you want to contribute?</label>
-                        <input type="number"
+                        <input type="text"
                                class="form-control ag-form"
                                id="amount"
                                required
-                               name="amount"
-                               ng-model="amount"
+                               ng-model="donation.amount"
                                placeholder="Enter amount"/>
                         </span>
                         <span>
@@ -42,15 +41,15 @@
                         </span>
                         &nbsp &nbsp
                         <span class="text-right">
-                            <a ng-click="model.sendDonation(amount)"
-                               class="btn btn-success"
+                            <a ng-click="model.sendDonation(donation)"
+                               class="btn btn-primary"
                                type="button"> Donate
                             </a>
                         </span>
                         <div ng-show="model.error" class="text-danger">
                             Please enter amount
                         </div>
-                        </span>
+                        </div>
                     </div>
                 </div>
 

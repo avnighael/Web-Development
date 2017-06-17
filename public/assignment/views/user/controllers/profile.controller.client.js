@@ -3,30 +3,49 @@
         .module('WAM') // Here, only reading the module
         .controller('profileController', profileController);
 
-    function  profileController($location, $routeParams, userService) {
+    function  profileController(currentUser, $location, userService) {
         var model = this;
 
         model.deleteUser = deleteUser;
-        model.updateUser = updateUser;
+        model.modifyUser = modifyUser;
+        model.logout = logout;
 
-        model.userId = $routeParams['userId'];
+        model.userId = currentUser._id;
+        model.user = currentUser;
+        model.unregister = unregister;
 
         function init() {
             //model.user = userService.findUserById(model.userId);
-            userService
-                .findUserById(model.userId)
-                .then(renderUser, userError);
+            // userService
+            //     .findUserById(model.userId)
+            //     .then(renderUser, userError);
 
-            function renderUser(user){
-                model.user = user;
-            }
+            // renderUser(currentUser);
 
-            function userError(error) {
-                model.error = "User Not Found";
-            }
+
         }
 
         init();
+        
+        function unregister() {
+            userService
+                .unregister(model.user)
+                .then(function () {
+                    $location.url('/');
+                })
+        }
+
+        function logout(user){
+            userService
+                .logout()
+                .then(function () {
+                    $location.url('/login');
+                })
+        }
+
+        function userError(error) {
+            model.error = "User Not Found";
+        }
 
         function deleteUser(userId) {
             userService
@@ -38,7 +57,7 @@
                 });
         }
 
-        function updateUser(newUser) {
+        function modifyUser(newUser) {
             if(newUser.username === null || newUser.username === '' || typeof newUser.username === 'undefined') {
                 model.error = 'username is required';
                 model.message = "";
@@ -48,7 +67,7 @@
             //model.emailRegex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 
             userService
-                .updateUser(model.userId, newUser)
+                .modifyUser(model.userId, newUser)
                 .then(function (user) {
                     if (user != null) {
 

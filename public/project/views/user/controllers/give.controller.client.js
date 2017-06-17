@@ -18,11 +18,7 @@
         model.getProjectsByCauseId = getProjectsByCauseId;
 
         function init() {
-            // orgService
-            //     .authenticateAPI()
-            //     .then(function (response) {
-            //         model.auth = response;
-            //     })
+
         }
 
         init();
@@ -49,6 +45,8 @@
                 .then(function (projs) {
                     //model.orgs = orgs.charities.charity;
                     model.projs = projs.data.projects.project;
+                }, function () {
+                    model.error = "No results found";
                 });
         }
 
@@ -61,6 +59,8 @@
                 .then(function (projs) {
                     //model.orgs = orgs.charities.charity;
                     model.projs = projs.data.projects.project;
+                }, function () {
+                    model.error = "No results found";
                 });
         }
 
@@ -71,6 +71,8 @@
                 .then(function (projs) {
                     //model.orgs = orgs.charities.charity;
                     model.projs = projs.data.search.response.projects.project;
+                }, function () {
+                    model.error = "No results found";
                 });
         }
 

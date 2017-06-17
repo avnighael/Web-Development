@@ -3,7 +3,7 @@
         .module("Handouts")
         .controller("ProjectController", ProjectController);
 
-    function ProjectController(userService, orgService, $location, $routeParams) {
+    function ProjectController(userService, orgService, donationService, $location, $routeParams) {
 
         var model = this;
 
@@ -14,7 +14,6 @@
         var projectId = $routeParams.projectId;
         model.projectId = projectId;
 
-        //model.projectDetail = projectDetail;
         model.sendDonation = sendDonation;
         model.addToWishList = addToWishList;
         model.removeFromWishList = removeFromWishList;
@@ -68,15 +67,22 @@
                 .then(function (response) {
                     model.saved = true;
                     model.unsaved = null;
-                    console.log(response);
+                   // console.log(response);
                 },function (err) {
                     console.log(err);
                 })
         }
 
-        function sendDonation(amount) {
-            orgService
-                .sendDonation(model.proj, amount);
+        function sendDonation(donation) {
+            // var amnt = {"amount": amount};
+            // console.log(amnt);
+            donationService
+                .sendDonation(userId, projectId, donation)
+                .then(function (response) {
+                    console.log(response);
+                }, function (err) {
+                    console.log(err);
+                });
         }
 
 

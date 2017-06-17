@@ -104,7 +104,10 @@
 
 
     <div class="row container-fluid" ng-show="model.projs">
-        <h4>Search Project Result</h4>
+        <div ng-show = "model.error" class="alert alert-info">
+            <p>{{model.error}}</p>
+        </div>
+        <h4 ng-show="!model.error">Search Project Result</h4>
         <div ng-repeat="proj in model.projs">
             <div>
                 <a href="#!/user/{{model.userId}}/browseProjects/{{proj.id}}">

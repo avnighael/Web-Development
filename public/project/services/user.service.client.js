@@ -14,7 +14,9 @@
             updateUser: updateUser,
             addToWishList: addToWishList,
             removeFromWishList: removeFromWishList,
-            findUserWishListProjectById: findUserWishListProjectById
+            findUserWishListProjectById: findUserWishListProjectById,
+            getWishlist: getWishlist,
+            sendDonation: sendDonation
         };
         return api;
 
@@ -24,15 +26,6 @@
                 .then(function (response) {
                     return response.data;
                 });
-
-            // for (var u in users) {
-            //     if (users[u]._id == userId) {
-            //         users[u].firstName = newUser.firstName;
-            //         users[u].lastName = newUser.lastName;
-            //         return users[u];
-            //     }
-            // }
-            // return null;
         }
 
         function deleteUser(userId) {
@@ -84,6 +77,15 @@
                 });
         }
 
+        function getWishlist(userId) {
+            var url = "/api/project/user/"+userId+"/wishlist";
+            return $http.get(url)
+                .then(function (response) {
+                    console.log(response);
+                    return response.data;
+                });
+        }
+
         function removeFromWishList(userId, projectId) {
             var url = "/api/project/user/"+userId+"/project/"+projectId;
             return $http.delete(url)
@@ -96,6 +98,15 @@
         function addToWishList(userId, projectId, project) {
             var url = "/api/project/user/"+userId+"/project/"+projectId;
             return $http.put(url, project)
+                .then(function (response) {
+                    console.log(response);
+                    return response.data;
+                });
+        }
+
+        function sendDonation(userId, projectId, amount) {
+            var url = "/api/project/user/"+userId+"/project/"+projectId+"/donate";
+            return $http.post(url, amount)
                 .then(function (response) {
                     console.log(response);
                     return response.data;

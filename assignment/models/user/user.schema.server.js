@@ -7,6 +7,9 @@ var userSchema  = mongoose.Schema({
     lastName: String,
     email: String,
     phone: String,
+    roles: [{type: String,
+        default: 'USER',
+        enum:['USER', 'ADMIN']}],
     websites:[{type: mongoose.Schema.Types.ObjectId, ref: 'websiteModel'}],
     dateCreated:{type: Date, default: Date.now}
 }, {collection: "user"});

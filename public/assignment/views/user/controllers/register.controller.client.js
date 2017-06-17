@@ -12,9 +12,9 @@
 
         function createUser(user) {
                 userService
-                    .createUser(user)
+                    .register(user)
                     .then(function (newUser) {
-                        $location.url("/user/" + newUser._id);
+                        $location.url("/profile");
                     });
         }
 

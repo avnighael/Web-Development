@@ -6,7 +6,30 @@
     function configuration ($routeProvider) {
         $routeProvider
             .when('/', {
-            templateUrl: 'home.html '
+                templateUrl: 'views/home/home.html ',
+                controller: 'mainController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
+            })
+
+            .when('/admin', {
+                templateUrl: 'views/admin/templates/admin.view.client.html',
+                // controller: 'adminController',
+                // controllerAs: 'model',
+                resolve: {
+                    currentUser: checkAdmin
+                }
+            })
+
+            .when('/admin/user', {
+                templateUrl: 'views/admin/templates/admin-users.view.client.html',
+                controller: 'adminUsersController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkAdmin
+                }
             })
 
             .when('/login', {
@@ -21,28 +44,40 @@
                 controllerAs: 'model'
             })
 
-            .when('/user/:userId', {
+            .when('/profile', {
                 templateUrl: 'views/user/templates/profile.view.client.html',
                 controller: 'profileController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
 
-            .when('/user/:userId/website', {
+            .when('/website', {
                 templateUrl: 'views/website/templates/website-list.view.client.html',
                 controller: 'websiteListController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
 
-            .when('/user/:userId/website/new', {
+            .when('/website/new', {
                 templateUrl: 'views/website/templates/website-new.view.client.html',
                 controller: 'websiteNewController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
 
-            .when('/user/:userId/website/:websiteId', {
+            .when('/website/:websiteId', {
                 templateUrl: 'views/website/templates/website-edit.view.client.html',
                 controller: 'websiteEditController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
 
             .when('/user/:userId/website/:websiteId/page', {
@@ -87,7 +122,60 @@
                 controllerAs: 'model'
             })
 
+    }
 
+    function checkLoggedIn(userService, $q, $location) {
+        var deferred = $q.defer();
+
+        userService
+            .checkLoggedIn()
+            .then(function (user) {
+                if(user === '0') {
+                    deferred.reject();
+                    $location.url('/login');
+                } else {
+                    deferred.resolve(user);
+                }
+            });
+
+        return deferred.promise;
 
     }
+
+    function checkCurrentUser(userService, $q, $location) {
+        var deferred = $q.defer();
+
+        userService
+            .checkLoggedIn()
+            .then(function (user) {
+                if(user === '0') {
+                    deferred.resolve({});
+
+                } else {
+                    deferred.resolve(user);
+                }
+            });
+
+        return deferred.promise;
+
+    }
+
+    function checkAdmin(userService, $q, $location) {
+        var deferred = $q.defer();
+
+        userService
+            .checkAdmin()
+            .then(function (user) {
+                if(user === '0') {
+                    deferred.reject();
+                    $location.url('/');
+                } else {
+                    deferred.resolve(user);
+                }
+            });
+
+        return deferred.promise;
+
+    }
+
 }) ();

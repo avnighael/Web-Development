@@ -16,3 +16,4 @@ mongoose.connect(connectionString);
 
 require('./services/user.service.server');
 require('./services/project.service.server');
+require('./services/donation.service.server');
