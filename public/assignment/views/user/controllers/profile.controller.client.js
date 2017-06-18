@@ -77,6 +77,9 @@
                     else {
                         model.error = "Unable to update user";
                     }
+                }, function (err) {
+                    console.log(err);
+                    return err;
                 });
         }
 

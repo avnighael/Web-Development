@@ -3,6 +3,7 @@ var userModel = require('../models/user/user.model.server');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 passport.use(new LocalStrategy(localStrategy));
+// passport.use(new LocalStrategy(localChecking));
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
 
@@ -36,7 +37,7 @@ app.get('/api/assignment/users/',isAdmin,findAllUsers);
 app.get('/api/assignment/user',findUserByUsername);
 app.post('/api/assignment/user',isAdmin, createUser);
 app.put('/api/assignment/admin/user/:userId', isAdmin, updateUser);
-app.put('/api/assignment/user/:userId',passport.authenticate('local'), modifyUser);
+app.put('/api/assignment/user/:userId', modifyUser);
 app.delete('/api/assignment/user/:userId',isAdmin, deleteUser);
 app.get('/api/assignment/checkLoggedIn',checkLoggedIn );
 app.get('/api/assignment/checkAdmin',checkAdmin);
@@ -51,8 +52,7 @@ app.get('/auth/google/callback',
         failureRedirect: '/assignment/#/login'
     }));
 
-app.get ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
-
+app.get ('/auth/facebook', passport.authenticate('facebook', { scope : ['profile', 'email'] }));
 app.get('/auth/facebook/callback',
     passport.authenticate('facebook', {
         successRedirect: '/assignment/#/profile',
@@ -150,15 +150,6 @@ function checkLoggedIn(req, res) {
 
 function login(req, res) {
     var user = req.user;
-    // console.log(user);
-
-    // if(user && bcrypt.compareSync(password, user.password)) {
-    //     res.json(user);
-    // } else {
-    //     return done(null, false);
-    // }
-
-
     res.json(user);
 }
 
@@ -228,6 +219,8 @@ function modifyUser(req, res) {
         .updateUser(userId, user)
         .then(function (status) {
             res.sendStatus(200);
+        }, function (err) {
+            return err;
         });
 }
 
