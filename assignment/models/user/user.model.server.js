@@ -10,7 +10,10 @@ userModel.findUserByCredentials = findUserByCredentials;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
 
-module.exports = userModel;
+userModel.findUserByGoogleId = findUserByGoogleId;
+userModel.findUserByFacebookId = findUserByFacebookId;
+
+    module.exports = userModel;
 
 function createUser(user) {
     if(user.roles) {
@@ -59,4 +62,14 @@ function updateUser(userId, newUser) {
 
 function deleteUser(userId) {
     return userModel.remove({_id: userId});
+}
+
+function findUserByGoogleId(googleId) {
+    return userModel
+        .findOne({'google.id': googleId});
+}
+
+function findUserByFacebookId(facebookId) {
+    return userModel
+        .findOne({'facebook.id': facebookId});
 }

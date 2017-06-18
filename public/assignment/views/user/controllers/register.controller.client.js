@@ -3,7 +3,7 @@
         .module('WAM')
         .controller('registerController', registerController);
 
-    function registerController($location, userService) {
+    function registerController($location, userService, $rootScope) {
 
         var model = this;
 
@@ -19,6 +19,10 @@
         }
 
         function register(user) {
+            if(typeof user === 'undefined') {
+                model.error = 'username and password is required';
+                return;
+            }
 
             if((user.username === null && user.password === null) ||
                 (user.username === '' && user.password === '') ||
@@ -42,14 +46,30 @@
                 return;
             }
 
-            userService
-                .findUserByUsername(user.username)
-                .then(function (status) {
-                    if(!status)
-                        model.createUser(user);
-                    else
-                        model.error = "Sorry, this username is taken";
-                });
+
+
+            // userService
+            //     .findUserByUsername(user.username)
+            //     .then(function (status) {
+            //         if(!status) {
+                        userService
+                            .register(user)
+                            .then(function (response) {
+                                var user = response;
+                                $rootScope.currentUser = user;
+                                $location.url("/profile");
+                            })
+                            // .then(
+                            //     function(response) {
+                            //         var user = response.data;
+                            //         $rootScope.currentUser = user;
+                            //         $location.url("/user/"+user._id);
+                            //     }
+
+                //     }else
+                //         model.error = "Sorry, this username is taken";
+                // }
+                // );
         }
     }
 })();

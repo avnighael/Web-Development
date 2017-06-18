@@ -1,23 +1,23 @@
  <div class="container-fluid">
         <h1>Login</h1>
 
-        <div ng-show="model.message" class="alert alert-danger">{{model.message}}</div>
+        <div ng-show="model.error" class="alert alert-danger">{{model.error}}</div>
 
         <label for="username">Username</label>
-        <input ng-model="username"
+        <input ng-model="user.username"
                type="text"
                id="username"
                class="form-control"
                placeholder="john.smith1"/>
 
         <label for="password">Password</label>
-        <input ng-model="password"
+        <input ng-model="user.password"
                type="password"
                id="password"
                class="form-control"
                placeholder="jioid87291"/>
 
-        <a ng-click="model.login(username,password)"
+        <a ng-click="model.login(user)"
            class="btn btn-primary btn-block">
             Login
         </a>
@@ -26,5 +26,19 @@
            href="#!register">
             Register
         </a>
+
+        <h5 class="text-center"> Or </h5>
+
+         <a href="/auth/google" class="btn btn-danger btn-block">
+                 <span class="fa fa-google-plus"></span>
+                 Google
+         </a>
+
+
+         <a href="/auth/facebook" class="btn btn-primary btn-block">
+             <span class="fa fa-facebook"></span>
+             Facebook
+         </a>
+
      <div class = "ag-addBottomPadding"></div>
  </div>
