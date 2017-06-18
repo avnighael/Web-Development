@@ -13,11 +13,13 @@ userModel.deleteUser = deleteUser;
 userModel.findUserByGoogleId = findUserByGoogleId;
 userModel.findUserByFacebookId = findUserByFacebookId;
 
-    module.exports = userModel;
+module.exports = userModel;
 
 function createUser(user) {
     if(user.roles) {
         user.roles = user.roles.split(',');
+        console.log(user.roles);
+
     } else {
         user.roles = ['USER'];
     }

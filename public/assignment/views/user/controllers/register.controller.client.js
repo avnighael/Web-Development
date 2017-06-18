@@ -48,10 +48,10 @@
 
 
 
-            // userService
-            //     .findUserByUsername(user.username)
-            //     .then(function (status) {
-            //         if(!status) {
+            userService
+                .findUserByUsername(user.username)
+                .then(function (status) {
+                    if(!status) {
                         userService
                             .register(user)
                             .then(function (response) {
@@ -66,10 +66,10 @@
                             //         $location.url("/user/"+user._id);
                             //     }
 
-                //     }else
-                //         model.error = "Sorry, this username is taken";
-                // }
-                // );
+                    }else
+                        model.error = "Sorry, this username is taken";
+                }
+                );
         }
     }
 })();

@@ -52,7 +52,16 @@
             class="form-control"
             placeholder="Phone Number"/>
 
-        <a ng-click="model.register(user)"
+     <div class="form-group">
+         <label>Choose the type of user</label>
+         <select class="form-control" ng-model="user.roles" required>
+             <option value="" disabled selected>Type of user</option>
+             <option value="USER">User</option>
+             <option value="ADMIN">Admin</option>
+         </select>
+     </div>
+
+     <a ng-click="model.register(user)"
            class="btn btn-primary btn-block">
                 Register
         </a>

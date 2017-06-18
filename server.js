@@ -26,4 +26,4 @@ ourApp(app);
 
 require ("./test/app.js");
 
-app.listen(process.env.PORT || 4000);
+app.listen(process.env.PORT || 3000);

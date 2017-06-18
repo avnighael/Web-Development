@@ -32,7 +32,7 @@ var bcrypt = require("bcrypt-nodejs");
 
 app.post('/api/assignment/login', passport.authenticate('local'), login);
 app.get('/api/assignment/user/:userId',findUserById);
-app.get('/api/assignment/user/',isAdmin,findAllUsers);
+app.get('/api/assignment/users/',isAdmin,findAllUsers);
 app.get('/api/assignment/user',findUserByUsername);
 app.post('/api/assignment/user',isAdmin, createUser);
 app.put('/api/assignment/admin/user/:userId', isAdmin, updateUser);
@@ -88,7 +88,7 @@ function checkAdmin(req, res) {
 
 function register(req, res) {
     var newUser = req.body;
-    newUser.password = bcrypt.hashSync(newUser.password);
+    // newUser.password = bcrypt.hashSync(newUser.password);
     // console.log(newUser);
     // userModel
     //     .findUserByUsername(newUser.username)
@@ -98,8 +98,7 @@ function register(req, res) {
 
     userModel
         .createUser(newUser)
-        .then(
-            function(user){
+        .then(function(user){
                 if(user){
                     req.login(user, function(err) {
                         if(err) {
@@ -109,8 +108,10 @@ function register(req, res) {
                         }
                     });
                 }
-            }
-        );
+            }, function (err) {
+                // console.log(err);
+                return err;
+        });
 
 }
 
