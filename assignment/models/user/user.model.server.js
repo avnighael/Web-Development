@@ -44,15 +44,13 @@ function findUserByCredentials(username,password) {
 }
 
 function updateUser(userId, newUser) {
-    delete newUser.username;
-
     if(typeof newUser.roles === 'string') {
         newUser.roles = newUser.roles.split(',');
     }
 
     return userModel.update({_id: userId},
         {$set: {
-            userName: newUser.username,
+            username: newUser.username,
             firstName: newUser.firstName,
             lastName: newUser.lastName,
             email: newUser.email,

@@ -210,7 +210,7 @@ function updateUser(req, res) {
 function modifyUser(req, res) {
     var userId = req.params.userId;
     var user = req.body;
-
+    // console.log(user);
     userModel
         .updateUser(userId, user)
         .then(function (status) {
