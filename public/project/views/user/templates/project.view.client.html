@@ -1,10 +1,17 @@
 <div class="container-fluid">
             <div>
                 <div>
+                    <div ng-show="model.message"  class="alert alert-success" role="alert">
+                        {{model.message}}
+                    </div>
+                    <div ng-show="model.error"  class="alert alert-danger" role="alert">
+                        {{model.error}}
+                    </div>
+
                 <h3>{{model.proj.title}}</h3>
                 <p>by {{model.proj.organization.name}} , {{model.proj.country}}</p>
 
-                <div>
+                <div ng-if="model.user._id">
                         <!--ng-show="model.user.role == 'DONOR'">-->
                     <a ng-show="!model.saved"
                        ng-click="model.addToWishList(model.proj.id, model.proj)"
@@ -27,6 +34,10 @@
                 </span>
 
                     <div ng-if="model.donating == true" class="ag-donationTab">
+                        <div ng-show="!model.user._id"  class="alert alert-danger" role="alert">
+                            Kindly register/login to donate to this project
+                        </div>
+                        <span ng-show="model.user._id">
                         <span>
                         <label for="amount">How much do you want to contribute?</label>
                         <input type="text"
@@ -49,6 +60,7 @@
                         <div ng-show="model.error" class="text-danger">
                             Please enter amount
                         </div>
+                        </span>
                         </div>
                     </div>
                 </div>

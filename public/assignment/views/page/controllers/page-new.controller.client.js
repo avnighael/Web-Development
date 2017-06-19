@@ -28,12 +28,15 @@
             if(page === null || page === '' || typeof page === 'undefined') {
                 model.error = 'Page name is required';
                 return;
+            } else if(page.name === null || page.name === '' || typeof page.name === 'undefined') {
+                model.error = 'Page name is required';
+                return;
             } else {
                 pageService
                     .createPage(websiteId, page)
                     .then(function (page) {
                         model.pages = page;
-                        $location.url('/user/'+model.userId+'/website/'+websiteId+'/page');
+                        $location.url('/website/'+websiteId+'/page');
                     });
             }
 

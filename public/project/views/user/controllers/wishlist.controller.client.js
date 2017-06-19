@@ -3,21 +3,23 @@
         .module("Handouts")
         .controller("wishlistController", wishlistController);
 
-    function wishlistController(userService, $routeParams) {
+    function wishlistController(userService, $routeParams, currentUser) {
 
         var model = this;
 
-        var userId = $routeParams.userId;
+        var userId = currentUser._id;
         model.userId = userId;
+
+        model.user = currentUser;
 
         model.getWishList = getWishList;
 
         function init() {
             getWishList();
 
-            userService
-                .findUserById(model.userId)
-                .then(renderUser, userError);
+            // userService
+            //     .findUserById(model.userId)
+            //     .then(renderUser, userError);
         }
 
         init();

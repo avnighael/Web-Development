@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <span class="navbar-text pull-left">
-                <a href="#!/user/{{model.userId}}/website" class="navbar-link">
+                <a href="#!/website" class="navbar-link">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </span>
@@ -10,7 +10,7 @@
                     Pages
                 </a>
             <p class="navbar-text pull-right">
-                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/new" class="navbar-link">
+                <a href="#!/website/{{model.websiteId}}/page/new" class="navbar-link">
           <span class="glyphicon glyphicon-plus">
           </span>
                 </a>
@@ -38,7 +38,7 @@
     <li ng-repeat="page in model.pages" class="list-group-item">
         <div class="row">
             <div class="col-lg-5 col-md-4 col-xs-9">
-                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">
+                <a href="#!/website/{{model.websiteId}}/page/{{page._id}}/widget">
                      {{page.name}}
                 </a>
             </div>
@@ -46,7 +46,7 @@
                 {{page.description}}
             </div>
             <div class="col-xs-3 col-md-2 col-lg-1">
-                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
+                <a href="#!/website/{{model.websiteId}}/page/{{page._id}}">
                     <span class="glyphicon glyphicon-cog pull-right"></span>
                 </a>
             </div>

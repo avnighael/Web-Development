@@ -48,7 +48,7 @@
                         if (page != null) {
                             model.message = "Page updated successfully";
                             model.error = "";
-                            $location.url("/user/" + userId + "/website/" + websiteId + "/page");
+                            $location.url("/website/" + websiteId + "/page");
                         }
                         else {
                             model.error = "Unable to update the page";
@@ -62,7 +62,7 @@
                 pageService
                     .deletePage(pageId)
                     .then(function () {
-                        $location.url("/user/" + userId + "/website/" + websiteId + "/page");
+                        $location.url("/website/" + websiteId + "/page");
                     });
 
         }

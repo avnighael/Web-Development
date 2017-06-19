@@ -3,6 +3,45 @@
         .module('Handouts')
         .config(configuration);
 
+    function checkLoggedIn(userService, $q, $location) {
+        var deferred = $q.defer();
+
+        userService
+            .checkLoggedIn()
+            .then(function (user) {
+                if(user === '0') {
+                    deferred.reject();
+                    $location.url('/login');
+                } else {
+                    deferred.resolve(user);
+                }
+            });
+
+        return deferred.promise;
+
+    }
+
+    function checkCurrentUser(userService,$location, $q){
+        var deferred = $q.defer();
+        userService
+            .checkLoggedIn()
+            .then(function(response)
+                {
+                    var user = response;
+                    if (user === '0')
+                    {
+                        deferred.resolve(null);
+                    }
+                    else  {
+                        deferred.resolve(user);
+                    }
+                },
+                function(err){
+                    deferred.reject(user);
+                });
+        return deferred.promise;
+    }
+
     function configuration ($routeProvider) {
         $routeProvider
             .when('/', {
@@ -21,16 +60,22 @@
                 controllerAs: 'model'
             })
 
-            .when('/user/:userId', {
+            .when('/profile', {
                 templateUrl: 'views/user/templates/profile.view.client.html',
                 controller: 'profileController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
 
-            .when('/user/:userId/give', {
+            .when('/user/give', {
                 templateUrl: 'views/user/templates/give.view.client.html',
                 controller: 'giveController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
             })
 
             .when('/user/:userId/browseOrganizations', {
@@ -51,17 +96,23 @@
             //     controllerAs: 'model'
             // })
 
-            .when('/user/:userId/browseProjects/:projectId', {
+            .when('/browseProjects/:projectId', {
                 templateUrl: 'views/user/templates/project.view.client.html',
                 controller: 'ProjectController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
             })
 
 
-            .when('/user/:userId/wishlist', {
+            .when('/wishlist', {
                 templateUrl: 'views/user/templates/wishlist.view.client.html',
                 controller: 'wishlistController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
 
     }

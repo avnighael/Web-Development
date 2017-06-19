@@ -3,12 +3,16 @@
         .module("Handouts")
         .controller("ProjectController", ProjectController);
 
-    function ProjectController(userService, orgService, donationService, $location, $routeParams) {
+    function ProjectController(userService, orgService, donationService, currentUser, $routeParams) {
 
         var model = this;
 
-        var userId = $routeParams.userId;
-        model.userId = userId;
+        if(currentUser) {
+            var userId = currentUser._id;
+            model.userId = userId;
+        }
+
+        model.user = currentUser;
         var organizationId = $routeParams.organizationId;
         model.organizationId = organizationId;
         var projectId = $routeParams.projectId;
@@ -18,6 +22,7 @@
         model.addToWishList = addToWishList;
         model.removeFromWishList = removeFromWishList;
         model.wishListShow = wishListShow;
+        model.findProjectInWishlist = findProjectInWishlist;
 
         function init() {
             model.donating = false;
@@ -42,8 +47,10 @@
         function wishListShow() {
             userService
                 .findUserWishListProjectById(userId, projectId)
-                .then(function (status) {
-                    if(status)
+                .then(function (pId) {
+                    // console.log(pId);
+                    model.pId = pId;
+                    if(pId)
                         model.saved = true;
                     else
                         model.saved = false;
@@ -62,6 +69,7 @@
         }
         
         function addToWishList(projectId, project) {
+            // if()
             userService
                 .addToWishList(userId, projectId, project)
                 .then(function (response) {
@@ -69,7 +77,17 @@
                     model.unsaved = null;
                    // console.log(response);
                 },function (err) {
-                    console.log(err);
+                     console.log(err);
+                })
+        }
+        
+        function findProjectInWishlist(projectId) {
+            userService
+                .findProjectInWishlist(userId, projectId)
+                .then(function (pId) {
+                    model.pId = pId;
+                }, function (err) {
+                    return err;
                 })
         }
 
@@ -79,9 +97,18 @@
             donationService
                 .sendDonation(userId, projectId, donation)
                 .then(function (response) {
-                    console.log(response);
+                    model.message = "Thank you for donating to this project :)";
+                    model.saved = false;
+                    model.donating = false;
+
+                    removeFromWishList(projectId);
+                    // console.log(model.pId);
+                    // if(model.pId && model.pId === projectId) {
+                    //     removeFromWishList(projectId);
+                    // }
+
                 }, function (err) {
-                    console.log(err);
+                    model.error = "Uh oh! Something went wrong";
                 });
         }
 

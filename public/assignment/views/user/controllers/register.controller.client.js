@@ -59,13 +59,6 @@
                                 $rootScope.currentUser = user;
                                 $location.url("/profile");
                             })
-                            // .then(
-                            //     function(response) {
-                            //         var user = response.data;
-                            //         $rootScope.currentUser = user;
-                            //         $location.url("/user/"+user._id);
-                            //     }
-
                     }else
                         model.error = "Sorry, this username is taken";
                 }

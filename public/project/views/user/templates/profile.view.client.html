@@ -94,27 +94,31 @@
 
                 <li class="">
                     <a class=""
-                       >
+                       href="#!/user/give">
                         GIVE
                     </a>
                 </li>
 
                 <li class="">
-                    <a class="">
+                    <a class=""
+                    href="#!/wishlist">
                         <i class="fa fa-shopping-cart tnn-logo-navbar" aria-hidden="true"></i>
+                        WishList
                     </a>
                 </li>
 
-                <li class="">
-                    <a class="">
-                        <i class="fa fa-user tnn-logo-navbar" aria-hidden="true"></i>
-
-                    </a>
-                </li>
                 <li class="">
                     <a class=""
-                       >
-                        <i class="fa fa-sign-out" aria-hidden="true"></i> LOGOUT
+                    href="#!/profile">
+                        <i class="fa fa-user tnn-logo-navbar" aria-hidden="true"></i>
+                        <strong>{{model.user.firstName}}</strong>
+                    </a>
+                </li>
+
+                <li class="">
+                    <a class=""
+                    ng-click="model.logout()">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
                     </a>
                 </li>
             </ul>
@@ -200,14 +204,14 @@
                             </div>
 
                             <a class="btn btn-success btn-block"
-                               ng-click="model.updateUser(model.user)">Update
+                               ng-click="model.modifyUser(model.user)">Update
                             </a>
-                            <a ng-click="model.deleteUser(model.userId)"
+                            <a ng-click="model.unregister()"
                                class="btn btn-danger btn-block">
                                 Deactivate Account
                             </a>
                             <a class="btn btn-warning  btn-block"
-                               href="#!login">Logout
+                               ng-click="model.logout()">Logout
                             </a>
                         </form>
                     </div>

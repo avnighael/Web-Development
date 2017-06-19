@@ -42,7 +42,7 @@
 
         function widgetEditUrl(widget) {
             var url = 'views/widget/templates/editor/widget-'+widget.type.toLowerCase()+'-edit.view.client.html';
-            $location.url("/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget" + widget.type.toLowerCase());
+            $location.url("/website/" + websiteId + "/page/" + pageId + "/widget" + widget.type.toLowerCase());
         }
 
         function widgetUrl(widget) {

@@ -6,11 +6,17 @@
     function userService($http) {
 
         var api = {
+            login: login,
+            logout: logout,
+            checkLoggedIn: checkLoggedIn,
             createUser: createUser,
+            register: register,
+            modifyUser: modifyUser,
             findUserById: findUserById,
             findUserByUsername: findUserByUsername,
             findUserByCredentials: findUserByCredentials,
             deleteUser: deleteUser,
+            unregister: unregister,
             updateUser: updateUser,
             addToWishList: addToWishList,
             removeFromWishList: removeFromWishList,
@@ -20,8 +26,54 @@
         };
         return api;
 
-        function updateUser(userId, newUser) {
+
+        function register(user) {
+            var url = "/api/project/register";
+            return $http.post(url, user)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function modifyUser(userId, newUser) {
             var url = "/api/project/user/"+userId;
+            return $http.put(url, newUser)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function logout() {
+            var url = "/api/project/logout";
+            return $http.post(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function checkLoggedIn() {
+            var url = "/api/project/checkLoggedIn";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function login(username, password) {
+            var url = "/api/project/login";
+            var credentials = {
+                username: username,
+                password: password
+            };
+
+            return $http.post(url, credentials)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function updateUser(userId, newUser) {
+            var url = "/api/project/admin/user/"+userId;
             return $http.put(url, newUser)
                 .then(function (response) {
                     return response.data;
@@ -31,6 +83,15 @@
         function deleteUser(userId) {
             var url = "/api/project/user/"+userId;
             return $http.delete(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function unregister(user) {
+            // console.log(user);
+            var url = "/api/project/unregister";
+            return $http.post(url, user)
                 .then(function (response) {
                     return response.data;
                 });

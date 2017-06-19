@@ -26,7 +26,17 @@ var userSchema  = mongoose.Schema({
         "url":{type: String}, "width":{type:String}},
         url:{type:String},
     role: {type: String, enum: ['DONOR', 'ORGANIZATION', 'ADMIN'], default: 'DONOR'},
-    dateCreated:{type: Date, default: Date.now}
+    dateCreated:{type: Date, default: Date.now},
+
+    google: {
+        id:    String,
+        token: String
+    },
+
+    facebook: {
+        id:    String,
+        token: String,
+    }
 }, {collection: "user"});
 
 module.exports = userSchema;

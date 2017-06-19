@@ -42,7 +42,7 @@
             widgetService
                 .deleteWidget(widgetId)
                 .then(function () {
-                    $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget");
+                    $location.url("/website/"+websiteId+"/page/"+pageId+"/widget");
                 }, function () {
                     model.error = "Failed to delete the widget"
                 });
@@ -85,7 +85,7 @@
             widgetService
                 .updateWidget(widgetId, widget)
                 .then(function () {
-                    $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget");
+                    $location.url("/website/"+websiteId+"/page/"+pageId+"/widget");
                 }, function () {
                     model.error = "Invalid Widget. Failed to update widget"
                 });

@@ -31,29 +31,49 @@
 
                 <li class="">
                     <a class=""
-                       href="#!/user/{{model.user._id}}/give">
+                       href="#!/user/give">
                         GIVE
                     </a>
                 </li>
-                <li class="">
-                    <a class=""
-                       href="#!/search">
-                        JOIN
+
+                <li class=""
+                    ng-if = "model.user._id">
+                    <a class="">
+                        <i class="fa fa-shopping-cart tnn-logo-navbar" aria-hidden="true"></i>
                     </a>
                 </li>
 
-                <li class="">
-                    <a class="" href="#!/user/{{model.user._id}}">
-                        <i class="fa fa-user tnn-logo-navbar" aria-hidden="true"></i>
-                        <strong>{{model.user.firstName}}</strong>
+                <li class=""
+                    ng-if = "!model.user._id">
+                    <a class=""
+                    ng-click="model.login();">
+                        Login
                     </a>
                 </li>
-                <li class="">
+
+                <li class=""
+                    ng-if = "model.user._id">
+                    <a class="" href="#!/profile">
+                        <strong>{{model.user.username}}</strong>
+                        <i class="fa fa-user tnn-logo-navbar" aria-hidden="true"></i>
+                    </a>
+                </li>
+
+                <li class=""
+                    ng-if = "model.user._id">
                     <a class=""
-                       href="#!login">
+                       ng-click="model.logout()">
                         <i class="fa fa-sign-out" aria-hidden="true"></i> LOGOUT
                     </a>
                 </li>
+
+                <li class=""
+                    ng-if = "!model.user._id">
+                    <a class=""
+                       ng-click="model.register()">
+                    </a>
+                </li>
+
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -110,7 +130,7 @@
         <h4 ng-show="!model.error">Search Project Result</h4>
         <div ng-repeat="proj in model.projs">
             <div>
-                <a href="#!/user/{{model.userId}}/browseProjects/{{proj.id}}">
+                <a href="#!/browseProjects/{{proj.id}}">
                     <img class="img-responsive-home thumbnail"
                          ng-src="{{proj.imageLink}}"
                          alt="{{proj.title}}"/>

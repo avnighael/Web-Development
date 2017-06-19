@@ -14,9 +14,20 @@ userModel.removeFromWishList = removeFromWishList;
 userModel.findUserWishListProjectById = findUserWishListProjectById;
 userModel.getWishList = getWishList;
 
+userModel.findUserByGoogleId = findUserByGoogleId;
+userModel.findUserByFacebookId = findUserByFacebookId;
+
 module.exports = userModel;
 
 function createUser(user) {
+    if(user.role) {
+        user.role = user.role.split(',');
+        console.log(user.role);
+
+    } else {
+        user.role = ['DONOR'];
+    }
+
     return userModel.create(user);
 }
 
@@ -38,12 +49,18 @@ function findUserByCredentials(username,password) {
 
 function updateUser(userId, newUser) {
     delete newUser.username;
+
+    if(typeof newUser.role === 'string') {
+        newUser.role = newUser.role.split(',');
+    }
+
     return userModel.update({_id: userId},
         {$set: {
             firstName: newUser.firstName,
             lastName: newUser.lastName,
             email: newUser.email,
-            phone: newUser.phone
+            phone: newUser.phone,
+            role: newUser.role
         }
         });
 }
@@ -71,7 +88,17 @@ function findUserWishListProjectById(userId, projId) {
             return userModel
                 .find({projects: {$elemMatch: {projectId: projId}}})
                 .then(function (user) {
-                    return user[0];
+                     // console.log(user[0].projects);
+                      var projects = user[0].projects;
+
+                      for(var p in projects) {
+                          if(projects[p].projectId === projId) {
+                               return projects[p]._id;
+                              // console.log(projects[p].id);
+                          }
+                      }
+
+                    // return user[0];
                 }, function (err) {
                     return err;
                 })
@@ -107,4 +134,14 @@ function addToWishList(userId, projectId, proj) {
         },function (err) {
             return err;
         })
+}
+
+function findUserByGoogleId(googleId) {
+    return userModel
+        .findOne({'google.id': googleId});
+}
+
+function findUserByFacebookId(facebookId) {
+    return userModel
+        .findOne({'facebook.id': facebookId});
 }

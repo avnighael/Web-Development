@@ -80,46 +80,67 @@
                 }
             })
 
-            .when('/user/:userId/website/:websiteId/page', {
+            .when('/website/:websiteId/page', {
                 templateUrl: 'views/page/templates/page-list.view.client.html',
                 controller: 'pageListController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
 
-             .when('/user/:userId/website/:websiteId/page/new', {
+             .when('/website/:websiteId/page/new', {
                 templateUrl: 'views/page/templates/page-new.view.client.html',
                 controller: 'pageNewController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                 resolve: {
+                     currentUser: checkLoggedIn
+                 }
             })
 
-            .when('/user/:userId/website/:websiteId/page/:pageId', {
+            .when('/website/:websiteId/page/:pageId', {
                 templateUrl: 'views/page/templates/page-edit.view.client.html',
                 controller: 'pageEditController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
 
-            .when('/user/:userId/website/:websiteId/page/:pageId/widget', {
+            .when('/website/:websiteId/page/:pageId/widget', {
                 templateUrl: 'views/widget/templates/widget-list.view.client.html',
                 controller: 'widgetListController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
 
-            .when('/user/:userId/website/:websiteId/page/:pageId/widget/new', {
+            .when('/website/:websiteId/page/:pageId/widget/new', {
                 templateUrl: 'views/widget/templates/widget-chooser.view.client.html',
                 controller: 'widgetNewController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
 
-            .when('/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId', {
+            .when('/website/:websiteId/page/:pageId/widget/:widgetId', {
                 templateUrl: 'views/widget/templates/widget-edit.view.client.html',
                 controller: 'widgetEditController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
 
-            .when('/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId/search', {
+            .when('/website/:websiteId/page/:pageId/widget/:widgetId/search', {
                 templateUrl: 'views/widget/templates/widget-flickr-search.view.client.html',
                 controller: 'flickrController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
 
     }

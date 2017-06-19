@@ -10,9 +10,6 @@ passport.deserializeUser(deserializeUser);
 
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var googleConfig = {
-    // clientID     : GOOGLE_CLIENT_ID,
-    // clientSecret : GOOGLE_CLIENT_SECRET,
-    // callbackURL  : GOOGLE_CALLBACK_URL
     clientID     : process.env.GOOGLE_CLIENT_ID,
     clientSecret : process.env.GOOGLE_CLIENT_SECRET,
     callbackURL  : process.env.GOOGLE_CALLBACK_URL
@@ -88,7 +85,7 @@ function checkAdmin(req, res) {
 
 function register(req, res) {
     var newUser = req.body;
-    // newUser.password = bcrypt.hashSync(newUser.password);
+    newUser.password = bcrypt.hashSync(newUser.password);
     // console.log(newUser);
     // userModel
     //     .findUserByUsername(newUser.username)
@@ -117,15 +114,14 @@ function register(req, res) {
 
 function localStrategy(username, password, done) {
     userModel
-        .findUserByCredentials(username, password)
+        .findUserByUsername(username)
         .then(
             function(user) {
-                // if (user && bcrypt.compareSync(password, user.password)) {
-                //     return done(null, user);
-                // } else {
-                //     return done(null, false);
-                // }
-                return done(null, user);
+                if(user != null  && bcrypt.compareSync(password, user.password)) {
+                    return done(null, user);
+                } else {
+                    return done(null, false);
+                }
             },
             function(err) {
                 if (err) {

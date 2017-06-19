@@ -15,13 +15,6 @@
         model.unregister = unregister;
 
         function init() {
-            //model.user = userService.findUserById(model.userId);
-            // userService
-            //     .findUserById(model.userId)
-            //     .then(renderUser, userError);
-
-            // renderUser(currentUser);
-
 
         }
 

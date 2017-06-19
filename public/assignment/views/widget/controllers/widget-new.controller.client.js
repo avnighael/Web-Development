@@ -37,7 +37,7 @@
                 .then(function(widget){
                     console.log(widget._id);
                     model.widget = widget;
-                    $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widget._id);
+                    $location.url("/website/"+websiteId+"/page/"+pageId+"/widget/"+widget._id);
                 });
         }
 

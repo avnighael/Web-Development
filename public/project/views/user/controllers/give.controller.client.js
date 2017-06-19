@@ -3,12 +3,15 @@
         .module("Handouts")
         .controller("giveController", giveController);
 
-    function giveController(orgService, $location, $routeParams) {
+    function giveController(orgService, $location, currentUser, $routeParams) {
 
         var model = this;
 
-        var userId = $routeParams.userId;
-        model.userId = userId;
+        // var userId = currentUser._id;
+        // model.userId = userId;
+        model.user = currentUser;
+
+
         var organizationId = $routeParams.organizationId;
         model.organizationId = organizationId;
 
@@ -18,7 +21,7 @@
         model.getProjectsByCauseId = getProjectsByCauseId;
 
         function init() {
-
+            // console.log(model.user);
         }
 
         init();
@@ -49,8 +52,6 @@
                     model.error = "No results found";
                 });
         }
-
-
 
 
         function getProjectsByCountry(countryQuery) {

@@ -3,7 +3,7 @@
         .module('Handouts')
         .controller('registerController', registerController);
 
-    function registerController($location, userService) {
+    function registerController($location, userService, $rootScope) {
 
         var model = this;
 
@@ -12,9 +12,11 @@
 
         function createUser(user) {
                 userService
-                    .createUser(user)
-                    .then(function (newUser) {
-                        $location.url("/user/" + newUser._id);
+                    .register(user)
+                    .then(function (response) {
+                        var user = response;
+                        $rootScope.currentUser = user;
+                        $location.url("/profile");
                     });
         }
 
