@@ -49,7 +49,7 @@ app.get('/auth/google/callback',
         failureRedirect: '/assignment/#/login'
     }));
 
-app.get ('/auth/facebook', passport.authenticate('facebook', { scope : ['profile', 'email'] }));
+app.get ('/auth/facebook', passport.authenticate('facebook', { scope : ['email'] }));
 app.get('/auth/facebook/callback',
     passport.authenticate('facebook', {
         successRedirect: '/assignment/#/profile',
@@ -340,6 +340,7 @@ function facebookStrategy(token, refreshToken, profile, done) {
                     var facebookUser = {
                         firstName: profile.displayName.split(' ')[0],
                         lastName: profile.displayName.split(' ')[1],
+                        username: profile.displayName.split(' ')[1] + profile.displayName.split(' ')[0],
                         facebook: {
                             token: token,
                             id: profile.id
