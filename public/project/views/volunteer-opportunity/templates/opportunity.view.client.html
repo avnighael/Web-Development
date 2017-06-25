@@ -1,0 +1,135 @@
+<div class="top-content">
+    <div class="inner-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 text">
+                    <h1><strong>Volunteer Form</strong> </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 form-box ag-margin-left">
+                    <div class="form-top">
+                        <div class="form-top-left">
+                            <h3 ng-show="!model.opportunityId">Create Opportunity</h3>
+                            <h3 ng-show="model.opportunityId">Edit Opportunity</h3>
+                            <!--<p>Enter your username and password to log on:</p>-->
+                        </div>
+                        <div class="form-top-right">
+                            <i class="fa fa-pencil"></i>
+                        </div>
+                    </div>
+                    <div class="form-bottom">
+                        <div ng-show="model.error" class="alert alert-danger">
+                            {{model.error}}
+                        </div>
+                        <div ng-show="model.message" class="alert alert-success">
+                            {{model.message}}
+                        </div>
+                        <form role="form" action="" method="post" class="login-form">
+                            <div class="form-group">
+                                <label for="title">Title</label>
+                                <input ng-model="model.opportunity.title"
+                                       type="text"
+                                       id="title"
+                                       class="form-control"
+                                       placeholder="title"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea  class="form-control"
+                                           id="description"
+                                           name="description"
+                                           required
+                                           placeholder="Enter the description"
+                                           ng-model="model.opportunity.description">
+                                </textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="skills">Required skills</label>
+                                <textarea  class="form-control"
+                                           id="skills"
+                                           name="skills"
+                                           required
+                                           placeholder="Enter the skills required for volunteering"
+                                           ng-model="model.opportunity.skills">
+                                </textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="commitment">Commitment</label>
+                                <textarea  class="form-control"
+                                           id="commitment"
+                                           name="commitment"
+                                           required
+                                           placeholder="Enter the commitments required for volunteering"
+                                           ng-model="model.opportunity.commitment">
+                                </textarea>
+                            </div>
+
+                            <span class="form-group">
+                                <label for="startDate">Start Date</label>
+                                <input id="startDate"
+                                       type="datetime-local"
+                                       name="startDate"
+                                       class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+                                       ng-model="model.opportunity.startDate">
+                            </span>
+
+                            <span class="form-group">
+                                <label for="endDate">End Date</label>
+                                <input id="endDate"
+                                       type="datetime-local"
+                                       name="endDate"
+                                       class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+                                       ng-model="model.opportunity.endDate">
+                            </span>
+
+
+
+                            <div class="form-group">
+                                <label for="location">Location</label>
+                                <input ng-model="model.opportunity.location"
+                                       type="text"
+                                       id="location"
+                                       class="form-control"
+                                       placeholder="Enter the location of this opportunity"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="imageUrl">Image</label>
+                                <input type="url"
+                                       class="form-control"
+                                       id="imageUrl"
+                                       name="urlToImage"
+                                       placeholder="Enter the URL of an image"
+                                       ng-model="model.opportunity.imageUrl">
+                            </div>
+
+                            <a ng-show="!model.opportunityId"
+                               ng-click="model.createOpportunity(model.opportunity)"
+                               class="btn btn-primary btn-block">
+                                Create
+                            </a>
+
+                            <a ng-show="model.opportunityId"
+                               ng-click="model.updateOpportunity(model.opportunity)"
+                               class="btn btn-primary btn-block">
+                                Update
+                            </a>
+
+                            <a ng-show="model.opportunityId"
+                               ng-click="model.deleteOpportunity()"
+                               class="btn btn-danger btn-block">
+                                Delete
+                            </a>
+                            <a class="btn btn-warning  btn-block"
+                               href="#!/organization/opportunity/all">Cancel</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -10,7 +10,7 @@ body {
     font-weight: 300;
     color: #888;
     line-height: 30px;
-    text-align: center;
+    /*text-align: center;*/
 }
 
 strong { font-weight: 500; }
@@ -36,7 +36,7 @@ h3 {
     line-height: 30px;
 }
 
-img { max-width: 100%; }
+/*img { max-width: 100%; }*/
 
 ::-moz-selection { background: #4aaf51; color: #fff; text-shadow: none; }
 ::selection { background: #4aaf51; color: #fff; text-shadow: none; }
@@ -271,6 +271,20 @@ button.btn:focus { outline: 0; opacity: 0.6; background: #4aaf51; color: #fff; }
 button.btn:active:focus, button.btn.active:focus { outline: 0; opacity: 0.6; background: #4aaf51; color: #fff; }
 
 
+@media (min-width: 768px) {
+    .col-sm-6 {
+        width: 70%;
+    }
+}
+
+@media (min-width: 768px) {
+    .col-sm-offset-3 {
+        margin-left: 19%;
+        margin-left: 19%;
+    }
+}
+
+
 .jumbotron {
     left: 0px;
     top: 0px;
@@ -296,7 +310,7 @@ button.btn:active:focus, button.btn.active:focus { outline: 0; opacity: 0.6; bac
 }
 
 .ag-margin-left {
-    padding-left: 30px;
+    padding-left: 35px;
 }
 
 .ag-menu-navbar {
@@ -340,13 +354,189 @@ button.btn:active:focus, button.btn.active:focus { outline: 0; opacity: 0.6; bac
 
 .ag-pushBody {
     padding-top: 70px;
+    position: relative;
 }
 
-.input-group {
-    padding-top: 70px;
+.ag-pushBanner {
+    padding-top: 50px;
 }
+
+/*.input-group {*/
+    /*padding-top: 70px;*/
+/*}*/
 
 .ag-donationTab {
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.ag-comments-heading{
+    text-align: left;
+    font-size: large;
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+
+.ag-comments-section {
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    border-bottom: 1px solid #EEE;
+    padding-bottom: 10px;
+}
+
+.ag-project-comments-display {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 2px;
+    background-color: #EEE;
+}
+
+.ag-project-comments-display a{
+    font-weight: 900;
+}
+
+.ag-comment-delete > a {
+    font-size: 10px;
+    padding: 5px;
+}
+
+.ag-comment-box {
+    padding-top: 0px;
+    padding-bottom: 20px;
+}
+
+.ag-addBottomPadding {
+    padding-bottom: 60px;
+}
+.ag-left-alignment {
+    text-align: left;
+}
+
+#top-content .inner-bg .container .row .text h1 {
+    text-align: center;
+}
+
+.ag-BannerBg {
+    background-image: url(./img/backgrounds/banner.jpg);
+    width:100%;
+    height:100%;
+    height:calc(100% - 1px);
+    background-size:cover;
+}
+
+.wide img {
+    width:100%;
+}
+
+.logo {
+    color:#fff;
+    font-weight:800;
+    font-size:14pt;
+    padding:25px;
+    text-align:center;
+}
+
+/*user home*/
+/* Tab Navigation */
+.nav-tabs {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+.nav-tabs > li > a {
+    background: #DADADA;
+    border-radius: 0;
+    box-shadow: inset 0 -8px 7px -9px rgba(0,0,0,.4),-2px -2px 5px -2px rgba(0,0,0,.4);
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover {
+    background: #F5F5F5;
+    box-shadow: inset 0 0 0 0 rgba(0,0,0,.4),-2px -3px 5px -2px rgba(0,0,0,.4);
+}
+
+/* Tab Content */
+.tab-pane {
+    background: #F5F5F5;
+    box-shadow: 0 0 4px rgba(0,0,0,.4);
+    border-radius: 0;
+    text-align: center;
+    padding: 10px;
+}
+
+/*All opportunities*/
+
+.ag-myOpportunities-thumbnail {
+    width: 150px;
+    float: left;
+    position: relative;
+    min-height: 150px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-transition: all .5s ease 0s;
+    -o-transition: all .5s ease 0s;
+    transition: all .5s ease 0s
+}
+
+.ag-myOpp-content {
+    padding-left: 230px;
+    padding-right: 10px
+}
+
+@media (max-width: 767px) {
+     .ag-myOpp-content h4 {
+        font-size: 16px
+    }
+}
+
+.ag-myOpp-content .ag-date {
+    font-size: 1.125em;
+    line-height: 30px;
+    color: #fff;
+    text-transform: uppercase
+}
+
+@media (max-width: 767px) {
+     .ag-myOpp-content .ag-date {
+        font-size: 16px
+    }
+}
+
+.ag-myOpp-content .ag-date i {
+    color: #d91f26;
+    margin-right: 10px
+}
+
+.ag-myOpp-content .ag-location {
+    margin-left: 38px;
+    font-size: 1.125em;
+    line-height: 30px;
+    color: #fff;
+    text-transform: uppercase
+}
+
+@media (max-width: 767px) {
+    .ag-myOpp-content .ag-location {
+        font-size: 16px;
+        display: block;
+        margin-left: 0
+    }
+}
+
+.ag-myOpp-content .ag-location i{
+    color: #d91f26;
+    margin-right: 10px
+}
+
+.ag-myOpportunities-list {
+    position: relative;
+    background: rgba(136, 136, 136, 0.31);
+    border-top: 1px solid #1c1c1c;
+    margin-left: 40px;
+    margin-right: 40px;
+    -webkit-transition: all .3s ease 0s;
+    -o-transition: all .3s ease 0s;
+    transition: all .3s ease 0s;
+    margin-bottom: 5px;
+    height: 150px;
 }

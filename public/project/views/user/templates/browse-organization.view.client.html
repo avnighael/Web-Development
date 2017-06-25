@@ -4,7 +4,7 @@
         <!--{{model.orgs}}-->
         <div ng-repeat="org in model.orgs">
             <div>
-                <a href="#!/user/{{model.userId}}/browseOrganizations/{{org.id}}">
+                <a href="#!/browseOrganizations/{{org.id}}">
                     <img class="img-responsive-home thumbnail"
                          ng-src="{{org.logoUrl}}"
                          alt="{{org.name}}"/>
@@ -13,6 +13,7 @@
 
                 <p>Total Projects: {{org.totalProjects}}</p>
                 <p>Active Projects: {{org.activeProjects}}</p>
+                <hr/>
 
             </div>
         </div>

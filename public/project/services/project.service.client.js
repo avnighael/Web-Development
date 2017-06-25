@@ -4,7 +4,6 @@
         .service('orgService', orgService);
 
     function orgService($http) {
-        //this.authenticateAPI = authenticateAPI;
         this.getOrganization = getOrganization;
         this.getOrganizationDetailsById = getOrganizationDetailsById;
         this.getProjectsByKeyWords = getProjectsByKeyWords;
@@ -13,8 +12,51 @@
         this.getProjectsByCauseId = getProjectsByCauseId;
         this.getCauseID = getCauseID;
         this.sendDonation = sendDonation;
+        this.postComment = postComment;
+        this.getCommentsByProjectId = getCommentsByProjectId;
+        this.deleteComment = deleteComment;
+        this.getProjectsByOrgId = getProjectsByOrgId;
 
         var key = "7905ffa8-4842-42f9-98c2-6fbd35d08cb9";
+
+        function getProjectsByOrgId(orgId) {
+            var urlBase = "https://api.globalgiving.org/api/public/projectservice/organizations/ORGId/projects?api_key=APIKEY";
+            var url = urlBase
+                .replace("ORGId", orgId)
+                .replace("APIKEY", key);
+
+            return $http.get(url)
+                .then(function (response) {
+                    return response;
+                });
+        }
+
+        function deleteComment(commentId) {
+            var url = "/api/project/comment/"+commentId+"/delete";
+            return $http.delete(url)
+                .then(function (response) {
+                    // console.log(response);
+                    return response.data;
+                });
+        }
+
+        function getCommentsByProjectId(projectId) {
+            var url = "/api/project/"+projectId+"/comments";
+            return $http.get(url)
+                .then(function (response) {
+                     // console.log(response);
+                    return response.data;
+                });
+        }
+        
+        function postComment(projectId, comment) {
+            var url = "/api/project/"+projectId+"/comment";
+            return $http.post(url, comment)
+                .then(function (response) {
+                    // console.log(response);
+                    return response.data;
+                });
+        }
 
         function sendDonation(proj, amount) {
             var url = "/api/project/donate";

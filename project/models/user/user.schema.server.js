@@ -20,7 +20,13 @@ var userSchema  = mongoose.Schema({
         country: String,
         causeName: String,
         imageLink: String}],
-    totalProjects: Number,  //For non-profit organization
+    favourites: [{                  //for donors
+        projectId: String,
+        title: String,
+        organization: String,
+        country: String,
+        causeName: String,
+        imageLink: String}],
     cause: String,  //For non-profit organization
     profilePic:{
         "url":{type: String}, "width":{type:String}},

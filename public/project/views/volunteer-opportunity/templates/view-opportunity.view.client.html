@@ -1,0 +1,119 @@
+<nav class="navbar navbar-default navbar-fixed-top ag-menu-navbar">
+    <div class="container-fluid ">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/">
+                <i class="" aria-hidden="true"></i>
+                <strong>HandOuts</strong>
+            </a>
+
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="">
+
+                    <form class="" action="">
+                        <input class="input_text grid-9 grid-xl-10 ag-search"
+                               type="text"
+                               placeholder="I care about..."
+                               name="q"
+                               title="Search for nonprofits">
+                        <a class="glyphicon glyphicon-search"></a>
+                    </form>
+                </li>
+
+                <li class="">
+                    <a ng-if="model.currentUser.role === 'DONOR'"
+                       class=""
+                       href="#!/user/give">
+                        Give
+                    </a>
+
+                    <a ng-if="model.currentUser.role === 'ORGANIZATION'"
+                       class=""
+                       href="#!/organization/projects">
+                        Projects
+                    </a>
+                </li>
+
+                <li class="">
+                    <a class=""
+                       href="#!/profile">
+                        <i class="fa fa-user tnn-logo-navbar" aria-hidden="true"></i>
+                        <strong ng-if="model.user.username">{{model.currentUser.username}}</strong>
+                        <strong ng-if="!model.user.username">{{model.currentUser.firstName}}</strong>
+                    </a>
+                </li>
+
+                <li class="">
+                    <a class=""
+                       ng-click="model.logout()">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+                    </a>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+
+<div class="container-fluid ag-pushBody">
+    <div>
+        <div ng-show="model.message"  class="alert alert-success alert-dismissable fade in" role="alert">
+            <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{model.message}}
+        </div>
+        <div ng-show="model.error"  class="alert alert-danger alert-dismissable fade in" role="alert">
+            <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{model.error}}
+        </div>
+
+        <h3>{{model.opportunity.title}}</h3>
+
+        <div ng-if="model.currentUser.role === 'DONOR'">
+            <a ng-click="model.addVolunteer()"
+               class="btn btn-success btn-block">
+                I want to help
+            </a>
+        </div>
+
+        <div ng-if="model.currentUser.role === 'DONOR'">
+            <div class="ag-donationTab">
+                <div ng-show="!model.currentUser._id"  class="alert alert-danger" role="alert">
+                    Kindly register/login to volunteer for this project
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <img class="img-responsive-home ag-fullWidth"
+         ng-src="{{model.opportunity.imageUrl}}"
+         alt="{{model.opportunity.title}}"/>
+    <div>
+        <b>About</b>
+        <p>{{model.opportunity.description}}</p>
+    </div>
+    <hr/>
+    <div>
+        <div>Skills:
+            <div>{{model.opportunity.skills}}</div>
+        </div> &nbsp; &nbsp;
+        <div>Requirements & Commitment:
+            <div>{{model.opportunity.commitment}}</div> &nbsp; &nbsp;
+    </div>
+
+    <!--<p>by {{org.organization.name}}</p>-->
+
+
+</div>
+
+<div class = "ag-addBottomPadding"></div>
+</div>

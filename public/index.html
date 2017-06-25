@@ -21,7 +21,7 @@
 <div class="navbar navbar-inverse navbar-fixed-top ag-navbar" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle .ag-navButton" data-toggle="collapse" data-target=".navbar-collapse">
+            <button type="button" class="navbar-toggle ag-navButton ag-noScroll" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -30,27 +30,27 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="hvr-shrink"><a href="#about">
+                <li class="hvr-shrink"><a href="#about-section" data-toggle="collapse" data-target=".navbar-collapse" class="ag-noScroll">
                     <img src="https://maxcdn.icons8.com/Color/PNG/24/Clothing/glasses-24.png" title="Glasses" class="nav-menu-icon">
                     About
                 </a></li>
-                <li class="hvr-shrink"><a href="#education">
-                    <img src="https://maxcdn.icons8.com/Color/PNG/24/Business/graduation_cap-24.png" title="Graduation Cap" class="nav-menu-icon">
-                    Education
-                </a></li>
-                <li class="hvr-shrink"><a href="#skills">
+                <li class="hvr-shrink"><a href="#skills-section" data-toggle="collapse" data-target=".navbar-collapse" class="ag-noScroll">
                     <img src="https://maxcdn.icons8.com/Color/PNG/24/Programming/code-24.png" title="Code" class="nav-menu-icon">
                     Skills
                 </a></li>
-                <li class="hvr-shrink"><a href="#project">
+                <li class="hvr-shrink"><a href="#projects-section"data-toggle="collapse" data-target=".navbar-collapse" class="ag-noScroll">
                     <img src="https://maxcdn.icons8.com/Color/PNG/24/Business/work-24.png" title="Work" class="nav-menu-icon">
                     Project
                 </a></li>
-                <li class="hvr-shrink"><a href="#experience">
+                <li class="hvr-shrink"><a href="#experience-section" data-toggle="collapse" data-target=".navbar-collapse" class="ag-noScroll">
                     <img src="https://maxcdn.icons8.com/Color/PNG/24/Business/briefcase-24.png" title="Briefcase" class="nav-menu-icon">
                     Experience
                 </a></li>
-                <li class="hvr-shrink"><a href="#contact">
+                <li class="hvr-shrink"><a href="#education-section" data-toggle="collapse" data-target=".navbar-collapse" class="ag-noScroll">
+                    <img src="https://maxcdn.icons8.com/Color/PNG/24/Business/graduation_cap-24.png" title="Graduation Cap" class="nav-menu-icon">
+                    Education
+                </a></li>
+                <li class="hvr-shrink"><a href="#contact-section" data-toggle="collapse" data-target=".navbar-collapse" class="ag-noScroll">
                     <img src="https://maxcdn.icons8.com/Color/PNG/24/Messaging/message-24.png" title="Message" class="nav-menu-icon"">
                     Contact
                 </a></li>
@@ -64,13 +64,137 @@
 <header>
     <div class="jumbotron bgimg-header">
         <div class="w3-display-middle" style="white-space:nowrap;">
-            <span class="ag-hide">Avni Ghael</span>
+            <span class="ag-hide myName">Avni Ghael</span>
             <span class="w3-center w3-padding-large w3-animate-opacity ag-xlarge p2"> </span>
 
 
         </div>
     </div>
 </header>
+
+<section id="about-section" class="section">
+    <div class="section-wrapper">
+      <div class="fade-in text-wrap">
+          <h1 class="section-heading">
+              Hey, I am Avni.
+          </h1>
+
+          <h3 class="section-subheading">
+            I am a detail-oriented, quality-focused and design-minded software engineer passionate about becomng a data scientist.
+          </h3>
+          <hr/>
+
+          <div class="about-wrapper">
+              <img class="myPic" src="./vendor/image/myPic.jpg" alt="avni's pic">
+
+              <div class="about-text-wrapper">
+                <p class="about-me">
+                    <strong>I am a Graduate Student at Northeastern University </strong>
+                    in Boston studying Computer Science and majoring in Data Science.
+                </p>
+              </div>
+          </div>
+      </div>
+    </div>
+</section>
+
+<section id="skills-section" class="section skills-bg">
+    <div class="section-wrapper">
+        <div class="fade-in">
+            <h1 class="section-heading">Skills</h1>
+            <hr/>
+
+            <!--console-->
+            <div id="skills-code">
+                <div class="console">
+                   >  Avni.skills.programming
+                    <br/>
+                    <span class="ans">
+                        &nbsp;
+                        => ["C", "C++", "Java", "Python", "JavaScript", "HTML5", "CSS3", "PHP", "JQuery"]
+                        <br/>
+                        <br/>
+                    </span>
+
+                    >  Avni.skills.tools
+                    <br/>
+                    <span class="ans">
+                        &nbsp;
+                        Tools and Technologies
+                        <br/>
+                        &nbsp; &nbsp;
+                        => ["Git + Github", "Putty", "Wordpress", "WP-CLI", "Node.js", "AngularJS", "Express", "Heroku"]
+                        <br/>
+                        <br/>
+                    </span>
+
+                    >  Avni.skills.database
+                    <br/>
+                    <span class="ans">
+                        &nbsp;
+                        => ["MySQL", "MongoDB", "XML", "JSON", "Oracle", "SQL Server", "PostgreSQL", "Amazon SimpleDB", "MS Access" ]
+                        <br/>
+                        <br/>
+                    </span>
+
+                    >  Avni.skills.DatabaseTools
+                    <br/>
+                    <span class="ans">
+                        &nbsp;
+                        Database Tools
+                        <br/>
+                        &nbsp; &nbsp;
+                        => ["pgAdmin4", "MySQLWorkbench", "Tableau", "Oracle Database", "phpMyAdmin"]
+                        <br/>
+                        <br/>
+                    </span>
+
+                    >  Avni.skills.software
+                    <br/>
+                    <span class="ans">
+                        &nbsp;
+                        => ["MS Visual Studio", "Eclipse", "NetBeans", "Code Igniter(MVC)", "WebStorm"]
+                        <br/>
+                        <br/>
+                    </span>
+
+                    >  Avni.skills.systems
+                    <br/>
+                    <span class="ans">
+                        &nbsp;
+                        => ["Linux", "Windows 2000/XP/Vista/7/8", "Mac OS X"]
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section id="projects-section" class="section">
+    <div class="section-wrapper">
+        <div class="fade-in text-wrap">
+            <h1 class="section-heading">
+                Projects
+            </h1>
+        </div>
+    </div>
+</section>
+
+<section id="experience-section" class="section">
+    <div class="section-wrapper">
+        <div class="fade-in text-wrap">
+            <h1 class="section-heading">
+                Work Experience
+            </h1>
+        </div>
+    </div>
+</section>
 
     <h2>Required links</h2>
     <ul>
@@ -112,15 +236,16 @@
     };
 
     $(document).ready(function(){
-        changeText($("span"),$(".p2"),150); //  150 = the Delay time in milliseconds between strokes.
+        changeText($(".myName"),$(".p2"),150); //  150 = the Delay time in milliseconds between strokes.
         //clearInterval(Otimer);
     });
 
-    $(".navbar-toggle").click(function() {
+    $(".ag-noScroll").click(function() {
         if ($('#myCollapsible').collapse) {
             return $("body").toggleClass("no-scroll");
         }
     });
+
 
 </script>
 

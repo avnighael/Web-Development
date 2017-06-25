@@ -86,6 +86,7 @@
                                         Donor
                                     </label>
                                 </div>
+
                                 <div class="radio form-group">
                                     <label>
                                         <input type="radio"
@@ -104,7 +105,7 @@
                                            id="userRole"
                                            required
                                            name="organization"
-                                           ng-model="model.user.organization"
+                                           ng-model="user.organization"
                                            placeholder="Enter your organization"/>
 
                                     <label for="regNum">Registration Number</label>
@@ -113,10 +114,10 @@
                                            id="regNum"
                                            required
                                            name="regNum"
-                                           ng-model="model.user.registrationNumber"
-                                           placeholder="Enter your valid registration number"/>
+                                           ng-model="user.registrationNumber"
+                                           placeholder="Enter the valid registration number of your organization"/>
                                     <div ng-show="form.$submitted || form.organization.$touched"
-                                         class="tnn-validation-error-div">
+                                         class="ag-validation-error-div">
                                         <div ng-show="model.error" class="text-danger">
                                             Please enter a registration number
                                         </div>
@@ -143,7 +144,7 @@
                                    placeholder="Phone Number"/>
                             </div>
 
-                        <a ng-click="model.register(user)"
+                        <a ng-click="model.register(user, model.user.role)"
                            class="btn btn-primary btn-block">
                             Register
                         </a>

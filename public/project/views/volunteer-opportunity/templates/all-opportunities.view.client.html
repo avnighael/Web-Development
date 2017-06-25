@@ -1,0 +1,130 @@
+<nav class="navbar navbar-default navbar-fixed-top ag-menu-navbar">
+    <div class="container-fluid ">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/">
+                <i class="" aria-hidden="true"></i>
+                <strong>HandOuts</strong>
+            </a>
+
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+
+                <!--<li class="">-->
+
+                    <!--<form class="" action="">-->
+                        <!--<input class="input_text grid-9 grid-xl-10 ag-search"-->
+                               <!--type="text"-->
+                               <!--placeholder="I care about..."-->
+                               <!--name="q"-->
+                               <!--title="Search for nonprofits">-->
+                        <!--<a class="glyphicon glyphicon-search"></a>-->
+                    <!--</form>-->
+                <!--</li>-->
+
+                <li class="">
+                    <a ng-if="model.currentUser.role === 'DONOR'"
+                       class=""
+                       href="#!/user/give">
+                        Give
+                    </a>
+
+                    <a ng-if="model.currentUser.role === 'ORGANIZATION'"
+                       class=""
+                       href="#!/organization/projects">
+                        Projects
+                    </a>
+                </li>
+
+                <li>
+                    <a ng-if="model.currentUser.role === 'ORGANIZATION'"
+                       class=""
+                       href="#!/organization/opportunity/all">
+                        Opportunities
+                    </a>
+                </li>
+
+                <li class="">
+                    <a class=""
+                       href="#!/profile">
+                        <i class="fa fa-user tnn-logo-navbar" aria-hidden="true"></i>
+                        <strong ng-if="model.currentUser.username">{{model.currentUser.username}}</strong>
+                        <strong ng-if="!model.currentUser.username">{{model.currentUser.firstName}}</strong>
+                    </a>
+                </li>
+
+                <li class="">
+                    <a class=""
+                       ng-click="model.logout()">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+                    </a>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container-fluid ag-pushBody">
+
+    <div ng-show="model.opportunities" class="ag-myOpportunities">
+        <h2>Opportunities</h2>
+        <div ng-show="model.currentUser.role === 'ORGANIZATION' && model.opportunities.length == 0" class="alert alert-info">
+            <p>No opportunities created yet</p>
+        </div>
+        <div ng-show="model.currentUser.role === 'DONOR' && model.opportunities.length == 0" class="alert alert-info">
+            <p>Sorry, there are no opportunities created yet</p>
+        </div>
+        <div ng-repeat="opp in model.opportunities" class="ag-myOpportunities-list">
+                   <div>
+                    <img  class="ag-myOpportunities-thumbnail" ng-src="{{opp.imageUrl || '../../../project/css/img/backgrounds/banner.jpg'}} ">
+                </div>
+
+                <div class="ag-myOpp-content">
+                            <h4><a href="#!/organization/opportunity/{{opp._id}}">{{opp.title}}</a></h4>
+                            <div style="color: grey">
+                                <span class="ag-date">
+                                    <i class="fa fa-clock-o"></i>
+                                    <span class="date-start dtstart" style="color: grey">
+                                         {{opp.startDate | date : "MMMM dd-h:mm a"}}
+                                    </span>
+                                    -
+                                    <span class="date-end dtend" style="color: grey">
+                                         {{opp.endDate | date : "MMMM dd-h:mm a"}}
+                                    </span>
+                                </span>
+
+                                 <span class="ag-location" style="color: grey">
+                                    <i class="fa fa-map-marker"></i>
+                                    {{opp.location}}
+                                </span>
+
+                                <a ng-show ="model.currentUser.role === 'ORGANIZATION'"
+                                   style="font-size: large"
+                                    class="glyphicon glyphicon-remove pull-right"
+                                    ng-click="model.deleteOpportunity(opp._id)">
+                                </a>
+
+                                <a  ng-show ="model.currentUser.role === 'ORGANIZATION'"
+                                    style="font-size: large"
+                                    class="glyphicon glyphicon-cog pull-right"
+                                    href="#!/organization/project/{{opp.projectId}}/opportunity/{{opp._id}}/edit">
+                                </a>
+                            </div>
+
+                    <div class="ag-excerpt">
+                        <p style="color: grey"
+                           ng-bind-html="opp.description | excerpt:300">
+                        </p>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class = "ag-addBottomPadding"></div>
+</div>

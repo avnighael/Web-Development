@@ -10,6 +10,7 @@
             logout: logout,
             checkLoggedIn: checkLoggedIn,
             createUser: createUser,
+            checkAdmin: checkAdmin,
             register: register,
             modifyUser: modifyUser,
             findUserById: findUserById,
@@ -22,10 +23,55 @@
             removeFromWishList: removeFromWishList,
             findUserWishListProjectById: findUserWishListProjectById,
             getWishlist: getWishlist,
-            sendDonation: sendDonation
-        };
+            sendDonation: sendDonation,
+            follow: follow,
+            unfollow: unfollow,
+            addToFavourites: addToFavourites,
+            removeFromFavourites: removeFromFavourites,
+    };
         return api;
 
+        function removeFromFavourites(userId, projectId) {
+            var url = "/api/project/user/"+userId+"/project/"+projectId+"/favourites";
+            return $http.delete(url)
+                .then(function (response) {
+                    // console.log(response);
+                    return response.data;
+                });
+        }
+
+        function addToFavourites(userId, projectId, project) {
+            var url = "/api/project/user/"+userId+"/project/"+projectId+"/favourites";
+            return $http.put(url, project)
+                .then(function (response) {
+                    // console.log(response);
+                    return response.data;
+                });
+        }
+        
+        function follow(userIdToFollow, currentUserId) {
+            var url = "/api/project/user/"+currentUserId+"/follow/"+userIdToFollow;
+            return $http.put(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function unfollow(userIdToUnfollow, currentUserId) {
+            var url = "/api/project/user/"+currentUserId+"/unfollow/"+userIdToUnfollow;
+            return $http.put(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function checkAdmin() {
+            var url = "/api/project/checkAdmin";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
 
         function register(user) {
             var url = "/api/project/register";
@@ -117,6 +163,7 @@
             var url = "/api/project/user/"+userId;
             return $http.get(url)
                 .then(function (response) {
+                    console.log(response.data);
                     return response.data;
                 });
         }
@@ -151,7 +198,7 @@
             var url = "/api/project/user/"+userId+"/project/"+projectId;
             return $http.delete(url)
                 .then(function (response) {
-                    console.log(response);
+                    // console.log(response);
                     return response.data;
                 });
         }
@@ -160,7 +207,7 @@
             var url = "/api/project/user/"+userId+"/project/"+projectId;
             return $http.put(url, project)
                 .then(function (response) {
-                    console.log(response);
+                    // console.log(response);
                     return response.data;
                 });
         }
@@ -169,7 +216,7 @@
             var url = "/api/project/user/"+userId+"/project/"+projectId+"/donate";
             return $http.post(url, amount)
                 .then(function (response) {
-                    console.log(response);
+                    // console.log(response);
                     return response.data;
                 });
         }

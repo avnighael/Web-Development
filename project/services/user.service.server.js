@@ -6,9 +6,6 @@ var bcrypt = require("bcrypt-nodejs");
 
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var googleConfig = {
-    // clientID     : GOOGLE_CLIENT_ID,
-    // clientSecret : GOOGLE_CLIENT_SECRET,
-    // callbackURL  : GOOGLE_CALLBACK_URL
     clientID     : process.env.GOOGLE_CLIENT_ID,
     clientSecret : process.env.GOOGLE_CLIENT_SECRET,
     callbackURL  : process.env.GOOGLE_CALLBACK_URL
@@ -34,6 +31,7 @@ app.get('/api/project/checkLoggedIn',checkLoggedIn );
 app.get('/api/project/user/:userId',findUserById);
 app.post('/api/project/login',passport.authenticate('local'), login);
 app.post('/api/project/register', register);
+app.post('/api/project/checkAdmin', checkAdmin);
 app.post('/api/project/logout', logout);
 app.get('/api/project/user',findUser);
 app.post('/api/project/user',createUser);
@@ -46,6 +44,11 @@ app.delete('/api/project/user/:userId/project/:projectId', removeFromWishList);
 app.get('/api/project/user/:userId/project/:projectId', findUserWishListProjectById);
 app.get('/api/project/user/:userId/wishlist', getWishList);
 // app.post('/api/project/user/:userId/project/:projectId/donate', sendDonation);
+app.put("/api/project/user/:userId/follow/:userIdToFollow",follow);
+app.put("/api/project/user/:userId/unfollow/:userIdToUnfollow",unfollow);
+app.put('/api/project/user/:userId/project/:projectId/favourites',addToFavourites);
+app.delete('/api/project/user/:userId/project/:projectId/favourites',removeFromFavourites);
+
 
 app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
 app.get('/auth/google/callback',
@@ -63,7 +66,7 @@ app.get('/auth/facebook/callback',
 
 function register(req, res) {
     var newUser = req.body;
-    // newUser.password = bcrypt.hashSync(newUser.password);
+    newUser.password = bcrypt.hashSync(newUser.password);
     // console.log(newUser);
 
     userModel
@@ -94,6 +97,14 @@ function unregister(req, res) {
             req.logout();
             res.sendStatus(200);
         });
+}
+
+function checkAdmin(req, res) {
+    if(req.isAuthenticated() && req.user.role.indexOf('ADMIN') > -1) {
+        res.json(req.user);
+    } else {
+        res.send('0');
+    }
 }
 
 function logout(req, res) {
@@ -190,6 +201,33 @@ function addToWishList(req, res) {
         });
 }
 
+function removeFromFavourites(req, res) {
+    var userId = req.params.userId;
+    var projectId = req.params.projectId;
+
+    userModel
+        .removeFromFavourites(userId, projectId)
+        .then(function (response) {
+            res.json(response);
+        },function (err) {
+            res.sendStatus(404);
+        });
+}
+
+function addToFavourites(req, res) {
+    var userId      = req.params.userId;
+    var projectId   = req.params.projectId;
+    var project = req.body;
+
+    userModel
+        .addToFavourites(userId, projectId, project)
+        .then(function (response) {
+            res.json(response);
+        },function (err) {
+            res.send(err);
+        });
+}
+
 
 function findUser(req, res) {
     var username = req.query.username;
@@ -253,6 +291,7 @@ function updateUser(req, res) {
 function modifyUser(req, res) {
     var userId = req.params.userId;
     var user = req.body;
+    user.password = bcrypt.hashSync(user.password);
 
     userModel
         .updateUser(userId, user)
@@ -308,23 +347,49 @@ function findUserById(req, res) {
 
     userModel
         .findUserById(userId)
-        .then(function (user) {
-            res.json((user));
+        .then(function (thisUser) {
+            // console.log(thisUser);
+            res.json((thisUser));
         });
 
+}
+
+function follow(req, res) {
+    var userId = req.params.userId;
+    var userIdToFollow = req.params.userIdToFollow;
+
+    userModel
+        .followPerson(userIdToFollow, userId)
+        .then(function (response) {
+            res.json(response);
+        },function (err) {
+            res.send(err);
+        });
+}
+
+function unfollow(req, res) {
+    var userId = req.params.userId;
+    var userIdToUnfollow = req.params.userIdToUnfollow;
+    userModel
+        .unfollowPerson(userIdToUnfollow, userId)
+        .then(function (response) {
+            res.json(response);
+        },function (err) {
+            res.send(err);
+        });
 }
 
 
 function localStrategy(username, password, done) {
     userModel
-        .findUserByCredentials(username, password)
+        .findUserByUsername(username)
         .then(
             function(user) {
-                // if (user && bcrypt.compareSync(password, user.password)) {
-                //     return done(null, user);
-                // } else {
-                //     return done(null, false);
-                // }
+                if (user && bcrypt.compareSync(password, user.password)) {
+                    return done(null, user);
+                } else {
+                    return done(null, false);
+                }
                  return done(null, user);
             },
             function(err) {

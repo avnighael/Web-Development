@@ -58,8 +58,12 @@
             orgService
                 .getProjectsByCountry(countryQuery)
                 .then(function (projs) {
-                    //model.orgs = orgs.charities.charity;
-                    model.projs = projs.data.projects.project;
+                    if(projs.data.projects.project) {
+                        model.projs = projs.data.projects.project;
+                        model.projs.numberFound = projs.data.projects.numberFound;
+                    } else {
+                        model.projs = projs.data.projects;
+                    }
                 }, function () {
                     model.error = "No results found";
                 });

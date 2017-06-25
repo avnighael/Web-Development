@@ -14,11 +14,7 @@
 
         function init() {
             getOrganization();
-            // orgService
-            //     .authenticateAPI()
-            //     .then(function (response) {
-            //         model.auth = response;
-            //     })
+
         }
 
         init();

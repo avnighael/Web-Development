@@ -15,18 +15,7 @@
         model.unregister = unregister;
 
         function init() {
-            //model.user = userService.findUserById(model.userId);
-            // userService
-            //     .findUserById(model.userId)
-            //     .then(renderUser, userError);
-            //
-            // function renderUser(user){
-            //     model.user = user;
-            // }
-            //
-            // function userError(error) {
-            //     model.error = "User Not Found";
-            // }
+
         }
 
         init();
@@ -35,7 +24,7 @@
             userService
                 .unregister(model.user)
                 .then(function () {
-                    $location.url('/');
+                    $location.url('/login');
                 }, function () {
                     model.error = "Unregistration failed!";
                 });

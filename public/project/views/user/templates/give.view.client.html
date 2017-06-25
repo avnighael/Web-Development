@@ -79,8 +79,13 @@
     </div>
 </nav>
 
+<div class="ag-pushBanner">
+</div>
 
-<div class="container-fluid">
+
+
+
+<div class="container-fluid ag-pushBody">
     <div class="input-group">
         <input ng-model="keywordsQuery"
                type="text"
@@ -122,13 +127,18 @@
     </span>
     </div>
 
-
     <div class="row container-fluid" ng-show="model.projs">
         <div ng-show = "model.error" class="alert alert-info">
             <p>{{model.error}}</p>
         </div>
-        <h4 ng-show="!model.error">Search Project Result</h4>
-        <div ng-repeat="proj in model.projs">
+
+        <h4 ng-if ="model.projs.numberFound == 0">
+            No active projects found.
+        </h4>
+
+        <h4 ng-show="!model.error && model.projs.numberFound > 0">Search Project Result</h4>
+        <div ng-show="model.projs.numberFound > 0"
+             ng-repeat="proj in model.projs">
             <div>
                 <a href="#!/browseProjects/{{proj.id}}">
                     <img class="img-responsive-home thumbnail"
@@ -144,3 +154,8 @@
     </div>
     <div class = "ag-addBottomPadding"></div>
 </div>
+
+<!--<div class="ag-BannerBg">-->
+    <!--<div class="col-xs-2 logo">Find a project</div>-->
+<!--</div>-->
+

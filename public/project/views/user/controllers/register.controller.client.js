@@ -3,7 +3,7 @@
         .module('Handouts')
         .controller('registerController', registerController);
 
-    function registerController($location, userService, $rootScope) {
+    function registerController($location, userService, $rootScope, orgService) {
 
         var model = this;
 
@@ -14,13 +14,13 @@
                 userService
                     .register(user)
                     .then(function (response) {
-                        var user = response;
-                        $rootScope.currentUser = user;
+                        // var user = response;
+                        // $rootScope.currentUser = user;
                         $location.url("/profile");
                     });
         }
 
-        function register(user) {
+        function register(user, role) {
 
             if((user.username === null && user.password === null) ||
                 (user.username === '' && user.password === '') ||
@@ -43,6 +43,23 @@
                 model.error = "Passwords doesn't match, Try Again";
                 return;
             }
+
+            if(user.role === "ORGANIZATION") {
+                if((user.organization === null && user.registrationNumber === null) ||
+                    (user.organization === '' && user.registrationNumber === '') ||
+                    (typeof user.organization === 'undefined' && typeof user.registrationNumber === 'undefined')) {
+                    model.error = 'Organization name and its registration number is required';
+                    return;
+                }
+
+                if(user.organization === null || user.organization === '' || typeof user.organization === 'undefined') {
+                    model.error = 'Organization name is required';
+                    return;
+                }
+            }
+
+
+
 
             userService
                 .findUserByUsername(user.username)

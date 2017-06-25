@@ -1,0 +1,139 @@
+<!--<div class="container">-->
+
+    <!--&lt;!&ndash; Nav tabs &ndash;&gt;-->
+    <!--<ul class="nav nav-tabs" role="tablist">-->
+        <!--<li class="active">-->
+            <!--<a href="" scroll-to="home" role="tab" data-toggle="tab">-->
+                <!--<icon class="fa fa-home"></icon> Home-->
+            <!--</a>-->
+        <!--</li>-->
+        <!--<li><a ng-click="" scroll-to="profile" role="tab" data-toggle="tab">-->
+            <!--<i class="fa fa-user"></i> Profile-->
+        <!--</a>-->
+        <!--</li>-->
+        <!--<li>-->
+            <!--<a href="" scroll-to="messages" role="tab" data-toggle="tab">-->
+                <!--<i class="fa fa-envelope"></i> Messages-->
+            <!--</a>-->
+        <!--</li>-->
+        <!--<li>-->
+            <!--<a href="/#/#settings" role="tab" data-toggle="tab">-->
+                <!--<i class="fa fa-cog"></i> Settings-->
+            <!--</a>-->
+        <!--</li>-->
+    <!--</ul>-->
+
+    <!--&lt;!&ndash; Tab panes &ndash;&gt;-->
+    <!--<div class="tab-content">-->
+        <!--<div class="tab-pane fade active in" id="home">-->
+            <!--<h2>Home Content Goes Here</h2>-->
+            <!--<img src="http://lorempixel.com/400/400/cats/1" alt="Cats"/>-->
+        <!--</div>-->
+        <!--<div class="tab-pane fade" id="profile">-->
+            <!--<h2>Profile Content Goes Here</h2>-->
+            <!--<img src="http://lorempixel.com/400/400/cats/2" alt="Cats"/>-->
+        <!--</div>-->
+        <!--<div class="tab-pane fade" id="messages">-->
+            <!--<h2>Messages Content Goes Here</h2>-->
+            <!--<img src="http://lorempixel.com/400/400/cats/3" alt="Cats"/>-->
+        <!--</div>-->
+        <!--<div class="tab-pane fade" id="settings">-->
+            <!--<h2>Settings Content Goes Here</h2>-->
+            <!--<img src="http://lorempixel.com/400/400/cats/4" alt="Cats"/>-->
+        <!--</div>-->
+    <!--</div>-->
+
+<!--</div>-->
+
+
+
+
+<!--&lt;!&ndash; Post Info &ndash;&gt;-->
+<!--<div style='position:fixed;bottom:0;left:0;-->
+            <!--background:lightgray;width:100%;'>-->
+    <!--About this SO Question: <a href='http://stackoverflow.com/q/24553105/1366033'>How to create Tabbed Panel in Bootstrap</a><br/>-->
+    <!--Fork This Skeleton Here: <a href='http://jsfiddle.net/KyleMit/kcpma/'>Bootstrap 3.0 Skeleton</a><br/>-->
+    <!--Styled after this (better) template: <a href='http://wrapbootstrap.com/preview/WB066F8J6'>Responsive Tabbed Form</a><br/>-->
+    <!--<div>-->
+<div class="container-fluid">
+    {{model.user.firstName}}  {{model.user.lastName}}
+<div ng-show="!model.myProfile && model.user.role === 'DONOR' && model.currentUser.role != 'ORGANIZATION'"
+     class = "row">
+
+    <div class="col-xs-12">
+        <a ng-hide="model.followed" ng-click="model.follow(model.user._id)"
+           class="btn btn-success">
+            Follow
+        </a>
+        <a ng-show="model.followed" ng-click="model.unfollow(model.user._id)"
+           class="btn btn-danger">
+            Unfollow
+        </a>
+
+    </div>
+
+</div>
+
+    <!--Followers list-->
+    <div ng-show="model.user.role == 'DONOR'" class="row">
+        <div ng-show="model.user.followers.length == 0"
+             class="alert alert-info">
+            {{model.user.firstName}} is not being followed by anyone yet
+        </div>
+        <div ng-show="model.user.followers.length > 0"
+             class="alert alert-info">
+            Followers of {{model.user.firstName}}:
+        </div>
+        <ul  ng-show="model.user.followers.length > 0"
+             class="list-group">
+            <li ng-repeat="follower in model.user.followers" class="list-group-item">
+                <a href="#!/user/{{follower._id}}">{{follower.firstName+" "+follower.lastName}}</a>
+            </li>
+        </ul>
+    </div>
+
+    <!--Following list-->
+
+    <div ng-show="model.user.role == 'DONOR'" class="row">
+        <div ng-show="model.user.following.length == 0"
+             class="alert alert-info">
+            {{model.user.firstName}} is not following anyone yet
+        </div>
+        <div ng-show="model.user.following.length > 0"
+             class="alert alert-info">
+            {{model.user.firstName}} follows:
+        </div>
+        <ul ng-show="model.user.following.length > 0" class="list-group">
+            <li ng-repeat="followed in model.user.following" class="list-group-item">
+                <a href="#!/user/{{followed._id}}">{{followed.firstName+" "+followed.lastName}}</a>
+            </li>
+        </ul>
+    </div>
+
+    <!--Show favourites to other user-->
+    <div ng-show="model.user.role == 'DONOR' && model.followed" class="row">
+        <div ng-if="model.user.favourites.length > 0">
+            <i class="fa fa-heart" aria-hidden="true"></i>
+            {{model.user.firstName}}'s Favourite Projects
+        </div>
+
+        <div ng-if="model.user.favourites.length == 0">
+            {{model.user.firstName}} has no favourite projects yet
+        </div>
+
+        <div ng-repeat="proj in model.user.favourites">
+            <div>
+                <a href="#!/browseProjects/{{proj.projectId}}">
+                    <img class="img-responsive-home thumbnail"
+                         ng-src="{{proj.imageLink}}"
+                         alt="{{proj.title}}"/>
+                    <span><h4>{{proj.title}}</h4></span>
+                </a>
+
+                <p>by {{proj.organization}}  |  {{proj.country}}</p>
+            </div>
+            <hr/>
+        </div>
+    </div>
+
+</div>
