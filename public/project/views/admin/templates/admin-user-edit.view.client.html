@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-default navbar-fixed-top ag-menu-navbar">
     <div class="container-fluid ">
         <div class="navbar-header">
@@ -17,33 +16,20 @@
 
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-
                 <li class="">
-
-                    <form ng-show="model.user.role != 'ADMIN'" class="" action="">
-                        <input class="input_text grid-9 grid-xl-10 ag-search"
-                               type="text"
-                               placeholder="I care about..."
-                               name="q"
-                               title="Search for nonprofits">
-                        <a class="glyphicon glyphicon-search"></a>
-                    </form>
-                </li>
-
-                <li class="">
-                    <a ng-if="model.user.role === 'DONOR'"
+                    <a ng-if="model.currentUser.role === 'DONOR'"
                        class=""
                        href="#!/user/give">
                         Give
                     </a>
 
-                    <a ng-if="model.user.role === 'ORGANIZATION'"
+                    <a ng-if="model.currentUser.role === 'ORGANIZATION'"
                        class=""
                        href="#!/organization/projects">
                         Projects
                     </a>
 
-                    <a ng-if="model.user.role === 'ADMIN'"
+                    <a ng-if="model.currentUser.role === 'ADMIN'"
                        class=""
                        href="#!/users/all/manage">
                         Manage Users
@@ -51,30 +37,30 @@
                 </li>
 
                 <li class="">
-                    <a ng-show="model.user.role != 'ADMIN'" class=""
+                    <a ng-show="model.currentUser.role != 'ADMIN'" class=""
                        href="#!/organization/opportunity/all">
                         Opportunities
                     </a>
 
-                    <!--<a ng-show="model.user.role === 'ADMIN'"-->
-                       <!--class=""-->
-                       <!--href="#!/organization/all">-->
-                        <!--Manage Organization Representative-->
+                    <!--<a ng-show="model.currentUser.role === 'ADMIN'"-->
+                    <!--class=""-->
+                    <!--href="#!/organization/all">-->
+                    <!--Manage Organization Representative-->
                     <!--</a>-->
                 </li>
 
                 <li class="">
                     <a class=""
-                    href="#!/profile">
+                       href="#!/profile">
                         <i class="fa fa-user tnn-logo-navbar" aria-hidden="true"></i>
-                        <strong ng-if="model.user.username">{{model.user.username}}</strong>
-                        <strong ng-if="!model.user.username">{{model.user.firstName}}</strong>
+                        <strong ng-if="model.user.username">{{model.currentUser.username}}</strong>
+                        <strong ng-if="!model.user.username">{{model.currentUser.firstName}}</strong>
                     </a>
                 </li>
 
                 <li class="">
                     <a class=""
-                    ng-click="model.logout()">
+                       ng-click="model.logout()">
                         <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
                     </a>
                 </li>
@@ -84,27 +70,24 @@
 </nav>
 
 
-<div class="jumbotron bgimg-header">
-</div>
-
 <div class="top-content" id="top-content">
     <div class="inner-bg">
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2 text ">
-                    <h1><strong>My Profile</strong> </h1>
+                    <h1><strong>Profile: </strong> </h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3 form-box ag-margin-left">
                     <div class="form-top">
                         <div class="form-top-left">
-                            <!--<h3>Register to Handouts</h3>-->
+                            <h3>Edit</h3>
                             <!--<p>Enter your username and password to log on:</p>-->
                         </div>
-                        <!--<div class="form-top-right">-->
-                            <!--<i class="fa fa-key"></i>-->
-                        <!--</div>-->
+                        <div class="form-top-right">
+                            <i class="fa fa-pencil"></i>
+                        </div>
                     </div>
                     <div class="form-bottom">
                         <div ng-show="model.error"  class="alert alert-danger" role="alert">
@@ -117,7 +100,7 @@
                         <form role="form" action="" method="post" class="login-form">
                             <div class="form-group">
                                 <label for="username">Username</label>
-                                <input ng-model="model.user.username"
+                                <input ng-model="model.thisUser.username"
                                        type="text"
                                        class="form-control"
                                        id="username"
@@ -126,7 +109,7 @@
 
                             <div class="form-group">
                                 <label for="firstName">First Name</label>
-                                <input ng-model="model.user.firstName"
+                                <input ng-model="model.thisUser.firstName"
                                        type="text"
                                        class="form-control"
                                        id="firstName"
@@ -135,7 +118,7 @@
 
                             <div class="form-group">
                                 <label for="lastName">Last Name</label>
-                                <input ng-model="model.user.lastName"
+                                <input ng-model="model.thisUser.lastName"
                                        type="text"
                                        class="form-control"
                                        id="lastName"
@@ -144,7 +127,7 @@
 
                             <div class="form-group">
                                 <label for="role">Role</label>
-                                <input ng-model="model.user.role"
+                                <input ng-model="model.thisUser.role"
                                        type="text"
                                        class="form-control"
                                        id="role"
@@ -153,36 +136,34 @@
 
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input ng-model="model.user.password"
+                                <input ng-model="model.thisUser.password"
                                        type="password"
                                        id="password"
                                        class="form-control"
                                        placeholder="password"/>
                             </div>
 
-                            <div ng-if="model.user.role === 'ORGANIZATION'"
+                            <div ng-if="model.thisUser.role === 'ORGANIZATION'"
                                  class="form-group">
                                 <label for="orgName">Organization Name</label>
-                                <input ng-model="model.user.organization"
+                                <input ng-model="model.thisUser.organization"
                                        type="text"
                                        class="form-control"
-                                       id="orgName"
-                                       disabled>
+                                       id="orgName">
                             </div>
 
-                            <div ng-if="model.user.role === 'ORGANIZATION'"
+                            <div ng-if="model.thisUser.role === 'ORGANIZATION'"
                                  class="form-group">
                                 <label for="regNum">Registration Number</label>
-                                <input ng-model="model.user.registrationNumber"
+                                <input ng-model="model.thisUser.registrationNumber"
                                        type="text"
                                        class="form-control"
-                                       id="regNum"
-                                       disabled>
+                                       id="regNum">
                             </div>
 
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input ng-model="model.user.email"
+                                <input ng-model="model.thisUser.email"
                                        type="email"
                                        class="form-control"
                                        id="email"
@@ -191,7 +172,7 @@
 
                             <div class="form-group">
                                 <label for="phone">Phone</label>
-                                <input ng-model="model.user.phone"
+                                <input ng-model="model.thisUser.phone"
                                        type="string"
                                        class="form-control"
                                        id="phone"
@@ -199,15 +180,13 @@
                             </div>
 
                             <a class="btn btn-success btn-block"
-                               ng-click="model.modifyUser(model.user)">Update
+                               ng-click="model.modifyUser(model.thisUserId, model.thisUser)">
+                                Update
                             </a>
-                            <a ng-show="model.user.role != 'ADMIN'"
-                               ng-click="model.unregister()"
-                               class="btn btn-danger btn-block">
-                                Deactivate Account
-                            </a>
+
                             <a class="btn btn-warning  btn-block"
-                               ng-click="model.logout()">Logout
+                               href="#!/users/all/manage">
+                                Cancel
                             </a>
                         </form>
                     </div>
@@ -221,7 +200,7 @@
 <div ng-include="'views/common/footer.view.client.html'"></div>
 
 <script type="text/javascript">
-//Toggle Menu
+    //Toggle Menu
     $(".navbar-toggle").click(function() {
         if ($('#myCollapsible').collapse) {
             return $("body").toggleClass("no-scroll");

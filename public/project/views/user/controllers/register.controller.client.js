@@ -60,7 +60,6 @@
 
 
 
-
             userService
                 .findUserByUsername(user.username)
                 .then(function (status) {

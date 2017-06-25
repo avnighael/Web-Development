@@ -31,13 +31,12 @@ app.get('/api/project/checkLoggedIn',checkLoggedIn );
 app.get('/api/project/user/:userId',findUserById);
 app.post('/api/project/login',passport.authenticate('local'), login);
 app.post('/api/project/register', register);
-app.post('/api/project/checkAdmin', checkAdmin);
+app.get('/api/project/checkAdmin', checkAdmin);
 app.post('/api/project/logout', logout);
 app.get('/api/project/user',findUser);
 app.post('/api/project/user',createUser);
 app.put('/api/project/admin/user/:userId',updateUser);
 app.put('/api/project/user/:userId', modifyUser);
-app.delete('/api/project/user/:userId',deleteUser);
 app.post('/api/project/unregister', unregister);
 app.put('/api/project/user/:userId/project/:projectId', addToWishList);
 app.delete('/api/project/user/:userId/project/:projectId', removeFromWishList);
@@ -114,8 +113,10 @@ function logout(req, res) {
 
 function checkLoggedIn(req, res) {
     if(req.isAuthenticated()) {
+        console.log("logged in ");
         res.json(req.user);
     } else {
+        console.log("not logged in ");
         res.send('0');
     }
 }
@@ -266,15 +267,6 @@ function findUserByCredentials(req, res) {
         });
 }
 
-function deleteUser(req, res) {
-    var userId = req.params['userId'];
-
-    userModel
-        .deleteUser(userId)
-        .then(function (status) {
-            res.sendStatus(200);
-        });
-}
 
 function updateUser(req, res) {
     var userId = req.params['userId'];
@@ -385,6 +377,7 @@ function localStrategy(username, password, done) {
         .findUserByUsername(username)
         .then(
             function(user) {
+                console.log(user);
                 if (user && bcrypt.compareSync(password, user.password)) {
                     return done(null, user);
                 } else {

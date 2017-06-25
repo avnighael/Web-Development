@@ -8,7 +8,6 @@
 
         model.userId = currentUser._id;
         model.user = currentUser;
-        model.deleteUser = deleteUser;
         model.updateUser = updateUser;
         model.modifyUser = modifyUser;
         model.logout = logout;
@@ -38,15 +37,6 @@
                 })
         }
 
-        function deleteUser(userId) {
-            userService
-                .deleteUser(userId)
-                .then(function () {
-                    $location.url('/login');
-                }, function () {
-                    model.error = "Unregistration failed!"
-                });
-        }
 
         function modifyUser(newUser) {
             if(newUser.username === null || newUser.username === '' || typeof newUser.username === 'undefined') {

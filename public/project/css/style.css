@@ -540,3 +540,9 @@ button.btn:active:focus, button.btn.active:focus { outline: 0; opacity: 0.6; bac
     margin-bottom: 5px;
     height: 150px;
 }
+
+/*Admin*/
+
+.ag-align-glyphicon-edit {
+    padding-right: 30px;
+}

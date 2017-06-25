@@ -4,7 +4,6 @@ var userModel = mongoose.model('userModel', userSchema);
 
 userModel.createUser = createUser;
 userModel.findUserById = findUserById;
-userModel.findAllUser = findAllUser;
 userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.updateUser = updateUser;
@@ -21,8 +20,14 @@ userModel.removeFromFavourites = removeFromFavourites;
 userModel.findUserByGoogleId = findUserByGoogleId;
 userModel.findUserByFacebookId = findUserByFacebookId;
 
+// Admin functionalities
+userModel.getAllDonors = getAllDonors;
+
 module.exports = userModel;
 
+function getAllDonors() {
+    return userModel.find({role: {$ne: "ADMIN"}});
+}
 
 function followPerson(userIdToFollow, userId) {
     return userModel
@@ -65,15 +70,15 @@ function unfollowPerson(userIdToUnfollow, userId) {
 }
 
 function createUser(user) {
-    if(user.role) {
-        user.role = user.role.split(',');
-        console.log(user.role);
-
-    } else if(user.organization){
-        user.role = ['ORGANIZATION'];
-    } else {
-        user.role = ['DONOR'];
-    }
+    // if(user.role) {
+    //     user.role = user.role.split(',');
+    //     console.log(user.role);
+    //
+    // } else if(user.organization){
+    //     user.role = ['ORGANIZATION'];
+    // } else {
+    //     user.role = ['DONOR'];
+    // }
 
     return userModel.create(user);
 }
@@ -89,17 +94,16 @@ function findUserById(userId) {
         //     return user;
         // })
 }
- 
-function findAllUser() {
-    return userModel.find();
-}
+
 
 function findUserByUsername(username) {
     return userModel
         .findOne({username: username})
         .then(function (user) {
-            console.log(user);
+            // console.log(user);
             return user;
+        }, function (err) {
+            console.log(err);
         });
 }
 
@@ -114,16 +118,42 @@ function updateUser(userId, newUser) {
         newUser.role = newUser.role.split(',');
     }
 
-    return userModel.update({_id: userId},
-        {$set: {
-            firstName: newUser.firstName,
-            lastName: newUser.lastName,
-            email: newUser.email,
-            phone: newUser.phone,
-            role: newUser.role,
-            password: newUser.password
-        }
-        });
+    if(newUser.password.length==60)
+    {
+        return userModel.update({_id: userId},
+            {$set: {
+                firstName: newUser.firstName,
+                lastName: newUser.lastName,
+                email: newUser.email,
+                phone: newUser.phone,
+                role: newUser.role
+            }
+            });
+    }
+    else
+    {
+        return userModel.update({_id: userId},
+            {$set: {
+                firstName: newUser.firstName,
+                lastName: newUser.lastName,
+                email: newUser.email,
+                phone: newUser.phone,
+                role: newUser.role,
+                password: newUser.password
+            }
+            });
+    }
+
+    // return userModel.update({_id: userId},
+    //     {$set: {
+    //         firstName: newUser.firstName,
+    //         lastName: newUser.lastName,
+    //         email: newUser.email,
+    //         phone: newUser.phone,
+    //         role: newUser.role,
+    //         password: newUser.password
+    //     }
+    //     });
 }
 
 function deleteUser(userId) {

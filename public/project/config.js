@@ -11,7 +11,7 @@
             .then(function (user) {
                 if(user === '0') {
                     deferred.reject();
-                    $location.url('/');
+                    $location.url('/login');
                 } else {
                     deferred.resolve(user);
                 }
@@ -218,5 +218,44 @@
                     currentUser: checkUserOrganization
                 }
             })
+
+            .when('/users/all/manage', {
+                templateUrl: 'views/admin/templates/admin-users-list.view.client.html',
+                controller: 'AdminUsersController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkAdmin
+                }
+            })
+
+            .when('/admin/user/create', {
+                templateUrl: 'views/admin/templates/admin-user-create.view.client.html',
+                controller: 'AdminUsersController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkAdmin
+                }
+            })
+
+            .when('/admin/user/:userId/edit', {
+                templateUrl: 'views/admin/templates/admin-user-edit.view.client.html',
+                controller: 'AdminUsersController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkAdmin
+                }
+            })
+
+            .when('/admin/user/:userId/details', {
+                templateUrl: 'views/admin/templates/admin-user-details-edit.view.client.html',
+                controller: 'AdminUsersDetailsController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkAdmin
+                }
+            })
+
+
+
     }
 }) ();
