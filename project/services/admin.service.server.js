@@ -7,6 +7,21 @@ app.delete('/api/project/admin/user/:userId/delete', isAdmin, deleteUser);
 app.post('/api/project/admin/user/create', isAdmin, createUser);
 app.get('/api/project/user/:userId', isAdmin, getUserById);
 app.put('/api/project/user/:userId/edit', isAdmin, modifyUser);
+app.put("/api/project/admin/user/:thisUserId/unfollow/:usernameToUnfollow", isAdmin, unfollow);
+
+function unfollow(req, res) {
+    var userId = req.params.thisUserId;
+    var usernameToUnfollow = req.params.usernameToUnfollow;
+
+    userModel
+        .unfollowPersonByUsername(usernameToUnfollow, userId)
+        .then(function (response) {
+            res.json(response);
+        },function (err) {
+            res.send(err);
+        });
+}
+
 
 function modifyUser(req, res) {
     var userId = req.params.userId;

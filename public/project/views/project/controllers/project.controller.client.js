@@ -3,7 +3,7 @@
         .module("Handouts")
         .controller("ProjectController", ProjectController);
 
-    function ProjectController(userService, orgService, donationService, currentUser, $routeParams) {
+    function ProjectController(userService, orgService, donationService, currentUser, $routeParams, $location) {
 
         var model = this;
 
@@ -19,6 +19,8 @@
         model.projectId = projectId;
         var favourites = model.user.favourites
         model.favourites = favourites;
+        var thisUserId = $routeParams.userId;
+        model.thisUserId = thisUserId;
 
         model.sendDonation = sendDonation;
         model.addToWishList = addToWishList;
@@ -74,15 +76,25 @@
         }
 
         function addToFavourites(projectId, project) {
-            userService
-                .addToFavourites(userId, projectId, project)
-                .then(function (response) {
-                    model.favourite = true;
-                    // model.notFavourite = null;
-                    // console.log(response);
-                },function (err) {
-                    console.log(err);
-                })
+            if(model.thisUserId != model.user._id) {
+                userService
+                    .addToFavourites(thisUserId, projectId, project)
+                    .then(function (response) {
+                        model.favourite = true;
+                        $location.url('/admin/user/'+model.thisUserId+'/details');
+                    },function (err) {
+                        console.log(err);
+                    })
+            } else {
+                userService
+                    .addToFavourites(thisUserId, projectId, project)
+                    .then(function (response) {
+                        model.favourite = true;
+                    },function (err) {
+                        console.log(err);
+                    })
+            }
+
         }
 
         function wishListShow() {
@@ -99,27 +111,52 @@
         }
 
         function removeFromWishList(projectId) {
-            userService
-                .removeFromWishList(userId, projectId)
-                .then(function (response) {
-                    model.saved = false;
-                },function (err) {
-                    model.unauthorized = "Please register/login to add this project to WishList";
-                    console.log(err);
-                })
+            if(model.thisUserId != model.user._id) {
+                userService
+                    .removeFromWishList(thisUserId, projectId)
+                    .then(function (response) {
+                        model.saved = false;
+                        $location.url('/admin/user/'+model.thisUserId+'/details');
+                    },function (err) {
+                        model.unauthorized = "Please register/login to add this project to WishList";
+                        console.log(err);
+                    })
+            } else {
+                userService
+                    .removeFromWishList(userId, projectId)
+                    .then(function (response) {
+                        model.saved = false;
+                    },function (err) {
+                        model.unauthorized = "Please register/login to add this project to WishList";
+                        console.log(err);
+                    })
+            }
+
         }
         
         function addToWishList(projectId, project) {
-            // if()
-            userService
-                .addToWishList(userId, projectId, project)
-                .then(function (response) {
-                    model.saved = true;
-                    model.unsaved = null;
-                   // console.log(response);
-                },function (err) {
-                     console.log(err);
-                })
+            if(model.thisUserId != model.user._id) {
+                userService
+                    .addToWishList(thisUserId, projectId, project)
+                    .then(function (response) {
+                        model.saved = true;
+                        model.unsaved = null;
+                        $location.url('/admin/user/'+model.thisUserId+'/details');
+                        // console.log(response);
+                    },function (err) {
+                        console.log(err);
+                    })
+            } else {
+                userService
+                    .addToWishList(userId, projectId, project)
+                    .then(function (response) {
+                        model.saved = true;
+                        model.unsaved = null;
+                        // console.log(response);
+                    },function (err) {
+                        console.log(err);
+                    })
+            }
         }
         
         function findProjectInWishlist(projectId) {

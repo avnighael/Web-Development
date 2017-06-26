@@ -22,6 +22,7 @@ userModel.findUserByFacebookId = findUserByFacebookId;
 
 // Admin functionalities
 userModel.getAllDonors = getAllDonors;
+userModel.unfollowPersonByUsername = unfollowPersonByUsername;
 
 module.exports = userModel;
 
@@ -69,6 +70,32 @@ function unfollowPerson(userIdToUnfollow, userId) {
         });
 }
 
+function unfollowPersonByUsername(usernameToUnfollow, userId) {
+    return userModel
+        .findOne({_id:userId})
+        .then(function (user) {
+            return userModel
+                .findOne({username: usernameToUnfollow})
+                .then(function (uId) {
+                    user.following.splice(user.following.indexOf(uId),1);
+                    user.save();
+                    return userModel
+                        .findOne({username:usernameToUnfollow})
+                        .then(function (followedUser) {
+                            followedUser.followers.splice(followedUser.followers.indexOf(userId),1);
+                            followedUser.save();
+                            return user;
+                        },function (err) {
+                            return err;
+                        })
+             return err;
+                });
+        },function (err) {
+            return err;
+        });
+}
+
+
 function createUser(user) {
     // if(user.role) {
     //     user.role = user.role.split(',');
@@ -86,8 +113,8 @@ function createUser(user) {
 function findUserById(userId) {
     return userModel
         .findById(userId)
-        .populate('followers', 'firstName lastName')
-        .populate('following', 'firstName lastName')
+        .populate('followers', 'firstName lastName username email role')
+        .populate('following', 'firstName lastName username email role')
         .exec()
         // .then(function (user) {
         //     // console.log(user);

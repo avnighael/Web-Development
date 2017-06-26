@@ -228,6 +228,15 @@
                 }
             })
 
+            .when('/admin/user/:userId/add', {
+                templateUrl: 'views/user/templates/give.view.client.html',
+                controller: 'giveController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkAdmin
+                }
+            })
+
             .when('/admin/user/create', {
                 templateUrl: 'views/admin/templates/admin-user-create.view.client.html',
                 controller: 'AdminUsersController',
@@ -254,6 +263,17 @@
                     currentUser: checkAdmin
                 }
             })
+
+            .when('/admin/user/:userId/browseProjects/:projectId', {
+                templateUrl: 'views/project/templates/project.view.client.html',
+                controller: 'ProjectController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkAdmin
+                }
+            })
+
+
 
 
 

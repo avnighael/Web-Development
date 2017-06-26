@@ -47,6 +47,7 @@
                     model.followed = true;
                 })
         }
+
         function unfollow(userIdToUnfollow) {
             userService
                 .unfollow(userIdToUnfollow,model.currentUserId)

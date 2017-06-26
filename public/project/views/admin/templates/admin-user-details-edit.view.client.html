@@ -84,10 +84,7 @@
 
         <div class="row container-fluid">
             <h3>Favourites</h3>
-                <div ng-if="model.favourites.length == '0'"
-                     class="alert alert-info">
-                    No favourites added yet!
-                </div>
+
             <ul class="list-group">
                 <li class="list-group-item active">
                     <div class="row">
@@ -107,12 +104,17 @@
                            Country
                         </div>
                         <div class="col-lg-1 col-md-2 col-sm-2">
-                            <a href="#!/admin/user/{{thisUser._id}}/addToFavourites">
+                            <a href="#!/admin/user/{{model.thisUserId}}/add">
                                 <span class="glyphicon glyphicon-plus pull-right"></span>
                             </a>
                         </div>
                     </div>
                 </li>
+
+                <div ng-if="model.thisUser.favourites.length == '0'"
+                     class="alert alert-info">
+                    No favourites added yet!
+                </div>
 
             <li ng-repeat="fav in model.thisUser.favourites" class="list-group-item">
                 <div class="row">
@@ -135,95 +137,133 @@
                         <a ng-click="model.removeFromFavourites(fav.projectId)">
                             <span class="glyphicon glyphicon-remove pull-right"></span>
                         </a>
-                        <a href="#!/admin/user/{{thisUser._id}}/edit">
-                            <span class="glyphicon glyphicon-cog ag-align-glyphicon-edit pull-right"></span>
-                        </a>
                     </div>
                 </div>
             </li>
-
+            </ul>
         </div>
 
-        <div ng-if="model.user.role === 'DONOR'">
-            <!--ng-show="model.user.role == 'DONOR'">-->
-            <a ng-show="!model.saved"
-               ng-click="model.addToWishList(model.proj.id, model.proj)"
-               class="btn btn-success btn-block">
-                Add to WishList
-            </a>
-            <a ng-show="model.saved"
-               ng-click="model.removeFromWishList(model.proj.id)"
-               class="btn btn-danger btn-block">
-                Remove from Wishlist
-            </a>
+        <div class="row container-fluid">
+            <h3>Wishlist</h3>
 
-            <div ng-if="model.user.role === 'DONOR'">
-                <!--ng-show="model.user.role == 'DONOR'">-->
-                <a ng-show="!model.favourite"
-                   ng-click="model.addToFavourites(model.proj.id, model.proj)"
-                   class="btn btn-info btn-block glyphicon glyphicon-heart-empty">
-                    Add Project to Favourites
-                </a>
-                <a ng-show="model.favourite"
-                   ng-click="model.removeFromFavourites(model.proj.id)"
-                   class="btn btn-danger btn-block glyphicon glyphicon-heart">
-                    Remove Project From Favourites
-                </a>
-            </div>
-
-
-            <span class="col-xs-12 text-right ag-donationTab"
-                  ng-show="model.showDonate == true && model.user.role != 'ADMIN' && model.user.role != 'ORGANIZATION'">
-                    <!--<a href="#!/user/{{model.userId}}/project/{{model.projectId}}/donate" class="btn btn-primary">-->
-                    <a ng-click="model.donating = true; model.showDonate = false" class="btn btn-primary">
-                        Donate Now
-                    </a>
-                </span>
-
-            <div ng-if="model.donating == true" class="ag-donationTab">
-                <div ng-show="!model.user._id"  class="alert alert-danger" role="alert">
-                    Kindly register/login to donate to this project
-                </div>
-                <span ng-show="model.user._id">
-                        <span>
-                        <label for="amount">How much do you want to contribute?</label>
-                        <input type="text"
-                               class="form-control ag-form"
-                               id="amount"
-                               required
-                               ng-model="donation.amount"
-                               placeholder="Enter amount"/>
-                        </span>
-                        <span>
-                            <label>USD</label>
-                        </span>
-                        &nbsp &nbsp
-                        <span class="text-right">
-                            <a ng-click="model.sendDonation(donation)"
-                               class="btn btn-primary"
-                               type="button"> Donate
-                            </a>
-                        </span>
-                        <div ng-show="model.donationError" class="text-danger">
-                            {{model.donationError}}
+            <ul class="list-group">
+                <li class="list-group-item active">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-9">
+                            Project id
                         </div>
-                        </span>
-            </div>
+                        <div class="col-lg-2 col-md-2 col-sm-3 hidden-xs">
+                            Title
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-3  hidden-xs">
+                            Organization
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 hidden-xs">
+                            Cause Name
+                        </div>
+                        <div class="col-lg-3 col-md-2 hidden-sm hidden-xs">
+                            Country
+                        </div>
+                        <div class="col-lg-1 col-md-2 col-sm-2">
+                            <a href="#!/admin/user/{{model.thisUserId}}/add">
+                                <span class="glyphicon glyphicon-plus pull-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+
+                <div ng-if="model.thisUser.projects.length < 1"
+                     class="alert alert-info">
+                    Nothing added in wishlist yet!
+                </div>
+
+                <li ng-repeat="proj in model.thisUser.projects" class="list-group-item">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-9">
+                            {{proj.projectId}}
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-3 hidden-xs">
+                            {{proj.title}}
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-3 hidden-xs">
+                            {{proj.organization}}
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 hidden-xs">
+                            {{proj.causeName}}
+                        </div>
+                        <div class="col-lg-3 col-md-2 hidden-sm hidden-xs">
+                            {{proj.country}}
+                        </div>
+                        <div class="col-lg-1 col-md-2 col-sm-2">
+                            <a ng-click="model.removeFromWishlist(proj.projectId)">
+                                <span class="glyphicon glyphicon-remove pull-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
-    </div>
 
-    <img class="img-responsive-home ag-fullWidth"
-         ng-src="{{model.proj.imageLink}}"
-         alt="{{model.proj.title}}"/>
-    <div>
-        <b>Summary</b>
-        <p>{{model.proj.summary}}</p>
-    </div>
+        <div class="row container-fluid">
+            <h3>Followers</h3>
 
-    <div>
-        <span>Goal: {{model.proj.goal}}</span> &nbsp; &nbsp;
-        <span>funding: {{model.proj.funding}}</span> &nbsp; &nbsp;
-        <span>remaining: {{model.proj.remaining}}</span>
+            <ul class="list-group">
+                <li class="list-group-item active">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-9">
+                            Username
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-3 hidden-xs">
+                            First Name
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-3  hidden-xs">
+                            Last Name
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 hidden-xs">
+                            Role
+                        </div>
+                        <div class="col-lg-3 col-md-2 hidden-sm hidden-xs">
+                            Email Id
+                        </div>
+                        <div class="col-lg-1 col-md-2 col-sm-2">
+                            <a href="#!/admin/user/{{model.thisUserId}}/add">
+                                <span class="glyphicon glyphicon-plus pull-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+
+                <div ng-if="model.thisUser.followers.length < 1"
+                     class="alert alert-info">
+                    No one is following yet!
+                </div>
+
+                <li ng-repeat="follower in model.thisUser.followers" class="list-group-item">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-9">
+                            {{follower.username}}
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-3 hidden-xs">
+                            {{follower.firstName}}
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-3 hidden-xs">
+                            {{follower.lastName}}
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 hidden-xs">
+                            {{follower.role}}
+                        </div>
+                        <div class="col-lg-3 col-md-2 hidden-sm hidden-xs">
+                            {{follower.email}}
+                        </div>
+                        <div class="col-lg-1 col-md-2 col-sm-2">
+                            <a ng-click="model.unfollow(follower.username)">
+                                <span class="glyphicon glyphicon-remove pull-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
 
     </div>
 

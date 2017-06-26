@@ -140,7 +140,16 @@
         <div ng-show="model.projs.numberFound > 0"
              ng-repeat="proj in model.projs">
             <div>
-                <a href="#!/browseProjects/{{proj.id}}">
+                <a ng-show="model.user.role != 'ADMIN'"
+                   href="#!/browseProjects/{{proj.id}}">
+                    <img class="img-responsive-home thumbnail"
+                         ng-src="{{proj.imageLink}}"
+                         alt="{{proj.title}}"/>
+                    <span><h4>{{proj.title}}</h4></span>
+                </a>
+
+                <a ng-show="model.user.role === 'ADMIN'"
+                   href="#!/admin/user/{{model.thisUserId}}/browseProjects/{{proj.id}}">
                     <img class="img-responsive-home thumbnail"
                          ng-src="{{proj.imageLink}}"
                          alt="{{proj.title}}"/>

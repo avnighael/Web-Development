@@ -78,10 +78,10 @@
                     <h3>{{model.proj.title}}</h3>
                     <p>by {{model.proj.organization.name}} , {{model.proj.country}}</p>
 
-                    <div ng-if="model.user.role === 'ORGANIZATION'">
+                    <div ng-if="model.user.role === 'ORGANIZATION' || model.user.role === 'ADMIN'">
                         <a ng-show="model.wantVolunteers"
                            href="#!/organization/project/{{model.projectId}}/opportunity/create"
-                           class="btn btn-success btn-block">
+                           class="btn btn-primary btn-block">
                             Want Volunteers
                         </a>
                         <a ng-show="!model.wantVolunteers"
@@ -91,7 +91,7 @@
                         </a>
                     </div>
 
-                <div ng-if="model.user.role === 'DONOR'">
+                <div ng-if="model.user.role === 'DONOR' || model.user.role === 'ADMIN'"">
                         <!--ng-show="model.user.role == 'DONOR'">-->
                     <a ng-show="!model.saved"
                        ng-click="model.addToWishList(model.proj.id, model.proj)"
@@ -104,7 +104,7 @@
                          Remove from Wishlist
                     </a>
 
-                <div ng-if="model.user.role === 'DONOR'">
+                <div ng-if="model.user.role === 'DONOR' || model.user.role === 'ADMIN'"">
                     <!--ng-show="model.user.role == 'DONOR'">-->
                     <a ng-show="!model.favourite"
                        ng-click="model.addToFavourites(model.proj.id, model.proj)"

@@ -10,6 +10,15 @@
         this.createUser = createUser;
         this.getUserById = getUserById;
         this.modifyUser = modifyUser;
+        this.unfollow = unfollow;
+
+        function unfollow(usernameToUnfollow, thisUserId) {
+            var url = "/api/project/admin/user/"+thisUserId+"/unfollow/"+usernameToUnfollow;
+            return $http.put(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
 
         function modifyUser(userId, user) {
             var url = "/api/project/user/"+userId+"/edit";

@@ -10,6 +10,7 @@
         // var userId = currentUser._id;
         // model.userId = userId;
         model.user = currentUser;
+        model.thisUserId = $routeParams.userId;
 
 
         var organizationId = $routeParams.organizationId;
