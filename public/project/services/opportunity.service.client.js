@@ -12,6 +12,33 @@
         this.getAllOpportunities = getAllOpportunities;
         this.getAllOpportunitiesById = getAllOpportunitiesById;
         this.addVolunteer = addVolunteer;
+        this.deleteVolunteer = deleteVolunteer;
+        this.getOpportunitiesOfDonor = getOpportunitiesOfDonor;
+        this.getOpportunitiesByProjectId = getOpportunitiesByProjectId;
+
+        function getOpportunitiesByProjectId(projectId) {
+            var url = "/api/project/"+projectId+"/getOpportunities";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function getOpportunitiesOfDonor(donorId) {
+            var url = "/api/project/donor/"+donorId+"/getOpportunities";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function deleteVolunteer(volunteerId, opportunityId) {
+            var url = "/api/project/opportunity/"+opportunityId+"/volunteer/"+volunteerId+"/delete";
+            return $http.put(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
 
         function addVolunteer(volunteer, opportunityId) {
             var url = "/api/project/opportunity/"+opportunityId+"/volunteer/";

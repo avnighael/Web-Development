@@ -202,11 +202,20 @@
             })
 
             .when('/organization/opportunity/all', {
+                templateUrl: 'views/volunteer-opportunity/templates/organization-all-opportunities.view.client.html',
+                controller: 'organizationAllOpportunityController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
+            })
+
+            .when('/opportunity/all', {
                 templateUrl: 'views/volunteer-opportunity/templates/all-opportunities.view.client.html',
                 controller: 'allOpportunityController',
                 controllerAs: 'model',
                 resolve: {
-                    currentUser: checkUserOrganization
+                    currentUser: checkCurrentUser
                 }
             })
 
@@ -215,7 +224,16 @@
                 controller: 'volunteerOpportunityController',
                 controllerAs: 'model',
                 resolve: {
-                    currentUser: checkUserOrganization
+                    currentUser: checkCurrentUser
+                }
+            })
+
+            .when('/project/:projectId/opportunity/all', {
+                templateUrl: 'views/volunteer-opportunity/templates/project-opportunities.view.client.html',
+                controller: 'projectOpportunitiesController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkCurrentUser
                 }
             })
 
@@ -267,6 +285,24 @@
             .when('/admin/user/:userId/browseProjects/:projectId', {
                 templateUrl: 'views/project/templates/project.view.client.html',
                 controller: 'ProjectController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkAdmin
+                }
+            })
+
+            .when('/admin/user/:userId/addFollower', {
+                templateUrl: 'views/admin/templates/admin-add-follower.view.client.html',
+                controller: 'AdminAddFollowerController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkAdmin
+                }
+            })
+
+            .when('/admin/user/:userId/opportunity/add', {
+                templateUrl: 'views/volunteer-opportunity/templates/all-opportunities.view.client.html',
+                controller: 'allOpportunityController',
                 controllerAs: 'model',
                 resolve: {
                     currentUser: checkAdmin

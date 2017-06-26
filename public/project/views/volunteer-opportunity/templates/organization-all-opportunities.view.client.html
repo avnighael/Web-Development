@@ -85,25 +85,27 @@
 <div class="container-fluid ag-pushBody">
 
     <div ng-show="model.opportunities" class="ag-myOpportunities">
-        <div ng-show="model.message"
-             class="alert alert-success">
-            {{model.message}}
+        <h2 ng-show="model.currentUser.role === 'DONOR'">My Opportunities</h2>
+        <div ng-show="model.currentUser.role === 'DONOR' && model.opportunities.length == 0" class="alert alert-info">
+            <p>No volunteer participation in any project yet!</p>
         </div>
 
-        <h2>Opportunities</h2>
-        <div ng-show="model.opportunities.length == 0" class="alert alert-info">
-            <p>No opportunities found</p>
+        <h2 ng-show="model.currentUser.role != 'DONOR'">Opportunities</h2>
+        <div ng-show="model.currentUser.role === 'ORGANIZATION' && model.opportunities.length == 0" class="alert alert-info">
+            <p>No opportunities created yet</p>
         </div>
 
-
+        <!--<div ng-show="model.currentUser.role === 'DONOR' && model.opportunities.length == 0" class="alert alert-info">-->
+            <!--<p>Sorry, there are no opportunities created yet</p>-->
+        <!--</div>-->
         <div ng-repeat="opp in model.opportunities" class="ag-myOpportunities-list">
-            <div>
-                <img  class="ag-myOpportunities-thumbnail" ng-src="{{opp.imageUrl || '../../../project/css/img/backgrounds/banner.jpg'}} ">
-            </div>
+                   <div>
+                    <img  class="ag-myOpportunities-thumbnail" ng-src="{{opp.imageUrl || '../../../project/css/img/backgrounds/banner.jpg'}} ">
+                </div>
 
-            <div class="ag-myOpp-content">
-                <h4><a href="#!/organization/opportunity/{{opp._id}}">{{opp.title}}</a></h4>
-                <div style="color: grey">
+                <div class="ag-myOpp-content">
+                            <h4><a href="#!/organization/opportunity/{{opp._id}}">{{opp.title}}</a></h4>
+                            <div style="color: grey">
                                 <span class="ag-date">
                                     <i class="fa fa-clock-o"></i>
                                     <span class="date-start dtstart" style="color: grey">
@@ -115,32 +117,31 @@
                                     </span>
                                 </span>
 
-                    <span class="ag-location" style="color: grey">
+                                 <span class="ag-location" style="color: grey">
                                     <i class="fa fa-map-marker"></i>
                                     {{opp.location}}
                                 </span>
 
-                    <a ng-if="opp._volunteers.indexOf(model.currentUser._id) === -1"
-                       style="font-size: large"
-                       class="glyphicon glyphicon-plus pull-right"
-                       ng-click="model.addVolunteer(opp._id)">
-                    </a>
+                                <a ng-show ="model.currentUser.role === 'ORGANIZATION'"
+                                   style="font-size: large"
+                                    class="glyphicon glyphicon-remove pull-right"
+                                    ng-click="model.deleteOpportunity(opp._id)">
+                                </a>
 
-                    <a ng-if="opp._volunteers.indexOf(model.currentUser._id) > -1"
-                       style="font-size: large"
-                       class="glyphicon glyphicon-remove pull-right"
-                       ng-click="model.deleteVolunteer(opp._id)">
-                    </a>
+                                <a  ng-show ="model.currentUser.role === 'ORGANIZATION'"
+                                    style="font-size: large"
+                                    class="glyphicon glyphicon-cog pull-right"
+                                    href="#!/organization/project/{{opp.projectId}}/opportunity/{{opp._id}}/edit">
+                                </a>
+                            </div>
 
-                </div>
-
-                <div class="ag-excerpt">
-                    <p style="color: grey"
-                       ng-bind-html="opp.description | excerpt:300">
-                    </p>
+                    <div class="ag-excerpt">
+                        <p style="color: grey"
+                           ng-bind-html="opp.description | excerpt:300">
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
     </div>
     <div class = "ag-addBottomPadding"></div>
 </div>

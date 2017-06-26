@@ -8,6 +8,46 @@ app.delete("/api/project/opportunity/:opportunityId", deleteOpportunity);
 app.get("/api/project/allOpportunities", getAllOpportunities);
 app.get("/api/project/allOpportunities/:createdBy", getAllOpportunitiesById);
 app.post("/api/project/opportunity/:opportunityId/volunteer", addVolunteer);
+app.put("/api/project/opportunity/:opportunityId/volunteer/:volunteerId/delete", deleteVolunteer);
+app.get("/api/project/donor/:donorId/getOpportunities", isAdminOrDonor, getOpportunitiesOfDonor);
+app.get("/api/project/:projectId/getOpportunities", isAdminOrDonor, getOpportunitiesByProjectId);
+
+function getOpportunitiesByProjectId(req, res) {
+    var projectId = req.params.projectId;
+
+    opportunityModel
+        .getOpportunitiesByProjectId(projectId)
+        .then(function (response) {
+            res.json(response);
+        },function (err) {
+            res.send(err);
+        });
+}
+
+function getOpportunitiesOfDonor(req, res) {
+    var donorId = req.params.donorId;
+
+    opportunityModel
+        .getOpportunitiesOfDonor(donorId)
+        .then(function (response) {
+            res.json(response);
+        },function (err) {
+            res.send(err);
+        });
+}
+
+function deleteVolunteer(req, res) {
+    var opportunityId = req.params.opportunityId;
+    var volunteerId = req.params.volunteerId;
+
+    opportunityModel
+        .deleteVolunteer(volunteerId, opportunityId)
+        .then(function (opp) {
+            res.json(opp)
+        }, function (err) {
+            res.send(err);
+        });
+}
 
 function addVolunteer(req, res) {
     var opportunityId = req.params.opportunityId;
@@ -92,4 +132,14 @@ function createOpportunity(req, res) {
         }, function (err) {
             res.send(err);
         });
+}
+
+function isAdminOrDonor(req, res, next) {
+    if(req.isAuthenticated() &&
+        ((req.user.role.indexOf('ADMIN') > -1) ||
+        (req.user.role.indexOf('DONOR') > -1))) {
+        next();
+    } else {
+        res.sendStatus(401);
+    }
 }

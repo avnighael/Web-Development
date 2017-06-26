@@ -3,8 +3,22 @@ var donationSchema = require('./donation.schema.server');
 var donationModel = mongoose.model('donationModel', donationSchema);
 
 donationModel.sendDonation = sendDonation;
+donationModel.getDonationHistory = getDonationHistory;
+donationModel.deleteDonation = deleteDonation;
 
 module.exports = donationModel;
+
+function deleteDonation(donationId) {
+    return donationModel
+        .remove({_id: donationId});
+}
+
+function getDonationHistory(userId) {
+    return donationModel
+        .find({_user: userId})
+        .populate('_user', 'username firstName lastName')
+        .exec()
+}
 
 
 function sendDonation(userId, projectId, dAmmount) {

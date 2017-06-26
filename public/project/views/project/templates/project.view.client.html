@@ -19,7 +19,7 @@
 
                 <li class="">
 
-                    <form class="" action="">
+                    <form ng-show="model.user.role != 'ADMIN'" class="" action="">
                         <input class="input_text grid-9 grid-xl-10 ag-search"
                                type="text"
                                placeholder="I care about..."
@@ -41,6 +41,25 @@
                        href="#!/organization/projects">
                         Projects
                     </a>
+
+                    <a ng-if="model.user.role === 'ADMIN'"
+                       class=""
+                       href="#!/users/all/manage">
+                        Manage Users
+                    </a>
+                </li>
+
+                <li class="">
+                    <a ng-show="model.user.role != 'ADMIN'" class=""
+                       href="#!/organization/opportunity/all">
+                        Opportunities
+                    </a>
+
+                    <!--<a ng-show="model.user.role === 'ADMIN'"-->
+                    <!--class=""-->
+                    <!--href="#!/organization/all">-->
+                    <!--Manage Organization Representative-->
+                    <!--</a>-->
                 </li>
 
                 <li class="">
@@ -88,6 +107,14 @@
                            ng-click="model.removeVolunteersForm(model.proj.id)"
                            class="btn btn-danger btn-block">
                             No longer needed volunteers
+                        </a>
+                    </div>
+
+                    <div ng-if="model.user.role === 'DONOR' || model.user.role === 'ADMIN'">
+                        <a ng-show="model.opportunities.length > 0"
+                           href="#!/project/{{model.projectId}}/opportunity/all"
+                           class="btn btn-primary btn-block">
+                            Volunteer Opportunities
                         </a>
                     </div>
 

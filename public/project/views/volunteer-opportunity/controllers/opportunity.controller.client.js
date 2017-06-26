@@ -23,13 +23,28 @@
         model.updateOpportunity = updateOpportunity;
         model.deleteOpportunity = deleteOpportunity;
         model.addVolunteer = addVolunteer;
+        model.deleteVolunteer = deleteVolunteer;
 
         function init() {
-            // model.volunteering = false;
+            model.volunteering = false;
+
             getOpportunityById(opportunityId);
+            // console.log(model.opportunity);
+
         }
 
         init();
+
+        function deleteVolunteer(opportunityId) {
+            opportunityService
+                .deleteVolunteer(model.currentUser._id, opportunityId)
+                .then(function (response) {
+                    getOpportunityById(opportunityId);
+                    model.volunteering = false;
+                }, function (err) {
+                    console.log(err);
+                })
+        }
 
         function addVolunteer() {
             opportunityService.
@@ -83,6 +98,12 @@
                     model.opportunity = opp;
                     model.opportunity.startDate = new Date(model.opportunity.startDate);
                     model.opportunity.endDate = new Date(model.opportunity.endDate);
+                    for (var o in model.opportunity._volunteers) {
+                        if(model.opportunity._volunteers[o] === model.currentUser._id) {
+                            model.volunteering = true;
+                        }
+                    }
+                    // console.log(model.opportunity);
                 })
 
         }

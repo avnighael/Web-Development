@@ -5,8 +5,15 @@ var commentModel = mongoose.model('commentModel', commentSchema);
 commentModel.postComment = postComment;
 commentModel.getCommentsByProjectId = getCommentsByProjectId;
 commentModel.deleteComment = deleteComment;
+commentModel.getComments = getComments;
 
 module.exports = commentModel;
+
+
+function getComments(userId) {
+    return commentModel
+        .find({_user: userId})
+}
 
 function deleteComment(commentId) {
     return commentModel.remove({_id: commentId});

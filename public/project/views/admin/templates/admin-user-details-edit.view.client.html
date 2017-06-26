@@ -82,7 +82,8 @@
 
         <h2> Profile: {{model.thisUser.firstName}}  {{model.thisUser.lastName}}</h2>
 
-        <div class="row container-fluid">
+        <div ng-show="model.thisUser.role === 'DONOR'"
+             class="row container-fluid">
             <h3>Favourites</h3>
 
             <ul class="list-group">
@@ -143,7 +144,8 @@
             </ul>
         </div>
 
-        <div class="row container-fluid">
+        <div ng-show="model.thisUser.role === 'DONOR'"
+             class="row container-fluid">
             <h3>Wishlist</h3>
 
             <ul class="list-group">
@@ -204,7 +206,8 @@
             </ul>
         </div>
 
-        <div class="row container-fluid">
+        <div ng-show="model.thisUser.role === 'DONOR'"
+             class="row container-fluid">
             <h3>Followers</h3>
 
             <ul class="list-group">
@@ -226,7 +229,7 @@
                             Email Id
                         </div>
                         <div class="col-lg-1 col-md-2 col-sm-2">
-                            <a href="#!/admin/user/{{model.thisUserId}}/add">
+                            <a href="#!/admin/user/{{model.thisUserId}}/addFollower">
                                 <span class="glyphicon glyphicon-plus pull-right"></span>
                             </a>
                         </div>
@@ -265,82 +268,249 @@
             </ul>
         </div>
 
-    </div>
+        <div ng-show="model.thisUser.role === 'DONOR'"
+             class="row container-fluid">
+            <h3>Following</h3>
 
-    <!--<p>by {{org.organization.name}}</p>-->
-
-    <!--Comment Section-->
-    <div ng-show="model.user.role != 'ADMIN'" class=".ag-comments-section">
-        <hr/>
-        <div class="ag-comments-heading">Comments</div>
-
-        <div ng-show="model.blankCommentError"
-             class="alert alert-danger alert-dismissible fade in" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">×</span>
-            </button>
-            <p class="ag-left-alignment">{{model.blankCommentError}}</p>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="input-group .ag-comment-box">
-                    <input  ng-keyup="$event.keyCode == 13 && model.postComment(model.comment)"
-                            class="form-control"
-                            placeholder="Enter your comment here"
-                            type="text"
-                            ng-model="model.comment.text"/>
-                    <div class="input-group-btn tnn-comment-send-div">
-                        <a  ng-click="model.postComment(model.comment)"
-                            class="btn btn-success"
-                            title="Post a comment">
-                            <i class="glyphicon glyphicon-send"></i>
-                        </a>
+            <ul class="list-group">
+                <li class="list-group-item active">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-9">
+                            Username
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-3 hidden-xs">
+                            First Name
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-3  hidden-xs">
+                            Last Name
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 hidden-xs">
+                            Role
+                        </div>
+                        <div class="col-lg-3 col-md-2 hidden-sm hidden-xs">
+                            Email Id
+                        </div>
+                        <div class="col-lg-1 col-md-2 col-sm-2">
+                            <a href="#!/admin/user/{{model.thisUserId}}/addFollower">
+                                <span class="glyphicon glyphicon-plus pull-right"></span>
+                            </a>
+                        </div>
                     </div>
+                </li>
+
+                <div ng-if="model.thisUser.following.length == '0"
+                     class="alert alert-info">
+                    No one is following yet!
                 </div>
-            </div>
+
+                <li ng-repeat="following in model.thisUser.following" class="list-group-item">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-9">
+                            {{following.username}}
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-3 hidden-xs">
+                            {{following.firstName}}
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-3 hidden-xs">
+                            {{following.lastName}}
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 hidden-xs">
+                            {{following.role}}
+                        </div>
+                        <div class="col-lg-3 col-md-2 hidden-sm hidden-xs">
+                            {{following.email}}
+                        </div>
+                        <div class="col-lg-1 col-md-2 col-sm-2">
+                            <a ng-click="model.unfollow(following.username)">
+                                <span class="glyphicon glyphicon-remove pull-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
+
+        <div class="row container-fluid">
+            <h3>Opportunities</h3>
+
+            <ul class="list-group">
+                <li class="list-group-item active">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                            Username
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-2 hidden-xs">
+                            Project
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4  col-xs-6">
+                            Title
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 hidden-xs">
+                            Created By
+                        </div>
+                        <div class="col-lg-3 col-md-2 hidden-sm hidden-xs">
+                            Organization
+                        </div>
+                        <div class="col-lg-1 col-md-2 col-sm-2">
+                            <a href="#!/admin/user/{{model.thisUserId}}/addFollower">
+                                <span class="glyphicon glyphicon-plus pull-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+
+                <div ng-if="!model.opportunities[0]._volunteers"
+                     class="alert alert-info">
+                    Participated in no volunteer opportunities yet!
+                </div>
+
+                <li ng-repeat="opportunity in model.opportunities" class="list-group-item">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                            {{model.thisUser.username}}
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-2 hidden-xs">
+                            {{opportunity.projectId}}
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                            {{opportunity.title}}
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 hidden-xs">
+                            {{opportunity._createdBy.username}}
+                        </div>
+                        <div class="col-lg-3 col-md-2 hidden-sm hidden-xs">
+                            {{opportunity._createdBy.organization}}
+                        </div>
+                        <div class="col-lg-1 col-md-2 col-sm-2">
+                            <a ng-click="model.deleteVolunteer(opportunity._id)">
+                                <span class="glyphicon glyphicon-remove pull-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="row container-fluid">
+            <h3>Comments</h3>
+
+            <ul class="list-group">
+                <li class="list-group-item active">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                            First Name
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-3 hidden-xs">
+                            Last Name
+                        </div>
+                        <div class="col-lg-1 col-md-2 col-sm-2  hidden-xs">
+                            Project
+                        </div>
+                        <div class="col-lg-3 col-md-2 col-sm-3 col-xs-6">
+                            Comments
+                        </div>
+                        <div class="col-lg-3 col-md-2 hidden-sm hidden-xs">
+                            Created At
+                        </div>
+                        <div class="col-lg-1 col-md-2 col-sm-2">
+
+                        </div>
+                    </div>
+                </li>
+
+                <div ng-if="!model.comments[0].comment"
+                     class="alert alert-info">
+                    No comments found!
+                </div>
+
+                <li ng-repeat="cmnt in model.comments" class="list-group-item">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                            {{model.thisUser.firstName}}
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-3 hidden-xs">
+                            {{model.thisUser.lastName}}
+                        </div>
+                        <div class="col-lg-1 col-md-2 col-sm-2 hidden-xs">
+                            {{cmnt._project}}
+                        </div>
+                        <div class="col-lg-3 col-md-2 col-sm-3 col-xs-6">
+                            {{cmnt.comment}}
+                        </div>
+                        <div class="col-lg-3 col-md-2 hidden-sm hidden-xs">
+                            {{cmnt.createdAt}}
+                        </div>
+                        <div class="col-lg-1 col-md-2 col-sm-2">
+                            <a ng-click="model.deleteComment(cmnt._id)">
+                                <span class="glyphicon glyphicon-remove pull-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="row container-fluid">
+            <h3>Donation Transactions</h3>
+
+            <ul class="list-group">
+                <li class="list-group-item active">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-9">
+                            Transaction Id
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-3 hidden-xs">
+                            Username
+                        </div>
+                        <div class="col-lg-2 col-md-1 col-sm-2  hidden-xs">
+                            Project
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-2 hidden-xs">
+                            Amount
+                        </div>
+                        <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+                            Donated On
+                        </div>
+                        <div class="col-lg-1 col-md-2 col-sm-2">
+                        </div>
+                    </div>
+                </li>
+
+                <div ng-if="model.donations.length == '0'"
+                     class="alert alert-info">
+                    No donation history!
+                </div>
+
+                <li ng-repeat="donation in model.donations" class="list-group-item">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-9">
+                            {{donation._id}}
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-3 hidden-xs">
+                            {{donation._user.username}}
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 hidden-xs">
+                            {{donation._project}}
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-2 hidden-xs">
+                            {{donation.amount}}
+                        </div>
+                        <div class="col-lg-3 col-md-2 hidden-sm hidden-xs">
+                            {{donation.createdAt}}
+                        </div>
+                        <div class="col-lg-1 col-md-2 col-sm-2">
+                            <a ng-click="model.deleteDonation(donation._id)">
+                                <span class="glyphicon glyphicon-remove pull-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+
     </div>
-
-    <div class="ag-project-comments-display container-fluid"
-         ng-repeat="comment in model.proj.comments">
-
-        <!--<div ng-show="model.user.role === 'ADMIN'">-->
-        <!--&lt;!&ndash;Admin should not able to visit other profiles, follow or subscribe to people&ndash;&gt;-->
-        <!--{{comment._user.firstName+" "+comment._user.lastName}}-->
-        <!--{{comment.comment}}-->
-        <!--</div>-->
-        <span ng-show="model.user.role != 'ADMIN' &&
-                       model.user.role != 'ORGANIZATION'"
-              class="input-group container">
-            <div>
-            <a title="Posted at {{comment.createdAt}}"
-               href="#!/user/{{comment._user._id}}">
-                <!--{{comment._user.firstName+" "+comment._user.lastName}}-->
-            </a>
-            <div class="ag-left-alignment">
-                <span>
-                    <a href="">
-                        {{comment._user.firstName}}
-                        {{comment._user.lastName}}
-                    </a>
-                </span>
-                &nbsp; &nbsp;
-                <span>
-                    {{comment.comment}}
-                </span>
-            <span ng-show="comment._user._id === model.user._id"
-                  class="ag-comment-delete pull-right">
-            <a ng-click="model.deleteComment(comment._id)" class="btn btn-danger">
-                <span class="glyphicon glyphicon-trash "></span> Delete Comment
-            </a>
-        </span>
-            </div>
-                <div class="ag-left-alignment">Posted at {{comment.createdAt}}  </div>
-            </div>
-
-
-
-        </span>
-    </div>
-
+    <div class = "ag-addBottomPadding"></div>
 </div>
+

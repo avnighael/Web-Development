@@ -11,7 +11,7 @@
         var thisUserId = $routeParams.userId;;
         model.thisUserId = thisUserId
 
-        model.getAllDonors = getAllDonors;
+        model.getAllUsers = getAllUsers;
         model.deleteUser = deleteUser;
         model.createUser = createUser;
         model.modifyUser = modifyUser;
@@ -19,7 +19,7 @@
         function init() {
 
             if(!model.thisUserId) {
-                getAllDonors();
+                getAllUsers();
             } else {
                 getUserById(model.thisUserId);
             }
@@ -27,6 +27,15 @@
         }
 
         init();
+
+        function follow(userIdToFollow) {
+            userService
+                .follow(userIdToFollow,model.currentUserId)
+                .then(function (followers) {
+                    model.user.followers.push(followers);
+                    model.followed = true;
+                })
+        }
 
         function modifyUser(userId, user) {
             if((user.username === null && user.password === null) ||
@@ -129,13 +138,11 @@
                         model.error = "Sorry, this username is taken";
                 });
 
-
-
         }
 
-        function getAllDonors() {
+        function getAllUsers() {
             adminService
-                .getAllDonors()
+                .getAllUsers()
                 .then(function (allUsers) {
                     model.allUsers = allUsers;
                 }, function (err) {

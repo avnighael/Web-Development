@@ -9,8 +9,36 @@ opportunityModel.deleteOpportunity = deleteOpportunity;
 opportunityModel.getAllOpportunities = getAllOpportunities;
 opportunityModel.getAllOpportunitiesById = getAllOpportunitiesById;
 opportunityModel.addVolunteer = addVolunteer;
+opportunityModel.deleteVolunteer = deleteVolunteer;
+opportunityModel.getOpportunitiesOfDonor = getOpportunitiesOfDonor;
+opportunityModel.getOpportunitiesByProjectId = getOpportunitiesByProjectId;
 
 module.exports = opportunityModel;
+
+function getOpportunitiesByProjectId(projectId) {
+    return opportunityModel
+        .find({projectId: projectId})
+        .populate('_createdBy', 'username organization')
+        .exec()
+}
+
+function getOpportunitiesOfDonor(donorId) {
+    return opportunityModel
+        .find({_volunteers: donorId})
+        .populate('_createdBy', 'username organization')
+        .exec()
+}
+
+function deleteVolunteer(volunteerId, opportunityId) {
+    return opportunityModel
+        .findById(opportunityId)
+        .then(function (opportunity) {
+            opportunity._volunteers.splice(opportunity._volunteers.indexOf(volunteerId),1);
+            opportunity.save();
+        }, function (err) {
+            return err;
+        })
+}
 
 function addVolunteer(volunteerId, opportunityId) {
     return opportunityModel

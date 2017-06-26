@@ -3,7 +3,13 @@
         .module("Handouts")
         .controller("ProjectController", ProjectController);
 
-    function ProjectController(userService, orgService, donationService, currentUser, $routeParams, $location) {
+    function ProjectController(userService,
+                               orgService,
+                               donationService,
+                               currentUser,
+                               opportunityService,
+                               $routeParams,
+                               $location) {
 
         var model = this;
 
@@ -17,10 +23,13 @@
         model.organizationId = organizationId;
         var projectId = $routeParams.projectId;
         model.projectId = projectId;
-        var favourites = model.user.favourites
-        model.favourites = favourites;
         var thisUserId = $routeParams.userId;
         model.thisUserId = thisUserId;
+
+        if(model.user) {
+            var favourites = model.user.favourites
+            model.favourites = favourites;
+        }
 
         model.sendDonation = sendDonation;
         model.addToWishList = addToWishList;
@@ -33,6 +42,7 @@
         model.findUserOfThisComment = findUserOfThisComment;
         model.addToFavourites = addToFavourites;
         model.removeFromFavourites = removeFromFavourites;
+        model.getOpportunitiesByProjectId = getOpportunitiesByProjectId;
 
         function init() {
             model.donating = false;
@@ -42,6 +52,8 @@
             model.wantVolunteers = true;
 
             wishListShow();
+
+            getOpportunitiesByProjectId(projectId);
 
             getCommentsByProjectId(projectId);
 
@@ -62,6 +74,17 @@
             var proj = proj.data.project;
             model.proj = proj;
             // console.log(proj);
+        }
+
+        function getOpportunitiesByProjectId(projectId) {
+            opportunityService
+                .getOpportunitiesByProjectId(projectId)
+                .then(function (opportunities) {
+                    // console.log(opportunities);
+                    model.opportunities = opportunities;
+                }, function (err) {
+                    console.log(err);
+                })
         }
 
         function removeFromFavourites(projectId) {

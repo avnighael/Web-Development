@@ -22,11 +22,16 @@ userModel.findUserByFacebookId = findUserByFacebookId;
 
 // Admin functionalities
 userModel.getAllDonors = getAllDonors;
+userModel.getAllUsers = getAllUsers;
 userModel.unfollowPersonByUsername = unfollowPersonByUsername;
 
 module.exports = userModel;
 
 function getAllDonors() {
+    return userModel.find({role: "DONOR"});
+}
+
+function getAllUsers() {
     return userModel.find({role: {$ne: "ADMIN"}});
 }
 
@@ -88,7 +93,8 @@ function unfollowPersonByUsername(usernameToUnfollow, userId) {
                         },function (err) {
                             return err;
                         })
-             return err;
+                }, function (err) {
+                    return err;
                 });
         },function (err) {
             return err;

@@ -1,9 +1,9 @@
 (function () {
     angular
         .module('Handouts')
-        .controller('allOpportunityController', allOpportunityController);
+        .controller('organizationAllOpportunityController', organizationAllOpportunityController);
 
-    function allOpportunityController(currentUser, opportunityService, $routeParams) {
+    function organizationAllOpportunityController(currentUser, opportunityService, $routeParams) {
 
         var model = this;
 
@@ -16,16 +16,30 @@
         model.getAllOpportunities = getAllOpportunities;
         model.deleteOpportunity = deleteOpportunity;
         model.getAllOpportunitiesById = getAllOpportunitiesById;
+        model.getOpportunitiesOfDonor = getOpportunitiesOfDonor;
 
         function init() {
-            if(model.currentUser.role === "ORGANIZATION") {
-                getAllOpportunitiesById(model.currentUser._id);
-            } else if(model.currentUser.role === "DONOR") {
+            if(model.currentUser) {
+                if(model.currentUser.role === "ORGANIZATION") {
+                    getAllOpportunitiesById(model.currentUser._id);
+                } else if(model.currentUser.role === "DONOR") {
+                    getOpportunitiesOfDonor(model.currentUser._id);
+                }
+            } else {
                 getAllOpportunities();
             }
+
         }
 
         init();
+
+        function getOpportunitiesOfDonor(donorId) {
+            opportunityService
+                .getOpportunitiesOfDonor(donorId)
+                .then(function (opportunities) {
+                    model.opportunities = opportunities;
+                })
+        }
 
         function getAllOpportunities() {
             opportunityService

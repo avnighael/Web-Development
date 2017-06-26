@@ -6,11 +6,57 @@
     function adminService($http) {
 
         this.getAllDonors = getAllDonors;
+        this.getAllUsers = getAllUsers;
         this.deleteUser = deleteUser;
         this.createUser = createUser;
         this.getUserById = getUserById;
         this.modifyUser = modifyUser;
         this.unfollow = unfollow;
+        this.getDonationHistory = getDonationHistory;
+        this.deleteDonation = deleteDonation;
+        this.getComments = getComments;
+        this.deleteComment = deleteComment;
+        this.getOpportunitiesOfDonor = getOpportunitiesOfDonor;
+
+        function getOpportunitiesOfDonor(donorId) {
+            var url = "/api/project/admin/donor/"+donorId+"/getOpportunities";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function deleteComment(commentId) {
+            var url = "/api/project/admin/comment/"+commentId+"/delete";
+            return $http.delete(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function getComments(userId) {
+            var url = "/api/project/admin/user/"+userId+"/getComments";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function deleteDonation(donationId) {
+            var url = "/api/project/admin/"+donationId+"/delete";
+            return $http.delete(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function getDonationHistory(thisUserId) {
+            var url = "/api/project/admin/user/"+thisUserId+"/getDonations";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
 
         function unfollow(usernameToUnfollow, thisUserId) {
             var url = "/api/project/admin/user/"+thisUserId+"/unfollow/"+usernameToUnfollow;
@@ -50,6 +96,15 @@
             var url = "/api/project/admin/user/"+userId+"/delete";
             return $http.delete(url)
                 .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function getAllUsers() {
+            var url = "/api/project/users";
+            return $http.get(url)
+                .then(function (response) {
+                    console.log(response);
                     return response.data;
                 });
         }
