@@ -2,31 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe86f3a8-3bab-47a0-a636-41eeca86c813" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/views/admin/controllers/admin-add-follower.controller.client.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/views/admin/templates/admin-add-follower.view.client.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/views/volunteer-opportunity/controllers/project-opportunities.controller.client.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/views/volunteer-opportunity/templates/organization-all-opportunities.view.client.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/views/volunteer-opportunity/templates/project-opportunities.view.client.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/admin/controllers/admin-user-details-edit.controller.client.html.js" afterPath="$PROJECT_DIR$/public/project/views/admin/controllers/admin-user-details-edit.controller.client.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/volunteer-opportunity/controllers/all-opportunities.controller.client.js" afterPath="$PROJECT_DIR$/public/project/views/volunteer-opportunity/controllers/organization-all-opportunities.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/models/comment/comment.model.sever.js" afterPath="$PROJECT_DIR$/project/models/comment/comment.model.sever.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/models/donation/donation.model.server.js" afterPath="$PROJECT_DIR$/project/models/donation/donation.model.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/models/opportunity/opportunity.model.server.js" afterPath="$PROJECT_DIR$/project/models/opportunity/opportunity.model.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/models/user/user.model.server.js" afterPath="$PROJECT_DIR$/project/models/user/user.model.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/services/admin.service.server.js" afterPath="$PROJECT_DIR$/project/services/admin.service.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/services/opportunity.service.server.js" afterPath="$PROJECT_DIR$/project/services/opportunity.service.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/config.js" afterPath="$PROJECT_DIR$/public/project/config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/index.html" afterPath="$PROJECT_DIR$/public/project/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/services/admin.service.client.js" afterPath="$PROJECT_DIR$/public/project/services/admin.service.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/services/opportunity.service.client.js" afterPath="$PROJECT_DIR$/public/project/services/opportunity.service.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/admin/controllers/admin-users.controller.client.js" afterPath="$PROJECT_DIR$/public/project/views/admin/controllers/admin-users.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/admin/templates/admin-user-details-edit.view.client.html" afterPath="$PROJECT_DIR$/public/project/views/admin/templates/admin-user-details-edit.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/project/controllers/project.controller.client.js" afterPath="$PROJECT_DIR$/public/project/views/project/controllers/project.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/project/templates/project.view.client.html" afterPath="$PROJECT_DIR$/public/project/views/project/templates/project.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/volunteer-opportunity/controllers/opportunity.controller.client.js" afterPath="$PROJECT_DIR$/public/project/views/volunteer-opportunity/controllers/opportunity.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/volunteer-opportunity/templates/all-opportunities.view.client.html" afterPath="$PROJECT_DIR$/public/project/views/volunteer-opportunity/templates/all-opportunities.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/volunteer-opportunity/templates/view-opportunity.view.client.html" afterPath="$PROJECT_DIR$/public/project/views/volunteer-opportunity/templates/view-opportunity.view.client.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -67,8 +42,8 @@
       <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+            <state relative-caret-position="211">
+              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -850,12 +825,12 @@
       <workItem from="1497750861341" duration="68659000" />
       <workItem from="1497988416421" duration="23472000" />
       <workItem from="1498076723453" duration="2043000" />
-      <workItem from="1498079061703" duration="173371000" />
+      <workItem from="1498079061703" duration="173451000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="730647000" />
+    <option name="totallyTimeSpent" value="730727000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="722" extended-state="6" />
@@ -1364,8 +1339,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        <state relative-caret-position="211">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding />
         </state>
       </provider>
