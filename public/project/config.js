@@ -86,7 +86,12 @@
     function configuration ($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'home.html '
+                templateUrl: 'views/home/home.view.client.html ',
+                controller: 'homeController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
             })
 
             .when('/login', {

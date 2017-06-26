@@ -20,7 +20,7 @@ ourApp(app);
 
 require('./project/app');
 
-//require('./practice/session/app');
+require('./practice/session/app');
 
 // require('./assignment/app');
 

@@ -56,7 +56,7 @@ app.get('/auth/google/callback',
         failureRedirect: '/project/#/login'
     }));
 
-app.get ('/auth/facebook', passport.authenticate('facebook', { scope : ['profile', 'email'] }));
+app.get ('/auth/facebook', passport.authenticate('facebook', { scope : ['email'] }));
 app.get('/auth/facebook/callback',
     passport.authenticate('facebook', {
         successRedirect: '/project/#/profile',
