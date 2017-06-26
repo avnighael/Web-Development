@@ -13,7 +13,7 @@
 
         // model.updateUser = updateUser;
         // model.modifyUser = modifyUser;
-        // model.logout = logout;
+         model.logout = logout;
         // model.unregister = unregister;
 
         function init() {
@@ -32,13 +32,13 @@
         //         });
         // }
         //
-        // function logout(user){
-        //     userService
-        //         .logout()
-        //         .then(function () {
-        //             $location.url('/login');
-        //         })
-        // }
+        function logout(user){
+            userService
+                .logout()
+                .then(function () {
+                    $location.url('/login');
+                })
+        }
         //
         //
         // function modifyUser(newUser) {
