@@ -1,4 +1,4 @@
 (function(){
     angular
-        .module("Handouts",["ngRoute"]);
+        .module("Handouts",["ngRoute", "ui.bootstrap"]);
 })();

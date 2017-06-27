@@ -546,3 +546,34 @@ button.btn:active:focus, button.btn.active:focus { outline: 0; opacity: 0.6; bac
 .ag-align-glyphicon-edit {
     padding-right: 30px;
 }
+
+/*Home Page*/
+
+#slides_control > div {
+    height: 200px;
+}
+
+.ag-carousel-image {
+    display: block;
+    overflow: visible;
+    width: 100%;
+    height: auto;
+    margin-right: auto;
+    margin-bottom: 12px;
+    margin-left: auto;
+    float: none;
+
+    /*min-height: 260px;*/
+    /*max-height:270px;*/
+    /*width: 100%;*/
+    /*margin:0 auto;*/
+    /*opacity: 0.6;*/
+}
+
+#slides_control {
+    position:absolute;
+    width: 400px;
+    left:50%;
+    top:20px;
+    margin-left:-200px;
+}

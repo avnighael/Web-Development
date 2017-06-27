@@ -1,9 +1,9 @@
 (function () {
     angular
-        .module('Handouts') // Here, only reading the module
+        .module('Handouts')
         .controller('homeController', homeController);
 
-    function  homeController(currentUser, $location, userService) {
+    function  homeController(currentUser, $location, userService, $scope) {
         var model = this;
 
         if(currentUser) {
@@ -17,6 +17,18 @@
         // model.unregister = unregister;
 
         function init() {
+            $scope.myInterval = 4000;
+            $scope.slides = [
+                {
+                    image: 'http://www.globalgiving.org/pfil/21980/pict_original.jpg'
+                },
+                {
+                    image: 'http://www.globalgiving.org/pfil/9220/ph_9220_32832.jpg'
+                },
+                {
+                    image: 'http://www.globalgiving.org/pfil/25409/pict_original.jpg'
+                }
+            ];
 
         }
 
@@ -36,7 +48,7 @@
             userService
                 .logout()
                 .then(function () {
-                    $location.url('/login');
+                    $location.url('/');
                 })
         }
         //
