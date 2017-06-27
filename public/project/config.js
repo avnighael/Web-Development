@@ -29,7 +29,7 @@
             .then(function (user) {
                 if(user === '0') {
                     deferred.reject();
-                    $location.url('/login');
+                    $location.url('/');
                 } else {
                     deferred.resolve(user);
                 }
@@ -69,7 +69,8 @@
                     var user = response;
                     if (user === '0')
                     {
-                        deferred.resolve(null);
+                        deferred.reject();
+                        $location.url('/');
                     }
                     else  {
                         if(user.role === 'ORGANIZATION' || user.role === 'ADMIN') {
@@ -319,13 +320,29 @@
                 controller: 'projectsController',
                 controllerAs: 'model',
                 resolve: {
-                    currentUser: checkCurrentUser
+                    currentUser: checkAdmin
+                }
+            })
+
+            .when('/admin/:userId/organization/project/:projectId/opportunity/create', {
+                templateUrl: 'views/volunteer-opportunity/templates/opportunity.view.client.html',
+                controller: 'volunteerOpportunityController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkUserAdminOrganization
                 }
             })
 
 
 
-
+            // .when('/admin/user/:userId/browseProjects/:projectId', {
+            //     templateUrl: 'views/project/templates/project.view.client.html',
+            //     controller: 'ProjectController',
+            //     controllerAs: 'model',
+            //     resolve: {
+            //         currentUser: checkAdmin
+            //     }
+            // })
 
     }
 }) ();

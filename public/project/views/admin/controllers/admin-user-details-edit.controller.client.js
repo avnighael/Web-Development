@@ -207,21 +207,44 @@
                 })
         }
 
-        function unfollow(usernameToUnfollow) {
-            adminService
-                .unfollow(usernameToUnfollow, thisUserId)
-                .then(function (response) {
-                    console.log(response);
-                    var followerIndex = model.thisUser.followers.map(function(x){
-                        return x._id;})
-                        .indexOf(model.thisUserId);
-                    model.thisUser.followers.splice(followerIndex,1);
-                    model.followed = false;
-                    getUserById(model.thisUserId);
+        function unfollow(userIdToUnfollow) {
+            userService
+                .findUserById(thisUserId)
+                .then(function (thisUser) {
+                    userService
+                        .unfollow(userIdToUnfollow, model.thisUserId)
+                        .then(function (response) {
+                            var followerIndex = model.thisUser.followers.map(function(x){
+                                return x._id;})
+                                .indexOf(model.thisUserId);
+                            model.thisUser.followers.splice(followerIndex,1);
+                            model.followed = false;
+                            getUserById(model.thisUserId);
+                            getDonationHistory(model.thisUserId);
+                            getComments(model.thisUserId);
+                            getOpportunitiesOfDonor(model.thisUserId);
+                            getOpportunitiesOfOrg(model.thisUserId);
+                        })
                 }, function (err) {
                     console.log(err);
                 })
         }
+
+        // function unfollow(userIdToUnfollow) {
+        //     adminService
+        //         .unfollow(userIdToUnfollow, thisUserId)
+        //         .then(function (response) {
+        //             console.log(response);
+        //             var followerIndex = model.thisUser.followers.map(function(x){
+        //                 return x._id;})
+        //                 .indexOf(model.thisUserId);
+        //             model.thisUser.followers.splice(followerIndex,1);
+        //             model.followed = false;
+        //             getUserById(model.thisUserId);
+        //         }, function (err) {
+        //             console.log(err);
+        //         })
+        // }
 
 
 

@@ -259,7 +259,7 @@
                             {{follower.email}}
                         </div>
                         <div class="col-lg-1 col-md-2 col-sm-2">
-                            <a ng-click="model.unfollow(follower.username)">
+                            <a ng-click="model.unfollow(follower._id)">
                                 <span class="glyphicon glyphicon-remove pull-right"></span>
                             </a>
                         </div>
@@ -321,7 +321,7 @@
                             {{following.email}}
                         </div>
                         <div class="col-lg-1 col-md-2 col-sm-2">
-                            <a ng-click="model.unfollow(following.username)">
+                            <a ng-click="model.unfollow(following._id)">
                                 <span class="glyphicon glyphicon-remove pull-right"></span>
                             </a>
                         </div>
@@ -415,7 +415,7 @@
                             Volunteers
                         </div>
                         <div class="col-lg-1 col-md-2 col-sm-2">
-                            <a href="#!/admin/user/{{model.thisUserId}}/add">
+                            <a href="#!/admin/user/{{model.thisUserId}}/organization/projects">
                                 <span class="glyphicon glyphicon-plus pull-right"></span>
                             </a>
                         </div>

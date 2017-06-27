@@ -11,7 +11,6 @@ app.delete('/api/project/admin/user/:userId/delete', isAdmin, deleteUser);
 app.post('/api/project/admin/user/create', isAdmin, createUser);
 app.get('/api/project/user/:userId', isAdmin, getUserById);
 app.put('/api/project/user/:userId/edit', isAdmin, modifyUser);
-app.put("/api/project/admin/user/:thisUserId/unfollow/:usernameToUnfollow", isAdmin, unfollow);
 app.get("/api/project/admin/user/:userId/getDonations", isAdmin, getDonationHistory);
 app.delete("/api/project/admin/:donationId/delete", isAdmin, deleteDonation);
 app.get("/api/project/admin/user/:userId/getComments", isAdmin, getComments);
@@ -71,19 +70,6 @@ function getDonationHistory(req, res) {
 
     donationModel
         .getDonationHistory(userId)
-        .then(function (response) {
-            res.json(response);
-        },function (err) {
-            res.send(err);
-        });
-}
-
-function unfollow(req, res) {
-    var userId = req.params.thisUserId;
-    var usernameToUnfollow = req.params.usernameToUnfollow;
-
-    userModel
-        .unfollowPersonByUsername(usernameToUnfollow, userId)
         .then(function (response) {
             res.json(response);
         },function (err) {

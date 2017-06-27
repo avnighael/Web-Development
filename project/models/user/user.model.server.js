@@ -23,7 +23,6 @@ userModel.findUserByFacebookId = findUserByFacebookId;
 // Admin functionalities
 userModel.getAllDonors = getAllDonors;
 userModel.getAllUsers = getAllUsers;
-userModel.unfollowPersonByUsername = unfollowPersonByUsername;
 
 module.exports = userModel;
 
@@ -74,33 +73,6 @@ function unfollowPerson(userIdToUnfollow, userId) {
             return err;
         });
 }
-
-function unfollowPersonByUsername(usernameToUnfollow, userId) {
-    return userModel
-        .findOne({_id:userId})
-        .then(function (user) {
-            return userModel
-                .findOne({username: usernameToUnfollow})
-                .then(function (uId) {
-                    user.following.splice(user.following.indexOf(uId),1);
-                    user.save();
-                    return userModel
-                        .findOne({username:usernameToUnfollow})
-                        .then(function (followedUser) {
-                            followedUser.followers.splice(followedUser.followers.indexOf(userId),1);
-                            followedUser.save();
-                            return user;
-                        },function (err) {
-                            return err;
-                        })
-                }, function (err) {
-                    return err;
-                });
-        },function (err) {
-            return err;
-        });
-}
-
 
 function createUser(user) {
     // if(user.role) {

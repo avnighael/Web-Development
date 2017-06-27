@@ -11,7 +11,6 @@
         this.createUser = createUser;
         this.getUserById = getUserById;
         this.modifyUser = modifyUser;
-        this.unfollow = unfollow;
         this.getDonationHistory = getDonationHistory;
         this.deleteDonation = deleteDonation;
         this.getComments = getComments;
@@ -53,14 +52,6 @@
         function getDonationHistory(thisUserId) {
             var url = "/api/project/admin/user/"+thisUserId+"/getDonations";
             return $http.get(url)
-                .then(function (response) {
-                    return response.data;
-                });
-        }
-
-        function unfollow(usernameToUnfollow, thisUserId) {
-            var url = "/api/project/admin/user/"+thisUserId+"/unfollow/"+usernameToUnfollow;
-            return $http.put(url)
                 .then(function (response) {
                     return response.data;
                 });

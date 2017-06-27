@@ -118,7 +118,7 @@
                         </a>
                     </div>
 
-                <div ng-if="model.user.role === 'DONOR' || model.user.role === 'ADMIN'"">
+                <div ng-if="model.user.role === 'DONOR' || model.user.role === 'ADMIN'">
                         <!--ng-show="model.user.role == 'DONOR'">-->
                     <a ng-show="!model.saved"
                        ng-click="model.addToWishList(model.proj.id, model.proj)"
@@ -131,7 +131,7 @@
                          Remove from Wishlist
                     </a>
 
-                <div ng-if="model.user.role === 'DONOR' || model.user.role === 'ADMIN'"">
+                <div ng-if="model.user.role === 'DONOR' || model.user.role === 'ADMIN'">
                     <!--ng-show="model.user.role == 'DONOR'">-->
                     <a ng-show="!model.favourite"
                        ng-click="model.addToFavourites(model.proj.id, model.proj)"

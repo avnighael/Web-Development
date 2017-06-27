@@ -67,7 +67,7 @@
     <div ng-show="!model.projs" class="alert alert-info">
         <p>No projects started yet</p>
     </div>
-    <div ng-show="model.projs">
+    <div ng-show="model.projs && !model.thisUserId">
         <h2>Projects of {{model.user.organization}}</h2>
         <span ng-repeat="proj in model.projs">
             <span>
@@ -80,6 +80,33 @@
             </span>
             <hr/>
         </span>
-</div>
+    </div>
+
+
+    <!--Admin functionality to add opportunities-->
+
+
+
+
+
+    <div class = "container-fluid row" ng-show="model.projs && model.thisUserId">
+        <h2>Projects of {{model.thisUser.organization}}</h2>
+        <span ng-repeat="proj in model.projs">
+            <span>
+                <!--<a href="#!/admin/user/{{model.thisUserId}}/browseProjects/{{proj.id}}">-->
+                    <img class="img-responsive-home"
+                         ng-src="{{proj.imageLink}}"
+                         alt="{{proj.title}}"/>
+                    <h4>{{proj.title}}</h4>
+                <!--</a>-->
+            </span>
+            <span>
+                 <a href="#!/admin/{{model.thisUserId}}/organization/project/{{proj.id}}/opportunity/create">
+                                <span class="glyphicon glyphicon-plus pull-right"></span>
+                 </a>
+            </span>
+            <hr/>
+        </span>
+    </div>
     <div class = "ag-addBottomPadding"></div>
 </div>

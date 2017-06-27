@@ -23,8 +23,12 @@
         model.organizationId = organizationId;
         var projectId = $routeParams.projectId;
         model.projectId = projectId;
-        var thisUserId = $routeParams.userId;
-        model.thisUserId = thisUserId;
+
+        if($routeParams.userId) {
+            var thisUserId = $routeParams.userId;
+            model.thisUserId = thisUserId;
+        }
+
 
         if(model.user) {
             var favourites = model.user.favourites
@@ -66,6 +70,7 @@
                     model.favourite = true;
                 }
             }
+
         }
 
         init();

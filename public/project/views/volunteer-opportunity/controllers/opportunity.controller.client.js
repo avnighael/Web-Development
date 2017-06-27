@@ -17,6 +17,11 @@
             model.opportunityId = opportunityId;
         }
 
+        if($routeParams.userId) {
+            var thisUserId = $routeParams.userId;
+            model.thisUserId = thisUserId;
+        }
+
 
         model.createOpportunity = createOpportunity;
         model.getOpportunityById = getOpportunityById;
@@ -148,13 +153,20 @@
             //     }
             // }
 
-
-            model.opportunity._createdBy = model.currentUser._id;
+            if(thisUserId) {
+                model.opportunity._createdBy = model.thisUserId;
+            } else {
+                model.opportunity._createdBy = model.currentUser._id;
+            }
             console.log(opportunity);
             opportunityService
                 .createOpportunity(opportunity, projectId)
                 .then(function () {
-                    $location.url("/organization/opportunity/all");
+                    if(thisUserId) {
+                        $location.url("/admin/user/"+model.thisUserId+"/details");
+                    } else {
+                        $location.url("/organization/opportunity/all");
+                    }
                 });
         }
     }
