@@ -90,7 +90,7 @@
             {{model.message}}
         </div>
 
-        <h2>Opportunities</h2>
+        <h2> All Opportunities</h2>
         <div ng-show="model.opportunities.length == 0" class="alert alert-info">
             <p>No opportunities found</p>
         </div>
@@ -120,17 +120,17 @@
                                     {{opp.location}}
                                 </span>
 
-                    <a ng-if="opp._volunteers.indexOf(model.currentUser._id) === -1"
+                    <a ng-show="opp._volunteers.indexOf(model.thisUserId) === -1"
                        style="font-size: large"
                        class="glyphicon glyphicon-plus pull-right"
                        ng-click="model.addVolunteer(opp._id)">
                     </a>
 
-                    <a ng-if="opp._volunteers.indexOf(model.currentUser._id) > -1"
-                       style="font-size: large"
-                       class="glyphicon glyphicon-remove pull-right"
-                       ng-click="model.deleteVolunteer(opp._id)">
-                    </a>
+                    <!--<a ng-if="opp._volunteers.indexOf(model.currentUser._id) > -1"-->
+                       <!--style="font-size: large"-->
+                       <!--class="glyphicon glyphicon-remove pull-right"-->
+                       <!--ng-click="model.deleteVolunteer(opp._id)">-->
+                    <!--</a>-->
 
                 </div>
 

@@ -60,7 +60,7 @@
         return deferred.promise;
     }
 
-    function checkUserOrganization(userService,$location, $q) {
+    function checkUserAdminOrganization(userService,$location, $q) {
         var deferred = $q.defer();
         userService
             .checkLoggedIn()
@@ -72,7 +72,7 @@
                         deferred.resolve(null);
                     }
                     else  {
-                        if(user.role === 'ORGANIZATION') {
+                        if(user.role === 'ORGANIZATION' || user.role === 'ADMIN') {
                             deferred.resolve(user);
                         }
                     }
@@ -193,7 +193,7 @@
                 controller: 'volunteerOpportunityController',
                 controllerAs: 'model',
                 resolve: {
-                    currentUser: checkUserOrganization
+                    currentUser: checkUserAdminOrganization
                 }
             })
 
@@ -202,7 +202,7 @@
                 controller: 'volunteerOpportunityController',
                 controllerAs: 'model',
                 resolve: {
-                    currentUser: checkUserOrganization
+                    currentUser: checkUserAdminOrganization
                 }
             })
 
@@ -311,6 +311,15 @@
                 controllerAs: 'model',
                 resolve: {
                     currentUser: checkAdmin
+                }
+            })
+
+            .when('/admin/user/:userId/organization/projects', {
+                templateUrl: 'views/project/templates/projects.view.client.html',
+                controller: 'projectsController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkCurrentUser
                 }
             })
 

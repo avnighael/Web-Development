@@ -51,7 +51,9 @@ function addVolunteer(volunteerId, opportunityId) {
 
 function getAllOpportunitiesById(createdBy) {
     return opportunityModel
-        .find({_createdBy: createdBy});
+        .find({_createdBy: createdBy})
+        .populate('_volunteers', 'username')
+        .exec()
 }
 
 function getAllOpportunities() {

@@ -18,6 +18,7 @@
 
         model.removeFromFavourites = removeFromFavourites;
         model.addToFavourites = addToFavourites;
+        model.removeFromWishlist = removeFromWishlist;
         model.getAllUsers = getAllUsers;
         model.unfollow = unfollow;
         model.getDonationHistory = getDonationHistory;
@@ -26,6 +27,8 @@
         model.deleteComment = deleteComment;
         model.getOpportunitiesOfDonor = getOpportunitiesOfDonor;
         model.deleteVolunteer = deleteVolunteer;
+        model.getOpportunitiesOfOrg = getOpportunitiesOfOrg;
+        model.deleteOpportunity = deleteOpportunity;
 
 
         function init() {
@@ -37,19 +40,46 @@
                 getDonationHistory(model.thisUserId);
                 getComments(model.thisUserId);
                 getOpportunitiesOfDonor(model.thisUserId);
+                getOpportunitiesOfOrg(model.thisUserId);
             }
         }
 
         init();
 
-        function deleteVolunteer(opportunityId) {
+        function deleteOpportunity(opportunityId) {
             opportunityService
-                .deleteVolunteer(thisUserId, opportunityId)
+                .deleteOpportunity(opportunityId)
+                .then(function (response) {
+                    console.log(response);
+                    getUserById(model.thisUserId);
+                    getDonationHistory(model.thisUserId);
+                    getComments(model.thisUserId);
+                    getOpportunitiesOfDonor(model.thisUserId);
+                    getOpportunitiesOfOrg(model.thisUserId);
+                }, function () {
+                    model.error = "Something went wrong. Opportunity deletion unsuccessfull!"
+                });
+        }
+
+        function getOpportunitiesOfOrg(createdBy) {
+            opportunityService
+                .getAllOpportunitiesById(createdBy)
+                .then(function (opportunities) {
+                    model.Orgopportunities = opportunities;
+                }, function () {
+                    model.error = "Uh Oh! Something went wrong."
+                });
+        }
+
+        function deleteVolunteer(volunteerId, opportunityId) {
+            opportunityService
+                .deleteVolunteer(volunteerId, opportunityId)
                 .then(function (response) {
                     getUserById(model.thisUserId);
                     getDonationHistory(model.thisUserId);
                     getComments(model.thisUserId);
                     getOpportunitiesOfDonor(model.thisUserId);
+                    getOpportunitiesOfOrg(model.thisUserId);
                 }, function (err) {
                     console.log(err);
                 })
@@ -94,6 +124,7 @@
                     getDonationHistory(model.thisUserId);
                     getComments(model.thisUserId);
                     getOpportunitiesOfDonor(model.thisUserId);
+                    getOpportunitiesOfOrg(model.thisUserId);
                 },function (err) {
                     console.log(err);
                 })
@@ -119,6 +150,23 @@
                 });
         }
 
+        function removeFromWishlist(projectId) {
+                userService
+                    .removeFromWishList(thisUserId, projectId)
+                    .then(function (response) {
+                        getUserById(model.thisUserId);
+                        getDonationHistory(model.thisUserId);
+                        getComments(model.thisUserId);
+                        getOpportunitiesOfDonor(model.thisUserId);
+                        getOpportunitiesOfOrg(model.thisUserId);
+                    },function (err) {
+                        model.unauthorized = "Please register/login to add this project to WishList";
+                        console.log(err);
+                    })
+
+        }
+
+
         function removeFromFavourites(projectId) {
             userService
                 .removeFromFavourites(thisUserId, projectId)
@@ -127,6 +175,7 @@
                     getDonationHistory(model.thisUserId);
                     getComments(model.thisUserId);
                     getOpportunitiesOfDonor(model.thisUserId);
+                    getOpportunitiesOfOrg(model.thisUserId);
                     model.favourite = false;
                 },function (err) {
                     model.unauthorized = "Please register/login to add this project to WishList";

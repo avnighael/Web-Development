@@ -330,7 +330,8 @@
             </ul>
         </div>
 
-        <div class="row container-fluid">
+        <div ng-show="model.thisUser.role === 'DONOR'"
+             class="row container-fluid">
             <h3>Opportunities</h3>
 
             <ul class="list-group">
@@ -352,7 +353,7 @@
                             Organization
                         </div>
                         <div class="col-lg-1 col-md-2 col-sm-2">
-                            <a href="#!/admin/user/{{model.thisUserId}}/addFollower">
+                            <a href="#!/admin/user/{{model.thisUserId}}/opportunity/add">
                                 <span class="glyphicon glyphicon-plus pull-right"></span>
                             </a>
                         </div>
@@ -382,7 +383,7 @@
                             {{opportunity._createdBy.organization}}
                         </div>
                         <div class="col-lg-1 col-md-2 col-sm-2">
-                            <a ng-click="model.deleteVolunteer(opportunity._id)">
+                            <a ng-click="model.deleteVolunteer(model.thisUser._id, opportunity._id)">
                                 <span class="glyphicon glyphicon-remove pull-right"></span>
                             </a>
                         </div>
@@ -390,6 +391,76 @@
                 </li>
             </ul>
         </div>
+
+        <div ng-show="model.thisUser.role === 'ORGANIZATION'"
+             class="row container-fluid">
+            <h3>Opportunities</h3>
+
+            <ul class="list-group">
+                <li class="list-group-item active">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">
+                            Created By
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-2 hidden-xs">
+                            Project
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4  col-xs-6">
+                            Title
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 hidden-xs">
+                            Organization
+                        </div>
+                        <div class="col-lg-3 col-md-2 col-sm-2 col-xs-4">
+                            Volunteers
+                        </div>
+                        <div class="col-lg-1 col-md-2 col-sm-2">
+                            <a href="#!/admin/user/{{model.thisUserId}}/add">
+                                <span class="glyphicon glyphicon-plus pull-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+
+                <div ng-if="model.Orgopportunities.length == 0"
+                     class="alert alert-info">
+                    No opportunities created yet!
+                </div>
+
+                <li ng-repeat="opportunity in model.Orgopportunities" class="list-group-item">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">
+                            {{model.thisUser.username}}
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-2 hidden-xs">
+                            {{opportunity.projectId}}
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                            {{opportunity.title}}
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 hidden-xs">
+                            {{model.thisUser.organization}}
+                        </div>
+                        <div class="col-lg-3 col-md-2 col-sm-2 col-xs-4">
+                        <ul>
+                            <li ng-repeat="volunteer in opportunity._volunteers">
+                                {{volunteer.username}}
+                                <a ng-click="model.deleteVolunteer(volunteer._id, opportunity._id)">
+                                    <span class="glyphicon glyphicon-remove pull-right"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        </div>
+                        <div class="col-lg-1 col-md-2 col-sm-2">
+                            <a ng-click="model.deleteOpportunity(opportunity._id)">
+                                <span class="glyphicon glyphicon-remove pull-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
 
         <div class="row container-fluid">
             <h3>Comments</h3>
