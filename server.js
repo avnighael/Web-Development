@@ -18,11 +18,11 @@ app.use(app.express.static(__dirname + '/public'));
 var ourApp = require("./practice/angular/app.js");
 ourApp(app);
 
-//require('./project/app');
+require('./project/app');
 
 require('./practice/session/app');
 
- require('./assignment/app');
+// require('./assignment/app');
 
 require ("./test/app.js");
 
