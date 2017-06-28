@@ -2,6 +2,19 @@ var app = require('../../express');
 var donationModel = require('../models/donation/donation.model.server');
 
 app.post('/api/project/user/:userId/project/:projectId/donate', sendDonation);
+app.get('/api/project/user/:userId/getDonations', getDonationHistory);
+
+function getDonationHistory(req, res) {
+    var userId = req.params.userId;
+
+    donationModel
+        .getDonationHistory(userId)
+        .then(function (response) {
+            res.json(response);
+        },function (err) {
+            res.send(err);
+        });
+}
 
 function sendDonation(req, res) {
     var userId = req.params.userId;

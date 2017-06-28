@@ -64,6 +64,12 @@
                         Opportunities
                     </a>
                 </li>
+                <li class="">
+                    <a ng-if="model.currentUser.role === 'DONOR'"
+                       href="#!/wishlist">
+                        <i class="fa fa-shopping-cart tnn-logo-navbar" aria-hidden="true"></i>
+                    </a>
+                </li>
 
                 <li>
                     <a ng-show="model.currentUser"

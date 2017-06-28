@@ -1,220 +1,347 @@
 
-<nav class="navbar navbar-default navbar-fixed-top ag-menu-navbar">
-    <div class="container-fluid ">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#/">
-                <i class="" aria-hidden="true"></i>
-                <strong>HandOuts</strong>
-            </a>
-
-        </div>
-
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-
-                <li class="">
-
-                    <form ng-show="model.user.role != 'ADMIN'" class="" action="">
-                        <input class="input_text grid-9 grid-xl-10 ag-search"
-                               type="text"
-                               placeholder="I care about..."
-                               name="q"
-                               title="Search for nonprofits">
-                        <a class="glyphicon glyphicon-search"></a>
-                    </form>
-                </li>
-
-                <li class="">
-                    <a ng-if="model.user.role === 'DONOR'"
-                       class=""
-                       href="#!/user/give">
-                        Give
-                    </a>
-
-                    <a ng-if="model.user.role === 'ORGANIZATION'"
-                       class=""
-                       href="#!/organization/projects">
-                        Projects
-                    </a>
-
-                    <a ng-if="model.user.role === 'ADMIN'"
-                       class=""
-                       href="#!/users/all/manage">
-                        Manage Users
-                    </a>
-                </li>
-
-                <li class="">
-                    <a ng-show="model.user.role != 'ADMIN'" class=""
-                       href="#!/organization/opportunity/all">
-                        Opportunities
-                    </a>
-
-                    <!--<a ng-show="model.user.role === 'ADMIN'"-->
-                       <!--class=""-->
-                       <!--href="#!/organization/all">-->
-                        <!--Manage Organization Representative-->
-                    <!--</a>-->
-                </li>
-
-                <li class="">
-                    <a class=""
-                    href="#!/profile">
-                        <i class="fa fa-user tnn-logo-navbar" aria-hidden="true"></i>
-                        <strong ng-if="model.user.username">{{model.user.username}}</strong>
-                        <strong ng-if="!model.user.username">{{model.user.firstName}}</strong>
-                    </a>
-                </li>
-
-                <li class="">
-                    <a class=""
-                    ng-click="model.logout()">
-                        <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
-                    </a>
-                </li>
-            </ul>
-        </div><!--/.nav-collapse -->
-    </div>
-</nav>
+<div ng-include="'views/common/header-menu.view.client.html'"></div>
 
 
-<div class="jumbotron bgimg-header">
-</div>
+<!--<div class="jumbotron bgimg-header">-->
+<!--</div>-->
 
-<div class="top-content" id="top-content">
-    <div class="inner-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8 col-sm-offset-2 text ">
-                    <h1><strong>My Profile</strong> </h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6 col-sm-offset-3 form-box ag-margin-left">
-                    <div class="form-top">
-                        <div class="form-top-left">
-                            <!--<h3>Register to Handouts</h3>-->
-                            <!--<p>Enter your username and password to log on:</p>-->
+<div class="container-fluid ag-pushBody">
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+
+        <li ng-class="model.tab==='MyProfile'?'active':''" style="font-size: large;font-weight: bold"><a class="" ng-click="model.tab='MyProfile'">My Profile</a></li>
+        <li ng-class="model.tab==='Followers'?'active':''"
+            ng-show="model.currentUser.role == 'DONOR'"
+            style="font-size: large;font-weight: bold"><a class="" ng-click="model.tab='Followers'">Followers</a></li>
+        <li ng-class="model.tab==='Following'?'active':''"
+            ng-show="model.currentUser.role == 'DONOR'"
+            style="font-size: large;font-weight: bold"><a class="" ng-click="model.tab='Following'">Following</a></li>
+        <li ng-class="model.tab==='Favourites'?'active':''"
+            ng-show="model.currentUser.role == 'DONOR'"
+            style="font-size: large;font-weight: bold"><a class="" ng-click="model.tab='Favourites'">Favourites</a></li>
+        <li ng-class="model.tab==='DonationHistory'?'active':''"
+            ng-show="model.currentUser.role == 'DONOR'"
+            style="font-size: large;font-weight: bold"><a class="" ng-click="model.tab='DonationHistory'">Donations</a></li>
+
+    </ul>
+
+    <div ng-show="model.tab==='MyProfile'" class="" style="background: rgba(0, 0, 0, .7);">
+        <div class="top-content" id="top-content">
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div ng-show="model.currentUser.role != 'ORGANIZATION'" class="col-sm-8 col-sm-offset-2 text ">
+                            <h1><strong>My Profile</strong> </h1>
                         </div>
-                        <!--<div class="form-top-right">-->
-                            <!--<i class="fa fa-key"></i>-->
-                        <!--</div>-->
                     </div>
-                    <div class="form-bottom">
-                        <div ng-show="model.error"  class="alert alert-danger" role="alert">
-                            {{model.error}}
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box ag-margin-left">
+                            <div class="form-top">
+                                <div class="form-top-left">
+                                    <!--<h3>Register to Handouts</h3>-->
+                                    <!--<p>Enter your username and password to log on:</p>-->
+                                </div>
+                                <!--<div class="form-top-right">-->
+                                <!--<i class="fa fa-key"></i>-->
+                                <!--</div>-->
+                            </div>
+                            <div class="form-bottom">
+                                <div ng-show="model.error"  class="alert alert-danger" role="alert">
+                                    {{model.error}}
+                                </div>
+
+                                <div ng-show="model.message" class="alert alert-success" role="alert">
+                                    {{model.message}}
+                                </div>
+                                <form role="form" action="" method="post" class="login-form">
+                                    <div class="form-group">
+                                        <label for="username">Username</label>
+                                        <input ng-model="model.currentUser.username"
+                                               type="text"
+                                               class="form-control"
+                                               id="username"
+                                               placeholder="alice123">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="firstName">First Name</label>
+                                        <input ng-model="model.currentUser.firstName"
+                                               type="text"
+                                               class="form-control"
+                                               id="firstName"
+                                               placeholder="Alice">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="lastName">Last Name</label>
+                                        <input ng-model="model.currentUser.lastName"
+                                               type="text"
+                                               class="form-control"
+                                               id="lastName"
+                                               placeholder="Wonderland">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="role">Role</label>
+                                        <input ng-model="model.currentUser.role"
+                                               type="text"
+                                               class="form-control"
+                                               id="role"
+                                               placeholder="role"
+                                               disabled>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input ng-model="model.currentUser.password"
+                                               type="password"
+                                               id="password"
+                                               class="form-control"
+                                               placeholder="password"/>
+                                    </div>
+
+                                    <div ng-if="model.currentUser.role === 'ORGANIZATION'"
+                                         class="form-group">
+                                        <label for="orgName">Organization Name</label>
+                                        <input ng-model="model.currentUser.organization"
+                                               type="text"
+                                               class="form-control"
+                                               id="orgName"
+                                               disabled>
+                                    </div>
+
+                                    <div ng-if="model.currentUser.role === 'ORGANIZATION'"
+                                         class="form-group">
+                                        <label for="regNum">Registration Number</label>
+                                        <input ng-model="model.currentUser.registrationNumber"
+                                               type="text"
+                                               class="form-control"
+                                               id="regNum"
+                                               disabled>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input ng-model="model.currentUser.email"
+                                               type="email"
+                                               class="form-control"
+                                               id="email"
+                                               placeholder="alice@wonderland.com">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="phone">Phone</label>
+                                        <input ng-model="model.currentUser.phone"
+                                               type="string"
+                                               class="form-control"
+                                               id="phone"
+                                               placeholder="6178764567">
+                                    </div>
+
+                                    <a class="btn btn-success btn-block"
+                                       ng-click="model.modifyUser(model.currentUser)">Update
+                                    </a>
+                                    <a ng-show="model.currentUser.role != 'ADMIN'"
+                                       ng-click="model.unregister()"
+                                       class="btn btn-danger btn-block">
+                                        Deactivate Account
+                                    </a>
+                                    <a class="btn btn-warning  btn-block"
+                                       ng-click="model.logout()">Logout
+                                    </a>
+                                </form>
+                            </div>
                         </div>
-
-                        <div ng-show="model.message" class="alert alert-success" role="alert">
-                            {{model.message}}
-                        </div>
-                        <form role="form" action="" method="post" class="login-form">
-                            <div class="form-group">
-                                <label for="username">Username</label>
-                                <input ng-model="model.user.username"
-                                       type="text"
-                                       class="form-control"
-                                       id="username"
-                                       placeholder="alice123">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="firstName">First Name</label>
-                                <input ng-model="model.user.firstName"
-                                       type="text"
-                                       class="form-control"
-                                       id="firstName"
-                                       placeholder="Alice">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="lastName">Last Name</label>
-                                <input ng-model="model.user.lastName"
-                                       type="text"
-                                       class="form-control"
-                                       id="lastName"
-                                       placeholder="Wonderland">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="role">Role</label>
-                                <input ng-model="model.user.role"
-                                       type="text"
-                                       class="form-control"
-                                       id="role"
-                                       placeholder="role">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input ng-model="model.user.password"
-                                       type="password"
-                                       id="password"
-                                       class="form-control"
-                                       placeholder="password"/>
-                            </div>
-
-                            <div ng-if="model.user.role === 'ORGANIZATION'"
-                                 class="form-group">
-                                <label for="orgName">Organization Name</label>
-                                <input ng-model="model.user.organization"
-                                       type="text"
-                                       class="form-control"
-                                       id="orgName"
-                                       disabled>
-                            </div>
-
-                            <div ng-if="model.user.role === 'ORGANIZATION'"
-                                 class="form-group">
-                                <label for="regNum">Registration Number</label>
-                                <input ng-model="model.user.registrationNumber"
-                                       type="text"
-                                       class="form-control"
-                                       id="regNum"
-                                       disabled>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input ng-model="model.user.email"
-                                       type="email"
-                                       class="form-control"
-                                       id="email"
-                                       placeholder="alice@wonderland.com">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="phone">Phone</label>
-                                <input ng-model="model.user.phone"
-                                       type="string"
-                                       class="form-control"
-                                       id="phone"
-                                       placeholder="6178764567">
-                            </div>
-
-                            <a class="btn btn-success btn-block"
-                               ng-click="model.modifyUser(model.user)">Update
-                            </a>
-                            <a ng-show="model.user.role != 'ADMIN'"
-                               ng-click="model.unregister()"
-                               class="btn btn-danger btn-block">
-                                Deactivate Account
-                            </a>
-                            <a class="btn btn-warning  btn-block"
-                               ng-click="model.logout()">Logout
-                            </a>
-                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div ng-show="model.tab==='Followers' && model.currentUser.role == 'DONOR'" class="" style="background: rgba(0, 0, 0, .7);">
+        <div class="top-content" id="follower-content">
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text ">
+                            <h1><strong>Followers</strong> </h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box ag-margin-left">
+                            <div class="form-top">
+                                <div class="form-top-left">
+                                    <!--<h3>Register to Handouts</h3>-->
+                                    <!--<p>Enter your username and password to log on:</p>-->
+                                </div>
+                                <!--<div class="form-top-right">-->
+                                <!--<i class="fa fa-key"></i>-->
+                                <!--</div>-->
+                            </div>
+                            <div class="form-bottom">
+                                <div ng-show="model.error"  class="alert alert-danger" role="alert">
+                                    {{model.error}}
+                                </div>
+
+                                <div ng-show="model.message" class="alert alert-success" role="alert">
+                                    {{model.message}}
+                                </div>
+
+                                <div ng-repeat="follower in model.currentUser.followers">
+                                    <a href = "#!/user/{{follower._id}}">
+                                        {{follower.firstName}}  {{follower.lastName}}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div ng-show="model.tab==='Following'" class="" style="background: rgba(0, 0, 0, .7);">
+        <div class="top-content" id="following-content">
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text ">
+                            <h1><strong>Following</strong> </h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box ag-margin-left">
+                            <div class="form-top">
+                                <div class="form-top-left">
+                                    <!--<h3>Register to Handouts</h3>-->
+                                    <!--<p>Enter your username and password to log on:</p>-->
+                                </div>
+                                <!--<div class="form-top-right">-->
+                                <!--<i class="fa fa-key"></i>-->
+                                <!--</div>-->
+                            </div>
+                            <div class="form-bottom">
+                                <div ng-show="model.error"  class="alert alert-danger" role="alert">
+                                    {{model.error}}
+                                </div>
+
+                                <div ng-show="model.message" class="alert alert-success" role="alert">
+                                    {{model.message}}
+                                </div>
+
+                                <div ng-repeat="following in model.currentUser.following">
+                                    <a href = "#!/user/{{following._id}}">
+                                        {{following.firstName}}  {{following.lastName}}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div ng-show="model.tab==='Favourites'" class="" style="background: rgba(0, 0, 0, .7);">
+        <div class="top-content" id="favourites-content">
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text ">
+                            <h1><strong>Favourites</strong> </h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box ag-margin-left">
+                            <div class="form-top">
+                                <div class="form-top-left">
+                                    <!--<h3>Register to Handouts</h3>-->
+                                    <!--<p>Enter your username and password to log on:</p>-->
+                                </div>
+                                <!--<div class="form-top-right">-->
+                                <!--<i class="fa fa-key"></i>-->
+                                <!--</div>-->
+                            </div>
+                            <div class="form-bottom">
+                                <div ng-show="model.error"  class="alert alert-danger" role="alert">
+                                    {{model.error}}
+                                </div>
+
+                                <div ng-show="model.message" class="alert alert-success" role="alert">
+                                    {{model.message}}
+                                </div>
+
+                                <div ng-repeat="fav in model.currentUser.favourites" class="ag-myOpportunities-list">
+                                    <div class="hidden-xs">
+                                        <img  class="ag-myOpportunities-thumbnail"
+                                              ng-src="{{fav.imageLink}} ">
+                                    </div>
+
+                                    <div>
+                                        <h4><a href="#!/browseProjects/{{fav.projectId}}">{{fav.title}}</a></h4>
+                                        <div style="color: grey">
+                                            by {{fav.organization}}  |  {{fav.country}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div ng-show="model.tab==='DonationHistory'" class="" style="background: rgba(0, 0, 0, .7);">
+        <div class="top-content" id="donation-content">
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text ">
+                            <h1><strong>Donation History</strong> </h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box ag-margin-left">
+                            <div class="form-top">
+                                <div class="form-top-left">
+                                    <!--<h3>Register to Handouts</h3>-->
+                                    <!--<p>Enter your username and password to log on:</p>-->
+                                </div>
+                                <!--<div class="form-top-right">-->
+                                <!--<i class="fa fa-key"></i>-->
+                                <!--</div>-->
+                            </div>
+                            <div class="form-bottom">
+                                <div ng-show="model.error"  class="alert alert-danger" role="alert">
+                                    {{model.error}}
+                                </div>
+
+                                <div ng-show="model.message" class="alert alert-success" role="alert">
+                                    {{model.message}}
+                                </div>
+                                <div ng-repeat="donation in model.donations">
+                                    <a href = "#!/browseProjects/{{donation._project}}">
+                                       Project: {{donation._project}}
+                                    </a>
+                                    <div>
+                                        Amount: $ {{donation.amount}}
+                                    </div>
+                                    <div>
+                                        Donated on: {{donation.createdAt}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 

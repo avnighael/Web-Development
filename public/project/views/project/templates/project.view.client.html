@@ -259,9 +259,7 @@
             <!--{{comment._user.firstName+" "+comment._user.lastName}}-->
             <!--{{comment.comment}}-->
         <!--</div>-->
-        <span ng-show="model.currentUser.role != 'ADMIN' &&
-                       model.currentUser.role != 'ORGANIZATION'"
-        class="input-group container">
+        <span class="input-group container">
             <div>
             <a title="Posted at {{comment.createdAt}}"
                href="#!/user/{{comment._user._id}}">
@@ -269,7 +267,7 @@
             </a>
             <div class="ag-left-alignment">
                 <span>
-                    <a href="">
+                    <a href="#!/user/{{comment._user._id}}">
                         {{comment._user.firstName}}
                         {{comment._user.lastName}}
                     </a>

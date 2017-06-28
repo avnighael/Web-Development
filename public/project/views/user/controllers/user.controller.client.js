@@ -9,7 +9,7 @@
         model.userId = $routeParams.userId;
         model.currentUserId = currentUser._id;
         model.currentUser = currentUser;
-        var following = model.currentUser.following
+        var following = model.currentUser.following;
         model.following = following;
 
         model.myProfile = false;
@@ -21,42 +21,54 @@
             model.myProfile = true;
         }
 
+        console.log(model.currentUser.following);
         for(var f in following) {
-            if (following[f] === model.userId) {
+            if (following[f]._id === model.userId) {
                 model.followed = true;
+            } else {
+                model.followed = false;
             }
         }
         
         function init() {
+            model.tab = 'Followers';
+            findUserById(model.userId);
+
+        }
+
+        init();
+
+        function findUserById(userId) {
             userService
-                .findUserById(model.userId)
+                .findUserById(userId)
                 .then(function (user) {
                     model.user = user;
+
                 }, function (err) {
                     $location.url("/login");
                 });
         }
 
-        init();
-
         function follow(userIdToFollow) {
             userService
-                .follow(userIdToFollow,model.currentUserId)
+                .follow(model.currentUserId, userIdToFollow)
                 .then(function (followers) {
-                    model.user.followers.push(followers);
+                    model.currentUser.followers.push(followers);
                     model.followed = true;
+                    findUserById(model.userId);
                 })
         }
 
         function unfollow(userIdToUnfollow) {
             userService
-                .unfollow(userIdToUnfollow,model.currentUserId)
+                .unfollow(userIdToUnfollow, model.currentUserId)
                 .then(function (response) {
                     var followerIndex = model.user.followers.map(function(x){
                         return x._id;})
-                        .indexOf(model.currentUser._id);
+                        .indexOf(userIdToUnfollow);
                     model.user.followers.splice(followerIndex,1);
                     model.followed = false;
+                    findUserById(model.userId);
                 })
         }
 

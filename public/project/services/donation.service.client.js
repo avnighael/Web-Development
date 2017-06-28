@@ -6,6 +6,15 @@
     function donationService($http) {
 
         this.sendDonation = sendDonation;
+        this.getDonationHistory = getDonationHistory;
+
+        function getDonationHistory(userId) {
+            var url = "/api/project/user/"+userId+"/getDonations";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
 
         function sendDonation(userId, projectId, donation) {
             var url = "/api/project/user/"+userId+"/project/"+projectId+"/donate";

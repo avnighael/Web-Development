@@ -3,25 +3,40 @@
         .module('Handouts') // Here, only reading the module
         .controller('profileController', profileController);
 
-    function  profileController(currentUser, $location, userService) {
+    function  profileController(currentUser, $location, userService, donationService) {
         var model = this;
 
         model.userId = currentUser._id;
-        model.user = currentUser;
+        model.currentUser = currentUser;
         model.updateUser = updateUser;
         model.modifyUser = modifyUser;
         model.logout = logout;
         model.unregister = unregister;
+        model.getDonationHistory = getDonationHistory;
 
         function init() {
-
+            model.tab = 'MyProfile';
+            console.log(currentUser);
+            getDonationHistory(model.userId);
         }
 
         init();
 
+
+        function getDonationHistory(userId) {
+            donationService
+                .getDonationHistory(userId)
+                .then(function (donations) {
+                    model.donations = donations;
+                    console.log(model.donations);
+                }, function (err) {
+                    console.log(err);
+                })
+        }
+
         function unregister() {
             userService
-                .unregister(model.user)
+                .unregister(model.currentUser)
                 .then(function () {
                     $location.url('/login');
                 }, function () {

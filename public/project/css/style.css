@@ -590,3 +590,9 @@ button.btn:active:focus, button.btn.active:focus { outline: 0; opacity: 0.6; bac
 .navbar-default .container-fluid .navbar-text .navbar-link {
     color: #efebeb;
 }
+
+/*Profile*/
+
+.ag-profileHeader {
+    text-align: center;
+}
