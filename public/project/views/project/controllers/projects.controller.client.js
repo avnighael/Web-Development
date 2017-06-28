@@ -3,24 +3,29 @@
         .module("Handouts")
         .controller("projectsController", projectsController);
 
-    function projectsController(userService, orgService, currentUser, $routeParams) {
+    function projectsController(userService,
+                                orgService,
+                                currentUser,
+                                $routeParams,
+                                $location) {
 
         var model = this;
 
         if(currentUser) {
             var userId = currentUser._id;
             model.userId = userId;
+            model.currentUser = currentUser;
         }
 
         if($routeParams.userId) {
             var thisUserId = $routeParams.userId;
             model.thisUserId = thisUserId;
+            model.isAdmin = true;
         }
-
-        model.user = currentUser;
 
 
         model.getProjectsByOrgId = getProjectsByOrgId;
+        model.logout = logout;
 
         function init() {
         // console.log(model.user);
@@ -33,13 +38,21 @@
                     getProjectsByOrgId(thisUser.registrationNumber);
                 })
         } else {
-            getProjectsByOrgId(model.user.registrationNumber);
+            getProjectsByOrgId(model.currentUser.registrationNumber);
 
         }
 
         }
 
         init();
+
+        function logout(user){
+            userService
+                .logout()
+                .then(function () {
+                    $location.url('/');
+                })
+        }
 
         function getProjectsByOrgId(orgId) {
             orgService

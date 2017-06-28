@@ -218,16 +218,17 @@
 </div>
 
 
-<div ng-include="'views/common/footer.view.client.html'"></div>
+<nav class="navbar navbar-default navbar-fixed-bottom ag-footer-navbar">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a class="navbar-link" href="#!/">
+                <span class="glyphicon glyphicon-backward"></span>
+            </a>
 
-<script type="text/javascript">
-//Toggle Menu
-    $(".navbar-toggle").click(function() {
-        if ($('#myCollapsible').collapse) {
-            return $("body").toggleClass("no-scroll");
-        }
-    });
+        </div>
+    </div>
 
-</script>
+</nav>
+
 
 

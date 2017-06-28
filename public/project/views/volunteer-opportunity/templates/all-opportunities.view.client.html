@@ -144,3 +144,17 @@
     </div>
     <div class = "ag-addBottomPadding"></div>
 </div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom ag-footer-navbar">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a ng-if="model.currentUser.role === 'ADMIN'"
+                    class="navbar-link" href="#!/admin/user/{{model.thisUserId}}/details">
+                <span class="glyphicon glyphicon-backward"></span>
+            </a>
+
+        </div>
+    </div>
+
+</nav>
+

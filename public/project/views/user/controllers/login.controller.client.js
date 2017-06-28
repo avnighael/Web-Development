@@ -31,14 +31,14 @@
             // .findUserByCredentials(username, password)
                 .login(user.username, user.password)
                 .then(function (found) {
-                    // console.log(found);
+                     console.log(found);
                     if(found != null) {
                         $location.url('/profile');
                     } else {
-                        model.error = "Sorry " + user.username + " not found, please try again";
+                        model.error = "Sorry, " + user.username + " not found, please try again";
                     }
                 }, function () {
-                    model.error = "Sorry " + user.username + " not found, please try again";
+                    model.error = "Sorry, " + user.username + " not found, please try again";
                 });
 
         }

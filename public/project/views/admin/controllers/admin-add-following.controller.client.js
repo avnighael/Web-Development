@@ -1,9 +1,9 @@
 (function () {
     angular
         .module("Handouts")
-        .controller("AdminAddFollowerController", AdminAddFollowerController);
+        .controller("AdminAddFollowingController", AdminAddFollowingController);
 
-    function AdminAddFollowerController(adminService, currentUser, userService, $location, $routeParams) {
+    function AdminAddFollowingController(adminService, currentUser, userService, $location, $routeParams) {
 
         var model = this;
 
@@ -12,6 +12,7 @@
         model.thisUserId = thisUserId;
 
         model.follow = follow;
+        model.unfollow = unfollow;
         model.logout = logout;
 
 
@@ -30,14 +31,14 @@
                 })
         }
 
-        function follow(donor) {
+        function follow(userIdToFollow) {
             userService
-                .follow(model.thisUserId, donor._id)
+                .follow(userIdToFollow, model.thisUserId)
                 .then(function (followers) {
                     getUserById(thisUserId);
                     model.message="Follower Successfully added";
                     console.log(model.thisUser);
-                    donor.followers.push(followers);
+                    model.thisUser.followers.push(followers);
                     model.followed = true;
                 })
         }
@@ -57,28 +58,27 @@
             adminService
                 .getUserById(thisUserId)
                 .then(function (thisUser) {
-                    // console.log(model.thisUserId);
                     model.thisUser = thisUser;
                 }, function (err) {
                     console.log(err);
                 })
         }
 
-        // function removeFromFollower(user) {
-        //     adminService
-        //         .unfollow(thisUserId, user._id)
-        //         .then(function (response) {
-        //             console.log(response);
-        //             var followerIndex = user.followers.map(function(x){
-        //                 return x._id;})
-        //                 .indexOf(user._id);
-        //             user.followers.splice(followerIndex,1);
-        //             model.followed = false;
-        //             getUserById(model.thisUserId);
-        //         }, function (err) {
-        //             console.log(err);
-        //         })
-        // }
+        function unfollow(usernameToUnfollow) {
+            adminService
+                .unfollow(usernameToUnfollow, thisUserId)
+                .then(function (response) {
+                    console.log(response);
+                    var followerIndex = model.thisUser.followers.map(function(x){
+                        return x._id;})
+                        .indexOf(model.thisUserId);
+                    model.thisUser.followers.splice(followerIndex,1);
+                    model.followed = false;
+                    getUserById(model.thisUserId);
+                }, function (err) {
+                    console.log(err);
+                })
+        }
 
 
 

@@ -577,3 +577,16 @@ button.btn:active:focus, button.btn.active:focus { outline: 0; opacity: 0.6; bac
     top:20px;
     margin-left:-200px;
 }
+
+
+/*Footer*/
+
+.ag-footer-navbar{
+    background-color: #e04d1b;
+    max-height: 40px !important;
+    opacity: 0.9;
+}
+
+.navbar-default .container-fluid .navbar-text .navbar-link {
+    color: #efebeb;
+}

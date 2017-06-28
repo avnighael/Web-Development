@@ -1,93 +1,11 @@
-<nav class="navbar navbar-default navbar-fixed-top ag-menu-navbar">
-    <div class="container-fluid ">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#/">
-                <i class="" aria-hidden="true"></i>
-                <strong>HandOuts</strong>
-            </a>
-
-        </div>
-
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-
-                <li class="">
-
-                    <form class="" action="">
-                        <input class="input_text grid-9 grid-xl-10 ag-search"
-                               type="text"
-                               placeholder="I care about..."
-                               name="q"
-                               title="Search for nonprofits">
-                        <a href="#!search"class="glyphicon glyphicon-search"></a>
-                    </form>
-                </li>
-
-                <li class="">
-                    <a class=""
-                       href="#!/user/give">
-                        GIVE
-                    </a>
-                </li>
-
-                <li class=""
-                    ng-if = "model.user._id">
-                    <a class="">
-                        <i class="fa fa-shopping-cart tnn-logo-navbar" aria-hidden="true"></i>
-                    </a>
-                </li>
-
-                <li class=""
-                    ng-if = "!model.user._id">
-                    <a class=""
-                    ng-click="model.login();">
-                        Login
-                    </a>
-                </li>
-
-                <li class=""
-                    ng-if = "model.user._id">
-                    <a class="" href="#!/profile">
-                        <strong>{{model.user.username}}</strong>
-                        <i class="fa fa-user tnn-logo-navbar" aria-hidden="true"></i>
-                    </a>
-                </li>
-
-                <li class=""
-                    ng-if = "model.user._id">
-                    <a class=""
-                       ng-click="model.logout()">
-                        <i class="fa fa-sign-out" aria-hidden="true"></i> LOGOUT
-                    </a>
-                </li>
-
-                <li class=""
-                    ng-if = "!model.user._id">
-                    <a class=""
-                       ng-click="model.register()">
-                    </a>
-                </li>
-
-            </ul>
-        </div><!--/.nav-collapse -->
-    </div>
-</nav>
+<div ng-include="'views/common/header-menu.view.client.html'"></div>
 
 <div class="ag-pushBanner">
 </div>
-
-
-
-
 <div class="container-fluid ag-pushBody">
     <div class="input-group">
-        <input ng-model="keywordsQuery"
+        <input ng-keyup="$event.keyCode == 13 && model.getProjectsByKeyWords(keywordsQuery)"
+               ng-model="keywordsQuery"
                type="text"
                class="form-control"
                placeholder="Enter Keywords">
@@ -99,7 +17,8 @@
         </a>
     </span>
         <span>
-            <input ng-model="countryQuery"
+            <input ng-keyup="$event.keyCode == 13 && model.getProjectsByCountry(countryQuery)"
+                   ng-model="countryQuery"
                    type="text"
                    class="form-control"
                    placeholder="All Countries">
@@ -113,7 +32,8 @@
     </span>
 
         <span>
-            <input ng-model="causeQuery"
+            <input ng-keyup="$event.keyCode == 13 && model.getProjectsByCauses(causeQuery)"
+                   ng-model="causeQuery"
                    type="text"
                    class="form-control"
                    placeholder="All Causes">
@@ -132,15 +52,16 @@
             <p>{{model.error}}</p>
         </div>
 
-        <h4 ng-if ="model.projs.numberFound == 0">
+        <h4 ng-if ="model.numberFound == '0'">
             No active projects found.
         </h4>
 
-        <h4 ng-show="!model.error && model.projs.numberFound > 0">Search Project Result</h4>
-        <div ng-show="model.projs.numberFound > 0"
+        <h4 ng-show="!model.error && model.numberFound > 0">Search Project Result</h4>
+        <div ng-show="model.numberFound > 0"
              ng-repeat="proj in model.projs">
             <div>
-                <a ng-show="model.user.role != 'ADMIN'"
+
+                <a ng-show="model.currentUser.role != 'ADMIN'"
                    href="#!/browseProjects/{{proj.id}}">
                     <img class="img-responsive-home thumbnail"
                          ng-src="{{proj.imageLink}}"
@@ -148,7 +69,7 @@
                     <span><h4>{{proj.title}}</h4></span>
                 </a>
 
-                <a ng-show="model.user.role === 'ADMIN'"
+                <a ng-show="model.currentUser.role === 'ADMIN'"
                    href="#!/admin/user/{{model.thisUserId}}/browseProjects/{{proj.id}}">
                     <img class="img-responsive-home thumbnail"
                          ng-src="{{proj.imageLink}}"
@@ -164,7 +85,19 @@
     <div class = "ag-addBottomPadding"></div>
 </div>
 
-<!--<div class="ag-BannerBg">-->
-    <!--<div class="col-xs-2 logo">Find a project</div>-->
-<!--</div>-->
+<nav class="navbar navbar-default navbar-fixed-bottom ag-footer-navbar">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a ng-if="model.isAdmin"
+               class="navbar-link" href="#!/admin/user/{{model.thisUserId}}/details">
+                <span class="glyphicon glyphicon-backward"></span>
+            </a>
 
+            <a ng-if="!model.isAdmin"
+               class="navbar-link" href="#!/">
+                <span class="glyphicon glyphicon-backward"></span>
+            </a>
+
+        </div>
+    </div>
+</nav>

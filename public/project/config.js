@@ -125,6 +125,15 @@
                 }
             })
 
+            .when('/user/give/:keywords', {
+                templateUrl: 'views/user/templates/give.view.client.html',
+                controller: 'giveController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
+            })
+
             .when('/browseOrganizations', {
                 templateUrl: 'views/user/templates/browse-organization.view.client.html',
                 controller: 'browseOrganizationController',
@@ -300,6 +309,15 @@
             .when('/admin/user/:userId/addFollower', {
                 templateUrl: 'views/admin/templates/admin-add-follower.view.client.html',
                 controller: 'AdminAddFollowerController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkAdmin
+                }
+            })
+
+            .when('/admin/user/:userId/addFollowing', {
+                templateUrl: 'views/admin/templates/admin-add-following.view.client.html',
+                controller: 'AdminAddFollowingController',
                 controllerAs: 'model',
                 resolve: {
                     currentUser: checkAdmin

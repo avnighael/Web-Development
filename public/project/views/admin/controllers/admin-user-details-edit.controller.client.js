@@ -21,6 +21,7 @@
         model.removeFromWishlist = removeFromWishlist;
         model.getAllUsers = getAllUsers;
         model.unfollow = unfollow;
+        model.removeFromFollower = removeFromFollower;
         model.getDonationHistory = getDonationHistory;
         model.deleteDonation = deleteDonation;
         model.getComments = getComments;
@@ -29,6 +30,7 @@
         model.deleteVolunteer = deleteVolunteer;
         model.getOpportunitiesOfOrg = getOpportunitiesOfOrg;
         model.deleteOpportunity = deleteOpportunity;
+        model.logout =logout;
 
 
         function init() {
@@ -45,6 +47,13 @@
         }
 
         init();
+        function logout(user){
+            userService
+                .logout()
+                .then(function () {
+                    $location.url('/');
+                })
+        }
 
         function deleteOpportunity(opportunityId) {
             opportunityService
@@ -214,10 +223,10 @@
                     userService
                         .unfollow(userIdToUnfollow, model.thisUserId)
                         .then(function (response) {
-                            var followerIndex = model.thisUser.followers.map(function(x){
-                                return x._id;})
-                                .indexOf(model.thisUserId);
-                            model.thisUser.followers.splice(followerIndex,1);
+                            // var followerIndex = model.thisUser.followers.map(function(x){
+                            //     return x._id;})
+                            //     .indexOf(model.thisUserId);
+                            // model.thisUser.followers.splice(followerIndex,1);
                             model.followed = false;
                             getUserById(model.thisUserId);
                             getDonationHistory(model.thisUserId);
@@ -228,6 +237,29 @@
                 }, function (err) {
                     console.log(err);
                 })
+        }
+
+        function removeFromFollower(donor) {
+            // userService
+            //     .findUserById(thisUserId)
+            //     .then(function (thisUser) {
+                    userService
+                        .unfollow(model.thisUserId, donor._id)
+                        .then(function (response) {
+                            // var followerIndex = donor.followers.map(function(x){
+                            //     return x._id;})
+                            //     .indexOf(donor._id);
+                            // donor.followers.splice(followerIndex,1);
+                            model.followed = false;
+                            getUserById(model.thisUserId);
+                            getDonationHistory(model.thisUserId);
+                            getComments(model.thisUserId);
+                            getOpportunitiesOfDonor(model.thisUserId);
+                            getOpportunitiesOfOrg(model.thisUserId);
+                        })
+                // }, function (err) {
+                //     console.log(err);
+                // })
         }
 
         // function unfollow(userIdToUnfollow) {

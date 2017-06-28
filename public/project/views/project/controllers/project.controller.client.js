@@ -16,9 +16,10 @@
         if(currentUser) {
             var userId = currentUser._id;
             model.userId = userId;
+            model.currentUser = currentUser;
+
         }
 
-        model.user = currentUser;
         var organizationId = $routeParams.organizationId;
         model.organizationId = organizationId;
         var projectId = $routeParams.projectId;
@@ -27,11 +28,12 @@
         if($routeParams.userId) {
             var thisUserId = $routeParams.userId;
             model.thisUserId = thisUserId;
+            model.isAdmin = true;
         }
 
 
-        if(model.user) {
-            var favourites = model.user.favourites
+        if(model.currentUser) {
+            var favourites = model.currentUser.favourites
             model.favourites = favourites;
         }
 
@@ -47,6 +49,7 @@
         model.addToFavourites = addToFavourites;
         model.removeFromFavourites = removeFromFavourites;
         model.getOpportunitiesByProjectId = getOpportunitiesByProjectId;
+        model.logout = logout;
 
         function init() {
             model.donating = false;
@@ -74,6 +77,14 @@
         }
 
         init();
+
+        function logout(user){
+            userService
+                .logout()
+                .then(function () {
+                    $location.url('/');
+                })
+        }
 
         function renderProject(proj) {
             var proj = proj.data.project;
@@ -104,7 +115,7 @@
         }
 
         function addToFavourites(projectId, project) {
-            if(model.thisUserId != model.user._id) {
+            if(model.thisUserId != model.currentUser._id) {
                 userService
                     .addToFavourites(thisUserId, projectId, project)
                     .then(function (response) {
@@ -139,7 +150,7 @@
         }
 
         function removeFromWishList(projectId) {
-            if(model.thisUserId != model.user._id) {
+            if(model.thisUserId != model.currentUser._id) {
                 userService
                     .removeFromWishList(thisUserId, projectId)
                     .then(function (response) {
@@ -163,7 +174,7 @@
         }
         
         function addToWishList(projectId, project) {
-            if(model.thisUserId != model.user._id) {
+            if(model.thisUserId != model.currentUser._id) {
                 userService
                     .addToWishList(thisUserId, projectId, project)
                     .then(function (response) {
@@ -268,13 +279,6 @@
              var user = userService.findUserById(commentUserId);
              // console.log(user);
              return user;
-                //     .then(function (user) {
-                //      // console.log(user);
-                //     return user;
-                // }, function (err) {
-                //         return err;
-                //     })
-
         }
     }
 })();

@@ -3,7 +3,11 @@
         .module('Handouts')
         .controller('homeController', homeController);
 
-    function  homeController(currentUser, $location, userService, $scope) {
+    function  homeController(currentUser,
+                             orgService,
+                             $location,
+                             userService,
+                             $scope) {
         var model = this;
 
         if(currentUser) {
@@ -14,9 +18,10 @@
         // model.updateUser = updateUser;
         // model.modifyUser = modifyUser;
          model.logout = logout;
-        // model.unregister = unregister;
 
         function init() {
+            $scope.isCollapsed = true;
+
             $scope.myInterval = 4000;
             $scope.slides = [
                 {
@@ -34,16 +39,7 @@
 
         init();
 
-        // function unregister() {
-        //     userService
-        //         .unregister(model.user)
-        //         .then(function () {
-        //             $location.url('/login');
-        //         }, function () {
-        //             model.error = "Unregistration failed!";
-        //         });
-        // }
-        //
+
         function logout(user){
             userService
                 .logout()

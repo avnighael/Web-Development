@@ -15,6 +15,7 @@
         model.deleteUser = deleteUser;
         model.createUser = createUser;
         model.modifyUser = modifyUser;
+        model.logout = logout;
 
         function init() {
 
@@ -28,12 +29,11 @@
 
         init();
 
-        function follow(userIdToFollow) {
+        function logout(user){
             userService
-                .follow(userIdToFollow,model.currentUserId)
-                .then(function (followers) {
-                    model.user.followers.push(followers);
-                    model.followed = true;
+                .logout()
+                .then(function () {
+                    $location.url('/');
                 })
         }
 

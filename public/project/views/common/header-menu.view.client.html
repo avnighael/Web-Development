@@ -17,8 +17,7 @@
             <ul class="nav navbar-nav navbar-right">
 
                 <li class="">
-
-                    <form ng-show="model.currentUser.role != 'ADMIN' && href='#!/user/give/{{model.browseText}}/keywords'" class="" action="">
+                    <form ng-show="model.currentUser.role != 'ADMIN'" class="" action="">
                         <input class="input_text grid-9 grid-xl-10 ag-search"
                                type="text"
                                placeholder="I care about..."
@@ -26,7 +25,8 @@
                                ng-model="model.browseText"
                                title="Search for nonprofits">
                         <a class="glyphicon glyphicon-search"
-                        href="#!/user/give/{{model.browseText}}"></a>
+                           href="#!/user/give/{{model.browseText}}">
+                        </a>
                     </form>
                 </li>
 
@@ -96,18 +96,3 @@
         </div><!--/.nav-collapse -->
     </div>
 </nav>
-
-
-<div class="container-fluid ag-pushBody">
-    <div class="col-lg-12 col-md-12">
-    <carousel interval="myInterval">
-        <slide ng-repeat="slide in slides" active="slide.active">
-            <img ng-src="{{slide.image}}"
-            class="ag-carousel-image">
-            <div class="carousel-caption">
-                <h2>Make a donation</h2>
-            </div>
-        </slide>
-    </carousel>
-    </div>
-</div>

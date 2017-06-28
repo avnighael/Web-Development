@@ -6,7 +6,7 @@
         <div ng-show="model.message" class="alert alert-success" role="alert">
             {{model.message}}
         </div>
-        <h3>Add Follower</h3>
+        <h3>Add Followings of {{model.thisUser.username}}</h3>
 
         <ul class="list-group">
             <li class="list-group-item active">
@@ -54,10 +54,11 @@
                     <div class="col-lg-3 col-md-2 hidden-sm hidden-xs">
                         {{donor.email}}
                     </div>
+
                     <div class="col-lg-1 col-md-2 col-sm-2">
                         <a ng-if="donor._id != model.thisUserId &&
-                        donor.following.indexOf(model.thisUserId) === -1"
-                           ng-click="model.follow(donor)">
+                        donor.followers.indexOf(model.thisUserId) === -1"
+                           ng-click="model.follow(donor._id)">
                             <span class="glyphicon glyphicon-plus pull-right"></span>
                         </a>
                     </div>
@@ -65,9 +66,7 @@
             </li>
         </ul>
     </div>
-
     <div class = "ag-addBottomPadding"></div>
-
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom ag-footer-navbar">

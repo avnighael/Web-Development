@@ -1,3 +1,6 @@
+<div ng-include="'views/common/header-menu.view.client.html'"></div>
+
+
 <div class="top-content">
     <div class="inner-bg">
         <div class="container">
@@ -133,3 +136,20 @@
         </div>
     </div>
 </div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom ag-footer-navbar">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a ng-if="model.isAdmin"
+               class="navbar-link" href="#!/admin/user/{{model.thisUserId}}/details">
+                <span class="glyphicon glyphicon-backward"></span>
+            </a>
+
+            <a ng-if="!model.isAdmin"
+               class="navbar-link" href="#!/browseProjects/{{model.projectId}}">
+                <span class="glyphicon glyphicon-backward"></span>
+            </a>
+
+        </div>
+    </div>
+</nav>

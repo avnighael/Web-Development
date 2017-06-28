@@ -3,7 +3,11 @@
         .module('Handouts')
         .controller('volunteerOpportunityController', volunteerOpportunityController);
 
-    function volunteerOpportunityController($location, currentUser, opportunityService, $routeParams) {
+    function volunteerOpportunityController($location,
+                                            currentUser,
+                                            opportunityService,
+                                            userService,
+                                            $routeParams) {
 
         var model = this;
 
@@ -20,6 +24,7 @@
         if($routeParams.userId) {
             var thisUserId = $routeParams.userId;
             model.thisUserId = thisUserId;
+            model.isAdmin = true;
         }
 
 
@@ -29,6 +34,7 @@
         model.deleteOpportunity = deleteOpportunity;
         model.addVolunteer = addVolunteer;
         model.deleteVolunteer = deleteVolunteer;
+        model.logout = logout;
 
         function init() {
             model.volunteering = false;
@@ -39,6 +45,14 @@
         }
 
         init();
+
+        function logout(user){
+            userService
+                .logout()
+                .then(function () {
+                    $location.url('/');
+                })
+        }
 
         function deleteVolunteer(opportunityId) {
             opportunityService

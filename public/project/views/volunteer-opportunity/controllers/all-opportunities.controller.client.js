@@ -3,7 +3,11 @@
         .module('Handouts')
         .controller('allOpportunityController', allOpportunityController);
 
-    function allOpportunityController(currentUser, opportunityService, userService, $routeParams) {
+    function allOpportunityController(currentUser,
+                                      opportunityService,
+                                      userService,
+                                      $routeParams,
+                                      $location) {
 
         var model = this;
 
@@ -19,6 +23,7 @@
 
         model.getAllOpportunities = getAllOpportunities;
         model.addVolunteer = addVolunteer;
+        model.logout = logout;
 
 
         function init() {
@@ -29,6 +34,14 @@
         }
 
         init();
+
+        function logout(user){
+            userService
+                .logout()
+                .then(function () {
+                    $location.url('/');
+                })
+        }
 
 
         function addVolunteer(opportunityId) {
