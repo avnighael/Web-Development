@@ -69,7 +69,9 @@
 
             getDonation(projectId);
             
-           findThisFavOfThisUser(model.currentUser)
+           findThisFavOfThisUser(model.currentUser);
+            
+           findThisWishlistOfThisUser(model.currentUser);
 
             orgService
                 .getProjectDetailsById(projectId)
@@ -97,6 +99,10 @@
             var proj = proj.data.project;
             model.proj = proj;
              console.log(proj);
+        }
+        
+        function findThisWishlistOfThisUser(user) {
+            model.thisWishlist = $filter("filter")(user.projects, {projectId: projectId});            
         }
         
         function findThisFavOfThisUser(user) {
