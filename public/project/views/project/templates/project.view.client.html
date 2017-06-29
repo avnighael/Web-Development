@@ -43,7 +43,7 @@
                         Add to WishList
                     </a>
                     <a ng-show="model.saved"
-                       ng-click="model.removeFromWishList(model.proj.id)"
+                       ng-click="model.removeFromWishList(model.currentUser.projects.indexOf(model.thisWishlist[0]))"
                        class="btn btn-danger btn-block">
                          Remove from Wishlist
                     </a>
