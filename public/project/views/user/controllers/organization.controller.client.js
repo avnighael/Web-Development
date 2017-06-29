@@ -3,10 +3,11 @@
         .module("Handouts")
         .controller("organizationController", organizationController);
 
-    function organizationController(orgService, userService, $location, $routeParams) {
+    function organizationController(orgService, userService, $location, $routeParams, currentUser) {
 
         var model = this;
 
+        model.currentUser = currentUser;
         var userId = $routeParams.userId;
         model.userId = userId;
         var organizationId = $routeParams.organizationId;
