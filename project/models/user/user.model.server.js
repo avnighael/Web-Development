@@ -203,11 +203,11 @@ function findUserWishListProjectById(userId, projId) {
         });
 }
 
-function removeFromWishList(userId, projectId) {
+function removeFromWishList(userId, projectIndex) {
     return userModel
-        .findById(userId)
+        .findOne({_id:userId})
         .then(function (user) {
-            user.projects.splice(user.projects.indexOf(projectId),1);
+            user.projects.splice(projectIndex,1);
             return user.save();
         },function (err) {
             return err;
