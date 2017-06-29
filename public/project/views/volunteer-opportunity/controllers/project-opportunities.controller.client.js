@@ -3,7 +3,7 @@
         .module('Handouts')
         .controller('projectOpportunitiesController', projectOpportunitiesController);
 
-    function projectOpportunitiesController(currentUser, opportunityService, $routeParams) {
+    function projectOpportunitiesController(currentUser, opportunityService, $location, $routeParams) {
 
         var model = this;
 
@@ -14,6 +14,7 @@
         model.getOpportunitiesByProjectId = getOpportunitiesByProjectId;
         model.addVolunteer = addVolunteer;
         model.deleteVolunteer = deleteVolunteer;
+        model.logout = logout;
 
 
         function init() {
@@ -21,6 +22,14 @@
         }
 
         init();
+
+        function logout(user){
+            userService
+                .logout()
+                .then(function () {
+                    $location.url('/');
+                })
+        }
 
         function deleteVolunteer(opportunityId) {
             opportunityService

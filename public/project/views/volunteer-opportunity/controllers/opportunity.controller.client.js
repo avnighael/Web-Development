@@ -86,6 +86,31 @@
         }
 
         function updateOpportunity() {
+            if(model.opportunity.title === null || model.opportunity.title === '' || typeof model.opportunity.title === 'undefined') {
+                model.error = 'Opportunity title is required';
+                return;
+            }
+
+            if(model.opportunity.description === null || model.opportunity.description === '' || typeof model.opportunity.description === 'undefined') {
+                model.error = 'Opportunity description is required';
+                return;
+            }
+
+            if(model.opportunity.skills === null || model.opportunity.skills === '' || typeof model.opportunity.skills === 'undefined') {
+                model.error = "Opportunity skills is required";
+                return;
+            }
+
+            if(model.opportunity.commitment === null || model.opportunity.commitment === '' || typeof model.opportunity.commitment === 'undefined') {
+                model.error = "Opportunity commitment is required";
+                return;
+            }
+
+            if(model.opportunity.location === null || model.opportunity.location === '' || typeof model.opportunity.location === 'undefined') {
+                model.error = "Opportunity location is required";
+                return;
+            }
+
             var startDate = new Date(model.opportunity.startDate);
             var endDate   = new Date(model.opportunity.endDate);
             var today = new Date();
@@ -130,42 +155,31 @@
 
         function createOpportunity(opportunity) {
 
+            if(opportunity.title === null || opportunity.title === '' || typeof opportunity.title === 'undefined') {
+                model.error = 'Opportunity title is required';
+                return;
+            }
 
-            // if((user.username === null && user.password === null) ||
-            //     (user.username === '' && user.password === '') ||
-            //     (typeof user.username === 'undefined' && typeof user.password === 'undefined')) {
-            //     model.error = 'username and password is required';
-            //     return;
-            // }
-            //
-            // if(user.username === null || user.username === '' || typeof user.username === 'undefined') {
-            //     model.error = 'username is required';
-            //     return;
-            // }
-            //
-            // if(user.password === null || user.password === '' || typeof user.password === 'undefined') {
-            //     model.error = 'password is required';
-            //     return;
-            // }
-            //
-            // if(user.password !== user.cpassword || user.password === null || typeof user.password === 'undefined') {
-            //     model.error = "Passwords doesn't match, Try Again";
-            //     return;
-            // }
-            //
-            // if(user.role === "ORGANIZATION") {
-            //     if((user.organization === null && user.registrationNumber === null) ||
-            //         (user.organization === '' && user.registrationNumber === '') ||
-            //         (typeof user.organization === 'undefined' && typeof user.registrationNumber === 'undefined')) {
-            //         model.error = 'Organization name and its registration number is required';
-            //         return;
-            //     }
-            //
-            //     if(user.organization === null || user.organization === '' || typeof user.organization === 'undefined') {
-            //         model.error = 'Organization name is required';
-            //         return;
-            //     }
-            // }
+            if(opportunity.description === null || opportunity.description === '' || typeof opportunity.description === 'undefined') {
+                model.error = 'Opportunity description is required';
+                return;
+            }
+
+            if(opportunity.skills === null || opportunity.skills === '' || typeof opportunity.skills === 'undefined') {
+                model.error = "Opportunity skills is required";
+                return;
+            }
+
+            if(opportunity.commitment === null || opportunity.commitment === '' || typeof opportunity.commitment === 'undefined') {
+                model.error = "Opportunity commitment is required";
+                return;
+            }
+
+            if(opportunity.location === null || opportunity.location === '' || typeof opportunity.location === 'undefined') {
+                model.error = "Opportunity location is required";
+                return;
+            }
+
 
             if(thisUserId) {
                 model.opportunity._createdBy = model.thisUserId;

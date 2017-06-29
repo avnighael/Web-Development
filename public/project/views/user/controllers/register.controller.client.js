@@ -3,7 +3,7 @@
         .module('Handouts')
         .controller('registerController', registerController);
 
-    function registerController($location, userService, $rootScope, orgService) {
+    function registerController($location, userService, $rootScope, orgService, currentUser) {
 
         var model = this;
 
@@ -44,7 +44,7 @@
                 return;
             }
 
-            if(user.role === "ORGANIZATION") {
+            if(role === "ORGANIZATION") {
                 if((user.organization === null && user.registrationNumber === null) ||
                     (user.organization === '' && user.registrationNumber === '') ||
                     (typeof user.organization === 'undefined' && typeof user.registrationNumber === 'undefined')) {
@@ -56,9 +56,14 @@
                     model.error = 'Organization name is required';
                     return;
                 }
+
+                if(user.registrationNumber === null || user.registrationNumber === '' || typeof user.registrationNumber === 'undefined') {
+                    model.error = 'Registration number is required';
+                    return;
+                }
             }
 
-
+            user.role = role;
 
             userService
                 .findUserByUsername(user.username)

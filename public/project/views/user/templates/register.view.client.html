@@ -1,3 +1,5 @@
+<div ng-include="'views/common/header-menu.view.client.html'"></div>
+
 <div class="jumbotron bgimg-header">
 </div>
 
@@ -106,7 +108,8 @@
                                            required
                                            name="organization"
                                            ng-model="user.organization"
-                                           placeholder="Enter your organization"/>
+                                           placeholder="Enter your organization"
+                                           required/>
 
                                     <label for="regNum">Registration Number</label>
                                     <input type="text"
@@ -115,7 +118,8 @@
                                            required
                                            name="regNum"
                                            ng-model="user.registrationNumber"
-                                           placeholder="Enter the valid registration number of your organization"/>
+                                           placeholder="Enter the valid registration number of your organization"
+                                           required/>
                                     <div ng-show="form.$submitted || form.organization.$touched"
                                          class="ag-validation-error-div">
                                         <div ng-show="model.error" class="text-danger">
@@ -152,19 +156,6 @@
                         <a class="btn btn-danger  btn-block"
                            href="#!login">Cancel</a>
                         </form>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6 col-sm-offset-3 social-login">
-                    <h3>...or register with:</h3>
-                    <div class="social-login-buttons">
-                        <a class="btn btn-link-1 btn-link-1-facebook" href="/auth/facebook">
-                            <i class="fa fa-facebook"></i> Facebook
-                        </a>
-                        <a class="btn btn-link-1 btn-link-1-google-plus" href="/auth/google">
-                            <i class="fa fa-google-plus"></i> Google Plus
-                        </a>
                     </div>
                 </div>
             </div>

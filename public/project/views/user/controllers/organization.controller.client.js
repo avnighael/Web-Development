@@ -3,7 +3,7 @@
         .module("Handouts")
         .controller("organizationController", organizationController);
 
-    function organizationController(orgService, $location, $routeParams) {
+    function organizationController(orgService, userService, $location, $routeParams) {
 
         var model = this;
 
@@ -16,6 +16,7 @@
         this.followOrganization = followOrganization;
 
         //model.projectDetail = projectDetail;
+        model.logout = logout;
 
         function init() {
             orgService
@@ -27,6 +28,14 @@
         
         function followOrganization(orgIdToBeFollowed) {
             
+        }
+
+        function logout(user){
+            userService
+                .logout()
+                .then(function () {
+                    $location.url('/');
+                })
         }
 
         function renderOrganization(org) {

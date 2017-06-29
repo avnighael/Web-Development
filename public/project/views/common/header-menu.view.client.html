@@ -17,7 +17,7 @@
             <ul class="nav navbar-nav navbar-right">
 
                 <li class="">
-                    <form ng-show="model.currentUser.role != 'ADMIN'" class="" action="">
+                    <form ng-show="model.currentUser.role != 'ADMIN' && model.currentUser.role != 'ORGANIZATION'" class="" action="">
                         <input class="input_text grid-9 grid-xl-10 ag-search"
                                type="text"
                                placeholder="I care about..."

@@ -3,7 +3,7 @@
         .module('Handouts')
         .controller('organizationAllOpportunityController', organizationAllOpportunityController);
 
-    function organizationAllOpportunityController(currentUser, opportunityService, $routeParams) {
+    function organizationAllOpportunityController(currentUser, userService, opportunityService, $location, $routeParams) {
 
         var model = this;
 
@@ -17,6 +17,7 @@
         model.deleteOpportunity = deleteOpportunity;
         model.getAllOpportunitiesById = getAllOpportunitiesById;
         model.getOpportunitiesOfDonor = getOpportunitiesOfDonor;
+        model.logout = logout;
 
         function init() {
             if(model.currentUser) {
@@ -32,6 +33,14 @@
         }
 
         init();
+
+        function logout(user){
+            userService
+                .logout()
+                .then(function () {
+                    $location.url('/');
+                })
+        }
 
         function getOpportunitiesOfDonor(donorId) {
             opportunityService
@@ -55,8 +64,8 @@
             opportunityService
                 .deleteOpportunity(opportunityId)
                 .then(function (response) {
-                    console.log(response);
-                    getAllOpportunities(model.currentUser._id);
+                    // console.log(response);
+                    getAllOpportunitiesById(model.currentUser._id);
                 }, function () {
                     model.error = "Something went wrong. Opportunity deletion unsuccessfull!"
                 });

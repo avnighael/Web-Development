@@ -75,7 +75,7 @@
             {{model.error}}
         </div>
 
-        <h3>{{model.opportunity.title}}</h3>
+        <h3 class="ag-profileHeader"><strong>{{model.opportunity.title}}</strong></h3>
 
         <div ng-if="model.currentUser.role === 'DONOR' && !model.volunteering">
             <a ng-click="model.addVolunteer()"
@@ -104,8 +104,9 @@
     <img class="img-responsive-home ag-fullWidth"
          ng-src="{{model.opportunity.imageUrl}}"
          alt="{{model.opportunity.title}}"/>
+    <br/>
     <div>
-        <b>About</b>
+        <h4>About</h4>
         <p>{{model.opportunity.description}}</p>
     </div>
     <hr/>
@@ -113,6 +114,7 @@
         <div>Skills:
             <div>{{model.opportunity.skills}}</div>
         </div> &nbsp; &nbsp;
+        <hr/>
         <div>Requirements & Commitment:
             <div>{{model.opportunity.commitment}}</div> &nbsp; &nbsp;
     </div>
@@ -124,3 +126,15 @@
 
 <div class = "ag-addBottomPadding"></div>
 </div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom ag-footer-navbar">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a class="navbar-link" href="#!/organization/opportunity/all">
+                <span class="glyphicon glyphicon-backward"></span>
+            </a>
+
+        </div>
+    </div>
+
+</nav>

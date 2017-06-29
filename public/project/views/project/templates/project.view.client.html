@@ -237,7 +237,7 @@
                 <!--<p>by {{org.organization.name}}</p>-->
 
     <!--Comment Section-->
-    <div ng-show="model.currentUser.role === 'DONOR' &&
+    <div ng-show="model.currentUser.role === 'DONOR' ||
     model.currentUser.role === 'ORGANIZATION'" class=".ag-comments-section">
         <hr/>
         <div class="ag-comments-heading">Comments</div>
@@ -269,14 +269,8 @@
         </div>
     </div>
 
-    <div class="ag-project-comments-display container-fluid"
+    <div ng-show="model.currentUser.role != 'ORGANIZATION'" class="ag-project-comments-display container-fluid"
          ng-repeat="comment in model.proj.comments">
-
-        <!--<div ng-show="model.currentUser.role === 'ADMIN'">-->
-            <!--&lt;!&ndash;Admin should not able to visit other profiles, follow or subscribe to people&ndash;&gt;-->
-            <!--{{comment._user.firstName+" "+comment._user.lastName}}-->
-            <!--{{comment.comment}}-->
-        <!--</div>-->
         <span class="input-group container">
             <div>
             <a title="Posted at {{comment.createdAt}}"
@@ -308,6 +302,41 @@
 
         </span>
     </div>
+
+    <div ng-show="model.currentUser.role == 'ORGANIZATION'"
+         class="ag-project-comments-display container-fluid"
+         ng-repeat="comment in model.proj.comments">
+        <span class="input-group container">
+            <div>
+            <a title="Posted at {{comment.createdAt}}"
+               href="#!/user/{{comment._user._id}}">
+                <!--{{comment._user.firstName+" "+comment._user.lastName}}-->
+            </a>
+            <div class="ag-left-alignment">
+                <span><strong>
+                        {{comment._user.firstName}}
+                        {{comment._user.lastName}}
+                    </strong>
+                </span>
+                &nbsp; &nbsp;
+                <span>
+                    {{comment.comment}}
+                </span>
+            <span ng-show="comment._user._id === model.currentUser._id"
+                  class="ag-comment-delete pull-right">
+            <a ng-click="model.deleteComment(comment._id)" class="btn btn-danger">
+                <span class="glyphicon glyphicon-trash "></span> Delete Comment
+            </a>
+        </span>
+            </div>
+                <div class="ag-left-alignment">Posted at {{comment.createdAt}}  </div>
+            </div>
+
+
+
+        </span>
+    </div>
+
 
 </div>
 

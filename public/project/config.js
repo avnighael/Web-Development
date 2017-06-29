@@ -104,7 +104,10 @@
             .when('/register', {
                 templateUrl: 'views/user/templates/register.view.client.html',
                 controller: 'registerController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
             })
 
             .when('/profile', {
