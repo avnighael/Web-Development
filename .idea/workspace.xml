@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe86f3a8-3bab-47a0-a636-41eeca86c813" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/project/controllers/project.controller.client.js" afterPath="$PROJECT_DIR$/public/project/views/project/controllers/project.controller.client.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/models/user/user.model.server.js" afterPath="$PROJECT_DIR$/project/models/user/user.model.server.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/admin/controllers/admin-user-details-edit.controller.client.js" afterPath="$PROJECT_DIR$/public/project/views/admin/controllers/admin-user-details-edit.controller.client.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/admin/templates/admin-user-details-edit.view.client.html" afterPath="$PROJECT_DIR$/public/project/views/admin/templates/admin-user-details-edit.view.client.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/user/controllers/give.controller.client.js" afterPath="$PROJECT_DIR$/public/project/views/user/controllers/give.controller.client.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/user/templates/give.view.client.html" afterPath="$PROJECT_DIR$/public/project/views/user/templates/give.view.client.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/user/templates/login.view.client.html" afterPath="$PROJECT_DIR$/public/project/views/user/templates/login.view.client.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/user/templates/register.view.client.html" afterPath="$PROJECT_DIR$/public/project/views/user/templates/register.view.client.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -17,68 +24,80 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="profile.view.client.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/views/user/templates/profile.view.client.html">
+      <file leaf-file-name="admin-user-details-edit.view.client.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/views/admin/templates/admin-user-details-edit.view.client.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3120">
-              <caret line="339" column="66" lean-forward="false" selection-start-line="339" selection-start-column="66" selection-end-line="339" selection-end-column="66" />
-              <folding>
-                <element signature="n#div#0;n#div#1;n#!!top" expanded="false" />
-                <element signature="n#nav#0;n#!!top" expanded="false" />
-              </folding>
+            <state relative-caret-position="105">
+              <caret line="45" column="67" lean-forward="false" selection-start-line="45" selection-start-column="67" selection-end-line="45" selection-end-column="67" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register.view.client.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="admin-user-details-edit.controller.client.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/views/admin/controllers/admin-user-details-edit.controller.client.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="166">
+              <caret line="180" column="29" lean-forward="false" selection-start-line="180" selection-start-column="29" selection-end-line="180" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.service.client.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/services/user.service.client.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="28" column="12" lean-forward="false" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.service.server.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project/services/user.service.server.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="211">
+              <caret line="209" column="19" lean-forward="true" selection-start-line="209" selection-start-column="19" selection-end-line="209" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.model.server.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project/models/user/user.model.server.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="121">
+              <caret line="237" column="31" lean-forward="false" selection-start-line="237" selection-start-column="31" selection-end-line="237" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.view.client.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/views/user/templates/login.view.client.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="48" lean-forward="false" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register.view.client.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/project/views/user/templates/register.view.client.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2475">
-              <caret line="165" column="0" lean-forward="false" selection-start-line="165" selection-start-column="0" selection-end-line="175" selection-end-column="6" />
+            <state relative-caret-position="134">
+              <caret line="10" column="47" lean-forward="false" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.view.client.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/views/user/templates/user.view.client.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding>
-                <element signature="n#div#1;n#div#1;n#div#1;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="wishlist.view.client.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/views/user/templates/wishlist.view.client.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-199">
-              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="all-opportunities.view.client.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/views/volunteer-opportunity/templates/all-opportunities.view.client.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding>
-                <element signature="n#div#2;n#div#0;n#div#1;n#!!top" expanded="false" />
-                <marker date="1498708386000" expanded="false" signature="2194:2210" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="project.controller.client.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="project.controller.client.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/project/views/project/controllers/project.controller.client.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1227">
+            <state relative-caret-position="506">
               <caret line="144" column="37" lean-forward="false" selection-start-line="144" selection-start-column="37" selection-end-line="144" selection-end-column="37" />
               <folding />
             </state>
@@ -88,11 +107,21 @@
       <file leaf-file-name="project.view.client.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/project/views/project/templates/project.view.client.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="52" column="43" lean-forward="false" selection-start-line="52" selection-start-column="39" selection-end-line="52" selection-end-column="43" />
+            <state relative-caret-position="180">
+              <caret line="56" column="24" lean-forward="true" selection-start-line="56" selection-start-column="24" selection-end-line="56" selection-end-column="24" />
               <folding>
                 <element signature="n#div#6;n#div#1;n#!!top" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin-user-edit.view.client.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/views/admin/templates/admin-user-edit.view.client.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -157,8 +186,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/project/views/volunteer-opportunity/controllers/all-opportunities.controller.client.js" />
-        <option value="$PROJECT_DIR$/public/project/views/home/home.controller.client.js" />
         <option value="$PROJECT_DIR$/public/project/views/admin/templates/admin-add-follower.view.client.html" />
         <option value="$PROJECT_DIR$/public/project/views/admin/templates/admin-add-following.view.client.html" />
         <option value="$PROJECT_DIR$/public/project/views/admin/templates/admin-user-create.view.client.html" />
@@ -173,7 +200,6 @@
         <option value="$PROJECT_DIR$/public/project/views/user/controllers/wishlist.controller.client.js" />
         <option value="$PROJECT_DIR$/public/project/views/user/templates/user.view.client.html" />
         <option value="$PROJECT_DIR$/public/project/views/user/controllers/user.controller.client.js" />
-        <option value="$PROJECT_DIR$/public/project/views/admin/templates/admin-user-details-edit.view.client.html" />
         <option value="$PROJECT_DIR$/public/project/views/admin/controllers/admin-users.controller.client.js" />
         <option value="$PROJECT_DIR$/public/project/services/donation.service.client.js" />
         <option value="$PROJECT_DIR$/project/services/donation.service.server.js" />
@@ -185,10 +211,7 @@
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/public/project/css/style.css" />
-        <option value="$PROJECT_DIR$/public/project/views/user/controllers/give.controller.client.js" />
-        <option value="$PROJECT_DIR$/public/project/views/user/templates/give.view.client.html" />
         <option value="$PROJECT_DIR$/public/project/views/user/templates/organization.view.client.html" />
-        <option value="$PROJECT_DIR$/public/project/views/user/templates/register.view.client.html" />
         <option value="$PROJECT_DIR$/public/project/views/user/controllers/register.controller.client.js" />
         <option value="$PROJECT_DIR$/public/project/views/volunteer-opportunity/controllers/opportunity.controller.client.js" />
         <option value="$PROJECT_DIR$/public/project/views/common/header-menu.view.client.html" />
@@ -199,7 +222,6 @@
         <option value="$PROJECT_DIR$/public/project/views/volunteer-opportunity/templates/all-opportunities.view.client.html" />
         <option value="$PROJECT_DIR$/public/project/views/volunteer-opportunity/templates/view-opportunity.view.client.html" />
         <option value="$PROJECT_DIR$/public/project/views/project/templates/project.view.client.html" />
-        <option value="$PROJECT_DIR$/public/project/views/user/templates/login.view.client.html" />
         <option value="$PROJECT_DIR$/public/project/config.js" />
         <option value="$PROJECT_DIR$/public/project/views/user/controllers/browse-organization.controller.client.js" />
         <option value="$PROJECT_DIR$/public/project/views/user/templates/browse-organization.view.client.html" />
@@ -208,6 +230,13 @@
         <option value="$PROJECT_DIR$/public/project/views/home/home.view.client.html" />
         <option value="$PROJECT_DIR$/public/project/views/user/templates/wishlist.view.client.html" />
         <option value="$PROJECT_DIR$/public/project/views/project/controllers/project.controller.client.js" />
+        <option value="$PROJECT_DIR$/public/project/views/admin/controllers/admin-user-details-edit.controller.client.js" />
+        <option value="$PROJECT_DIR$/public/project/views/admin/templates/admin-user-details-edit.view.client.html" />
+        <option value="$PROJECT_DIR$/public/project/views/user/templates/give.view.client.html" />
+        <option value="$PROJECT_DIR$/public/project/views/user/controllers/give.controller.client.js" />
+        <option value="$PROJECT_DIR$/project/models/user/user.model.server.js" />
+        <option value="$PROJECT_DIR$/public/project/views/user/templates/login.view.client.html" />
+        <option value="$PROJECT_DIR$/public/project/views/user/templates/register.view.client.html" />
       </list>
     </option>
   </component>
@@ -583,6 +612,44 @@
               <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -603,6 +670,176 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="widget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -775,12 +1012,12 @@
       <workItem from="1497988416421" duration="23472000" />
       <workItem from="1498076723453" duration="2043000" />
       <workItem from="1498079061703" duration="190732000" />
-      <workItem from="1498538192845" duration="70171000" />
+      <workItem from="1498538192845" duration="74534000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="818179000" />
+    <option name="totallyTimeSpent" value="822542000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="722" extended-state="0" />
@@ -789,7 +1026,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23510723" sideWeight="0.49183673" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.50277996" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30476192" sideWeight="0.49722" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47619048" sideWeight="0.49722" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29467833" sideWeight="0.5081633" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -830,80 +1067,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/project/views/admin/templates/admin-user-details-edit.view.client.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="146" column="16" lean-forward="false" selection-start-line="146" selection-start-column="16" selection-end-line="146" selection-end-column="16" />
-          <folding>
-            <element signature="n#div#2;n#div#0;n#div#1;n#!!top" expanded="false" />
-            <element signature="n#div#3;n#div#0;n#div#1;n#!!top" expanded="false" />
-            <element signature="n#div#5;n#div#0;n#div#1;n#!!top" expanded="false" />
-            <element signature="n#div#6;n#div#0;n#div#1;n#!!top" expanded="false" />
-            <element signature="n#div#7;n#div#0;n#div#1;n#!!top" expanded="false" />
-            <element signature="n#div#8;n#div#0;n#div#1;n#!!top" expanded="false" />
-            <element signature="n#nav#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/views/admin/controllers/admin-users.controller.client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="157" column="31" lean-forward="false" selection-start-line="157" selection-start-column="31" selection-end-line="157" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/views/admin/templates/admin-users-list.view.client.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-          <folding>
-            <element signature="n#ul#0;n#div#1;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/services/donation.service.client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="12" column="62" lean-forward="true" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/services/donation.service.server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="20" lean-forward="false" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/models/donation/donation.model.server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="37" lean-forward="false" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/services/user.service.client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1586">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/services/user.service.server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/services/project.service.client.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
@@ -1039,14 +1202,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/views/user/controllers/give.controller.client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/views/user/controllers/login.controller.client.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="415">
@@ -1167,24 +1322,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/views/user/templates/give.view.client.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="885">
-          <caret line="59" column="42" lean-forward="false" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
-          <folding>
-            <element signature="n#nav#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/views/user/templates/login.view.client.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="66" column="25" lean-forward="false" selection-start-line="66" selection-start-column="29" selection-end-line="68" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/views/user/templates/organization.view.client.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -1201,14 +1338,6 @@
             <element signature="n#div#0;n#div#1;n#!!top" expanded="false" />
             <element signature="n#nav#0;n#!!top" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/views/user/templates/register.view.client.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2475">
-          <caret line="165" column="0" lean-forward="false" selection-start-line="165" selection-start-column="0" selection-end-line="175" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1273,20 +1402,118 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/views/project/controllers/project.controller.client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="144" column="37" lean-forward="false" selection-start-line="144" selection-start-column="37" selection-end-line="144" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/views/project/templates/project.view.client.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="52" column="43" lean-forward="false" selection-start-line="52" selection-start-column="39" selection-end-line="52" selection-end-column="43" />
+        <state relative-caret-position="180">
+          <caret line="56" column="24" lean-forward="true" selection-start-line="56" selection-start-column="24" selection-end-line="56" selection-end-column="24" />
           <folding>
             <element signature="n#div#6;n#div#1;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/views/project/controllers/project.controller.client.js">
+    <entry file="file://$PROJECT_DIR$/public/project/views/admin/templates/admin-user-edit.view.client.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1227">
-          <caret line="144" column="37" lean-forward="false" selection-start-line="144" selection-start-column="37" selection-end-line="144" selection-end-column="37" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/views/admin/controllers/admin-user-details-edit.controller.client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="180" column="29" lean-forward="false" selection-start-line="180" selection-start-column="29" selection-end-line="180" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/services/user.service.client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="28" column="12" lean-forward="false" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/services/user.service.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="209" column="19" lean-forward="true" selection-start-line="209" selection-start-column="19" selection-end-line="209" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assignment/models/user/user.model.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-843">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assignment/models/website/website.model.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-164">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/views/user/controllers/give.controller.client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="89" column="53" lean-forward="true" selection-start-line="89" selection-start-column="53" selection-end-line="89" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/views/user/templates/give.view.client.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="54" column="41" lean-forward="false" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="41" />
+          <folding>
+            <element signature="n#nav#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/views/admin/templates/admin-user-details-edit.view.client.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="45" column="67" lean-forward="false" selection-start-line="45" selection-start-column="67" selection-end-line="45" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/models/user/user.model.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="237" column="31" lean-forward="false" selection-start-line="237" selection-start-column="31" selection-end-line="237" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/views/user/templates/login.view.client.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="48" lean-forward="false" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/views/user/templates/register.view.client.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="10" column="47" lean-forward="false" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
           <folding />
         </state>
       </provider>

@@ -13,7 +13,7 @@
         var model = this;
 
         model.currentUser = currentUser;
-        var thisUserId = $routeParams.userId;;
+        var thisUserId = $routeParams.userId;
         model.thisUserId = thisUserId;
 
         model.removeFromFavourites = removeFromFavourites;
@@ -180,12 +180,13 @@
             userService
                 .removeFromFavourites(thisUserId, projectId)
                 .then(function (response) {
+                    model.favourite = false;
                     getUserById(model.thisUserId);
                     getDonationHistory(model.thisUserId);
                     getComments(model.thisUserId);
                     getOpportunitiesOfDonor(model.thisUserId);
                     getOpportunitiesOfOrg(model.thisUserId);
-                    model.favourite = false;
+
                 },function (err) {
                     model.unauthorized = "Please register/login to add this project to WishList";
                     console.log(err);

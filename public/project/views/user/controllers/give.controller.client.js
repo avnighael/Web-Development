@@ -84,6 +84,7 @@
                         model.numberFound = projs.data.projects.numberFound;
                     } else {
                         model.projs = projs.data.projects;
+                        model.numberFound = projs.data.projects.numberFound;
                     }
                 }, function () {
                     model.error = "No results found";
