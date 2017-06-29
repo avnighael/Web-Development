@@ -193,8 +193,8 @@
                 });
         }
 
-        function removeFromWishList(userId, projectId) {
-            var url = "/api/project/user/"+userId+"/project/"+projectId;
+        function removeFromWishList(userId, projectIndex) {
+            var url = "/api/project/user/"+userId+"/project/wishlist/remove/"+projectIndex;
             return $http.delete(url)
                 .then(function (response) {
                     // console.log(response);
