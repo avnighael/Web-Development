@@ -9,7 +9,8 @@
                                currentUser,
                                opportunityService,
                                $routeParams,
-                               $location) {
+                               $location,
+                               $filter) {
 
         var model = this;
 
