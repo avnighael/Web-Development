@@ -135,7 +135,7 @@
         }
 
         function addToFavourites(projectId, project) {
-            if(model.thisUserId != model.currentUser._id) {
+            if(model.thisUserId && model.thisUserId != model.currentUser._id) {
                 userService
                     .addToFavourites(thisUserId, projectId, project)
                     .then(function (response) {
@@ -146,7 +146,7 @@
                     })
             } else {
                 userService
-                    .addToFavourites(thisUserId, projectId, project)
+                    .addToFavourites(model.currentUser._id, projectId, project)
                     .then(function (response) {
                         model.favourite = true;
                     },function (err) {
@@ -170,7 +170,7 @@
         }
 
         function removeFromWishList(projectId) {
-            if(model.thisUserId != model.currentUser._id) {
+            if(model.thisUserId && model.thisUserId != model.currentUser._id) {
                 userService
                     .removeFromWishList(thisUserId, projectId)
                     .then(function (response) {
@@ -194,7 +194,7 @@
         }
         
         function addToWishList(projectId, project) {
-            if(model.thisUserId != model.currentUser._id) {
+            if(model.thisUserId && model.thisUserId != model.currentUser._id) {
                 userService
                     .addToWishList(thisUserId, projectId, project)
                     .then(function (response) {
