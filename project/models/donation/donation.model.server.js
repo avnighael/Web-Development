@@ -5,8 +5,14 @@ var donationModel = mongoose.model('donationModel', donationSchema);
 donationModel.sendDonation = sendDonation;
 donationModel.getDonationHistory = getDonationHistory;
 donationModel.deleteDonation = deleteDonation;
+donationModel.getDonation = getDonation;
 
 module.exports = donationModel;
+
+function getDonation(projectId) {
+    return donationModel
+        .find({_project: projectId});
+}
 
 function deleteDonation(donationId) {
     return donationModel

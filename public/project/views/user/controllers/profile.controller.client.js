@@ -16,7 +16,6 @@
 
         function init() {
             model.tab = 'MyProfile';
-            console.log(currentUser);
             getDonationHistory(model.userId);
         }
 
@@ -28,7 +27,7 @@
                 .getDonationHistory(userId)
                 .then(function (donations) {
                     model.donations = donations;
-                    console.log(model.donations);
+                    // console.log(model.donations);
                 }, function (err) {
                     console.log(err);
                 })
@@ -61,7 +60,6 @@
             }
 
             //model.emailRegex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-
             userService
                 .modifyUser(model.userId, newUser)
                 .then(function (user) {

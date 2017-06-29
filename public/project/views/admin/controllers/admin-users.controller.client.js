@@ -155,7 +155,7 @@
                 .deleteUser(userId)
                 .then(function () {
                     model.message = "User Successfully removed!";
-                    getAllDonors();
+                    getAllUsers();
                 }, function () {
                     model.error = "Unregistration failed!"
                 });

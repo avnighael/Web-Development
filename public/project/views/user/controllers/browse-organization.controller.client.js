@@ -26,6 +26,7 @@
                 .then(function (orgs) {
                     //model.orgs = orgs.charities.charity;
                     model.orgs = orgs.data.organizations.organization;
+                    console.log(model.orgs);
                 });
         }
 

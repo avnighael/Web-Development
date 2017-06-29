@@ -3,6 +3,19 @@ var donationModel = require('../models/donation/donation.model.server');
 
 app.post('/api/project/user/:userId/project/:projectId/donate', sendDonation);
 app.get('/api/project/user/:userId/getDonations', getDonationHistory);
+app.get('/api/project/:projectId/getDonations', getDonation);
+
+function getDonation(req, res) {
+    var projectId = req.params.projectId;
+
+    donationModel
+        .getDonation(projectId)
+        .then(function (response) {
+            res.json(response);
+        },function (err) {
+            res.send(err);
+        });
+}
 
 function getDonationHistory(req, res) {
     var userId = req.params.userId;

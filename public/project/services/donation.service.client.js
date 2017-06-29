@@ -7,6 +7,15 @@
 
         this.sendDonation = sendDonation;
         this.getDonationHistory = getDonationHistory;
+        this.getDonation = getDonation;
+
+        function getDonation(projectId) {
+            var url = "/api/project/"+projectId+"/getDonations";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
 
         function getDonationHistory(userId) {
             var url = "/api/project/user/"+userId+"/getDonations";

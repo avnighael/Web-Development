@@ -109,8 +109,8 @@
                         {{model.error}}
                     </div>
 
-                    <h3>{{model.proj.title}}</h3>
-                    <p>by {{model.proj.organization.name}} , {{model.proj.country}}</p>
+                    <h3 class="ag-profileHeader">{{model.proj.title}}</h3>
+                    <p class="ag-profileHeader">by {{model.proj.organization.name}} , {{model.proj.country}}</p>
 
                     <div ng-if="model.currentUser.role === 'ORGANIZATION' || model.currentUser.role === 'ADMIN'">
                         <a ng-show="model.wantVolunteers"
@@ -176,7 +176,8 @@
                         <span ng-show="model.currentUser._id">
                         <span>
                         <label for="amount">How much do you want to contribute?</label>
-                        <input type="text"
+                        <input ng-keyup="$event.keyCode == 13  && model.sendDonation(donation)"
+                               type="text"
                                class="form-control ag-form"
                                id="amount"
                                required
@@ -206,21 +207,38 @@
                      ng-src="{{model.proj.imageLink}}"
                      alt="{{model.proj.title}}"/>
                 <div>
-                    <b>Summary</b>
+                    <h3><b>Summary</b></h3>
                     <p>{{model.proj.summary}}</p>
                 </div>
+        <hr/>
 
+    <div>
+        <h3><b>Activities</b></h3>
+        <p>{{model.proj.activities}}</p>
+    </div>
+
+    <hr/>
                 <div>
                     <span>Goal: {{model.proj.goal}}</span> &nbsp; &nbsp;
-                    <span>funding: {{model.proj.funding}}</span> &nbsp; &nbsp;
-                    <span>remaining: {{model.proj.remaining}}</span>
+                    <span>funding: {{model.funding}}</span> &nbsp; &nbsp;
+                    <span>remaining: {{model.proj.goal - model.funding}}</span>
 
                 </div>
+    <hr/>
+
+    <div>
+        <span>Project Link:
+            <a href="{{model.proj.projectLink}}">
+                {{model.proj.title}}
+            </a>
+        </span>
+    </div>
 
                 <!--<p>by {{org.organization.name}}</p>-->
 
     <!--Comment Section-->
-    <div ng-show="model.currentUser.role != 'ADMIN'" class=".ag-comments-section">
+    <div ng-show="model.currentUser.role === 'DONOR' &&
+    model.currentUser.role === 'ORGANIZATION'" class=".ag-comments-section">
         <hr/>
         <div class="ag-comments-heading">Comments</div>
 

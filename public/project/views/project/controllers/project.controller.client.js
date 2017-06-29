@@ -49,6 +49,7 @@
         model.addToFavourites = addToFavourites;
         model.removeFromFavourites = removeFromFavourites;
         model.getOpportunitiesByProjectId = getOpportunitiesByProjectId;
+        model.getDonation = getDonation;
         model.logout = logout;
 
         function init() {
@@ -63,6 +64,8 @@
             getOpportunitiesByProjectId(projectId);
 
             getCommentsByProjectId(projectId);
+
+            getDonation(projectId);
 
             orgService
                 .getProjectDetailsById(projectId)
@@ -89,7 +92,24 @@
         function renderProject(proj) {
             var proj = proj.data.project;
             model.proj = proj;
-            // console.log(proj);
+             console.log(proj);
+        }
+
+        function getDonation(projectId) {
+            donationService
+                .getDonation(projectId)
+                .then(function (donations) {
+                    model.donations = donations;
+                    console.log(model.donations);
+                    model.funding = 0;
+                    for(var d in donations) {
+
+                        model.funding += parseInt(donations[d].amount);
+                    }
+
+                }, function (err) {
+                    console.log(err);
+                })
         }
 
         function getOpportunitiesByProjectId(projectId) {
@@ -99,7 +119,7 @@
                     // console.log(opportunities);
                     model.opportunities = opportunities;
                 }, function (err) {
-                    console.log(err);
+                    // console.log(err);
                 })
         }
 
@@ -110,7 +130,7 @@
                     model.favourite = false;
                 },function (err) {
                     model.unauthorized = "Please register/login to add this project to WishList";
-                    console.log(err);
+                    // console.log(err);
                 })
         }
 
@@ -155,7 +175,7 @@
                     .removeFromWishList(thisUserId, projectId)
                     .then(function (response) {
                         model.saved = false;
-                        $location.url('/admin/user/'+model.thisUserId+'/details');
+                        // $location.url('/admin/user/'+model.thisUserId+'/details');
                     },function (err) {
                         model.unauthorized = "Please register/login to add this project to WishList";
                         console.log(err);
@@ -215,7 +235,9 @@
                 model.donationError = 'Donation amount is required';
                 model.message = "";
                 return;
-            }            donationService
+            }
+
+            donationService
                 .sendDonation(userId, projectId, donation)
                 .then(function (response) {
                     model.message = "Thank you for donating to this project :)";
@@ -223,6 +245,7 @@
                     model.donating = false;
 
                     removeFromWishList(projectId);
+                    getDonation(projectId);
 
                 }, function (err) {
                     model.error = "Uh oh! Something went wrong";

@@ -16,6 +16,7 @@
 
         model.follow = follow;
         model.unfollow = unfollow;
+        model.logout = logout;
 
         if(model.currentUserId === model.userId) {
             model.myProfile = true;
@@ -37,6 +38,14 @@
         }
 
         init();
+
+        function logout(user){
+            userService
+                .logout()
+                .then(function () {
+                    $location.url('/');
+                })
+        }
 
         function findUserById(userId) {
             userService
