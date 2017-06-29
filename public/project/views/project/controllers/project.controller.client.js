@@ -50,6 +50,7 @@
         model.removeFromFavourites = removeFromFavourites;
         model.getOpportunitiesByProjectId = getOpportunitiesByProjectId;
         model.getDonation = getDonation;
+        model.findThisFavOfThisUser = findThisFavOfThisUser;
         model.logout = logout;
 
         function init() {
@@ -93,6 +94,10 @@
             var proj = proj.data.project;
             model.proj = proj;
              console.log(proj);
+        }
+        
+        function findThisFavOfThisUser(user) {
+            model.thisFav = $filter("filter")(user.favourites, {projectId: projectId});
         }
 
         function getDonation(projectId) {
