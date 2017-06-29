@@ -186,6 +186,10 @@
                                     {{model.message}}
                                 </div>
 
+                                <div ng-show="model.currentUser.followers.length < 1" class="alert alert-info" role="alert">
+                                    No one is following yet
+                                </div>
+
                                 <div ng-repeat="follower in model.currentUser.followers">
                                     <a href = "#!/user/{{follower._id}}">
                                         {{follower.firstName}}  {{follower.lastName}}
@@ -229,6 +233,10 @@
                                     {{model.message}}
                                 </div>
 
+                                <div ng-show="model.currentUser.following.length < 1" class="alert alert-info" role="alert">
+                                    Following no one yet
+                                </div>
+
                                 <div ng-repeat="following in model.currentUser.following">
                                     <a href = "#!/user/{{following._id}}">
                                         {{following.firstName}}  {{following.lastName}}
@@ -270,6 +278,10 @@
 
                                 <div ng-show="model.message" class="alert alert-success" role="alert">
                                     {{model.message}}
+                                </div>
+
+                                <div ng-show="model.currentUser.favourites.length < 1" class="alert alert-info" role="alert">
+                                    No project added in favourites yet
                                 </div>
 
                                 <div ng-repeat="fav in model.currentUser.favourites" class="ag-myOpportunities-list">
@@ -323,6 +335,11 @@
                                 <div ng-show="model.message" class="alert alert-success" role="alert">
                                     {{model.message}}
                                 </div>
+
+                                <div ng-show="model.donations.length < 1" class="alert alert-info" role="alert">
+                                    Not donated to any project yet
+                                </div>
+
                                 <div ng-repeat="donation in model.donations">
                                     <a href = "#!/browseProjects/{{donation._project}}">
                                        Project: {{donation._project}}
