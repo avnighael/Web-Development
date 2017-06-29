@@ -128,7 +128,7 @@
                             {{proj.country}}
                         </div>
                         <div class="col-lg-1 col-md-2 col-sm-2">
-                            <a ng-click="model.removeFromWishlist(proj.projectId)">
+                            <a ng-click="model.removeFromWishlist(model.thisUser.projects.indexOf(proj))">
                                 <span class="glyphicon glyphicon-remove pull-right"></span>
                             </a>
                         </div>
