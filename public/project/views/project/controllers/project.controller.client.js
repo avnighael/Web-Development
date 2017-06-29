@@ -67,6 +67,8 @@
             getCommentsByProjectId(projectId);
 
             getDonation(projectId);
+            
+           findThisFavOfThisUser(model.currentUser)
 
             orgService
                 .getProjectDetailsById(projectId)
