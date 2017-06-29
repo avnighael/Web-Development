@@ -39,7 +39,7 @@ app.put('/api/project/admin/user/:userId',updateUser);
 app.put('/api/project/user/:userId', modifyUser);
 app.post('/api/project/unregister', unregister);
 app.put('/api/project/user/:userId/project/:projectId', addToWishList);
-app.delete('/api/project/user/:userId/project/:projectId', removeFromWishList);
+app.delete('/api/project/user/:userId/project/wishlist/remove/:projectIndex', removeFromWishList);
 app.get('/api/project/user/:userId/project/:projectId', findUserWishListProjectById);
 app.get('/api/project/user/:userId/wishlist', getWishList);
 // app.post('/api/project/user/:userId/project/:projectId/donate', sendDonation);
@@ -177,10 +177,10 @@ function findUserWishListProjectById(req, res) {
 
 function removeFromWishList(req, res) {
     var userId = req.params.userId;
-    var projectId = req.params.projectId;
+    var projectIndex = req.params.projectIndex;
 
     userModel
-        .removeFromWishList(userId, projectId)
+        .removeFromWishList(userId, projectIndex)
         .then(function (response) {
             res.json(response);
         },function (err) {
