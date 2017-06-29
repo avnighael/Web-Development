@@ -56,7 +56,7 @@
                         Add Project to Favourites
                     </a>
                     <a ng-show="model.favourite"
-                       ng-click="model.removeFromFavourites(model.proj.id)"
+                       ng-click="model.removeFromFavourites(model.currentUser.favourites.indexOf(model.thisFav[0]))"
                        class="btn btn-danger btn-block glyphicon glyphicon-heart">
                         Remove Project From Favourites
                     </a>
