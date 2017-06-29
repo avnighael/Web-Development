@@ -5,7 +5,7 @@
         <p>No projects started yet</p>
     </div>
     <div ng-show="model.projs && !model.thisUserId">
-        <h2>Projects of {{model.currentUser.organization}}</h2>
+        <h2 class="ag-profileHeader"> <strong>Projects of {{model.currentUser.organization}}</strong></h2>
         <span ng-repeat="proj in model.projs">
             <span>
                 <a href="#!/browseProjects/{{proj.id}}">
@@ -24,7 +24,7 @@
 
 
     <div class = "container-fluid row" ng-show="model.projs && model.thisUserId">
-        <h2>Projects of {{model.thisUser.organization}}</h2>
+        <h2 class="ag-profileHeader"> <strong>Projects of {{model.thisUser.organization}}</strong></h2>
         <span ng-repeat="proj in model.projs">
             <span>
                 <!--<a href="#!/admin/user/{{model.thisUserId}}/browseProjects/{{proj.id}}">-->
