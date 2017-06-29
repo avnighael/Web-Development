@@ -69,9 +69,11 @@
 
             getDonation(projectId);
             
-           findThisFavOfThisUser(model.currentUser);
-            
-           findThisWishlistOfThisUser(model.currentUser);
+           if(model.currentUser) {
+                findThisFavOfThisUser(model.currentUser);
+
+                findThisWishlistOfThisUser(model.currentUser)
+            }
 
             orgService
                 .getProjectDetailsById(projectId)
@@ -258,7 +260,11 @@
                     model.saved = false;
                     model.donating = false;
 
-                    removeFromWishList(projectId);
+                    if(model.thisWishlist.length != 0) {
+                        var wishlistIndex = model.currentUser.projects.indexOf(model.thisWishlist[0]);
+                        removeFromWishList(wishlistIndex);
+                    }
+                
                     getDonation(projectId);
 
                 }, function (err) {
