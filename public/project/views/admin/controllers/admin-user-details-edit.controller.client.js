@@ -159,9 +159,9 @@
                 });
         }
 
-        function removeFromWishlist(projectId) {
+        function removeFromWishlist(projectIndex) {
                 userService
-                    .removeFromWishList(thisUserId, projectId)
+                    .removeFromWishList(thisUserId, projectIndex)
                     .then(function (response) {
                         getUserById(model.thisUserId);
                         getDonationHistory(model.thisUserId);
