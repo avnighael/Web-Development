@@ -58,11 +58,11 @@
                 });
         }
 
-        function follow(userIdToFollow) {
+        function follow(user) {
             userService
-                .follow(model.currentUserId, userIdToFollow)
+                .follow(user._id, model.currentUserId)
                 .then(function (followers) {
-                    model.currentUser.followers.push(followers);
+                    user.followers.push(followers);
                     model.followed = true;
                     findUserById(model.userId);
                 })
