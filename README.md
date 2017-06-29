@@ -9,8 +9,8 @@ I am a Computer Science graduate student at Northeastern University. Before star
 # Course Related Links
 
 1. Web Development Course Project - https://ghael-avni-webdev.herokuapp.com
-2. My Project - TBD
-3. My Assignments - TBD
+2. My Project - http://ghael-avni-webdev.herokuapp.com/project/index.html#!/
+3. My Assignments - http://ghael-avni-webdev.herokuapp.com/assignment/index.html#!/login
 
 # web-dev-template
 
