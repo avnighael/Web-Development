@@ -9,13 +9,22 @@
 
         var userId = currentUser._id;
         model.userId = userId;
-        model.user = currentUser;
+        model.currentUser = currentUser;
+        model.logout = logout;
 
         function init() {
             model.favourites = model.user.favourites;
         }
 
         init();
+
+        function logout(user){
+            userService
+                .logout()
+                .then(function () {
+                    $location.url('/');
+                })
+        }
 
     }
 })();

@@ -140,13 +140,19 @@
             .when('/browseOrganizations', {
                 templateUrl: 'views/user/templates/browse-organization.view.client.html',
                 controller: 'browseOrganizationController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
             })
 
             .when('/browseOrganizations/:organizationId', {
                 templateUrl: 'views/user/templates/organization.view.client.html',
                 controller: 'organizationController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
             })
 
             // .when('/browseProjects', {
