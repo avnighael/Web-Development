@@ -236,7 +236,7 @@ function removeFromFavourites(userId, projId) {
     return userModel
         .findById(userId)
         .then(function (user) {
-            user.favourites.splice(user.favourites.indexOf(projId),1);
+            user.favourites.splice(projId,1);
             return user.save();
             console.log(user);
 
