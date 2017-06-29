@@ -30,6 +30,11 @@ section {
     height: auto !important;
 }
 
+.ag-link-color {
+    color: blue;
+    font-size: 11pt;
+}
+
 #about-section .section-wrapper {
     padding-top:70px
 }

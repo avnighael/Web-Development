@@ -2,25 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe86f3a8-3bab-47a0-a636-41eeca86c813" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendor/image/experience.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/models/donation/donation.model.server.js" afterPath="$PROJECT_DIR$/project/models/donation/donation.model.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/services/donation.service.server.js" afterPath="$PROJECT_DIR$/project/services/donation.service.server.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/style.css" afterPath="$PROJECT_DIR$/public/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/services/donation.service.client.js" afterPath="$PROJECT_DIR$/public/project/services/donation.service.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/admin/controllers/admin-users.controller.client.js" afterPath="$PROJECT_DIR$/public/project/views/admin/controllers/admin-users.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/admin/templates/admin-user-details-edit.view.client.html" afterPath="$PROJECT_DIR$/public/project/views/admin/templates/admin-user-details-edit.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/project/controllers/project.controller.client.js" afterPath="$PROJECT_DIR$/public/project/views/project/controllers/project.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/project/templates/project.view.client.html" afterPath="$PROJECT_DIR$/public/project/views/project/templates/project.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/user/controllers/browse-organization.controller.client.js" afterPath="$PROJECT_DIR$/public/project/views/user/controllers/browse-organization.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/user/controllers/profile.controller.client.js" afterPath="$PROJECT_DIR$/public/project/views/user/controllers/profile.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/user/controllers/user.controller.client.js" afterPath="$PROJECT_DIR$/public/project/views/user/controllers/user.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/user/templates/browse-organization.view.client.html" afterPath="$PROJECT_DIR$/public/project/views/user/templates/browse-organization.view.client.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/css/style.css" afterPath="$PROJECT_DIR$/public/project/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/user/controllers/give.controller.client.js" afterPath="$PROJECT_DIR$/public/project/views/user/controllers/give.controller.client.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/user/templates/give.view.client.html" afterPath="$PROJECT_DIR$/public/project/views/user/templates/give.view.client.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/user/templates/organization.view.client.html" afterPath="$PROJECT_DIR$/public/project/views/user/templates/organization.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/user/templates/profile.view.client.html" afterPath="$PROJECT_DIR$/public/project/views/user/templates/profile.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/volunteer-opportunity/templates/organization-all-opportunities.view.client.html" afterPath="$PROJECT_DIR$/public/project/views/volunteer-opportunity/templates/organization-all-opportunities.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/volunteer-opportunity/templates/project-opportunities.view.client.html" afterPath="$PROJECT_DIR$/public/project/views/volunteer-opportunity/templates/project-opportunities.view.client.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -35,66 +22,43 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/index.html">
+      <file leaf-file-name="give.view.client.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/views/user/templates/give.view.client.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="74" column="26" lean-forward="false" selection-start-line="74" selection-start-column="13" selection-end-line="74" selection-end-column="26" />
+            <state relative-caret-position="198">
+              <caret line="59" column="42" lean-forward="false" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
               <folding>
-                <element signature="n#style#0;n#div#1;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#li#1;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#li#0;n#ul#0;n#div#1;n#li#1;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#li#2;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#li#0;n#ul#0;n#div#1;n#li#2;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#li#3;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#li#0;n#ul#0;n#div#1;n#li#3;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#ul#0;n#div#0;n#div#0;n#section#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#14868#14874#0" expanded="true" />
-                <element signature="e#14875#14881#0" expanded="true" />
-                <element signature="e#14882#14888#0" expanded="true" />
-                <element signature="e#15013#15019#0" expanded="true" />
-                <element signature="e#15020#15026#0" expanded="true" />
-                <element signature="e#15027#15033#0" expanded="true" />
-                <element signature="e#15155#15161#0" expanded="true" />
-                <element signature="e#15162#15168#0" expanded="true" />
-                <element signature="e#15169#15175#0" expanded="true" />
-                <element signature="e#16423#16429#0" expanded="true" />
-                <element signature="e#16430#16436#0" expanded="true" />
-                <element signature="e#16437#16443#0" expanded="true" />
-                <element signature="e#16599#16605#0" expanded="true" />
-                <element signature="e#16606#16612#0" expanded="true" />
-                <element signature="e#16613#16619#0" expanded="true" />
-                <element signature="e#16727#16733#0" expanded="true" />
-                <element signature="e#16734#16740#0" expanded="true" />
-                <element signature="e#16741#16747#0" expanded="true" />
-                <element signature="e#16911#16917#0" expanded="true" />
-                <element signature="e#16918#16924#0" expanded="true" />
-                <element signature="e#16925#16931#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="profile.view.client.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/views/user/templates/profile.view.client.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="52">
-              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
-              <folding>
-                <element signature="n#div#0;n#div#1;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#3;n#div#1;n#!!top" expanded="false" />
                 <element signature="n#nav#0;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/css/style.css">
+      <file leaf-file-name="organization.view.client.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/project/views/user/templates/organization.view.client.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="22" lean-forward="false" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+            <state relative-caret-position="105">
+              <caret line="7" column="34" lean-forward="false" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="597" column="1" lean-forward="true" selection-start-line="597" selection-start-column="1" selection-end-line="597" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="give.controller.client.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/views/user/controllers/give.controller.client.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -113,7 +77,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>nav-item</find>
       <find>WidgetService</find>
       <find>vm</find>
       <find>all</find>
@@ -143,6 +106,7 @@
       <find>model.user</find>
       <find>wishlist</find>
       <find>section</find>
+      <find>thumbnail</find>
     </findStrings>
     <replaceStrings>
       <replace>widgetService</replace>
@@ -184,12 +148,10 @@
         <option value="$PROJECT_DIR$/public/project/views/user/controllers/login.controller.client.js" />
         <option value="$PROJECT_DIR$/public/project/views/project/templates/projects.view.client.html" />
         <option value="$PROJECT_DIR$/public/project/views/project/controllers/projects.controller.client.js" />
-        <option value="$PROJECT_DIR$/public/project/views/user/controllers/give.controller.client.js" />
         <option value="$PROJECT_DIR$/public/project/views/admin/controllers/admin-add-follower.controller.client.js" />
         <option value="$PROJECT_DIR$/public/project/views/admin/controllers/admin-add-following.controller.client.js" />
         <option value="$PROJECT_DIR$/public/project/views/user/controllers/wishlist.controller.client.js" />
         <option value="$PROJECT_DIR$/public/project/views/user/templates/wishlist.view.client.html" />
-        <option value="$PROJECT_DIR$/public/project/css/style.css" />
         <option value="$PROJECT_DIR$/public/project/views/user/templates/user.view.client.html" />
         <option value="$PROJECT_DIR$/public/project/views/user/controllers/user.controller.client.js" />
         <option value="$PROJECT_DIR$/public/project/views/admin/templates/admin-user-details-edit.view.client.html" />
@@ -199,18 +161,20 @@
         <option value="$PROJECT_DIR$/project/models/donation/donation.model.server.js" />
         <option value="$PROJECT_DIR$/public/project/views/project/controllers/project.controller.client.js" />
         <option value="$PROJECT_DIR$/public/project/views/project/templates/project.view.client.html" />
-        <option value="$PROJECT_DIR$/public/project/views/user/templates/give.view.client.html" />
         <option value="$PROJECT_DIR$/public/project/services/project.service.client.js" />
         <option value="$PROJECT_DIR$/public/project/views/user/templates/profile.view.client.html" />
         <option value="$PROJECT_DIR$/public/project/views/user/controllers/profile.controller.client.js" />
         <option value="$PROJECT_DIR$/public/project/views/volunteer-opportunity/templates/organization-all-opportunities.view.client.html" />
         <option value="$PROJECT_DIR$/public/project/views/volunteer-opportunity/templates/project-opportunities.view.client.html" />
         <option value="$PROJECT_DIR$/public/project/views/common/header-menu.view.client.html" />
-        <option value="$PROJECT_DIR$/public/project/views/user/templates/organization.view.client.html" />
         <option value="$PROJECT_DIR$/public/project/views/user/controllers/browse-organization.controller.client.js" />
         <option value="$PROJECT_DIR$/public/project/views/user/templates/browse-organization.view.client.html" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/public/css/style.css" />
+        <option value="$PROJECT_DIR$/public/project/css/style.css" />
+        <option value="$PROJECT_DIR$/public/project/views/user/controllers/give.controller.client.js" />
+        <option value="$PROJECT_DIR$/public/project/views/user/templates/give.view.client.html" />
+        <option value="$PROJECT_DIR$/public/project/views/user/templates/organization.view.client.html" />
       </list>
     </option>
   </component>
@@ -410,6 +374,32 @@
               <option name="myItemId" value="user" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -580,12 +570,12 @@
       <workItem from="1497988416421" duration="23472000" />
       <workItem from="1498076723453" duration="2043000" />
       <workItem from="1498079061703" duration="190732000" />
-      <workItem from="1498538192845" duration="61788000" />
+      <workItem from="1498538192845" duration="63590000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="809796000" />
+    <option name="totallyTimeSpent" value="811598000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="722" extended-state="0" />
@@ -841,14 +831,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="595" column="17" lean-forward="false" selection-start-line="595" selection-start-column="1" selection-end-line="595" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/services/donation.service.client.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="129">
@@ -947,14 +929,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/views/user/controllers/give.controller.client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1230">
-          <caret line="82" column="30" lean-forward="false" selection-start-line="82" selection-start-column="30" selection-end-line="82" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/views/volunteer-opportunity/templates/all-opportunities.view.client.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -964,14 +938,6 @@
             <element signature="n#div#2;n#div#0;n#div#0;n#!!top" expanded="false" />
             <marker date="1498615574000" expanded="false" signature="5392:5408" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/views/user/templates/organization.view.client.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="48" column="63" lean-forward="false" selection-start-line="48" selection-start-column="63" selection-end-line="48" selection-end-column="63" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -998,16 +964,6 @@
         <state relative-caret-position="187">
           <caret line="18" column="27" lean-forward="false" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/views/user/templates/give.view.client.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
-          <folding>
-            <element signature="n#nav#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1053,6 +1009,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="34" column="17" lean-forward="false" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/views/user/templates/profile.view.client.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="52">
@@ -1067,8 +1031,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="74" column="26" lean-forward="false" selection-start-line="74" selection-start-column="13" selection-end-line="74" selection-end-column="26" />
+        <state relative-caret-position="159">
+          <caret line="209" column="159" lean-forward="false" selection-start-line="209" selection-start-column="146" selection-end-line="209" selection-end-column="159" />
           <folding>
             <element signature="n#style#0;n#div#1;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#li#0;n#ul#0;n#div#1;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1079,35 +1043,61 @@
             <element signature="n#style#0;n#div#1;n#li#3;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#li#0;n#ul#0;n#div#1;n#li#3;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#ul#0;n#div#0;n#div#0;n#section#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#14868#14874#0" expanded="true" />
-            <element signature="e#14875#14881#0" expanded="true" />
-            <element signature="e#14882#14888#0" expanded="true" />
-            <element signature="e#15013#15019#0" expanded="true" />
-            <element signature="e#15020#15026#0" expanded="true" />
-            <element signature="e#15027#15033#0" expanded="true" />
-            <element signature="e#15155#15161#0" expanded="true" />
-            <element signature="e#15162#15168#0" expanded="true" />
-            <element signature="e#15169#15175#0" expanded="true" />
-            <element signature="e#16423#16429#0" expanded="true" />
-            <element signature="e#16430#16436#0" expanded="true" />
-            <element signature="e#16437#16443#0" expanded="true" />
-            <element signature="e#16599#16605#0" expanded="true" />
-            <element signature="e#16606#16612#0" expanded="true" />
-            <element signature="e#16613#16619#0" expanded="true" />
-            <element signature="e#16727#16733#0" expanded="true" />
-            <element signature="e#16734#16740#0" expanded="true" />
-            <element signature="e#16741#16747#0" expanded="true" />
-            <element signature="e#16911#16917#0" expanded="true" />
-            <element signature="e#16918#16924#0" expanded="true" />
-            <element signature="e#16925#16931#0" expanded="true" />
+            <element signature="e#14974#14980#0" expanded="true" />
+            <element signature="e#14981#14987#0" expanded="true" />
+            <element signature="e#14988#14994#0" expanded="true" />
+            <element signature="e#15119#15125#0" expanded="true" />
+            <element signature="e#15126#15132#0" expanded="true" />
+            <element signature="e#15133#15139#0" expanded="true" />
+            <element signature="e#15261#15267#0" expanded="true" />
+            <element signature="e#15268#15274#0" expanded="true" />
+            <element signature="e#15275#15281#0" expanded="true" />
+            <element signature="e#16529#16535#0" expanded="true" />
+            <element signature="e#16536#16542#0" expanded="true" />
+            <element signature="e#16543#16549#0" expanded="true" />
+            <element signature="e#16705#16711#0" expanded="true" />
+            <element signature="e#16712#16718#0" expanded="true" />
+            <element signature="e#16719#16725#0" expanded="true" />
+            <element signature="e#16833#16839#0" expanded="true" />
+            <element signature="e#16840#16846#0" expanded="true" />
+            <element signature="e#16847#16853#0" expanded="true" />
+            <element signature="e#17017#17023#0" expanded="true" />
+            <element signature="e#17024#17030#0" expanded="true" />
+            <element signature="e#17031#17037#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/style.css">
+    <entry file="file://$PROJECT_DIR$/public/project/views/user/controllers/give.controller.client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="22" lean-forward="false" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+        <state relative-caret-position="186">
+          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="597" column="1" lean-forward="true" selection-start-line="597" selection-start-column="1" selection-end-line="597" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/views/user/templates/give.view.client.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="59" column="42" lean-forward="false" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
+          <folding>
+            <element signature="n#nav#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/views/user/templates/organization.view.client.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="34" lean-forward="false" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
           <folding />
         </state>
       </provider>

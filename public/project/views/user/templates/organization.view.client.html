@@ -4,8 +4,8 @@
 <div class="container-fluid ag-pushBody">
     <!--<div ng-repeat="project in model.projects">-->
     <div>
-        <h3>{{model.org.name}}</h3>
-        <p> {{model.org.country}} , {{model.org.state}}, {{moedel.org.city}}</p>
+        <h3 class="ag-profileHeader"><strong>{{model.org.name}}</strong></h3>
+        <p class="ag-profileHeader"> {{model.org.country}} , {{model.org.state}}, {{moedel.org.city}}</p>
 
 
         <!--<div class="col-xs-12 text-right">-->
@@ -24,10 +24,10 @@
             <b>Mission</b>
             <p>{{model.org.mission}}</p>
         </div>
-
+        <hr/>
         <div>
             <span>Total Projects: {{model.org.totalProjects}}</span> &nbsp; &nbsp;
-            <span>Website: {{model.org.url}}</span> &nbsp; &nbsp;
+            <span>Website: <a href="{{model.org.url}}">{{model.org.url}}</a></span> &nbsp; &nbsp;
 
         </div>
 

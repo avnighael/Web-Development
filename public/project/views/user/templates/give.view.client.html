@@ -56,11 +56,11 @@
             No active projects found.
         </h4>
 
-        <h4 ng-show="!model.error && model.numberFound > 0">Search Project Result</h4>
+        <h3 class="ag-profileHeader" ng-show="!model.error && model.numberFound > 0"><strong>
+            Search Project Result</strong></h3>
         <div ng-show="model.numberFound > 0"
              ng-repeat="proj in model.projs">
             <div>
-
                 <a ng-show="model.currentUser.role != 'ADMIN'"
                    href="#!/browseProjects/{{proj.id}}">
                     <img class="img-responsive-home thumbnail"
@@ -80,6 +80,7 @@
                 <p>by {{proj.organization.name}}</p>
 
             </div>
+            <hr/>
         </div>
     </div>
     <div class = "ag-addBottomPadding"></div>

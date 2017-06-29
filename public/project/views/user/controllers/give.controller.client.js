@@ -67,6 +67,7 @@
                 .getProjectsByCauseId(causeId)
                 .then(function (projs) {
                     //model.orgs = orgs.charities.charity;
+                    model.numberFound = projs.data.projects.numberFound;
                     model.projs = projs.data.projects.project;
                 }, function () {
                     model.error = "No results found";
